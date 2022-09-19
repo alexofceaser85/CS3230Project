@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS3230Project", "CS3230Project\CS3230Project.csproj", "{6F756AFD-22F4-450E-B84D-C2CAA1C91F81}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS3230ProjectTests", "CS3230ProjectTests\CS3230ProjectTests.csproj", "{42C832A8-DBC7-4D04-A00D-0AF4A99F63A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6F756AFD-22F4-450E-B84D-C2CAA1C91F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F756AFD-22F4-450E-B84D-C2CAA1C91F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F756AFD-22F4-450E-B84D-C2CAA1C91F81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42C832A8-DBC7-4D04-A00D-0AF4A99F63A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42C832A8-DBC7-4D04-A00D-0AF4A99F63A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42C832A8-DBC7-4D04-A00D-0AF4A99F63A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42C832A8-DBC7-4D04-A00D-0AF4A99F63A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
