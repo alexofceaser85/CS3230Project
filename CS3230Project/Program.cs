@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CS3230Project.DAL.Accounts;
-using CS3230Project.Model.Accounts;
+using CS3230Project.View;
 
 namespace CS3230Project
 {
@@ -19,7 +14,7 @@ namespace CS3230Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Login());
         }
     }
 }
