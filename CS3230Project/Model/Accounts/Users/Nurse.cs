@@ -72,10 +72,10 @@ namespace CS3230Project.Model.Accounts.Users
                 throw new ArgumentException(NurseErrorMessages.UserNameCannotBeEmpty);
             }
 
-            Id = id;
-            FirstName = firstName;
-            LastName = lastName;
-            UserName = userName;
+            this.Id = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.UserName = userName;
         }
     }
 }
