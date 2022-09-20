@@ -48,7 +48,16 @@ namespace CS3230Project.DAL.Accounts
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
 
-            const string query = "select firstName, lastName, ID, userName from nurses, accounts where nurses.ID = accounts.employeeID and exists (select userName, `password` from accounts where userName = @username and `password` = @password);";
+            const string query = "select firstName, lastName, ID, userName " +
+                                 "from nurses, accounts " +
+                                 "where nurses.ID = accounts.employeeID " +
+                                 "and exists (" +
+                                 "  select userName, `password` " +
+                                 "  from accounts " +
+                                 "  where userName = @username " +
+                                 "  and `password` = @password " +
+                                 "  and accounts.employeeID = nurses.ID);";
+
             using var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@userName", MySqlDbType.String).Value = userName;
             command.Parameters.Add("@password", MySqlDbType.String).Value = password;
