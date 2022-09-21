@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using CS3230Project.View;
 
 namespace CS3230Project
 {
@@ -13,7 +14,7 @@ namespace CS3230Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Login());
         }
     }
 }

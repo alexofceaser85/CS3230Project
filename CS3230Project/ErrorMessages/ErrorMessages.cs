@@ -3,7 +3,7 @@
     /// <summary>
     /// The accounts data access layer error messages
     /// </summary>
-    public static class AccountsDalErrorMessages
+    public static class AccountsErrorMessages
     {
         /// <summary>
         /// Error message for null login user name
