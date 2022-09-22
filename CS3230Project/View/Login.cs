@@ -33,6 +33,7 @@ namespace CS3230Project.View
                     form1.StartPosition = FormStartPosition.Manual;
                     form1.FormClosing += delegate { Show(); };
                     Hide();
+                    form1.Size = this.Size;
                     form1.ShowDialog();
                     Close();
                 }
