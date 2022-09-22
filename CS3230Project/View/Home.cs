@@ -36,5 +36,17 @@ namespace CS3230Project.View
             form1.ShowDialog();
             Close();
         }
+
+        private void registerPatientButton_Click(object sender, EventArgs e)
+        {
+            Form registerPatientForm = new RegisterPatient();
+            registerPatientForm.Location = Location;
+            registerPatientForm.StartPosition = FormStartPosition.Manual;
+            registerPatientForm.FormClosing += delegate { Show(); };
+            Hide();
+            registerPatientForm.Size = this.Size;
+            registerPatientForm.ShowDialog();
+            Close();
+        }
     }
 }
