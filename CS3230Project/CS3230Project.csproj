@@ -99,7 +99,10 @@
   <ItemGroup>
     <Compile Include="DAL\Accounts\AccountsDal.cs" />
     <Compile Include="DAL\Connection.cs" />
+    <Compile Include="DAL\Patients\PatientsDal.cs" />
     <Compile Include="ErrorMessages\ErrorMessages.cs" />
+    <Compile Include="Model\Patients\PatientManager.cs" />
+    <Compile Include="Model\Users\Patient.cs" />
     <Compile Include="View\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,7 +117,7 @@
     </Compile>
     <Compile Include="Model\Accounts\Services\AccountService.cs" />
     <Compile Include="Model\Accounts\CurrentUser.cs" />
-    <Compile Include="Model\Accounts\Users\Nurse.cs" />
+    <Compile Include="Model\Users\Nurse.cs" />
     <Compile Include="DAL\DataHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
