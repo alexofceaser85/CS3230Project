@@ -30,10 +30,9 @@ namespace CS3230Project.DAL.Patients
                 throw new ArgumentException(PatientErrorMessages.PatientToAddCannotBeNull);
             }
 
-            int patientId = patientToAdd.PatientId;
             string firstName = patientToAdd.FirstName;
             string lastName = patientToAdd.LastName;
-            DateTime dateOfBirth = patientToAdd.DateOfBirth;
+            string dateOfBirth = patientToAdd.DateOfBirth.ToString("yyyy-MM-dd");
             string gender = patientToAdd.Gender;
             string phoneNumber = patientToAdd.PhoneNumber;
             string addressOne = patientToAdd.AddressOne;
@@ -61,7 +60,7 @@ namespace CS3230Project.DAL.Patients
             comm.Parameters.Add("@city", MySqlDbType.String).Value = city;
             comm.Parameters.Add("@state", MySqlDbType.String).Value = state;
             comm.Parameters.Add("@zipcode", MySqlDbType.String).Value = zipcode;
-            comm.Parameters.Add("@status", MySqlDbType.String).Value = status;
+            comm.Parameters.Add("@status", MySqlDbType.Int16).Value = status;
 
             return comm.ExecuteNonQuery() > 0;
 
