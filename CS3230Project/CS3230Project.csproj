@@ -103,6 +103,7 @@
     <Compile Include="ErrorMessages\ErrorMessages.cs" />
     <Compile Include="Model\Patients\PatientManager.cs" />
     <Compile Include="Model\Users\Patient.cs" />
+    <Compile Include="ViewModel\Patients\PatientsViewModel.cs" />
     <Compile Include="View\Home.cs">
       <SubType>Form</SubType>
     </Compile>

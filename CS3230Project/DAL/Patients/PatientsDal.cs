@@ -31,10 +31,9 @@ namespace CS3230Project.DAL.Patients
                 throw new ArgumentException(PatientErrorMessages.PatientToAddCannotBeNull);
             }
 
-            int patientId = patientToAdd.PatientId;
             string firstName = patientToAdd.FirstName;
             string lastName = patientToAdd.LastName;
-            DateTime dateOfBirth = patientToAdd.DateOfBirth;
+            string dateOfBirth = patientToAdd.DateOfBirth.ToString("yyyy-MM-dd");
             string gender = patientToAdd.Gender;
             string phoneNumber = patientToAdd.PhoneNumber;
             string addressOne = patientToAdd.AddressOne;
@@ -47,12 +46,11 @@ namespace CS3230Project.DAL.Patients
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
             MySqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "insert into patients (patientID, lastName, firstName, dateOfBirth, " +
+            comm.CommandText = "insert into patients (lastName, firstName, dateOfBirth, " +
                                "gender, phone, addressOne, addressTwo, city, state, zipcode, status) VALUES" +
-                               "(@patientId, @lastName, @firstName, @dateOfBirth, @gender, @phoneNumber, " +
+                               "(@lastName, @firstName, @dateOfBirth, @gender, @phoneNumber, " +
                                "@addressOne, @addressTwo, @city, @state, @zipcode, @status)";
 
-            comm.Parameters.Add("@patientId", MySqlDbType.String).Value = patientId;
             comm.Parameters.Add("@lastName", MySqlDbType.String).Value = lastName;
             comm.Parameters.Add("@firstName", MySqlDbType.String).Value = firstName;
             comm.Parameters.Add("@dateOfBirth", MySqlDbType.String).Value = dateOfBirth;
@@ -63,7 +61,7 @@ namespace CS3230Project.DAL.Patients
             comm.Parameters.Add("@city", MySqlDbType.String).Value = city;
             comm.Parameters.Add("@state", MySqlDbType.String).Value = state;
             comm.Parameters.Add("@zipcode", MySqlDbType.String).Value = zipcode;
-            comm.Parameters.Add("@status", MySqlDbType.String).Value = status;
+            comm.Parameters.Add("@status", MySqlDbType.Int16).Value = status;
 
             return comm.ExecuteNonQuery() > 0;
 

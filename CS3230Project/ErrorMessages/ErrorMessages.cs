@@ -114,6 +114,11 @@
         public static string AddressOneCannotBeEmpty = "The patient address one cannot be empty.";
 
         /// <summary>
+        /// Error message for null address two
+        /// </summary>
+        public static string AddressTwoCannotBeNull = "The patient address two cannot be null";
+
+        /// <summary>
         /// Error message for null city
         /// </summary>
         public static string CityCannotBeNull = "The patient city cannot be null.";
