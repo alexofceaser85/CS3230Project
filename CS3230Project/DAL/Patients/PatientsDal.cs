@@ -3,6 +3,7 @@ using CS3230Project.Model.Users;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using CS3230Project.Model.Users.Patients;
 
 namespace CS3230Project.DAL.Patients
 {
@@ -11,7 +12,6 @@ namespace CS3230Project.DAL.Patients
     /// </summary>
     public static class PatientsDal
     {
-
         /// <summary>
         /// Adds the patient.
         ///
@@ -71,7 +71,8 @@ namespace CS3230Project.DAL.Patients
 
         /// <summary>
         /// Gets all the patients with the provided name.
-        /// Precondition: none
+        /// Precondition:
+        ///     none
         /// </summary>
         /// <param name="firstName">The first name.</param>
         /// <param name="lastName">The last name.</param>
@@ -88,19 +89,19 @@ namespace CS3230Project.DAL.Patients
             {
                 const string query = "select * from Patients where @firstName = firstName and @lastName = lastName";
                 using var command = new MySqlCommand(query, connection);
-                return PatientsDal.createPatients(command, firstName, lastName);
+                return PatientsDal.createPatients(command, firstName, lastName, null);
             }
             else if (firstName != null && firstName.Trim().Length > 0)
             {
                 const string query = "select * from Patients where @firstName = firstName";
                 using var command = new MySqlCommand(query, connection);
-                return PatientsDal.createPatients(command, firstName, lastName);
+                return PatientsDal.createPatients(command, firstName, lastName, null);
             }
             else if (lastName != null && lastName.Trim().Length > 0)
             {
                 const string query = "select * from Patients where @lastName = lastName";
                 using var command = new MySqlCommand(query, connection);
-                return PatientsDal.createPatients(command, firstName, lastName);
+                return PatientsDal.createPatients(command, firstName, lastName, null);
             }
             else
             {
@@ -108,11 +109,78 @@ namespace CS3230Project.DAL.Patients
             }
         }
 
-        private static List<Patient> createPatients(MySqlCommand command, string firstName, string lastName)
+        /// <summary>
+        /// Gets the patients by date of birth.
+        /// Precondition:
+        ///     none
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <returns>
+        ///     Returns a list of all the patients with the provided date of birth.
+        ///     Returns an empty list if there are no patients with the provided date of birth.
+        /// </returns>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static List<Patient> GetPatientsByDateOfBirth(DateTime dateOfBirth)
+        {
+            using var connection = new MySqlConnection(Connection.ConnectionString);
+            connection.Open();
+            const string query = "select * from Patients where @dateOfBirth = dateOfBirth";
+            using var command = new MySqlCommand(query, connection);
+
+            return PatientsDal.createPatients(command, null, null, dateOfBirth);
+        }
+
+        /// <summary>
+        /// Gets the patients by name and date of birth.
+        /// Precondition:
+        ///     none
+        /// </summary>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <returns>
+        ///     Returns a list of all the patients with the provided name and date of birth.
+        ///     Returns an empty list if there are no patients with the provided name and date of birth.
+        /// </returns>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static List<Patient> GetPatientsByNameAndDateOfBirth(string firstName, string lastName,
+            DateTime dateOfBirth)
+        {
+            using var connection = new MySqlConnection(Connection.ConnectionString);
+            connection.Open();
+
+            if (firstName != null && firstName.Trim().Length > 0 && lastName != null && lastName.Trim().Length > 0)
+            {
+                const string query =
+                    "select * from Patients where @firstName = firstName and @lastName = lastName and " +
+                    "@dateOfBirth = dateOfBirth";
+                using var command = new MySqlCommand(query, connection);
+                return PatientsDal.createPatients(command, firstName, lastName, dateOfBirth);
+            }
+            else if (firstName != null && firstName.Trim().Length > 0)
+            {
+                const string query = "select * from Patients where @firstName = firstName and @dateOfBirth = dateOfBirth";
+                using var command = new MySqlCommand(query, connection);
+                return PatientsDal.createPatients(command, firstName, lastName, dateOfBirth);
+            }
+            else if (lastName != null && lastName.Trim().Length > 0)
+            {
+                const string query = "select * from Patients where @lastName = lastName and @dateOfBirth = dateOfBirth";
+                using var command = new MySqlCommand(query, connection);
+                return PatientsDal.createPatients(command, firstName, lastName, dateOfBirth);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private static List<Patient> createPatients(MySqlCommand command, string firstName, string lastName, DateTime? dateOfBirth)
         {
             command.Parameters.Add("@firstName", MySqlDbType.String).Value = firstName;
             command.Parameters.Add("@lastName", MySqlDbType.String).Value = lastName;
-            List<Patient> patientsWithMatchingName = new List<Patient>();
+            command.Parameters.Add("@dateOfBirth", MySqlDbType.Date).Value = dateOfBirth;
+            List<Patient> matchingPatients = new List<Patient>();
 
             using var reader = command.ExecuteReader();
             var patientIdOrdinal = reader.GetOrdinal("patientID");
@@ -130,22 +198,22 @@ namespace CS3230Project.DAL.Patients
 
             while (reader.Read())
             {
-                patientsWithMatchingName.Add(new Patient(
+                matchingPatients.Add(new Patient(
                     patientIdOrdinal,
                     reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
                     reader.GetFieldValue<DateTime>(dateOfBirthOrdinal),
                     reader.GetFieldValueCheckNull<string>(genderOrdinal),
-                    reader.GetFieldValueCheckNull<string>(phoneNumberOrdinal),
                     reader.GetFieldValueCheckNull<string>(addressOneOrdinal),
                     reader.GetFieldValueCheckNull<string>(addressTwoOrdinal),
                     reader.GetFieldValueCheckNull<string>(cityOrdinal),
                     reader.GetFieldValueCheckNull<string>(stateOrdinal),
                     reader.GetFieldValueCheckNull<string>(zipcodeOrdinal),
+                    reader.GetFieldValueCheckNull<string>(phoneNumberOrdinal),
                     reader.GetFieldValue<bool>(statusOrdinal)));
             }
 
-            return patientsWithMatchingName;
+            return matchingPatients;
         }
 
     }

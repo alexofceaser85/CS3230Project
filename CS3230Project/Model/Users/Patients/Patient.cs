@@ -1,7 +1,8 @@
-﻿using CS3230Project.ErrorMessages;
-using System;
+﻿using System;
+using CS3230Project.DAL;
+using CS3230Project.ErrorMessages;
 
-namespace CS3230Project.Model.Users
+namespace CS3230Project.Model.Users.Patients
 {
     /// <summary>
     /// Holds the information for a patient
@@ -187,6 +188,10 @@ namespace CS3230Project.Model.Users
             if (phoneNumber.Trim().Length == 0)
             {
                 throw new ArgumentException(PatientErrorMessages.PhoneNumberCannotBeEmpty);
+            }
+            if (!DataHelper.IsValidPhoneNumberFormat(phoneNumber))
+            {
+                throw new FormatException(PatientErrorMessages.InvalidPhoneNumberFormat);
             }
 
             this.PatientId = patientId;
