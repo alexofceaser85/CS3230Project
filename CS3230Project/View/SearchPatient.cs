@@ -100,7 +100,14 @@ namespace CS3230Project.View
 
             if (dataGridView.CurrentRow.Selected)
             {
-                //TODO: Edit patient
+                Form editForm = new EditPatient();
+                editForm.Location = Location;
+                editForm.StartPosition = FormStartPosition.Manual;
+                editForm.FormClosing += delegate { Show(); };
+                Hide();
+                editForm.Size = this.Size;
+                editForm.ShowDialog();
+                Close();
             }
             
         }

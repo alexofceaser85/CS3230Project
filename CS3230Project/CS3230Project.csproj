@@ -103,6 +103,12 @@
     <Compile Include="ErrorMessages\ErrorMessages.cs" />
     <Compile Include="Model\Users\Patients\PatientManager.cs" />
     <Compile Include="Model\Users\Patients\Patient.cs" />
+    <Compile Include="View\EditPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditPatient.Designer.cs">
+      <DependentUpon>EditPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\EditPatient.resx">
+      <DependentUpon>EditPatient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
