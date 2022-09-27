@@ -48,13 +48,13 @@ namespace CS3230ProjectTests.Model.Accounts.Users.PatientManagerTests
             Assert.AreEqual(message.Message, PatientErrorMessages.DateOfBirthCannotBeInTheFuture);
         }
 
-        /*
+        
         [TestMethod]
         public void TestValidArguments()
         {
             Assert.AreEqual(1, PatientManager.GetPatientsByDateOfBirth(new DateTime(2000, 1, 1)).Count);
-            Assert.AreEqual(new DateTime(2000, 1, 1), PatientManager.GetPatientsByDateOfBirth(new DateTime(2000, 1, 1))[0].FirstName);
+            Assert.AreEqual(new DateTime(2000, 1, 1).Date, PatientManager.GetPatientsByDateOfBirth(new DateTime(2000, 1, 1))[0].DateOfBirth);
         }
-        */
+        
     }
 }

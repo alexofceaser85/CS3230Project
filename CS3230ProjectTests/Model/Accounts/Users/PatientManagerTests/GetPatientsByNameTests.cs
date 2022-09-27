@@ -48,7 +48,6 @@ namespace CS3230ProjectTests.Model.Accounts.Users.PatientManagerTests
             Assert.AreEqual(message.Message, PatientErrorMessages.FirstAndLastNamesCannotBothBeNullOrEmpty);
         }
 
-        /*
         [TestMethod]
         public void TestValidFirstNameNullLastName()
         {
@@ -60,7 +59,7 @@ namespace CS3230ProjectTests.Model.Accounts.Users.PatientManagerTests
         public void TestValidLastNameNullFirstName()
         {
             Assert.AreEqual(1, PatientManager.GetPatientsByName(null, "patient").Count);
-            Assert.AreEqual("pat", PatientManager.GetPatientsByName(null, "patient")[0].LastName);
+            Assert.AreEqual("pat", PatientManager.GetPatientsByName(null, "patient")[0].FirstName);
         }
 
         [TestMethod]
@@ -74,7 +73,7 @@ namespace CS3230ProjectTests.Model.Accounts.Users.PatientManagerTests
         public void TestValidLastNameEmptyFirstName()
         {
             Assert.AreEqual(1, PatientManager.GetPatientsByName("", "patient").Count);
-            Assert.AreEqual("pat", PatientManager.GetPatientsByName("", "patient")[0].LastName);
+            Assert.AreEqual("pat", PatientManager.GetPatientsByName("", "patient")[0].FirstName);
         }
 
         [TestMethod]
@@ -84,6 +83,6 @@ namespace CS3230ProjectTests.Model.Accounts.Users.PatientManagerTests
             Assert.AreEqual("pat", PatientManager.GetPatientsByName("pat", "patient")[0].FirstName);
             Assert.AreEqual("patient", PatientManager.GetPatientsByName("pat", "patient")[0].LastName);
         }
-        */
+        
     }
 }

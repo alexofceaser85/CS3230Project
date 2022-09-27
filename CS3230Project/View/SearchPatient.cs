@@ -73,6 +73,8 @@ namespace CS3230Project.View
                     currPatient.Zipcode, currPatient.Status.ToString()
                 };
                 this.PatientDataGridView.Rows.Add(patientDetails);
+                this.PatientDataGridView.CellClick +=
+                    new DataGridViewCellEventHandler(this.PatientDataGridView_CellClick);
             }
         }
 
@@ -86,6 +88,21 @@ namespace CS3230Project.View
             homeForm.Size = this.Size;
             homeForm.ShowDialog();
             Close();
+        }
+
+        private void PatientDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+            if (dataGridView == null)
+            {
+                return;
+            }
+
+            if (dataGridView.CurrentRow.Selected)
+            {
+                //TODO: Edit patient
+            }
+            
         }
     }
 }
