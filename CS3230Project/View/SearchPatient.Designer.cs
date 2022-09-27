@@ -65,7 +65,6 @@
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZipCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.selectPatient = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -362,21 +361,20 @@
             this.City,
             this.State,
             this.ZipCode,
-            this.Status,
-            this.selectPatient});
-            this.PatientDataGridView.Location = new System.Drawing.Point(4, 335);
+            this.Status});
+            this.PatientDataGridView.Location = new System.Drawing.Point(4, 310);
             this.PatientDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.PatientDataGridView.Name = "PatientDataGridView";
             this.PatientDataGridView.RowHeadersVisible = false;
             this.PatientDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.PatientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PatientDataGridView.Size = new System.Drawing.Size(1056, 210);
+            this.PatientDataGridView.Size = new System.Drawing.Size(1056, 207);
             this.PatientDataGridView.TabIndex = 4;
             this.PatientDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PatientDataGridView_CellClick);
             // 
             // backToHomeButton
             // 
-            this.backToHomeButton.Location = new System.Drawing.Point(4, 553);
+            this.backToHomeButton.Location = new System.Drawing.Point(4, 525);
             this.backToHomeButton.Margin = new System.Windows.Forms.Padding(4);
             this.backToHomeButton.Name = "backToHomeButton";
             this.backToHomeButton.Size = new System.Drawing.Size(183, 28);
@@ -387,7 +385,7 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(457, 282);
+            this.searchButton.Location = new System.Drawing.Point(453, 262);
             this.searchButton.Margin = new System.Windows.Forms.Padding(4);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(155, 28);
@@ -400,7 +398,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(5, 297);
+            this.label6.Location = new System.Drawing.Point(3, 278);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 28);
@@ -502,14 +500,6 @@
             this.Status.Name = "Status";
             this.Status.Width = 73;
             // 
-            // selectPatient
-            // 
-            this.selectPatient.HeaderText = "Select";
-            this.selectPatient.MinimumWidth = 6;
-            this.selectPatient.Name = "selectPatient";
-            this.selectPatient.UseColumnTextForButtonValue = true;
-            this.selectPatient.Width = 51;
-            // 
             // SearchPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -582,6 +572,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZipCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewButtonColumn selectPatient;
     }
 }

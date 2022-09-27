@@ -1,5 +1,4 @@
 ﻿using CS3230Project.ErrorMessages;
-using CS3230Project.Model.Users;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -199,7 +198,7 @@ namespace CS3230Project.DAL.Patients
             while (reader.Read())
             {
                 matchingPatients.Add(new Patient(
-                    patientIdOrdinal,
+                    reader.GetInt32(patientIdOrdinal),
                     reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
                     reader.GetFieldValue<DateTime>(dateOfBirthOrdinal),
