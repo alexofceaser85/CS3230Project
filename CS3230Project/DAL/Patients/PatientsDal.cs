@@ -46,12 +46,11 @@ namespace CS3230Project.DAL.Patients
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
             MySqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "insert into patients (patientID, lastName, firstName, dateOfBirth, " +
+            comm.CommandText = "insert into patients (lastName, firstName, dateOfBirth, " +
                                "gender, phone, addressOne, addressTwo, city, state, zipcode, status) VALUES" +
-                               "(@patientId, @lastName, @firstName, @dateOfBirth, @gender, @phoneNumber, " +
+                               "(@lastName, @firstName, @dateOfBirth, @gender, @phoneNumber, " +
                                "@addressOne, @addressTwo, @city, @state, @zipcode, @status)";
 
-            comm.Parameters.Add("@patientId", MySqlDbType.String).Value = patientId;
             comm.Parameters.Add("@lastName", MySqlDbType.String).Value = lastName;
             comm.Parameters.Add("@firstName", MySqlDbType.String).Value = firstName;
             comm.Parameters.Add("@dateOfBirth", MySqlDbType.String).Value = dateOfBirth;

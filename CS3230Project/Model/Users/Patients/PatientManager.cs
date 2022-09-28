@@ -14,8 +14,8 @@ namespace CS3230Project.Model.Users.Patients
         /// <summary>
         /// Gets all the patients with the provided name
         /// Precondition:
-        ///     (firstName != null && firstName.Trim().Length > 0) ||
-        ///         (lastName != null && lastName.Trim().Length > 0)
+        ///     (firstName != null AND firstName.Trim().Length MORE THAN 0) ||
+        ///         (lastName != null AND lastName.Trim().Length MORE THAN 0)
         /// </summary>
         /// <param name="firstName">The first name.</param>
         /// <param name="lastName">The last name.</param>
@@ -38,8 +38,8 @@ namespace CS3230Project.Model.Users.Patients
         /// <summary>
         /// Gets the patients with the provided date of birth.
         /// Precondition:
-        ///     dateOfBirth > DateTime(1900, 1, 1)
-        ///     AND dateOfBirth < DateTime.Now()
+        ///     dateOfBirth MORE THAN DateTime(1900, 1, 1)
+        ///     AND dateOfBirth LESS THAN DateTime.Now()
         /// </summary>
         /// <param name="dateOfBirth">The date of birth.</param>
         /// <returns>
@@ -64,10 +64,10 @@ namespace CS3230Project.Model.Users.Patients
         /// <summary>
         /// Gets the patients with the provided name and date of birth.
         /// Precondition:
-        ///     (firstName != null && firstName.Trim().Length > 0) ||
-        ///         (lastName != null && lastName.Trim().Length > 0)
-        ///     AND dateOfBirth > DateTime(1900, 1, 1)
-        ///     AND dateOfBirth < DateTime.Now()
+        ///     (firstName != null AND firstName.Trim().Length MORE THAN 0) ||
+        ///         (lastName != null AND lastName.Trim().Length MORE THAN 0)
+        ///     AND dateOfBirth MORE THAN DateTime(1900, 1, 1)
+        ///     AND dateOfBirth MORE THAN DateTime.Now()
         /// </summary>
         /// <param name="firstName">The first name.</param>
         /// <param name="lastName">The last name.</param>

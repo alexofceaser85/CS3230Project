@@ -101,6 +101,7 @@
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\Patients\PatientsDal.cs" />
     <Compile Include="ErrorMessages\ErrorMessages.cs" />
+    <Compile Include="Model\DataValidator.cs" />
     <Compile Include="Model\Users\Patients\PatientManager.cs" />
     <Compile Include="Model\Users\Patients\Patient.cs" />
     <Compile Include="View\EditPatient.cs">

@@ -1,5 +1,4 @@
 ﻿using System;
-using CS3230Project.DAL;
 using CS3230Project.ErrorMessages;
 
 namespace CS3230Project.Model.Users.Patients
@@ -70,20 +69,17 @@ namespace CS3230Project.Model.Users.Patients
         /// </summary>
         public bool Status { get; }
 
-
-
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Patient" />
         ///
         /// Precondition:
-        ///     patientId >= 0
+        ///     patientId MORE THAN -1
         ///     AND firstName != null
         ///     AND firstName.isEmpty() == false
         ///     AND lastName != null
         ///     AND lastName.isEmpty() == false
-        ///     AND dateOfBirth > DateTime(1900, 1, 1)
-        ///     AND dateOfBirth < DateTime.Now()
+        ///     AND dateOfBirth MORE THAN DateTime(1900, 1, 1)
+        ///     AND dateOfBirth LESS THAN DateTime.Now()
         ///     AND gender != null
         ///     AND gender.isEmpty() == false
         ///     AND addressOne != null
@@ -189,7 +185,7 @@ namespace CS3230Project.Model.Users.Patients
             {
                 throw new ArgumentException(PatientErrorMessages.PhoneNumberCannotBeEmpty);
             }
-            if (!DataHelper.IsValidPhoneNumberFormat(phoneNumber))
+            if (!DataValidator.IsValidPhoneNumberFormat(phoneNumber))
             {
                 throw new FormatException(PatientErrorMessages.InvalidPhoneNumberFormat);
             }
@@ -207,6 +203,5 @@ namespace CS3230Project.Model.Users.Patients
             this.PhoneNumber = phoneNumber;
             this.Status = status;
         }
-
     }
 }

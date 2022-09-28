@@ -35,24 +35,10 @@
             this.userIdLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.logoutButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.searchFirstAndLastNameCheckBox = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.searchByBirthDateCheckBox = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lastNameTextBox = new System.Windows.Forms.TextBox();
-            this.firstNameTextBox = new System.Windows.Forms.TextBox();
-            this.dateOfBirthDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.PatientDataGridView = new System.Windows.Forms.DataGridView();
-            this.backToHomeButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.PatientDataGridView = new System.Windows.Forms.DataGridView();
             this.PatientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,13 +51,33 @@
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZipCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.returnToHomeButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.searchFirstAndLastNameCheckBox = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.searchByBirthDateCheckBox = new System.Windows.Forms.CheckBox();
+            this.dateOfBirthDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.firstNameTextBox = new System.Windows.Forms.TextBox();
+            this.lastNameTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PatientDataGridView)).BeginInit();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.tableLayoutPanel18.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -86,13 +92,12 @@
             this.tableLayoutPanel2.Controls.Add(this.logoutButton, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel2.MaximumSize = new System.Drawing.Size(0, 92);
+            this.tableLayoutPanel2.MaximumSize = new System.Drawing.Size(0, 75);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1064, 92);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(798, 75);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // label3
@@ -101,10 +106,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(280, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(200, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(505, 46);
+            this.label3.Size = new System.Drawing.Size(399, 37);
             this.label3.TabIndex = 0;
             this.label3.Text = "Healthcare Management System";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -118,24 +122,22 @@
             this.tableLayoutPanel1.Controls.Add(this.loggedInAsLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.userIdLabel, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.nameLabel, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(183, 73);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(137, 59);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // loggedInAsLabel
             // 
             this.loggedInAsLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.loggedInAsLabel.AutoSize = true;
-            this.loggedInAsLabel.Location = new System.Drawing.Point(4, 4);
-            this.loggedInAsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.loggedInAsLabel.Location = new System.Drawing.Point(3, 3);
             this.loggedInAsLabel.Name = "loggedInAsLabel";
-            this.loggedInAsLabel.Size = new System.Drawing.Size(65, 16);
+            this.loggedInAsLabel.Size = new System.Drawing.Size(52, 13);
             this.loggedInAsLabel.TabIndex = 0;
             this.loggedInAsLabel.Text = "Welcome";
             this.loggedInAsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -144,10 +146,9 @@
             // 
             this.userIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.userIdLabel.AutoSize = true;
-            this.userIdLabel.Location = new System.Drawing.Point(4, 28);
-            this.userIdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.userIdLabel.Location = new System.Drawing.Point(3, 22);
             this.userIdLabel.Name = "userIdLabel";
-            this.userIdLabel.Size = new System.Drawing.Size(52, 16);
+            this.userIdLabel.Size = new System.Drawing.Size(43, 13);
             this.userIdLabel.TabIndex = 1;
             this.userIdLabel.Text = "User ID";
             // 
@@ -155,10 +156,9 @@
             // 
             this.nameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(4, 52);
-            this.nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.nameLabel.Location = new System.Drawing.Point(3, 42);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(44, 16);
+            this.nameLabel.Size = new System.Drawing.Size(35, 13);
             this.nameLabel.TabIndex = 2;
             this.nameLabel.Text = "Name";
             // 
@@ -169,185 +169,56 @@
             this.logoutButton.FlatAppearance.BorderSize = 0;
             this.logoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logoutButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.logoutButton.Location = new System.Drawing.Point(876, 11);
-            this.logoutButton.Margin = new System.Windows.Forms.Padding(4);
+            this.logoutButton.Location = new System.Drawing.Point(657, 9);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(184, 59);
+            this.logoutButton.Size = new System.Drawing.Size(138, 48);
             this.logoutButton.TabIndex = 2;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = false;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
-            // tableLayoutPanel4
+            // searchButton
             // 
-            this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel4.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.81179F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 529F));
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.dateOfBirthDatePicker, 2, 2);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 134);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1056, 140);
-            this.tableLayoutPanel4.TabIndex = 3;
+            this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.searchButton.Location = new System.Drawing.Point(340, 128);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(116, 23);
+            this.searchButton.TabIndex = 6;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // tableLayoutPanel3
+            // label7
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.91048F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.08951F));
-            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.searchFirstAndLastNameCheckBox, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(519, 45);
-            this.tableLayoutPanel3.TabIndex = 0;
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(311, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(175, 31);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Search Patients";
             // 
-            // label1
+            // tableLayoutPanel7
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Search By First and Last Name";
-            // 
-            // searchFirstAndLastNameCheckBox
-            // 
-            this.searchFirstAndLastNameCheckBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.searchFirstAndLastNameCheckBox.AutoSize = true;
-            this.searchFirstAndLastNameCheckBox.Location = new System.Drawing.Point(456, 12);
-            this.searchFirstAndLastNameCheckBox.Margin = new System.Windows.Forms.Padding(4);
-            this.searchFirstAndLastNameCheckBox.Name = "searchFirstAndLastNameCheckBox";
-            this.searchFirstAndLastNameCheckBox.Size = new System.Drawing.Size(46, 20);
-            this.searchFirstAndLastNameCheckBox.TabIndex = 1;
-            this.searchFirstAndLastNameCheckBox.Text = "On";
-            this.searchFirstAndLastNameCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.20408F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.79592F));
-            this.tableLayoutPanel5.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.searchByBirthDateCheckBox, 1, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(531, 4);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(521, 45);
-            this.tableLayoutPanel5.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 14);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Search By Birth Date";
-            // 
-            // searchByBirthDateCheckBox
-            // 
-            this.searchByBirthDateCheckBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.searchByBirthDateCheckBox.AutoSize = true;
-            this.searchByBirthDateCheckBox.Location = new System.Drawing.Point(459, 12);
-            this.searchByBirthDateCheckBox.Margin = new System.Windows.Forms.Padding(4);
-            this.searchByBirthDateCheckBox.Name = "searchByBirthDateCheckBox";
-            this.searchByBirthDateCheckBox.Size = new System.Drawing.Size(46, 20);
-            this.searchByBirthDateCheckBox.TabIndex = 1;
-            this.searchByBirthDateCheckBox.Text = "On";
-            this.searchByBirthDateCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label5, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.lastNameTextBox, 1, 1);
-            this.tableLayoutPanel6.Controls.Add(this.firstNameTextBox, 0, 1);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(4, 57);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.91139F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.08861F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(519, 79);
-            this.tableLayoutPanel6.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 4);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 16);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "First Name";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(263, 4);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 16);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Last Name";
-            // 
-            // lastNameTextBox
-            // 
-            this.lastNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lastNameTextBox.Location = new System.Drawing.Point(263, 41);
-            this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(251, 22);
-            this.lastNameTextBox.TabIndex = 3;
-            // 
-            // firstNameTextBox
-            // 
-            this.firstNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.firstNameTextBox.Location = new System.Drawing.Point(4, 41);
-            this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(249, 22);
-            this.firstNameTextBox.TabIndex = 2;
-            // 
-            // dateOfBirthDatePicker
-            // 
-            this.dateOfBirthDatePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateOfBirthDatePicker.Location = new System.Drawing.Point(627, 85);
-            this.dateOfBirthDatePicker.Margin = new System.Windows.Forms.Padding(4);
-            this.dateOfBirthDatePicker.Name = "dateOfBirthDatePicker";
-            this.dateOfBirthDatePicker.Size = new System.Drawing.Size(329, 22);
-            this.dateOfBirthDatePicker.TabIndex = 3;
+            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel7.ColumnCount = 1;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.PatientDataGridView, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 238);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 2;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.45614F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(795, 183);
+            this.tableLayoutPanel7.TabIndex = 9;
             // 
             // PatientDataGridView
             // 
-            this.PatientDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.PatientDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.PatientDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.PatientDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.PatientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PatientDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PatientID,
@@ -362,174 +233,343 @@
             this.State,
             this.ZipCode,
             this.Status});
-            this.PatientDataGridView.Location = new System.Drawing.Point(4, 310);
-            this.PatientDataGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.PatientDataGridView.Location = new System.Drawing.Point(3, 34);
             this.PatientDataGridView.Name = "PatientDataGridView";
             this.PatientDataGridView.RowHeadersVisible = false;
             this.PatientDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.PatientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PatientDataGridView.Size = new System.Drawing.Size(1056, 207);
-            this.PatientDataGridView.TabIndex = 4;
-            this.PatientDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PatientDataGridView_CellClick);
-            // 
-            // backToHomeButton
-            // 
-            this.backToHomeButton.Location = new System.Drawing.Point(4, 525);
-            this.backToHomeButton.Margin = new System.Windows.Forms.Padding(4);
-            this.backToHomeButton.Name = "backToHomeButton";
-            this.backToHomeButton.Size = new System.Drawing.Size(183, 28);
-            this.backToHomeButton.TabIndex = 5;
-            this.backToHomeButton.Text = "Back To Home";
-            this.backToHomeButton.UseVisualStyleBackColor = true;
-            this.backToHomeButton.Click += new System.EventHandler(this.backToHomeButton_Click);
-            // 
-            // searchButton
-            // 
-            this.searchButton.Location = new System.Drawing.Point(453, 262);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(4);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(155, 28);
-            this.searchButton.TabIndex = 6;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(3, 278);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 28);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Results:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(425, 96);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(158, 28);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Search Patients";
+            this.PatientDataGridView.Size = new System.Drawing.Size(789, 145);
+            this.PatientDataGridView.TabIndex = 5;
             // 
             // PatientID
             // 
+            this.PatientID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.PatientID.HeaderText = "ID";
             this.PatientID.MinimumWidth = 6;
             this.PatientID.Name = "PatientID";
-            this.PatientID.Width = 49;
             // 
             // LastName
             // 
+            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.LastName.HeaderText = "Last Name";
             this.LastName.MinimumWidth = 6;
             this.LastName.Name = "LastName";
-            this.LastName.Width = 101;
             // 
             // FirstName
             // 
+            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.FirstName.HeaderText = "First Name";
             this.FirstName.MinimumWidth = 6;
             this.FirstName.Name = "FirstName";
-            this.FirstName.Width = 101;
             // 
             // DateOfBirth
             // 
+            this.DateOfBirth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.DateOfBirth.HeaderText = "Date of Birth";
             this.DateOfBirth.MinimumWidth = 6;
             this.DateOfBirth.Name = "DateOfBirth";
-            this.DateOfBirth.Width = 108;
             // 
             // Gender
             // 
+            this.Gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Gender.HeaderText = "Gender";
             this.Gender.MinimumWidth = 6;
             this.Gender.Name = "Gender";
-            this.Gender.Width = 81;
             // 
             // PhoneNumber
             // 
+            this.PhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.PhoneNumber.HeaderText = "Phone";
             this.PhoneNumber.MinimumWidth = 6;
             this.PhoneNumber.Name = "PhoneNumber";
-            this.PhoneNumber.Width = 75;
             // 
             // AddressOne
             // 
+            this.AddressOne.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.AddressOne.HeaderText = "Address 1";
             this.AddressOne.MinimumWidth = 6;
             this.AddressOne.Name = "AddressOne";
-            this.AddressOne.Width = 97;
             // 
             // AddressTwo
             // 
+            this.AddressTwo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.AddressTwo.HeaderText = "Address 2";
             this.AddressTwo.MinimumWidth = 6;
             this.AddressTwo.Name = "AddressTwo";
-            this.AddressTwo.Width = 97;
             // 
             // City
             // 
+            this.City.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.City.HeaderText = "City";
             this.City.MinimumWidth = 6;
             this.City.Name = "City";
-            this.City.Width = 58;
             // 
             // State
             // 
+            this.State.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.State.HeaderText = "State";
             this.State.MinimumWidth = 6;
             this.State.Name = "State";
-            this.State.Width = 67;
             // 
             // ZipCode
             // 
+            this.ZipCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ZipCode.HeaderText = "Zip Code";
             this.ZipCode.MinimumWidth = 6;
             this.ZipCode.Name = "ZipCode";
-            this.ZipCode.Width = 91;
             // 
             // Status
             // 
+            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Status.HeaderText = "Status";
             this.Status.MinimumWidth = 6;
             this.Status.Name = "Status";
-            this.Status.Width = 73;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.label5.Location = new System.Drawing.Point(3, 1);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(76, 28);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Results:";
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel8.Controls.Add(this.returnToHomeButton, 0, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 437);
+            this.tableLayoutPanel8.MaximumSize = new System.Drawing.Size(0, 50);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(798, 44);
+            this.tableLayoutPanel8.TabIndex = 10;
+            // 
+            // returnToHomeButton
+            // 
+            this.returnToHomeButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.returnToHomeButton.BackColor = System.Drawing.Color.LightSlateGray;
+            this.returnToHomeButton.FlatAppearance.BorderSize = 0;
+            this.returnToHomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.returnToHomeButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnToHomeButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.returnToHomeButton.Location = new System.Drawing.Point(3, 3);
+            this.returnToHomeButton.Name = "returnToHomeButton";
+            this.returnToHomeButton.Size = new System.Drawing.Size(190, 38);
+            this.returnToHomeButton.TabIndex = 4;
+            this.returnToHomeButton.Text = "Back to Home";
+            this.returnToHomeButton.UseVisualStyleBackColor = false;
+            this.returnToHomeButton.Click += new System.EventHandler(this.backToHomeButton_Click);
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel9.ColumnCount = 3;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 771F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel18, 1, 1);
+            this.tableLayoutPanel9.Controls.Add(this.searchButton, 1, 2);
+            this.tableLayoutPanel9.Controls.Add(this.label7, 1, 0);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 81);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 3;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(798, 155);
+            this.tableLayoutPanel9.TabIndex = 11;
+            // 
+            // tableLayoutPanel18
+            // 
+            this.tableLayoutPanel18.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel18.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel18.ColumnCount = 3;
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.81179F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 397F));
+            this.tableLayoutPanel18.Controls.Add(this.tableLayoutPanel3, 0, 0);
+            this.tableLayoutPanel18.Controls.Add(this.tableLayoutPanel19, 2, 0);
+            this.tableLayoutPanel18.Controls.Add(this.dateOfBirthDatePicker, 2, 2);
+            this.tableLayoutPanel18.Controls.Add(this.tableLayoutPanel4, 0, 2);
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(16, 34);
+            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+            this.tableLayoutPanel18.RowCount = 3;
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(765, 87);
+            this.tableLayoutPanel18.TabIndex = 8;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.20408F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.79592F));
+            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.searchFirstAndLastNameCheckBox, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(362, 30);
+            this.tableLayoutPanel3.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(181, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Search by First and Last Name";
+            // 
+            // searchFirstAndLastNameCheckBox
+            // 
+            this.searchFirstAndLastNameCheckBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.searchFirstAndLastNameCheckBox.AutoSize = true;
+            this.searchFirstAndLastNameCheckBox.Location = new System.Drawing.Point(315, 6);
+            this.searchFirstAndLastNameCheckBox.Name = "searchFirstAndLastNameCheckBox";
+            this.searchFirstAndLastNameCheckBox.Size = new System.Drawing.Size(40, 17);
+            this.searchFirstAndLastNameCheckBox.TabIndex = 1;
+            this.searchFirstAndLastNameCheckBox.Text = "On";
+            this.searchFirstAndLastNameCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel19
+            // 
+            this.tableLayoutPanel19.ColumnCount = 2;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.20408F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.79592F));
+            this.tableLayoutPanel19.Controls.Add(this.label16, 0, 0);
+            this.tableLayoutPanel19.Controls.Add(this.searchByBirthDateCheckBox, 1, 0);
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(371, 3);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 1;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(391, 30);
+            this.tableLayoutPanel19.TabIndex = 1;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(3, 8);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(126, 13);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Search By Birth Date";
+            // 
+            // searchByBirthDateCheckBox
+            // 
+            this.searchByBirthDateCheckBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.searchByBirthDateCheckBox.AutoSize = true;
+            this.searchByBirthDateCheckBox.Location = new System.Drawing.Point(342, 6);
+            this.searchByBirthDateCheckBox.Name = "searchByBirthDateCheckBox";
+            this.searchByBirthDateCheckBox.Size = new System.Drawing.Size(40, 17);
+            this.searchByBirthDateCheckBox.TabIndex = 1;
+            this.searchByBirthDateCheckBox.Text = "On";
+            this.searchByBirthDateCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // dateOfBirthDatePicker
+            // 
+            this.dateOfBirthDatePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dateOfBirthDatePicker.Location = new System.Drawing.Point(442, 51);
+            this.dateOfBirthDatePicker.Name = "dateOfBirthDatePicker";
+            this.dateOfBirthDatePicker.Size = new System.Drawing.Size(248, 20);
+            this.dateOfBirthDatePicker.TabIndex = 3;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.firstNameTextBox, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.lastNameTextBox, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.label4, 1, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 39);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(362, 45);
+            this.tableLayoutPanel4.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "First Name";
+            // 
+            // firstNameTextBox
+            // 
+            this.firstNameTextBox.Location = new System.Drawing.Point(3, 25);
+            this.firstNameTextBox.Name = "firstNameTextBox";
+            this.firstNameTextBox.Size = new System.Drawing.Size(175, 20);
+            this.firstNameTextBox.TabIndex = 2;
+            // 
+            // lastNameTextBox
+            // 
+            this.lastNameTextBox.Location = new System.Drawing.Point(184, 25);
+            this.lastNameTextBox.Name = "lastNameTextBox";
+            this.lastNameTextBox.Size = new System.Drawing.Size(175, 20);
+            this.lastNameTextBox.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(184, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Last Name";
             // 
             // SearchPatient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1064, 592);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.searchButton);
-            this.Controls.Add(this.backToHomeButton);
-            this.Controls.Add(this.PatientDataGridView);
-            this.Controls.Add(this.tableLayoutPanel4);
+            this.ClientSize = new System.Drawing.Size(798, 481);
+            this.Controls.Add(this.tableLayoutPanel9);
+            this.Controls.Add(this.tableLayoutPanel8);
+            this.Controls.Add(this.tableLayoutPanel7);
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SearchPatient";
             this.Text = "SearchPatient";
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PatientDataGridView)).EndInit();
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
+            this.tableLayoutPanel18.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PatientDataGridView)).EndInit();
+            this.tableLayoutPanel19.ResumeLayout(false);
+            this.tableLayoutPanel19.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -542,24 +582,26 @@
         private System.Windows.Forms.Label userIdLabel;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Button logoutButton;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Button returnToHomeButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox searchFirstAndLastNameCheckBox;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
+        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox searchByBirthDateCheckBox;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dateOfBirthDatePicker;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.TextBox lastNameTextBox;
-        private System.Windows.Forms.DateTimePicker dateOfBirthDatePicker;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView PatientDataGridView;
-        private System.Windows.Forms.Button backToHomeButton;
-        private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientID;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
@@ -572,5 +614,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZipCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.Label label5;
     }
 }
