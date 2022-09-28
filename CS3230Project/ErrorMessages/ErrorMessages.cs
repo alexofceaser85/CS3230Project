@@ -86,8 +86,8 @@
         /// <summary>
         /// Error message for both first and last names being either null or empty
         /// </summary>
-        public static string FirstAndLastNamesCannotBothBeNullOrEmpty =
-            "The patients first and last names cannot both be null or empty.";
+        public static string FirstAndLastNamesCannotBothBeEmpty =
+            "The patients first and last names cannot both be empty.";
         /// <summary>
         /// Error message for date of birth before 1900
         /// </summary>

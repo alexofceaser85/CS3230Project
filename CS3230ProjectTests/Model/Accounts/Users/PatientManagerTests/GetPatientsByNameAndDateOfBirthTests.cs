@@ -56,7 +56,7 @@ namespace CS3230ProjectTests.Model.Accounts.Users.PatientManagerTests
             {
                 PatientManager.GetPatientsByNameAndDateOfBirth(null, null, DateTime.Now);
             });
-            Assert.AreEqual(message.Message, PatientErrorMessages.FirstAndLastNamesCannotBothBeNullOrEmpty);
+            Assert.AreEqual(message.Message, PatientErrorMessages.FirstAndLastNamesCannotBothBeEmpty);
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace CS3230ProjectTests.Model.Accounts.Users.PatientManagerTests
             {
                 PatientManager.GetPatientsByNameAndDateOfBirth("", "", DateTime.Now);
             });
-            Assert.AreEqual(message.Message, PatientErrorMessages.FirstAndLastNamesCannotBothBeNullOrEmpty);
+            Assert.AreEqual(message.Message, PatientErrorMessages.FirstAndLastNamesCannotBothBeEmpty);
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace CS3230ProjectTests.Model.Accounts.Users.PatientManagerTests
             {
                 PatientManager.GetPatientsByNameAndDateOfBirth(null, "", DateTime.Now);
             });
-            Assert.AreEqual(message.Message, PatientErrorMessages.FirstAndLastNamesCannotBothBeNullOrEmpty);
+            Assert.AreEqual(message.Message, PatientErrorMessages.FirstAndLastNamesCannotBothBeEmpty);
         }
 
         [TestMethod]
@@ -86,7 +86,7 @@ namespace CS3230ProjectTests.Model.Accounts.Users.PatientManagerTests
             {
                 PatientManager.GetPatientsByNameAndDateOfBirth("", null, DateTime.Now);
             });
-            Assert.AreEqual(message.Message, PatientErrorMessages.FirstAndLastNamesCannotBothBeNullOrEmpty);
+            Assert.AreEqual(message.Message, PatientErrorMessages.FirstAndLastNamesCannotBothBeEmpty);
         }
 
         [TestMethod]

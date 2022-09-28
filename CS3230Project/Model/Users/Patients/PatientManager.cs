@@ -29,7 +29,7 @@ namespace CS3230Project.Model.Users.Patients
             if ((firstName == null || firstName.Trim().Length == 0) &&
                 (lastName == null || lastName.Trim().Length == 0))
             {
-                throw new ArgumentException(PatientErrorMessages.FirstAndLastNamesCannotBothBeNullOrEmpty);
+                throw new ArgumentException(PatientErrorMessages.FirstAndLastNamesCannotBothBeEmpty);
             }
 
             return PatientsDal.GetPatientsByName(firstName, lastName);
@@ -83,7 +83,7 @@ namespace CS3230Project.Model.Users.Patients
             if ((firstName == null || firstName.Trim().Length == 0) &&
                 (lastName == null || lastName.Trim().Length == 0))
             {
-                throw new ArgumentException(PatientErrorMessages.FirstAndLastNamesCannotBothBeNullOrEmpty);
+                throw new ArgumentException(PatientErrorMessages.FirstAndLastNamesCannotBothBeEmpty);
             }
             if (dateOfBirth < new DateTime(1900, 1, 1))
             {

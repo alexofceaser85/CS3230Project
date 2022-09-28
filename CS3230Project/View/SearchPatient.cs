@@ -11,6 +11,8 @@ namespace CS3230Project.View
     /// </summary>
     public partial class SearchPatient : Form
     {
+        private readonly string searchErrorHeader = "Unable to Search";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchPatient" /> class.
         /// </summary>
@@ -42,22 +44,31 @@ namespace CS3230Project.View
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            List<Patient> matchingPatients = new List<Patient>();
-            if (this.searchFirstAndLastNameCheckBox.Checked && this.searchByBirthDateCheckBox.Checked)
+            try
             {
-                matchingPatients = PatientManager.GetPatientsByNameAndDateOfBirth(this.firstNameTextBox.Text,
-                    this.lastNameTextBox.Text, this.dateOfBirthDatePicker.Value);
+                List<Patient> matchingPatients = new List<Patient>();
+                if (this.searchFirstAndLastNameCheckBox.Checked && this.searchByBirthDateCheckBox.Checked)
+                {
+                    matchingPatients = PatientManager.GetPatientsByNameAndDateOfBirth(this.firstNameTextBox.Text,
+                        this.lastNameTextBox.Text, this.dateOfBirthDatePicker.Value);
+                }
+                else if (this.searchFirstAndLastNameCheckBox.Checked)
+                {
+                    matchingPatients =
+                        PatientManager.GetPatientsByName(this.firstNameTextBox.Text, this.lastNameTextBox.Text);
+                }
+                else if (this.searchByBirthDateCheckBox.Checked)
+                {
+                    matchingPatients = PatientManager.GetPatientsByDateOfBirth(this.dateOfBirthDatePicker.Value);
+                }
+                this.displayPatientData(matchingPatients);
             }
-            else if (this.searchFirstAndLastNameCheckBox.Checked)
+            catch (ArgumentException errorMessage)
             {
-                matchingPatients =
-                    PatientManager.GetPatientsByName(this.firstNameTextBox.Text, this.lastNameTextBox.Text);
+                MessageBox.Show(errorMessage.Message, this.searchErrorHeader);
             }
-            else if (this.searchByBirthDateCheckBox.Checked)
-            {
-                matchingPatients = PatientManager.GetPatientsByDateOfBirth(this.dateOfBirthDatePicker.Value);
-            }
-            this.displayPatientData(matchingPatients);
+
+            
         }
 
         private void displayPatientData(List<Patient> patientsToDisplay)

@@ -92,7 +92,7 @@
             this.tableLayoutPanel2.Controls.Add(this.logoutButton, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.MaximumSize = new System.Drawing.Size(0, 92);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
@@ -125,7 +125,7 @@
             this.tableLayoutPanel1.Controls.Add(this.userIdLabel, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.nameLabel, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -176,7 +176,7 @@
             this.logoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logoutButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.logoutButton.Location = new System.Drawing.Point(876, 11);
-            this.logoutButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logoutButton.Margin = new System.Windows.Forms.Padding(4);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(184, 59);
             this.logoutButton.TabIndex = 2;
@@ -188,7 +188,7 @@
             // 
             this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.searchButton.Location = new System.Drawing.Point(454, 157);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(155, 28);
             this.searchButton.TabIndex = 6;
@@ -216,7 +216,7 @@
             this.tableLayoutPanel7.Controls.Add(this.PatientDataGridView, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(4, 293);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.45614F));
@@ -244,7 +244,7 @@
             this.ZipCode,
             this.Status});
             this.PatientDataGridView.Location = new System.Drawing.Point(4, 42);
-            this.PatientDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PatientDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.PatientDataGridView.Name = "PatientDataGridView";
             this.PatientDataGridView.RowHeadersVisible = false;
             this.PatientDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
@@ -358,7 +358,7 @@
             this.tableLayoutPanel8.Controls.Add(this.returnToHomeButton, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 538);
-            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel8.MaximumSize = new System.Drawing.Size(0, 62);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
@@ -377,7 +377,7 @@
             this.returnToHomeButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.returnToHomeButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.returnToHomeButton.Location = new System.Drawing.Point(4, 4);
-            this.returnToHomeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.returnToHomeButton.Margin = new System.Windows.Forms.Padding(4);
             this.returnToHomeButton.Name = "returnToHomeButton";
             this.returnToHomeButton.Size = new System.Drawing.Size(253, 46);
             this.returnToHomeButton.TabIndex = 4;
@@ -396,7 +396,7 @@
             this.tableLayoutPanel9.Controls.Add(this.searchButton, 1, 2);
             this.tableLayoutPanel9.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 100);
-            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 3;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -418,7 +418,7 @@
             this.tableLayoutPanel18.Controls.Add(this.dateOfBirthDatePicker, 2, 2);
             this.tableLayoutPanel18.Controls.Add(this.tableLayoutPanel4, 0, 2);
             this.tableLayoutPanel18.Location = new System.Drawing.Point(22, 42);
-            this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
             this.tableLayoutPanel18.RowCount = 3;
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
@@ -435,7 +435,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.searchFirstAndLastNameCheckBox, 1, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -458,8 +458,10 @@
             // 
             this.searchFirstAndLastNameCheckBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.searchFirstAndLastNameCheckBox.AutoSize = true;
+            this.searchFirstAndLastNameCheckBox.Checked = true;
+            this.searchFirstAndLastNameCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.searchFirstAndLastNameCheckBox.Location = new System.Drawing.Point(424, 8);
-            this.searchFirstAndLastNameCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchFirstAndLastNameCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchFirstAndLastNameCheckBox.Name = "searchFirstAndLastNameCheckBox";
             this.searchFirstAndLastNameCheckBox.Size = new System.Drawing.Size(46, 20);
             this.searchFirstAndLastNameCheckBox.TabIndex = 1;
@@ -474,7 +476,7 @@
             this.tableLayoutPanel19.Controls.Add(this.label16, 0, 0);
             this.tableLayoutPanel19.Controls.Add(this.searchByBirthDateCheckBox, 1, 0);
             this.tableLayoutPanel19.Location = new System.Drawing.Point(495, 4);
-            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel19.Name = "tableLayoutPanel19";
             this.tableLayoutPanel19.RowCount = 1;
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -498,7 +500,7 @@
             this.searchByBirthDateCheckBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.searchByBirthDateCheckBox.AutoSize = true;
             this.searchByBirthDateCheckBox.Location = new System.Drawing.Point(459, 8);
-            this.searchByBirthDateCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchByBirthDateCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchByBirthDateCheckBox.Name = "searchByBirthDateCheckBox";
             this.searchByBirthDateCheckBox.Size = new System.Drawing.Size(46, 20);
             this.searchByBirthDateCheckBox.TabIndex = 1;
@@ -509,7 +511,7 @@
             // 
             this.dateOfBirthDatePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateOfBirthDatePicker.Location = new System.Drawing.Point(591, 64);
-            this.dateOfBirthDatePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateOfBirthDatePicker.Margin = new System.Windows.Forms.Padding(4);
             this.dateOfBirthDatePicker.Name = "dateOfBirthDatePicker";
             this.dateOfBirthDatePicker.Size = new System.Drawing.Size(329, 22);
             this.dateOfBirthDatePicker.TabIndex = 3;
@@ -524,7 +526,7 @@
             this.tableLayoutPanel4.Controls.Add(this.lastNameTextBox, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.label4, 1, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 48);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -545,7 +547,7 @@
             // firstNameTextBox
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(4, 31);
-            this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(232, 22);
             this.firstNameTextBox.TabIndex = 2;
@@ -553,7 +555,7 @@
             // lastNameTextBox
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(245, 31);
-            this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(232, 22);
             this.lastNameTextBox.TabIndex = 3;
@@ -578,7 +580,7 @@
             this.Controls.Add(this.tableLayoutPanel8);
             this.Controls.Add(this.tableLayoutPanel7);
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SearchPatient";
             this.Text = "SearchPatient";
             this.tableLayoutPanel2.ResumeLayout(false);
