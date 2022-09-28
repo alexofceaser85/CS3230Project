@@ -1,23 +1,25 @@
 ﻿using CS3230Project.Model.Accounts;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using CS3230Project.Model.Users.Patients;
 
 namespace CS3230Project.View
 {
+    /// <summary>
+    ///   The edit patient view.
+    /// </summary>
     public partial class EditPatient : Form
     {
-        public EditPatient()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EditPatient" /> class.
+        ///s </summary>
+        /// <param name="patient">The patient.</param>
+        public EditPatient(Patient patient)
         {
             this.InitializeComponent();
             this.bindLabelsToCurrentUser();
             this.setStatusComboBoxValues();
+            this.loadPatientData(patient);
         }
 
         private void setStatusComboBoxValues()
@@ -25,6 +27,21 @@ namespace CS3230Project.View
             //TODO: use enum
             this.statusComboBox.Items.Add("Active");
             this.statusComboBox.Items.Add("Inactive");
+        }
+
+        private void loadPatientData(Patient patient)
+        {
+            this.patientFirstNameTextBox.Text = patient.FirstName;
+            this.patientLastNameTextBox.Text = patient.LastName;
+            this.patientDateOfBirthPicker.Value = patient.DateOfBirth;
+            this.patientGenderDropBox.Text = patient.Gender;
+            this.patientPhoneNumberTextBox.Text = patient.PhoneNumber;
+            this.patientAddressOneTextBox.Text = patient.AddressOne;
+            this.patientAddressTwoTextBox.Text = patient.AddressTwo;
+            this.patientCityTextBox.Text = patient.City;
+            this.patientStateComboBox.Text = patient.State;
+            this.patientZipCodeComboBox.Text = patient.Zipcode;
+            this.statusComboBox.Text = patient.Status.ToString();
         }
 
         private void bindLabelsToCurrentUser()
@@ -61,7 +78,7 @@ namespace CS3230Project.View
 
         private void submitChangesButton_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

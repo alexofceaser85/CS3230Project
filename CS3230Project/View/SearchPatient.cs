@@ -100,7 +100,8 @@ namespace CS3230Project.View
 
             if (dataGridView.CurrentRow.Selected)
             {
-                Form editForm = new EditPatient();
+                DataGridViewSelectedCellCollection cells = dataGridView.SelectedCells;
+                Form editForm = new EditPatient(this.createPatient(cells));
                 editForm.Location = Location;
                 editForm.StartPosition = FormStartPosition.Manual;
                 editForm.FormClosing += delegate { Show(); };
@@ -109,7 +110,71 @@ namespace CS3230Project.View
                 editForm.ShowDialog();
                 Close();
             }
-            
+
+        }
+
+        private Patient createPatient(DataGridViewSelectedCellCollection cells)
+        {
+            string lastName = "";
+            string firstName = "";
+            string dateOfBirth = "";
+            string gender = "";
+            string phoneNumber = "";
+            string addressOne = "";
+            string addressTwo = "";
+            string city = "";
+            string state = "";
+            string zipcode = "";
+            string status = "";
+
+            int index = 0;
+            foreach (var currCell in cells)
+            {
+                switch (index)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        lastName = cells[index].Value as string;
+                        break;
+                    case 2:
+                        firstName = cells[index].Value as string;
+                        break;
+                    case 3:
+                        dateOfBirth = cells[index].Value as string;
+                        break;
+                    case 4:
+                        gender = cells[index].Value as string;
+                        break;
+                    case 5:
+                        phoneNumber = cells[index].Value as string;
+                        break;
+                    case 6:
+                        addressOne = cells[index].Value as string;
+                        break;
+                    case 7:
+                        addressTwo = cells[index].Value as string;
+                        break;
+                    case 8:
+                        city = cells[index].Value as string;
+                        break;
+                    case 9:
+                        state = cells[index].Value as string;
+                        break;
+                    case 10:
+                        zipcode = cells[index].Value as string;
+                        break;
+                    case 11:
+                        status = cells[index].Value as string;
+                        break;
+                }
+
+                index++;
+            }
+            Patient patient = new Patient(1, firstName, lastName, DateTime.Parse(dateOfBirth), gender, addressOne, addressTwo, city,
+                state, zipcode, phoneNumber, bool.Parse(status));
+
+            return patient;
         }
     }
 }
