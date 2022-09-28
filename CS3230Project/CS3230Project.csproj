@@ -99,7 +99,17 @@
   <ItemGroup>
     <Compile Include="DAL\Accounts\AccountsDal.cs" />
     <Compile Include="DAL\Connection.cs" />
+    <Compile Include="DAL\Patients\PatientsDal.cs" />
     <Compile Include="ErrorMessages\ErrorMessages.cs" />
+    <Compile Include="Model\DataValidator.cs" />
+    <Compile Include="Model\Users\Patients\PatientManager.cs" />
+    <Compile Include="Model\Users\Patients\Patient.cs" />
+    <Compile Include="View\EditPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditPatient.Designer.cs">
+      <DependentUpon>EditPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,7 +124,7 @@
     </Compile>
     <Compile Include="Model\Accounts\Services\AccountService.cs" />
     <Compile Include="Model\Accounts\CurrentUser.cs" />
-    <Compile Include="Model\Accounts\Users\Nurse.cs" />
+    <Compile Include="Model\Users\Nurse.cs" />
     <Compile Include="DAL\DataHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +134,12 @@
     </Compile>
     <Compile Include="View\RegisterPatient.Designer.cs">
       <DependentUpon>RegisterPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SearchPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchPatient.Designer.cs">
+      <DependentUpon>SearchPatient.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -135,6 +151,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\EditPatient.resx">
+      <DependentUpon>EditPatient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\RegisterPatient.resx">
       <DependentUpon>RegisterPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchPatient.resx">
+      <DependentUpon>SearchPatient.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

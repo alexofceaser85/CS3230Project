@@ -52,6 +52,10 @@
   <ItemGroup>
     <Compile Include="Model\Accounts\CurrentUserTests.cs" />
     <Compile Include="Model\Accounts\Users\NurseTests.cs" />
+    <Compile Include="Model\Accounts\Users\PatientManagerTests\GetPatientsByDateOfBirthTests.cs" />
+    <Compile Include="Model\Accounts\Users\PatientManagerTests\GetPatientsByNameAndDateOfBirthTests.cs" />
+    <Compile Include="Model\Accounts\Users\PatientTests.cs" />
+    <Compile Include="Model\Accounts\Users\PatientManagerTests\GetPatientsByNameTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

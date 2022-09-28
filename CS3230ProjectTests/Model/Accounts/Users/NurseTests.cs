@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using CS3230Project.ErrorMessages;
-using CS3230Project.Model.Accounts.Users;
+using CS3230Project.Model.Users;
 
 namespace CS3230ProjectTests.Model.Accounts.Users
 {

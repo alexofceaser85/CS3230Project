@@ -1,7 +1,7 @@
 ﻿using System;
 using CS3230Project.ErrorMessages;
 
-namespace CS3230Project.Model.Accounts.Users
+namespace CS3230Project.Model.Users
 {
     /// <summary>
     /// Holds the information for the nurses

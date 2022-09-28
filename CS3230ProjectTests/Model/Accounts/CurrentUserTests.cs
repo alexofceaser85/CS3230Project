@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CS3230Project.Model.Accounts;
-using CS3230Project.Model.Accounts.Users;
+using CS3230Project.Model.Users;
 
 namespace CS3230ProjectTests.Model.Accounts
 {

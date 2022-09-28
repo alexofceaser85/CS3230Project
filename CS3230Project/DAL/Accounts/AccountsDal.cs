@@ -2,7 +2,7 @@
 using System;
 using CS3230Project.ErrorMessages;
 using CS3230Project.Model.Accounts;
-using CS3230Project.Model.Accounts.Users;
+using CS3230Project.Model.Users;
 
 namespace CS3230Project.DAL.Accounts
 {
