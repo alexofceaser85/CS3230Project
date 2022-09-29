@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CS3230Project.Model.Users.Patients;
+using CS3230Project.ViewModel.Users;
 
 namespace CS3230Project.View
 {
@@ -49,17 +50,17 @@ namespace CS3230Project.View
                 List<Patient> matchingPatients = new List<Patient>();
                 if (this.searchFirstAndLastNameCheckBox.Checked && this.searchByBirthDateCheckBox.Checked)
                 {
-                    matchingPatients = PatientManager.GetPatientsByNameAndDateOfBirth(this.firstNameTextBox.Text,
+                    matchingPatients = PatientManagerViewModel.GetPatientsByNameAndDateOfBirth(this.firstNameTextBox.Text,
                         this.lastNameTextBox.Text, this.dateOfBirthDatePicker.Value);
                 }
                 else if (this.searchFirstAndLastNameCheckBox.Checked)
                 {
                     matchingPatients =
-                        PatientManager.GetPatientsByName(this.firstNameTextBox.Text, this.lastNameTextBox.Text);
+                        PatientManagerViewModel.GetPatientsByName(this.firstNameTextBox.Text, this.lastNameTextBox.Text);
                 }
                 else if (this.searchByBirthDateCheckBox.Checked)
                 {
-                    matchingPatients = PatientManager.GetPatientsByDateOfBirth(this.dateOfBirthDatePicker.Value);
+                    matchingPatients = PatientManagerViewModel.GetPatientsByDateOfBirth(this.dateOfBirthDatePicker.Value);
                 }
                 this.displayPatientData(matchingPatients);
             }

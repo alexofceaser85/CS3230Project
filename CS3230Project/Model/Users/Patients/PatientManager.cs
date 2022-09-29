@@ -10,6 +10,19 @@ namespace CS3230Project.Model.Users.Patients
     /// </summary>
     public static class PatientManager
     {
+        /// <summary>
+        /// Adds a patient
+        ///
+        /// Precondition: patientToAdd != null
+        /// Postcondition: The patient is added
+        /// </summary>
+        /// <param name="patientToAdd">The patient to add</param>
+        /// <returns>True if the patient was added, false otherwise</returns>
+
+        public static bool AddPatient(Patient patientToAdd)
+        {
+            return PatientsDal.AddPatient(patientToAdd);
+        }
 
         /// <summary>
         /// Gets all the patients with the provided name

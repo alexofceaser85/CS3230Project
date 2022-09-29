@@ -104,6 +104,7 @@
     <Compile Include="Model\DataValidator.cs" />
     <Compile Include="Model\Users\Patients\PatientManager.cs" />
     <Compile Include="Model\Users\Patients\Patient.cs" />
+    <Compile Include="ViewModel\Users\PatientManagerViewModel.cs" />
     <Compile Include="View\EditPatient.cs">
       <SubType>Form</SubType>
     </Compile>

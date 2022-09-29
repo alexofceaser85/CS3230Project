@@ -88,43 +88,5 @@ namespace CS3230ProjectTests.Model.Accounts.Users.PatientManagerTests
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.FirstAndLastNamesCannotBothBeEmpty);
         }
-
-        [TestMethod]
-        public void TestValidFirstNameAndDateOfBirthNullLastName()
-        {
-            Assert.AreEqual(1, PatientManager.GetPatientsByNameAndDateOfBirth("pat", null, new DateTime(2000, 1, 1).Date).Count);
-            Assert.AreEqual("pat", PatientManager.GetPatientsByNameAndDateOfBirth("pat", null, new DateTime(2000, 1, 1).Date)[0].FirstName);
-        }
-
-        [TestMethod]
-        public void TestValidLastNameAndDateOfBirthNullFirstName()
-        {
-            Assert.AreEqual(1, PatientManager.GetPatientsByNameAndDateOfBirth(null, "patient", new DateTime(2000, 1, 1).Date).Count);
-            Assert.AreEqual("patient", PatientManager.GetPatientsByNameAndDateOfBirth(null, "patient", new DateTime(2000, 1, 1).Date)[0].LastName);
-        }
-
-        [TestMethod]
-        public void TestValidFirstNameAndDateOfBirthEmptyLastName()
-        {
-            Assert.AreEqual(1, PatientManager.GetPatientsByNameAndDateOfBirth("pat", "", new DateTime(2000, 1, 1).Date).Count);
-            Assert.AreEqual("pat", PatientManager.GetPatientsByNameAndDateOfBirth("pat", "", new DateTime(2000, 1, 1).Date)[0].FirstName);
-        }
-
-        [TestMethod]
-        public void TestValidLastNameAndDateOfBirthEmptyFirstName()
-        {
-            Assert.AreEqual(1, PatientManager.GetPatientsByNameAndDateOfBirth("", "patient", new DateTime(2000, 1, 1).Date).Count);
-            Assert.AreEqual("patient", PatientManager.GetPatientsByNameAndDateOfBirth("", "patient", new DateTime(2000, 1, 1).Date)[0].LastName);
-        }
-
-        [TestMethod]
-        public void TestValidFirstAndLastNamesAndDateOfBirth()
-        {
-            Assert.AreEqual(1, PatientManager.GetPatientsByNameAndDateOfBirth("pat", "patient", new DateTime(2000, 1, 1).Date).Count);
-            Assert.AreEqual("pat", PatientManager.GetPatientsByNameAndDateOfBirth("pat", "patient", new DateTime(2000, 1, 1).Date)[0].FirstName);
-            Assert.AreEqual("patient", PatientManager.GetPatientsByNameAndDateOfBirth("pat", "patient", new DateTime(2000, 1, 1).Date)[0].LastName);
-            Assert.AreEqual(new DateTime(2000, 1, 1).Date, PatientManager.GetPatientsByNameAndDateOfBirth("pat", "patient", new DateTime(2000, 1, 1).Date)[0].DateOfBirth);
-        }
-        
     }
 }
