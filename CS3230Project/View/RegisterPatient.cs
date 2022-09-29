@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using CS3230Project.Model.Accounts;
-using CS3230Project.Model.Users;
-using CS3230Project.ViewModel.Patients;
+using CS3230Project.Model.Users.Patients;
+using CS3230Project.ViewModel.Accounts;
+using CS3230Project.ViewModel.Users;
 
 namespace CS3230Project.View
 {
@@ -60,7 +61,7 @@ namespace CS3230Project.View
                     this.patientPhoneNumberTextBox.Text,
                     true
                 );
-                PatientsViewModel.AddPatient(patientToAdd);
+                PatientManagerViewModel.AddPatient(patientToAdd);
                 Form homeForm = new Home();
                 homeForm.Location = Location;
                 homeForm.StartPosition = FormStartPosition.Manual;
