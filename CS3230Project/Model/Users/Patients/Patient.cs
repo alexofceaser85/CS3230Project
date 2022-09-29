@@ -73,17 +73,18 @@ namespace CS3230Project.Model.Users.Patients
         /// Initializes a new instance of the <see cref="Patient" />
         ///
         /// Precondition:
-        ///     patientId MORE THAN -1
+        ///     patientId MORE THAN OR EQUAL TO 0
         ///     AND firstName != null
         ///     AND firstName.isEmpty() == false
         ///     AND lastName != null
         ///     AND lastName.isEmpty() == false
-        ///     AND dateOfBirth MORE THAN DateTime(1900, 1, 1)
-        ///     AND dateOfBirth LESS THAN DateTime.Now()
+        ///     AND dateOfBirth MORE THAN 1900-01-01
+        ///     AND dateOfBirth LESS THAN Today's Date
         ///     AND gender != null
         ///     AND gender.isEmpty() == false
         ///     AND addressOne != null
         ///     AND addressOne.isEmpty() == false
+        ///     AND addressTwo != null
         ///     AND city != null
         ///     AND city.isEmpty() == false
         ///     AND state != null
@@ -144,6 +145,10 @@ namespace CS3230Project.Model.Users.Patients
             if (gender.Trim().Length == 0)
             {
                 throw new ArgumentException(PatientErrorMessages.GenderCannotBeEmpty);
+            }
+            if (addressTwo == null)
+            {
+                throw new ArgumentException(PatientErrorMessages.AddressTwoCannotBeNull);
             }
             if (addressOne == null)
             {
