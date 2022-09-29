@@ -183,8 +183,8 @@ namespace CS3230Project.View
 
                 index++;
             }
-            Patient patient = new Patient(1, firstName, lastName, DateTime.Parse(dateOfBirth), gender, addressOne, addressTwo, city,
-                state, zipcode, phoneNumber, bool.Parse(status));
+            var patient = new Patient(1, firstName, lastName, DateTime.Parse(dateOfBirth), gender, phoneNumber, addressOne, addressTwo, city,
+                state, zipcode, bool.Parse(status));
 
             return patient;
         }

@@ -14,8 +14,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(-1, "First", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(-1, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.PatientIdCannotBeLessThanZero);
         }
@@ -25,8 +25,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(-100, "First", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(-100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.PatientIdCannotBeLessThanZero);
         }
@@ -36,8 +36,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, null, "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "Last", null, DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.FirstNameCannotBeNull);
         }
@@ -47,8 +47,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "Last", "", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.FirstNameCannotBeEmpty);
         }
@@ -58,8 +58,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "      ", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "Last", "       ", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.FirstNameCannotBeEmpty);
         }
@@ -69,8 +69,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", null, DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, null, "First", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.LastNameCannotBeNull);
         }
@@ -80,8 +80,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "", "First", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.LastNameCannotBeEmpty);
         }
@@ -91,8 +91,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "    ", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "      ", "First", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.LastNameCannotBeEmpty);
         }
@@ -102,8 +102,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", new DateTime(1899, 12, 31), "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", new DateTime(1899, 12, 31), "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.DateOfBirthCannotBeBefore1900);
         }
@@ -113,8 +113,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today.AddDays(1), "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today.AddDays(1), "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.DateOfBirthCannotBeInTheFuture);
         }
@@ -124,8 +124,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, null, "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, null, "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.GenderCannotBeNull);
         }
@@ -135,8 +135,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "", "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.GenderCannotBeEmpty);
         }
@@ -146,8 +146,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "    ", "Address", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "    ", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.GenderCannotBeEmpty);
         }
@@ -157,8 +157,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", null, "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", null, "", "Carrollton", "Georgia",
+                    "11111", true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.AddressOneCannotBeNull);
         }
@@ -168,8 +168,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.AddressOneCannotBeEmpty);
         }
@@ -179,8 +179,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "      ", "", "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "      ", "", "Carrollton", "Georgia",
+                    "11111", true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.AddressOneCannotBeEmpty);
         }
@@ -190,8 +190,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", null, "Carrollton", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", null, "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.AddressTwoCannotBeNull);
         }
@@ -201,8 +201,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", null, "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", null, "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.CityCannotBeNull);
         }
@@ -212,8 +212,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", "", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.CityCannotBeEmpty);
         }
@@ -223,8 +223,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", "   ", "Georgia",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "   ", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.CityCannotBeEmpty);
         }
@@ -234,8 +234,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", null,
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", null,
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.StateCannotBeNull);
         }
@@ -245,8 +245,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.StateCannotBeEmpty);
         }
@@ -256,8 +256,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "     ",
-                    "11111", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "     ",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.StateCannotBeEmpty);
         }
@@ -267,8 +267,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    null, "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    null,  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.ZipcodeCannotBeNull);
         }
@@ -278,8 +278,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.ZipcodeCannotBeEmpty);
         }
@@ -289,10 +289,43 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "      ", "777-777-7777", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "      ",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.ZipcodeCannotBeEmpty);
+        }
+
+        [TestMethod]
+        public void PatientZipCodeMustBeAllDigits()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "ddddd",  true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.ZipcodeMustBeAllDigits);
+        }
+
+        [TestMethod]
+        public void PatientZipCodeCannotContainLessThanFiveDigits()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "1234",  true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.ZipcodeMustHaveFiveCharacters);
+        }
+
+        [TestMethod]
+        public void PatientZipCodeCannotContainMoreThanFiveDigits()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "123456",  true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.ZipcodeMustHaveFiveCharacters);
         }
 
         [TestMethod]
@@ -300,8 +333,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", null, true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", null, "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
             });
 
             Assert.AreEqual(message.Message, PatientErrorMessages.PhoneNumberCannotBeNull);
@@ -312,8 +345,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", "", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
             });
 
             Assert.AreEqual(message.Message, PatientErrorMessages.PhoneNumberCannotBeEmpty);
@@ -324,8 +357,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                    "11111", "     ", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "       ", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
             });
 
             Assert.AreEqual(message.Message, PatientErrorMessages.PhoneNumberCannotBeEmpty);
@@ -334,8 +367,8 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         [TestMethod]
         public void ShouldCreateValidPatient()
         {
-            var patient = _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "Address", "", "Carrollton", "Georgia",
-                "11111", "777-777-7777", true);
+            var patient = _ = new Patient(100, "Last", "First", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                "11111", true);
 
             Assert.AreEqual(100, patient.PatientId);
             Assert.AreEqual("First", patient.FirstName);

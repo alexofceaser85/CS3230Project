@@ -134,13 +134,23 @@
         /// </summary>
         public static string StateCannotBeEmpty = "The patient state cannot be empty.";
         /// <summary>
-        /// Error message for null zip
+        /// Error message for null zip code
         /// </summary>
         public static string ZipcodeCannotBeNull = "The patient zip code cannot be null.";
         /// <summary>
-        /// Error message for empty zip
+        /// Error message for empty zip code
         /// </summary>
         public static string ZipcodeCannotBeEmpty = "The patient zip code cannot be empty.";
+        /// <summary>
+        /// Error message for incorrect zip code size
+        /// </summary>
+        public static string ZipcodeMustHaveFiveCharacters =
+            "The zip code is in incorrect format, must be have five characters";
+        /// <summary>
+        /// Error message for incorrect zip code format
+        /// </summary>
+        public static string ZipcodeMustBeAllDigits =
+            "The zip code is in incorrect format, must be all digits";
         /// <summary>
         /// Error message for null phone number
         /// </summary>

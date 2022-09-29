@@ -49,16 +49,16 @@ namespace CS3230Project.View
             {
                 var patientToAdd = new Patient(
                     0,
-                    this.patientFirstNameTextBox.Text,
                     this.patientLastNameTextBox.Text,
+                    this.patientFirstNameTextBox.Text,
                     this.patientDateOfBirthPicker.Value,
                     this.patientGenderDropBox.SelectedItem?.ToString(),
+                    this.patientPhoneNumberTextBox.Text,
                     this.patientAddressOneTextBox.Text,
                     this.patientAddressTwoTextBox.Text,
                     this.patientCityTextBox.Text,
                     this.patientStateComboBox.SelectedItem?.ToString(),
                     this.patientZipCodeComboBox.Text,
-                    this.patientPhoneNumberTextBox.Text,
                     true
                 );
                 PatientManagerViewModel.AddPatient(patientToAdd);
