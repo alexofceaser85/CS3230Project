@@ -8,6 +8,7 @@ namespace CS3230Project.Model.Users.Patients
     /// </summary>
     public class Patient
     {
+        private const int ZipCodeLength = 5;
 
         /// <summary>
         /// The ID for the patient
@@ -15,14 +16,14 @@ namespace CS3230Project.Model.Users.Patients
         public int PatientId { get; }
 
         /// <summary>
-        /// The first name for the patient
-        /// </summary>
-        public string FirstName { get; }
-
-        /// <summary>
         /// The last name for the patient
         /// </summary>
         public string LastName { get; }
+
+        /// <summary>
+        /// The first name for the patient
+        /// </summary>
+        public string FirstName { get; }
 
         /// <summary>
         /// The date of birth for the patient
@@ -74,10 +75,10 @@ namespace CS3230Project.Model.Users.Patients
         ///
         /// Precondition:
         ///     patientId MORE THAN OR EQUAL TO 0
-        ///     AND firstName != null
-        ///     AND firstName.isEmpty() == false
         ///     AND lastName != null
         ///     AND lastName.isEmpty() == false
+        ///     AND firstName != null
+        ///     AND firstName.isEmpty() == false
         ///     AND dateOfBirth MORE THAN 1900-01-01
         ///     AND dateOfBirth LESS THAN Today's Date
         ///     AND gender != null
@@ -99,28 +100,20 @@ namespace CS3230Project.Model.Users.Patients
         /// <param name="lastName">The last name.</param>
         /// <param name="dateOfBirth">The date of birth.</param>
         /// <param name="gender">The gender.</param>
+        /// <param name="phoneNumber">The phone number.</param>
         /// <param name="addressOne">The address one.</param>
         /// <param name="addressTwo">The address two.</param>
         /// <param name="city">The city.</param>
         /// <param name="state">The state.</param>
         /// <param name="zipcode">The zipcode.</param>
-        /// <param name="phoneNumber">The phone number.</param>
         /// <param name="status">if set to <c>true</c> [status].</param>
         /// <exception cref="System.ArgumentException"></exception>
-        public Patient(int patientId, string firstName, string lastName, DateTime dateOfBirth, string gender,
-            string addressOne, string addressTwo, string city, string state, string zipcode, string phoneNumber, bool status)
+        public Patient(int patientId, string lastName, string firstName, DateTime dateOfBirth, string gender, string phoneNumber,
+            string addressOne, string addressTwo, string city, string state, string zipcode, bool status)
         {
             if (patientId < 0)
             {
                 throw new ArgumentException(PatientErrorMessages.PatientIdCannotBeLessThanZero);
-            }
-            if (firstName == null)
-            {
-                throw new ArgumentException(PatientErrorMessages.FirstNameCannotBeNull);
-            }
-            if (firstName.Trim().Length == 0)
-            {
-                throw new ArgumentException(PatientErrorMessages.FirstNameCannotBeEmpty);
             }
             if (lastName == null)
             {
@@ -129,6 +122,14 @@ namespace CS3230Project.Model.Users.Patients
             if (lastName.Trim().Length == 0)
             {
                 throw new ArgumentException(PatientErrorMessages.LastNameCannotBeEmpty);
+            }
+            if (firstName == null)
+            {
+                throw new ArgumentException(PatientErrorMessages.FirstNameCannotBeNull);
+            }
+            if (firstName.Trim().Length == 0)
+            {
+                throw new ArgumentException(PatientErrorMessages.FirstNameCannotBeEmpty);
             }
             if (dateOfBirth < new DateTime(1900, 1, 1))
             {
@@ -145,6 +146,18 @@ namespace CS3230Project.Model.Users.Patients
             if (gender.Trim().Length == 0)
             {
                 throw new ArgumentException(PatientErrorMessages.GenderCannotBeEmpty);
+            }
+            if (phoneNumber == null)
+            {
+                throw new ArgumentException(PatientErrorMessages.PhoneNumberCannotBeNull);
+            }
+            if (phoneNumber.Trim().Length == 0)
+            {
+                throw new ArgumentException(PatientErrorMessages.PhoneNumberCannotBeEmpty);
+            }
+            if (!DataValidator.IsValidPhoneNumberFormat(phoneNumber))
+            {
+                throw new ArgumentException(PatientErrorMessages.InvalidPhoneNumberFormat);
             }
             if (addressTwo == null)
             {
@@ -182,22 +195,22 @@ namespace CS3230Project.Model.Users.Patients
             {
                 throw new ArgumentException(PatientErrorMessages.ZipcodeCannotBeEmpty);
             }
-            if (phoneNumber == null)
+            if (zipcode.Length < ZipCodeLength)
             {
-                throw new ArgumentException(PatientErrorMessages.PhoneNumberCannotBeNull);
+                throw new ArgumentException(PatientErrorMessages.ZipcodeMustHaveFiveCharacters);
             }
-            if (phoneNumber.Trim().Length == 0)
+            if (zipcode.Length > ZipCodeLength)
             {
-                throw new ArgumentException(PatientErrorMessages.PhoneNumberCannotBeEmpty);
+                throw new ArgumentException(PatientErrorMessages.ZipcodeMustHaveFiveCharacters);
             }
-            if (!DataValidator.IsValidPhoneNumberFormat(phoneNumber))
+            if (!DataValidator.IsValidZipCodeFormat(zipcode))
             {
-                throw new FormatException(PatientErrorMessages.InvalidPhoneNumberFormat);
+                throw new ArgumentException(PatientErrorMessages.ZipcodeMustBeAllDigits);
             }
 
             this.PatientId = patientId;
-            this.FirstName = firstName;
             this.LastName = lastName;
+            this.FirstName = firstName;
             this.DateOfBirth = dateOfBirth;
             this.Gender = gender;
             this.AddressOne = addressOne;
