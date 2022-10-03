@@ -309,6 +309,7 @@
             // patientZipCodeComboBox
             // 
             this.patientZipCodeComboBox.Location = new System.Drawing.Point(3, 21);
+            this.patientZipCodeComboBox.MaxLength = 5;
             this.patientZipCodeComboBox.Name = "patientZipCodeComboBox";
             this.patientZipCodeComboBox.Size = new System.Drawing.Size(231, 20);
             this.patientZipCodeComboBox.TabIndex = 1;
@@ -345,6 +346,7 @@
             // patientAddressTwoTextBox
             // 
             this.patientAddressTwoTextBox.Location = new System.Drawing.Point(3, 20);
+            this.patientAddressTwoTextBox.MaxLength = 50;
             this.patientAddressTwoTextBox.Name = "patientAddressTwoTextBox";
             this.patientAddressTwoTextBox.Size = new System.Drawing.Size(231, 20);
             this.patientAddressTwoTextBox.TabIndex = 1;
@@ -381,6 +383,7 @@
             // patientAddressOneTextBox
             // 
             this.patientAddressOneTextBox.Location = new System.Drawing.Point(3, 20);
+            this.patientAddressOneTextBox.MaxLength = 50;
             this.patientAddressOneTextBox.Name = "patientAddressOneTextBox";
             this.patientAddressOneTextBox.Size = new System.Drawing.Size(231, 20);
             this.patientAddressOneTextBox.TabIndex = 1;
@@ -417,6 +420,7 @@
             // patientCityTextBox
             // 
             this.patientCityTextBox.Location = new System.Drawing.Point(3, 20);
+            this.patientCityTextBox.MaxLength = 50;
             this.patientCityTextBox.Name = "patientCityTextBox";
             this.patientCityTextBox.Size = new System.Drawing.Size(231, 20);
             this.patientCityTextBox.TabIndex = 1;
@@ -530,6 +534,7 @@
             // patientPhoneNumberTextBox
             // 
             this.patientPhoneNumberTextBox.Location = new System.Drawing.Point(3, 20);
+            this.patientPhoneNumberTextBox.MaxLength = 12;
             this.patientPhoneNumberTextBox.Name = "patientPhoneNumberTextBox";
             this.patientPhoneNumberTextBox.Size = new System.Drawing.Size(243, 20);
             this.patientPhoneNumberTextBox.TabIndex = 2;
@@ -617,6 +622,7 @@
             // patientFirstNameTextBox
             // 
             this.patientFirstNameTextBox.Location = new System.Drawing.Point(3, 20);
+            this.patientFirstNameTextBox.MaxLength = 25;
             this.patientFirstNameTextBox.Name = "patientFirstNameTextBox";
             this.patientFirstNameTextBox.Size = new System.Drawing.Size(243, 20);
             this.patientFirstNameTextBox.TabIndex = 1;
@@ -652,6 +658,7 @@
             // patientLastNameTextBox
             // 
             this.patientLastNameTextBox.Location = new System.Drawing.Point(3, 20);
+            this.patientLastNameTextBox.MaxLength = 25;
             this.patientLastNameTextBox.Name = "patientLastNameTextBox";
             this.patientLastNameTextBox.Size = new System.Drawing.Size(243, 20);
             this.patientLastNameTextBox.TabIndex = 1;
