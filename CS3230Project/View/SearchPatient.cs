@@ -126,6 +126,7 @@ namespace CS3230Project.View
 
         private Patient createPatient(DataGridViewSelectedCellCollection cells)
         {
+            string patientId = "";
             string lastName = "";
             string firstName = "";
             string dateOfBirth = "";
@@ -144,6 +145,7 @@ namespace CS3230Project.View
                 switch (index)
                 {
                     case 0:
+                        patientId = cells[index].Value as string;
                         break;
                     case 1:
                         lastName = cells[index].Value as string;
@@ -182,7 +184,7 @@ namespace CS3230Project.View
 
                 index++;
             }
-            Patient patient = new Patient(1, firstName, lastName, DateTime.Parse(dateOfBirth), gender, addressOne, addressTwo, city,
+            Patient patient = new Patient(Int32.Parse(patientId), firstName, lastName, DateTime.Parse(dateOfBirth), gender, addressOne, addressTwo, city,
                 state, zipcode, phoneNumber, bool.Parse(status));
 
             return patient;

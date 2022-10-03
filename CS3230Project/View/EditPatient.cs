@@ -1,6 +1,8 @@
 ﻿using CS3230Project.Model.Accounts;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using CS3230Project.DAL.Patients;
 using CS3230Project.Model.Users.Patients;
 
 namespace CS3230Project.View
@@ -10,6 +12,8 @@ namespace CS3230Project.View
     /// </summary>
     public partial class EditPatient : Form
     {
+        private Dictionary<string, string> updatedDetails;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EditPatient" /> class.
         ///s </summary>
@@ -17,16 +21,20 @@ namespace CS3230Project.View
         public EditPatient(Patient patient)
         {
             this.InitializeComponent();
+
+            this.updatedDetails = new Dictionary<string, string>();
             this.bindLabelsToCurrentUser();
-            this.setStatusComboBoxValues();
+            //this.setStatusComboBoxValues();
             this.loadPatientData(patient);
+
+            this.updatedDetails.Add("PatientId", patient.PatientId.ToString());
         }
 
         private void setStatusComboBoxValues()
         {
             //TODO: use enum
-            this.statusComboBox.Items.Add("Active");
-            this.statusComboBox.Items.Add("Inactive");
+            this.patientStatusComboBox.Items.Add("Active");
+            this.patientStatusComboBox.Items.Add("Inactive");
         }
 
         private void loadPatientData(Patient patient)
@@ -40,8 +48,10 @@ namespace CS3230Project.View
             this.patientAddressTwoTextBox.Text = patient.AddressTwo;
             this.patientCityTextBox.Text = patient.City;
             this.patientStateComboBox.Text = patient.State;
-            this.patientZipCodeComboBox.Text = patient.Zipcode;
-            this.statusComboBox.Text = patient.Status.ToString();
+            this.patientZipcodeTextBox.Text = patient.Zipcode;
+            //this.patientStatusComboBox.Text = patient.Status == true ? "Active" : "Inactive";
+            this.patientStatusComboBox.Text = patient.Status.ToString();
+
         }
 
         private void bindLabelsToCurrentUser()
@@ -78,7 +88,46 @@ namespace CS3230Project.View
 
         private void submitChangesButton_Click(object sender, EventArgs e)
         {
-            
+            PatientsDal.ModifyPatient(this.updatedDetails); //TODO: use patientmanager and ViewModel
+
+            Form searchPatientForm = new SearchPatient();
+            searchPatientForm.Location = Location;
+            searchPatientForm.StartPosition = FormStartPosition.Manual;
+            searchPatientForm.FormClosing += delegate { Show(); };
+            Hide();
+            searchPatientForm.Size = this.Size;
+            searchPatientForm.ShowDialog();
+            Close();
+        }
+
+        private void patientDateOfBirthPicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (((DateTimePicker)sender).Name != null && !this.updatedDetails.ContainsKey(((DateTimePicker)sender).Name))
+            {
+                this.updatedDetails.Add(((DateTimePicker)sender).Name, ((DateTimePicker)sender).Value.ToString("yyyy-MM-dd"));
+            }
+            else if (((DateTimePicker)sender).Name != null && this.updatedDetails.ContainsKey(((DateTimePicker)sender).Name))
+            {
+                this.updatedDetails[((DateTimePicker)sender).Name] = ((DateTimePicker)sender).Value.ToString("yyyy-MM-dd");
+            }
+            //this.updatedDetails.Add("patientDateOfBirthPicker", ((DateTimePicker)sender).Value.ToString("yyyy-MM-dd"));
+        }
+
+        private void patientDetailComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.updatedDetails.Add(((ComboBox)sender).Name, ((ComboBox)sender).Text);
+        }
+
+        private void patientDetailTextBox_LeaveFocus(object sender, EventArgs e)
+        {
+            if (((TextBox)sender).Name != null && !this.updatedDetails.ContainsKey(((TextBox)sender).Name))
+            {
+                this.updatedDetails.Add(((TextBox)sender).Name, ((TextBox)sender).Text);
+            }
+            else if (((TextBox)sender).Name != null && this.updatedDetails.ContainsKey(((TextBox)sender).Name))
+            {
+                this.updatedDetails[((TextBox)sender).Name] = ((TextBox)sender).Text;
+            }
         }
     }
 }
