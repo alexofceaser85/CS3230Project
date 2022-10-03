@@ -9,8 +9,8 @@ namespace CS3230Project.Model
     /// </summary>
     public static class DataValidator
     {
-        private static string validPhoneNumberRegexPattern = "\\d{3}-\\d{3}-\\d{4}";
-        private static string validZipCodeRegexPattern = "\\d{5}";
+        private static string validPhoneNumberRegexPattern = "^\\d{3}-\\d{3}-\\d{4}$";
+        private static string validZipCodeRegexPattern = "^\\d{5}$";
 
         /// <summary>
         /// Determines whether the provided phone number is in the correct format (XXX-XXX-XXXX).

@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using CS3230Project.ErrorMessages;
-using CS3230Project.Model.Users;
 using CS3230Project.Model.Users.Patients;
 
 namespace CS3230ProjectTests.Model.Accounts.Users
@@ -65,6 +64,18 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         }
 
         [TestMethod]
+        public void PatientFirstNameShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", 
+                    "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST", 
+                    DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.FirstNameIsTooLong);
+        }
+
+        [TestMethod]
         public void PatientLastNameShouldNotBeNull()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
@@ -95,6 +106,17 @@ namespace CS3230ProjectTests.Model.Accounts.Users
                     "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.LastNameCannotBeEmpty);
+        }
+
+        [TestMethod]
+        public void PatientLastNameShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST", "First",
+                    DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.LastNameIsTooLong);
         }
 
         [TestMethod]
@@ -153,6 +175,17 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         }
 
         [TestMethod]
+        public void PatientGenderShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", "First", DateTime.Today, "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
+                    , "777-777-7777", "Address", "", "Carrollton", "Georgia", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.GenderIsTooLong);
+        }
+
+        [TestMethod]
         public void PatientAddressOneCannotBeNull()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
@@ -186,6 +219,17 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         }
 
         [TestMethod]
+        public void PatientAddressOneShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", "First", DateTime.Today, "Male"
+                    , "777-777-7777", "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST", "", "Carrollton", "Georgia", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.AddressOneIsTooLong);
+        }
+
+        [TestMethod]
         public void PatientAddressTwoCannotBeNull()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
@@ -194,6 +238,17 @@ namespace CS3230ProjectTests.Model.Accounts.Users
                     "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.AddressTwoCannotBeNull);
+        }
+
+        [TestMethod]
+        public void PatientAddressTwoShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", "First", DateTime.Today, "Male"
+                    , "777-777-7777", "Address", "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST", "Carrollton", "Georgia", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.AddressTwoIsTooLong);
         }
 
         [TestMethod]
@@ -230,6 +285,17 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         }
 
         [TestMethod]
+        public void PatientCityShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", "First", DateTime.Today, "Male"
+                    , "777-777-7777", "Address", "", "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST", "GEORGIA", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.CityIsTooLong);
+        }
+
+        [TestMethod]
         public void PatientStateCannotBeNull()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
@@ -260,6 +326,17 @@ namespace CS3230ProjectTests.Model.Accounts.Users
                     "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.StateCannotBeEmpty);
+        }
+
+        [TestMethod]
+        public void PatientStateShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", "First", DateTime.Today, "Male"
+                    , "777-777-7777", "Address", "", "Carrollton", "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.StateIsTooLong);
         }
 
         [TestMethod]
@@ -362,6 +439,30 @@ namespace CS3230ProjectTests.Model.Accounts.Users
             });
 
             Assert.AreEqual(message.Message, PatientErrorMessages.PhoneNumberCannotBeEmpty);
+        }
+
+        [TestMethod]
+        public void PatientPhoneNumberCannotContainLessThanTwelveDigits()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "770-770-777", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
+            });
+
+            Assert.AreEqual(message.Message, PatientErrorMessages.InvalidPhoneNumberFormat);
+        }
+
+        [TestMethod]
+        public void PatientPhoneNumberCannotContainMoreThanTwelveDigits()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "770-770-77755", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
+            });
+
+            Assert.AreEqual(message.Message, PatientErrorMessages.InvalidPhoneNumberFormat);
         }
 
         [TestMethod]
