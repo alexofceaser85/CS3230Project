@@ -28,7 +28,7 @@ namespace CS3230Project.View
             this.loadPatientData(patient);
             this.updatedDetails.Add("PatientId", patient.PatientId.ToString());
 
-            this.states = new string[]
+            this.states = new[]
             {
                 "California", "Indiana", "Texas", "Arizona", "Colorado", "Kentucky", "Nebraska", "Arkansas",
                 "Louisiana",

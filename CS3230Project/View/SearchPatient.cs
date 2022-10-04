@@ -85,7 +85,7 @@ namespace CS3230Project.View
                 };
                 this.PatientDataGridView.Rows.Add(patientDetails);
                 this.PatientDataGridView.CellClick +=
-                    new DataGridViewCellEventHandler(this.PatientDataGridView_CellClick);
+                    this.PatientDataGridView_CellClick;
             }
         }
 
@@ -139,8 +139,7 @@ namespace CS3230Project.View
             string zipcode = "";
             string status = "";
 
-            int index = 0;
-            foreach (var currCell in cells)
+            for (int index = 0; index < cells.Count; index++)
             {
                 switch (index)
                 {
@@ -182,7 +181,6 @@ namespace CS3230Project.View
                         break;
                 }
 
-                index++;
             }
             Patient patient = new Patient(Int32.Parse(patientId), firstName, lastName, DateTime.Parse(dateOfBirth), gender, addressOne, addressTwo, city,
                 state, zipcode, phoneNumber, bool.Parse(status));
