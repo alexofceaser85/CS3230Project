@@ -157,5 +157,9 @@
         /// Error message for a null updated patient details
         /// </summary>
         public static string UpdatedPatientDetailsCannotBeNull = "The updated patient details cannot be null.";
+        /// <summary>
+        /// Error message for an empty updated patient details
+        /// </summary>
+        public static string UpdatedPatientDetailsCannotBeEmpty = "The updated patient details cannot be empty.";
     }
 }

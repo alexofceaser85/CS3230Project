@@ -97,5 +97,28 @@ namespace CS3230Project.Model.Users.Patients
             return PatientsDal.GetPatientsByNameAndDateOfBirth(firstName, lastName, dateOfBirth);
         }
 
+        /// <summary>
+        /// Modifies the patient.
+        /// Precondition:
+        ///     updatedDetails != null AND updatedDetails.Count > 0
+        /// </summary>
+        /// <param name="updatedDetails">The updated details.</param>
+        /// <returns>
+        ///   True, if the patient was modified
+        /// </returns>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static bool ModifyPatient(Dictionary<string, string> updatedDetails)
+        {
+            if (updatedDetails == null)
+            {
+                throw new ArgumentException(PatientErrorMessages.UpdatedPatientDetailsCannotBeNull);
+            }
+            if (updatedDetails.Count == 0)
+            {
+                throw new ArgumentException(PatientErrorMessages.UpdatedPatientDetailsCannotBeEmpty);
+            }
+
+            return PatientsDal.ModifyPatient(updatedDetails);
+        }
     }
 }

@@ -219,13 +219,17 @@ namespace CS3230Project.DAL.Patients
             return matchingPatients;
         }
 
+        /// <summary>
+        /// Modifies the patient.
+        /// Precondition:
+        ///     None
+        /// </summary>
+        /// <param name="updatedDetails">The updated details.</param>
+        /// <returns>
+        ///   True, if the patient was modified
+        /// </returns>
         public static bool ModifyPatient(Dictionary<string, string> updatedDetails)
         {
-            if (updatedDetails == null)
-            {
-                throw new ArgumentException(PatientErrorMessages.UpdatedPatientDetailsCannotBeNull);
-            }
-
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
             MySqlCommand comm = connection.CreateCommand();

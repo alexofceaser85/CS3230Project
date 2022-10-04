@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using CS3230Project.DAL.Patients;
 using CS3230Project.Model.Users.Patients;
 
 namespace CS3230Project.View
@@ -22,13 +21,13 @@ namespace CS3230Project.View
         public EditPatient(Patient patient)
         {
             this.InitializeComponent();
-
             this.updatedDetails = new Dictionary<string, string>();
             this.bindLabelsToCurrentUser();
             this.setStatusComboBoxValues();
             this.setGenderComboBoxValues();
             this.loadPatientData(patient);
             this.updatedDetails.Add("PatientId", patient.PatientId.ToString());
+
             this.states = new string[]
             {
                 "California", "Indiana", "Texas", "Arizona", "Colorado", "Kentucky", "Nebraska", "Arkansas",
@@ -75,7 +74,6 @@ namespace CS3230Project.View
             this.patientCityTextBox.Text = patient.City;
             this.patientStateComboBox.Text = patient.State;
             this.patientZipcodeTextBox.Text = patient.Zipcode;
-            //this.patientStatusComboBox.Text = patient.Status == true ? "Active" : "Inactive";
             this.patientStatusComboBox.Text = patient.Status.ToString();
 
         }
@@ -114,8 +112,7 @@ namespace CS3230Project.View
 
         private void submitChangesButton_Click(object sender, EventArgs e)
         {
-            PatientsDal.ModifyPatient(this.updatedDetails); //TODO: use patientmanager and ViewModel
-
+            PatientManager.ModifyPatient(this.updatedDetails);
             Form searchPatientForm = new SearchPatient();
             searchPatientForm.Location = Location;
             searchPatientForm.StartPosition = FormStartPosition.Manual;
