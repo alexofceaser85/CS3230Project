@@ -24,7 +24,10 @@ namespace CS3230Project.DAL.Patients
         /// <exception cref="System.ArgumentException"></exception>
         public static bool AddPatient(Patient patientToAdd)
         {
-            if (patientToAdd == null) throw new ArgumentException(PatientErrorMessages.PatientToAddCannotBeNull);
+            if (patientToAdd == null)
+            {
+                throw new ArgumentException(PatientErrorMessages.PatientToAddCannotBeNull);
+            }
 
             var patientId = patientToAdd.PatientId;
             var firstName = patientToAdd.FirstName;
@@ -192,6 +195,7 @@ namespace CS3230Project.DAL.Patients
             var statusOrdinal = reader.GetOrdinal("status");
 
             while (reader.Read())
+            {
                 matchingPatients.Add(new Patient(
                     reader.GetInt32(patientIdOrdinal),
                     reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
@@ -205,6 +209,7 @@ namespace CS3230Project.DAL.Patients
                     reader.GetFieldValueCheckNull<string>(zipcodeOrdinal),
                     reader.GetFieldValueCheckNull<string>(phoneNumberOrdinal),
                     reader.GetFieldValue<bool>(statusOrdinal)));
+            }
 
             return matchingPatients;
         }
@@ -229,8 +234,10 @@ namespace CS3230Project.DAL.Patients
 
             foreach (var currDetail in updatedDetails)
             {
-                if (numberOfDetailsChanged > 0 && !commandText[commandText.Length - 2].Equals(',') &&
-                    !currDetail.Key.Equals("PatientId")) commandText += ", ";
+                if (numberOfDetailsChanged > 0 && !commandText[commandText.Length - 2].Equals(',') && !currDetail.Key.Equals("PatientId"))
+                {
+                    commandText += ", ";
+                }
 
                 switch (currDetail.Key)
                 {

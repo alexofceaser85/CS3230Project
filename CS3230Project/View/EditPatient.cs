@@ -23,43 +23,8 @@ namespace CS3230Project.View
             this.InitializeComponent();
             this.updatedDetails = new Dictionary<string, string>();
             this.bindLabelsToCurrentUser();
-            this.setStatusComboBoxValues();
-            this.setGenderComboBoxValues();
             this.loadPatientData(patient);
             this.updatedDetails.Add("PatientId", patient.PatientId.ToString());
-
-            this.states = new[]
-            {
-                "California", "Indiana", "Texas", "Arizona", "Colorado", "Kentucky", "Nebraska", "Arkansas",
-                "Louisiana",
-                "Maine", "Florida", "Oklahoma", "Alaska", "Wyoming", "Minnesota", "Nevada", "Tennessee", "Ohio",
-                "Oregon", "New Mexico", "Connecticut",
-                "Kansas", "Maryland", "Hawaii", "South Dakota", "Mississippi", "West Virginia", "North Dakota", "Iowa",
-                "Vermont", "Idaho", "New Hampshire",
-                "Georgia", "New York"
-            };
-            Array.Sort(this.states);
-            this.setStateComboBoxValues();
-        }
-
-        private void setStateComboBoxValues()
-        {
-            foreach (var currState in this.states)
-            {
-                this.patientStateComboBox.Items.Add(currState);
-            }
-        }
-
-        private void setGenderComboBoxValues()
-        {
-            this.patientGenderComboBox.Items.Add("Male");
-            this.patientGenderComboBox.Items.Add("Female");
-        }
-
-        private void setStatusComboBoxValues()
-        {
-            this.patientStatusComboBox.Items.Add("True");
-            this.patientStatusComboBox.Items.Add("False");
         }
 
         private void loadPatientData(Patient patient)

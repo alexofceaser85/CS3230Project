@@ -566,6 +566,54 @@
             // patientStateComboBox
             // 
             this.patientStateComboBox.FormattingEnabled = true;
+            this.patientStateComboBox.Items.AddRange(new object[] {
+            "Alabama",
+            "Alaska",
+            "Arizona",
+            "Arkansas",
+            "California",
+            "Colorado",
+            "Connecticut",
+            "Delaware",
+            "Florida",
+            "Georgia",
+            "Hawaii",
+            "Idaho",
+            "IllinoisIndiana",
+            "Iowa",
+            "Kansas",
+            "Kentucky",
+            "Louisiana",
+            "Maine",
+            "Maryland",
+            "Massachusetts",
+            "Michigan",
+            "Minnesota",
+            "Mississippi",
+            "Missouri",
+            "MontanaNebraska",
+            "Nevada",
+            "New Hampshire",
+            "New Jersey",
+            "New Mexico",
+            "New York",
+            "North Carolina",
+            "North Dakota",
+            "Ohio",
+            "Oklahoma",
+            "Oregon",
+            "PennsylvaniaRhode Island",
+            "South Carolina",
+            "South Dakota",
+            "Tennessee",
+            "Texas",
+            "Utah",
+            "Vermont",
+            "Virginia",
+            "Washington",
+            "West Virginia",
+            "Wisconsin",
+            "Wyoming"});
             this.patientStateComboBox.Location = new System.Drawing.Point(4, 26);
             this.patientStateComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.patientStateComboBox.Name = "patientStateComboBox";
@@ -647,6 +695,9 @@
             // patientGenderComboBox
             // 
             this.patientGenderComboBox.FormattingEnabled = true;
+            this.patientGenderComboBox.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
             this.patientGenderComboBox.Location = new System.Drawing.Point(4, 26);
             this.patientGenderComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.patientGenderComboBox.Name = "patientGenderComboBox";
@@ -802,6 +853,9 @@
             // patientStatusComboBox
             // 
             this.patientStatusComboBox.FormattingEnabled = true;
+            this.patientStatusComboBox.Items.AddRange(new object[] {
+            "True",
+            "False"});
             this.patientStatusComboBox.Location = new System.Drawing.Point(3, 32);
             this.patientStatusComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.patientStatusComboBox.Name = "patientStatusComboBox";

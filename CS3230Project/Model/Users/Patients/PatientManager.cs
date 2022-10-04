@@ -27,7 +27,9 @@ namespace CS3230Project.Model.Users.Patients
         {
             if ((firstName == null || firstName.Trim().Length == 0) &&
                 (lastName == null || lastName.Trim().Length == 0))
+            {
                 throw new ArgumentException(PatientErrorMessages.FirstAndLastNamesCannotBothBeEmpty);
+            }
 
             return PatientsDal.GetPatientsByName(firstName, lastName);
         }
@@ -46,10 +48,14 @@ namespace CS3230Project.Model.Users.Patients
         public static List<Patient> GetPatientsByDateOfBirth(DateTime dateOfBirth)
         {
             if (dateOfBirth < new DateTime(1900, 1, 1))
+            {
                 throw new ArgumentException(PatientErrorMessages.DateOfBirthCannotBeBefore1900);
+            }
 
             if (dateOfBirth > DateTime.Now)
+            {
                 throw new ArgumentException(PatientErrorMessages.DateOfBirthCannotBeInTheFuture);
+            }
 
             return PatientsDal.GetPatientsByDateOfBirth(dateOfBirth);
         }
@@ -75,11 +81,17 @@ namespace CS3230Project.Model.Users.Patients
         {
             if ((firstName == null || firstName.Trim().Length == 0) &&
                 (lastName == null || lastName.Trim().Length == 0))
+            {
                 throw new ArgumentException(PatientErrorMessages.FirstAndLastNamesCannotBothBeEmpty);
+            }
             if (dateOfBirth < new DateTime(1900, 1, 1))
+            {
                 throw new ArgumentException(PatientErrorMessages.DateOfBirthCannotBeBefore1900);
+            }
             if (dateOfBirth > DateTime.Now)
+            {
                 throw new ArgumentException(PatientErrorMessages.DateOfBirthCannotBeInTheFuture);
+            }
 
             return PatientsDal.GetPatientsByNameAndDateOfBirth(firstName, lastName, dateOfBirth);
         }
@@ -97,9 +109,13 @@ namespace CS3230Project.Model.Users.Patients
         public static bool ModifyPatient(Dictionary<string, string> updatedDetails)
         {
             if (updatedDetails == null)
+            {
                 throw new ArgumentException(PatientErrorMessages.UpdatedPatientDetailsCannotBeNull);
+            }
             if (updatedDetails.Count == 0)
+            {
                 throw new ArgumentException(PatientErrorMessages.UpdatedPatientDetailsCannotBeEmpty);
+            }
 
             return PatientsDal.ModifyPatient(updatedDetails);
         }
