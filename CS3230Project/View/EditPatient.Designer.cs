@@ -107,9 +107,9 @@
             // 
             this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.35577F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.64423F));
             this.tableLayoutPanel2.Controls.Add(this.label3, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.logoutButton, 2, 0);
@@ -121,7 +121,7 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(800, 92);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(929, 92);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // label3
@@ -130,7 +130,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(147, 0);
+            this.label3.Location = new System.Drawing.Point(201, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(505, 46);
@@ -198,7 +198,7 @@
             this.logoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logoutButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logoutButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.logoutButton.Location = new System.Drawing.Point(660, 22);
+            this.logoutButton.Location = new System.Drawing.Point(789, 22);
             this.logoutButton.Margin = new System.Windows.Forms.Padding(4);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(136, 47);
@@ -214,9 +214,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.40367F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.59633F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 1, 1);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(-164, 89);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
@@ -225,7 +225,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(964, 300);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1093, 300);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // tableLayoutPanel5
@@ -880,7 +880,7 @@
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(800, 54);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(929, 54);
             this.tableLayoutPanel8.TabIndex = 11;
             // 
             // returnToHomeButton
@@ -910,7 +910,7 @@
             this.submitChangesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submitChangesButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitChangesButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.submitChangesButton.Location = new System.Drawing.Point(543, 4);
+            this.submitChangesButton.Location = new System.Drawing.Point(672, 4);
             this.submitChangesButton.Margin = new System.Windows.Forms.Padding(4);
             this.submitChangesButton.Name = "submitChangesButton";
             this.submitChangesButton.Size = new System.Drawing.Size(253, 46);
@@ -923,7 +923,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(929, 450);
             this.Controls.Add(this.tableLayoutPanel8);
             this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.tableLayoutPanel2);
