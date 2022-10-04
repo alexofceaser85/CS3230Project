@@ -13,6 +13,7 @@ namespace CS3230Project.View
     public partial class EditPatient : Form
     {
         private Dictionary<string, string> updatedDetails;
+        private string[] states;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EditPatient" /> class.
@@ -24,17 +25,42 @@ namespace CS3230Project.View
 
             this.updatedDetails = new Dictionary<string, string>();
             this.bindLabelsToCurrentUser();
-            //this.setStatusComboBoxValues();
+            this.setStatusComboBoxValues();
+            this.setGenderComboBoxValues();
             this.loadPatientData(patient);
-
             this.updatedDetails.Add("PatientId", patient.PatientId.ToString());
+            this.states = new string[]
+            {
+                "California", "Indiana", "Texas", "Arizona", "Colorado", "Kentucky", "Nebraska", "Arkansas",
+                "Louisiana",
+                "Maine", "Florida", "Oklahoma", "Alaska", "Wyoming", "Minnesota", "Nevada", "Tennessee", "Ohio",
+                "Oregon", "New Mexico", "Connecticut",
+                "Kansas", "Maryland", "Hawaii", "South Dakota", "Mississippi", "West Virginia", "North Dakota", "Iowa",
+                "Vermont", "Idaho", "New Hampshire",
+                "Georgia", "New York"
+            };
+            Array.Sort(this.states);
+            this.setStateComboBoxValues();
+        }
+
+        private void setStateComboBoxValues()
+        {
+            foreach (var currState in this.states)
+            {
+                this.patientStateComboBox.Items.Add(currState);
+            }
+        }
+
+        private void setGenderComboBoxValues()
+        {
+            this.patientGenderComboBox.Items.Add("Male");
+            this.patientGenderComboBox.Items.Add("Female");
         }
 
         private void setStatusComboBoxValues()
         {
-            //TODO: use enum
-            this.patientStatusComboBox.Items.Add("Active");
-            this.patientStatusComboBox.Items.Add("Inactive");
+            this.patientStatusComboBox.Items.Add("True");
+            this.patientStatusComboBox.Items.Add("False");
         }
 
         private void loadPatientData(Patient patient)
@@ -42,7 +68,7 @@ namespace CS3230Project.View
             this.patientFirstNameTextBox.Text = patient.FirstName;
             this.patientLastNameTextBox.Text = patient.LastName;
             this.patientDateOfBirthPicker.Value = patient.DateOfBirth;
-            this.patientGenderDropBox.Text = patient.Gender;
+            this.patientGenderComboBox.Text = patient.Gender;
             this.patientPhoneNumberTextBox.Text = patient.PhoneNumber;
             this.patientAddressOneTextBox.Text = patient.AddressOne;
             this.patientAddressTwoTextBox.Text = patient.AddressTwo;
@@ -110,12 +136,18 @@ namespace CS3230Project.View
             {
                 this.updatedDetails[((DateTimePicker)sender).Name] = ((DateTimePicker)sender).Value.ToString("yyyy-MM-dd");
             }
-            //this.updatedDetails.Add("patientDateOfBirthPicker", ((DateTimePicker)sender).Value.ToString("yyyy-MM-dd"));
         }
 
         private void patientDetailComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.updatedDetails.Add(((ComboBox)sender).Name, ((ComboBox)sender).Text);
+            if (((ComboBox)sender).Name != null && !this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
+            {
+                this.updatedDetails.Add(((ComboBox)sender).Name, ((ComboBox)sender).Text);
+            }
+            else if (((ComboBox)sender).Name != null && this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
+            {
+                this.updatedDetails[((ComboBox)sender).Name] = ((ComboBox)sender).Text;
+            }
         }
 
         private void patientDetailTextBox_LeaveFocus(object sender, EventArgs e)

@@ -64,7 +64,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
-            this.patientGenderDropBox = new System.Windows.Forms.ComboBox();
+            this.patientGenderComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.patientFirstNameTextBox = new System.Windows.Forms.TextBox();
@@ -621,7 +621,7 @@
             this.tableLayoutPanel12.ColumnCount = 1;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel12.Controls.Add(this.patientGenderDropBox, 0, 1);
+            this.tableLayoutPanel12.Controls.Add(this.patientGenderComboBox, 0, 1);
             this.tableLayoutPanel12.Location = new System.Drawing.Point(11, 196);
             this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
@@ -644,15 +644,15 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Gender *";
             // 
-            // patientGenderDropBox
+            // patientGenderComboBox
             // 
-            this.patientGenderDropBox.FormattingEnabled = true;
-            this.patientGenderDropBox.Location = new System.Drawing.Point(4, 26);
-            this.patientGenderDropBox.Margin = new System.Windows.Forms.Padding(4);
-            this.patientGenderDropBox.Name = "patientGenderDropBox";
-            this.patientGenderDropBox.Size = new System.Drawing.Size(323, 24);
-            this.patientGenderDropBox.TabIndex = 1;
-            this.patientGenderDropBox.SelectedIndexChanged += new System.EventHandler(this.patientDetailComboBox_SelectedIndexChanged);
+            this.patientGenderComboBox.FormattingEnabled = true;
+            this.patientGenderComboBox.Location = new System.Drawing.Point(4, 26);
+            this.patientGenderComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.patientGenderComboBox.Name = "patientGenderComboBox";
+            this.patientGenderComboBox.Size = new System.Drawing.Size(323, 24);
+            this.patientGenderComboBox.TabIndex = 1;
+            this.patientGenderComboBox.SelectedIndexChanged += new System.EventHandler(this.patientDetailComboBox_SelectedIndexChanged);
             // 
             // tableLayoutPanel10
             // 
@@ -954,7 +954,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox patientGenderDropBox;
+        private System.Windows.Forms.ComboBox patientGenderComboBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox patientFirstNameTextBox;

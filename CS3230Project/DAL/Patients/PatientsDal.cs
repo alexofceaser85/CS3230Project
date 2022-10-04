@@ -223,7 +223,7 @@ namespace CS3230Project.DAL.Patients
         {
             if (updatedDetails == null)
             {
-                throw new ArgumentException(); //TODO: Add error message
+                throw new ArgumentException(PatientErrorMessages.UpdatedPatientDetailsCannotBeNull);
             }
 
             using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -257,7 +257,7 @@ namespace CS3230Project.DAL.Patients
                         comm.Parameters.Add("@dateOfBirth", MySqlDbType.Date).Value = DateTime.Parse(currDetail.Value);
                         numberOfDetailsChanged++;
                         break;
-                    case "patientGenderDropBox":
+                    case "patientGenderComboBox":
                         commandText += "gender = @gender";
                         comm.Parameters.Add("@gender", MySqlDbType.String).Value = currDetail.Value;
                         numberOfDetailsChanged++;
@@ -294,8 +294,7 @@ namespace CS3230Project.DAL.Patients
                         break;
                     case "patientStatusComboBox":
                         commandText += "status = @status";
-                        //comm.Parameters.Add("@status", MySqlDbType.String).Value = currDetail.Value == "Active" ? "True" : "False";
-                        comm.Parameters.Add("@status", MySqlDbType.String).Value = currDetail.Value;
+                        comm.Parameters.Add("@status", MySqlDbType.Int16).Value = currDetail.Value.Equals("True") ? 1 : 0;
                         numberOfDetailsChanged++;
                         break;
                     case "PatientId":
@@ -304,8 +303,8 @@ namespace CS3230Project.DAL.Patients
                 }
             }
 
-            commandText += " where patientId = " + patientId;
-            comm.Parameters.Add("@patientId", MySqlDbType.Int32).Value = patientId;
+            commandText += " where patientID = @patientID";
+            comm.Parameters.Add("@patientID", MySqlDbType.Int32).Value = patientId;
             comm.CommandText = commandText;
 
             return comm.ExecuteNonQuery() > 0;
