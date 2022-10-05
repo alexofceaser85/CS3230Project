@@ -21,5 +21,9 @@
         /// The maximum length of the patient's zip code
         /// </summary>
         public const int ZipCodeLength = 5;
+        /// <summary>
+        /// The maximum length of the patient's state
+        /// </summary>
+        public const int StateMaximumLength = 50;
     }
 }

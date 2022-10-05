@@ -5,12 +5,12 @@ using CS3230Project.Settings;
 namespace CS3230Project.Model.Users.Patients
 {
     /// <summary>
-    /// Holds the information for a patient
+    ///     Holds the information for a patient
     /// </summary>
     public class Patient
     {
         /// <summary>
-        /// The ID for the patient
+        ///     The ID for the patient
         /// </summary>
         public int PatientId { get; }
 
@@ -25,53 +25,52 @@ namespace CS3230Project.Model.Users.Patients
         public string FirstName { get; }
 
         /// <summary>
-        /// The date of birth for the patient
+        ///     The date of birth for the patient
         /// </summary>
         public DateTime DateOfBirth { get; }
 
         /// <summary>
-        /// The gender of the patient
+        ///     The gender of the patient
         /// </summary>
         public string Gender { get; }
 
         /// <summary>
-        /// The address one for the patient
+        ///     The address one for the patient
         /// </summary>
         public string AddressOne { get; }
 
         /// <summary>
-        /// The address two for the patient
+        ///     The address two for the patient
         /// </summary>
         public string AddressTwo { get; }
 
         /// <summary>
-        /// The city for the patient
+        ///     The city for the patient
         /// </summary>
         public string City { get; }
 
         /// <summary>
-        /// The state for the patient
+        ///     The state for the patient
         /// </summary>
         public string State { get; }
 
         /// <summary>
-        /// The zipcode for the patient
+        ///     The zipcode for the patient
         /// </summary>
         public string Zipcode { get; }
 
         /// <summary>
-        /// The phone number for the patient
+        ///     The phone number for the patient
         /// </summary>
         public string PhoneNumber { get; }
 
         /// <summary>
-        /// The status status for the patient
+        ///     The status status for the patient
         /// </summary>
         public bool Status { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Patient" />
-        ///
         /// Precondition:
         ///     patientId MORE THAN OR EQUAL TO 0
         ///     AND lastName != null
