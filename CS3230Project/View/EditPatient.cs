@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using CS3230Project.ErrorMessages;
 using CS3230Project.Model.Users.Patients;
 
 namespace CS3230Project.View
