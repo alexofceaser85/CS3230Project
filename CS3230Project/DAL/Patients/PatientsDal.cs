@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CS3230Project.ErrorMessages;
+using CS3230Project.Model;
 using CS3230Project.Model.Users.Patients;
 using MySql.Data.MySqlClient;
 
@@ -262,9 +263,12 @@ namespace CS3230Project.DAL.Patients
                         numberOfDetailsChanged++;
                         break;
                     case "patientPhoneNumberTextBox":
-                        commandText += "phone = @phone";
-                        comm.Parameters.Add("@phone", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
+                        if (DataValidator.IsValidPhoneNumberFormat(updatedDetails["patientPhoneNumberTextBox"]))
+                        {
+                            commandText += "phone = @phone";
+                            comm.Parameters.Add("@phone", MySqlDbType.String).Value = currDetail.Value;
+                            numberOfDetailsChanged++;
+                        }
                         break;
                     case "patientAddressOneTextBox":
                         commandText += "addressOne = @addressOne";
@@ -287,9 +291,12 @@ namespace CS3230Project.DAL.Patients
                         numberOfDetailsChanged++;
                         break;
                     case "patientZipcodeTextBox":
-                        commandText += "zipcode = @zipcode";
-                        comm.Parameters.Add("@zipcode", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
+                        if (DataValidator.IsValidZipCodeFormat(updatedDetails["patientZipcodeTextBox"]))
+                        {
+                            commandText += "zipcode = @zipcode";
+                            comm.Parameters.Add("@zipcode", MySqlDbType.String).Value = currDetail.Value;
+                            numberOfDetailsChanged++;
+                        }
                         break;
                     case "patientStatusComboBox":
                         commandText += "status = @status";
