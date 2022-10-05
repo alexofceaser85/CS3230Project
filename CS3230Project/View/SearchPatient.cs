@@ -184,8 +184,8 @@ namespace CS3230Project.View
 
             }
             
-            Patient patient = new Patient(Int32.Parse(patientId), firstName, lastName, DateTime.Parse(dateOfBirth), gender, addressOne, addressTwo, city,
-                state, zipcode, phoneNumber, bool.Parse(status));
+            Patient patient = new Patient(Int32.Parse(patientId), firstName, lastName, DateTime.Parse(dateOfBirth), gender, phoneNumber, addressOne, addressTwo, city,
+                state, zipcode, bool.Parse(status));
 
             return patient;
         }
