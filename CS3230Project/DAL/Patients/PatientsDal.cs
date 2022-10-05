@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 using CS3230Project.ErrorMessages;
 using CS3230Project.Model;
 using CS3230Project.Model.Users.Patients;
 using CS3230Project.Settings;
+using CS3230Project.View;
 using MySql.Data.MySqlClient;
 using static System.Windows.Forms.AxHost;
 
@@ -14,6 +17,8 @@ namespace CS3230Project.DAL.Patients
     /// </summary>
     public static class PatientsDal
     {
+        private static string editPatientErrorHeader = "Unable To Edit Patient";
+
         /// <summary>
         ///     Adds the patient.
         ///     Precondition:
@@ -251,13 +256,23 @@ namespace CS3230Project.DAL.Patients
                             comm.Parameters.Add("@lastName", MySqlDbType.String).Value = currDetail.Value;
                             numberOfDetailsChanged++;
                         }
+                        else
+                        {
+                            MessageBox.Show(PatientErrorMessages.LastNameIsTooLong, editPatientErrorHeader);
+                            return false;
+                        }
                         break;
-                    case "patientFirstNameTextBox":
+                        case "patientFirstNameTextBox":
                         if (currDetail.Value.Length <= PatientSettings.NameMaximumLength)
                         {
                             commandText += "firstName = @firstName";
                             comm.Parameters.Add("@firstName", MySqlDbType.String).Value = currDetail.Value;
                             numberOfDetailsChanged++;
+                        }
+                        else
+                        {
+                            MessageBox.Show(PatientErrorMessages.FirstNameIsTooLong, editPatientErrorHeader);
+                            return false;
                         }
                         break;
                     case "patientDateOfBirthPicker":
@@ -272,6 +287,11 @@ namespace CS3230Project.DAL.Patients
                             comm.Parameters.Add("@gender", MySqlDbType.String).Value = currDetail.Value;
                             numberOfDetailsChanged++;
                         }
+                        else
+                        {
+                            MessageBox.Show(PatientErrorMessages.GenderIsTooLong, editPatientErrorHeader);
+                            return false;
+                        }
                         break;
                     case "patientPhoneNumberTextBox":
                         if (DataValidator.IsValidPhoneNumberFormat(currDetail.Value))
@@ -279,6 +299,11 @@ namespace CS3230Project.DAL.Patients
                             commandText += "phone = @phone";
                             comm.Parameters.Add("@phone", MySqlDbType.String).Value = currDetail.Value;
                             numberOfDetailsChanged++;
+                        }
+                        else
+                        {
+                            MessageBox.Show(PatientErrorMessages.InvalidPhoneNumberFormat, editPatientErrorHeader);
+                            return false;
                         }
                         break;
                     case "patientAddressOneTextBox":
@@ -288,6 +313,11 @@ namespace CS3230Project.DAL.Patients
                             comm.Parameters.Add("@addressOne", MySqlDbType.String).Value = currDetail.Value;
                             numberOfDetailsChanged++;
                         }
+                        else
+                        {
+                            MessageBox.Show(PatientErrorMessages.AddressOneIsTooLong, editPatientErrorHeader);
+                            return false;
+                        }
                         break;
                     case "patientAddressTwoTextBox":
                         if (currDetail.Value.Length <= PatientSettings.AddressComponentMaximumLength)
@@ -295,6 +325,11 @@ namespace CS3230Project.DAL.Patients
                             commandText += "addressTwo = @addressTwo";
                             comm.Parameters.Add("@addressTwo", MySqlDbType.String).Value = currDetail.Value;
                             numberOfDetailsChanged++;
+                        }
+                        else
+                        {
+                            MessageBox.Show(PatientErrorMessages.AddressTwoIsTooLong, editPatientErrorHeader);
+                            return false;
                         }
                         break;
                     case "patientCityTextBox":
@@ -304,6 +339,11 @@ namespace CS3230Project.DAL.Patients
                             comm.Parameters.Add("@city", MySqlDbType.String).Value = currDetail.Value;
                             numberOfDetailsChanged++;
                         }
+                        else
+                        {
+                            MessageBox.Show(PatientErrorMessages.CityIsTooLong, editPatientErrorHeader);
+                            return false;
+                        }
                         break;
                     case "patientStateComboBox":
                         if (currDetail.Value.Length <= PatientSettings.StateMaximumLength)
@@ -312,6 +352,11 @@ namespace CS3230Project.DAL.Patients
                             comm.Parameters.Add("@state", MySqlDbType.String).Value = currDetail.Value;
                             numberOfDetailsChanged++;
                         }
+                        else
+                        {
+                            MessageBox.Show(PatientErrorMessages.StateIsTooLong, editPatientErrorHeader);
+                            return false;
+                        }
                         break;
                     case "patientZipcodeTextBox":
                         if (DataValidator.IsValidZipCodeFormat(currDetail.Value))
@@ -319,6 +364,11 @@ namespace CS3230Project.DAL.Patients
                             commandText += "zipcode = @zipcode";
                             comm.Parameters.Add("@zipcode", MySqlDbType.String).Value = currDetail.Value;
                             numberOfDetailsChanged++;
+                        }
+                        else
+                        {
+                            MessageBox.Show(PatientErrorMessages.ZipcodeMustHaveFiveCharacters, editPatientErrorHeader);
+                            return false;
                         }
                         break;
                     case "patientStatusComboBox":

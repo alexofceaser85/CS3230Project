@@ -172,7 +172,7 @@
         /// Error message for incorrect zip code size
         /// </summary>
         public static string ZipcodeMustHaveFiveCharacters =
-            "The zip code is in incorrect format, must be have five characters";
+            "The zip code is in incorrect format, must have five characters";
         /// <summary>
         /// Error message for incorrect zip code format
         /// </summary>
