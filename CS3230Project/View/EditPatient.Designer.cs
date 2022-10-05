@@ -238,7 +238,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.flowLayoutPanel1, 0, 1);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(364, 20);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(350, 20);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.tableLayoutPanel5.MaximumSize = new System.Drawing.Size(393, 738);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -579,7 +579,8 @@
             "Georgia",
             "Hawaii",
             "Idaho",
-            "IllinoisIndiana",
+            "Illinois",
+            "Indiana",
             "Iowa",
             "Kansas",
             "Kentucky",
@@ -591,7 +592,8 @@
             "Minnesota",
             "Mississippi",
             "Missouri",
-            "MontanaNebraska",
+            "Montana",
+            "Nebraska",
             "Nevada",
             "New Hampshire",
             "New Jersey",
@@ -602,7 +604,8 @@
             "Ohio",
             "Oklahoma",
             "Oregon",
-            "PennsylvaniaRhode Island",
+            "Pennsylvania",
+            "Rhode Island",
             "South Carolina",
             "South Dakota",
             "Tennessee",

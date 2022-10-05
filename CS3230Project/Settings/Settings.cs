@@ -24,6 +24,6 @@
         /// <summary>
         /// The maximum length of the patient's state
         /// </summary>
-        public const int StateMaximumLength = 5;
+        public const int StateMaximumLength = 50;
     }
 }
