@@ -34,7 +34,7 @@ namespace CS3230Project.Model
                 throw new ArgumentException(PatientErrorMessages.PhoneNumberCannotBeEmpty);
             }
 
-            Regex regex = new Regex(validPhoneNumberRegexPattern);
+            var regex = new Regex(validPhoneNumberRegexPattern);
             return regex.IsMatch(phoneNumber);
         }
 
@@ -59,6 +59,7 @@ namespace CS3230Project.Model
             {
                 throw new ArgumentException(PatientErrorMessages.ZipcodeCannotBeEmpty);
             }
+
             var regex = new Regex(validZipCodeRegexPattern);
             return regex.IsMatch(zipcode);
         }

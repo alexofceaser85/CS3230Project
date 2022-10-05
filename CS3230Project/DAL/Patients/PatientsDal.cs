@@ -63,7 +63,7 @@ namespace CS3230Project.DAL.Patients
             comm.Parameters.Add("@city", MySqlDbType.String).Value = city;
             comm.Parameters.Add("@state", MySqlDbType.String).Value = state;
             comm.Parameters.Add("@zipcode", MySqlDbType.String).Value = zipcode;
-            comm.Parameters.Add("@status", MySqlDbType.String).Value = status;
+            comm.Parameters.Add("@status", MySqlDbType.Int16).Value = status;
 
             return comm.ExecuteNonQuery() > 0;
         }
@@ -205,12 +205,12 @@ namespace CS3230Project.DAL.Patients
                     reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
                     reader.GetFieldValue<DateTime>(dateOfBirthOrdinal),
                     reader.GetFieldValueCheckNull<string>(genderOrdinal),
+                    reader.GetFieldValueCheckNull<string>(phoneNumberOrdinal),
                     reader.GetFieldValueCheckNull<string>(addressOneOrdinal),
                     reader.GetFieldValueCheckNull<string>(addressTwoOrdinal),
                     reader.GetFieldValueCheckNull<string>(cityOrdinal),
                     reader.GetFieldValueCheckNull<string>(stateOrdinal),
                     reader.GetFieldValueCheckNull<string>(zipcodeOrdinal),
-                    reader.GetFieldValueCheckNull<string>(phoneNumberOrdinal),
                     reader.GetFieldValue<bool>(statusOrdinal)));
             }
 

@@ -76,6 +76,10 @@
         /// </summary>
         public static string FirstNameCannotBeEmpty = "The patient first name cannot be empty";
         /// <summary>
+        /// Error message for first name being too long
+        /// </summary>
+        public static string FirstNameIsTooLong = "The patient first name is too long";
+        /// <summary>
         /// Error message for null last name
         /// </summary>
         public static string LastNameCannotBeNull = "The patient last name cannot be null";
@@ -83,6 +87,10 @@
         /// Error message for empty last name
         /// </summary>
         public static string LastNameCannotBeEmpty = "The patient last name cannot be empty";
+        /// <summary>
+        /// Error message for last name being too long
+        /// </summary>
+        public static string LastNameIsTooLong = "The patient last name is too long";
         /// <summary>
         /// Error message for both first and last names being either null or empty
         /// </summary>
@@ -105,6 +113,10 @@
         /// </summary>
         public static string GenderCannotBeEmpty = "The patient gender cannot be empty.";
         /// <summary>
+        /// Error message for gender being too long
+        /// </summary>
+        public static string GenderIsTooLong = "The patient gender is too long";
+        /// <summary>
         /// Error message for null street address
         /// </summary>
         public static string AddressOneCannotBeNull = "The patient address one cannot be null.";
@@ -112,6 +124,18 @@
         /// Error message for empty street address
         /// </summary>
         public static string AddressOneCannotBeEmpty = "The patient address one cannot be empty.";
+        /// <summary>
+        /// Error message for address one being too long
+        /// </summary>
+        public static string AddressOneIsTooLong = "The address one is too long";
+        /// <summary>
+        /// Error message for null address two
+        /// </summary>
+        public static string AddressTwoCannotBeNull = "The patient address two cannot be null";
+        /// <summary>
+        /// Error message for address two being too long
+        /// </summary>
+        public static string AddressTwoIsTooLong = "The address two is too long";
         /// <summary>
         /// Error message for null city
         /// </summary>
@@ -121,6 +145,10 @@
         /// </summary>
         public static string CityCannotBeEmpty = "The patient city cannot be empty.";
         /// <summary>
+        /// Error message for city being too long
+        /// </summary>
+        public static string CityIsTooLong = "The city is too long";
+        /// <summary>
         /// Error message for null state
         /// </summary>
         public static string StateCannotBeNull = "The patient state cannot be null.";
@@ -129,13 +157,27 @@
         /// </summary>
         public static string StateCannotBeEmpty = "The patient state cannot be empty.";
         /// <summary>
-        /// Error message for null zip
+        /// Error message for state being too long
+        /// </summary>
+        public static string StateIsTooLong = "The patient state is too long";
+        /// <summary>
+        /// Error message for null zip code
         /// </summary>
         public static string ZipcodeCannotBeNull = "The patient zip code cannot be null.";
         /// <summary>
-        /// Error message for empty zip
+        /// Error message for empty zip code
         /// </summary>
         public static string ZipcodeCannotBeEmpty = "The patient zip code cannot be empty.";
+        /// <summary>
+        /// Error message for incorrect zip code size
+        /// </summary>
+        public static string ZipcodeMustHaveFiveCharacters =
+            "The zip code is in incorrect format, must be have five characters";
+        /// <summary>
+        /// Error message for incorrect zip code format
+        /// </summary>
+        public static string ZipcodeMustBeAllDigits =
+            "The zip code is in incorrect format, must be all digits";
         /// <summary>
         /// Error message for null phone number
         /// </summary>

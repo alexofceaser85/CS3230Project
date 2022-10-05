@@ -9,271 +9,480 @@ namespace CS3230ProjectTests.Model.Accounts.Users
     public class PatientTests
     {
         [TestMethod]
-        public void TestPatientIdLessThanZero()
+        public void PatientIdShouldNotBeOneLessThanZero()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(-1, "first1", "last1", new DateTime(2000, 1, 1), "male", "123 address", null, "Carrollton", "GA", "30117", "770-830-1330", true);
+                _ = new Patient(-1, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.PatientIdCannotBeLessThanZero);
         }
 
         [TestMethod]
-        public void TestNullFirstName()
+        public void PatientIdShouldNotBeWellLessThanZero()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, null, "last1", new DateTime(2000, 1, 1), "male", "123 address", null, "Carrollton", "GA", "30117", "770-830-1330", true);
+                _ = new Patient(-100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.PatientIdCannotBeLessThanZero);
+        }
+
+        [TestMethod]
+        public void PatientFirstNameShouldNotBeNull()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", null, DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.FirstNameCannotBeNull);
         }
 
         [TestMethod]
-        public void TestEmptyFirstName()
+        public void PatientFirstNameShouldNotBeEmpty()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "", "last1", new DateTime(2000, 1, 1), "male", "123 address", null, "Carrollton", "GA", "30117", "770-830-1330", true);
+                _ = new Patient(100, "Last", "", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.FirstNameCannotBeEmpty);
         }
 
         [TestMethod]
-        public void TestNullLastName()
+        public void PatientFirstNameShouldNotBeAllSpaces()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", null, new DateTime(2000, 1, 1), "male", "123 address", null, "Carrollton", "GA", "30117", "770-830-1330", true);
+                _ = new Patient(100, "Last", "       ", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.FirstNameCannotBeEmpty);
+        }
+
+        [TestMethod]
+        public void PatientFirstNameShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", 
+                    "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST", 
+                    DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.FirstNameIsTooLong);
+        }
+
+        [TestMethod]
+        public void PatientLastNameShouldNotBeNull()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, null, "First", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.LastNameCannotBeNull);
         }
 
         [TestMethod]
-        public void TestEmptyLastName()
+        public void PatientLastNameShouldNotBeEmpty()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "", new DateTime(2000, 1, 1), "male", "123 address", null, "Carrollton", "GA", "30117", "770-830-1330", true);
+                _ = new Patient(100, "", "First", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.LastNameCannotBeEmpty);
         }
 
         [TestMethod]
-        public void TestDateOfBirthWellBefore1900()
+        public void PatientLastNameShouldNotBeAllSpaces()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(1800, 8, 18), "male", "123 address", null, "Carrollton", "GA", "30117", "770-830-1330", true);
+                _ = new Patient(100, "      ", "First", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.LastNameCannotBeEmpty);
+        }
+
+        [TestMethod]
+        public void PatientLastNameShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST", "First",
+                    DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.LastNameIsTooLong);
+        }
+
+        [TestMethod]
+        public void PatientDateOfBirthShouldNotBeBelow1900()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", new DateTime(1899, 12, 31), "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.DateOfBirthCannotBeBefore1900);
         }
 
         [TestMethod]
-        public void TestDateOfBirthOneDayBefore1900()
+        public void PatientDateOfBirthShouldNotBePastCurrentDate()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(1899, 12, 31), "male", "123 address", null, "Carrollton", "GA", "30117", "770-830-1330", true);
-            });
-            Assert.AreEqual(message.Message, PatientErrorMessages.DateOfBirthCannotBeBefore1900);
-        }
-
-        [TestMethod]
-        public void TestDateOfBirthFarInFuture()
-        {
-            var message = Assert.ThrowsException<ArgumentException>(() =>
-            {
-                _ = new Patient(1, "first1", "last1", new DateTime(2222, 1, 1), "male", "123 address", null, "Carrollton", "GA", "30117", "770-830-1330", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today.AddDays(1), "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.DateOfBirthCannotBeInTheFuture);
         }
 
         [TestMethod]
-        public void TestDateOfBirthOneDayInFuture()
+        public void PatientGenderCannotBeNull()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1",  DateTime.Now.AddDays(1), "male", "123 address", null, "Carrollton", "GA", "30117", "770-830-1330", true);
-            });
-            Assert.AreEqual(message.Message, PatientErrorMessages.DateOfBirthCannotBeInTheFuture);
-        }
-
-        [TestMethod]
-        public void TestNullGender()
-        {
-            var message = Assert.ThrowsException<ArgumentException>(() =>
-            {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), null, "123 address", null, "Carrollton", "GA", "30117", "770-830-1330", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, null, "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.GenderCannotBeNull);
         }
 
         [TestMethod]
-        public void TestEmptyGender()
+        public void PatientGenderCannotBeEmpty()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "", "123 address", null, "Carrollton", "GA", "30117", "770-830-1330", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.GenderCannotBeEmpty);
         }
 
         [TestMethod]
-        public void TestNullAddressOne()
+        public void PatientGenderCannotBeAllSpaces()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", null, null, "Carrollton", "GA", "30117", "770-830-1330", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "    ", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "11111",  true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.GenderCannotBeEmpty);
+        }
+
+        [TestMethod]
+        public void PatientGenderShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", "First", DateTime.Today, "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
+                    , "777-777-7777", "Address", "", "Carrollton", "Georgia", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.GenderIsTooLong);
+        }
+
+        [TestMethod]
+        public void PatientAddressOneCannotBeNull()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", null, "", "Carrollton", "Georgia",
+                    "11111", true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.AddressOneCannotBeNull);
         }
 
         [TestMethod]
-        public void TestEmptyAddressOne()
+        public void PatientAddressOneCannotBeEmpty()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "", null, "Carrollton", "GA", "30117", "770-830-1330", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "", "", "Carrollton", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.AddressOneCannotBeEmpty);
         }
 
         [TestMethod]
-        public void TestNullCity()
+        public void PatientAddressOneCannotBeAllSpaces()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, null, "GA", "30117", "770-830-1330", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "      ", "", "Carrollton", "Georgia",
+                    "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.AddressOneCannotBeEmpty);
+        }
+
+        [TestMethod]
+        public void PatientAddressOneShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", "First", DateTime.Today, "Male"
+                    , "777-777-7777", "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST", "", "Carrollton", "Georgia", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.AddressOneIsTooLong);
+        }
+
+        [TestMethod]
+        public void PatientAddressTwoCannotBeNull()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", null, "Carrollton", "Georgia",
+                    "11111",  true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.AddressTwoCannotBeNull);
+        }
+
+        [TestMethod]
+        public void PatientAddressTwoShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", "First", DateTime.Today, "Male"
+                    , "777-777-7777", "Address", "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST", "Carrollton", "Georgia", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.AddressTwoIsTooLong);
+        }
+
+        [TestMethod]
+        public void PatientCityCannotBeNull()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", null, "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.CityCannotBeNull);
         }
 
         [TestMethod]
-        public void TestEmptyCity()
+        public void PatientCityCannotBeEmpty()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, "", "GA", "30117", "770-830-1330", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "", "Georgia",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.CityCannotBeEmpty);
         }
 
         [TestMethod]
-        public void TestNullState()
+        public void PatientCityCannotBeAllSpaces()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, "Carrollton", null, "30117", "770-830-1330", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "   ", "Georgia",
+                    "11111",  true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.CityCannotBeEmpty);
+        }
+
+        [TestMethod]
+        public void PatientCityShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", "First", DateTime.Today, "Male"
+                    , "777-777-7777", "Address", "", "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST", "GEORGIA", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.CityIsTooLong);
+        }
+
+        [TestMethod]
+        public void PatientStateCannotBeNull()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", null,
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.StateCannotBeNull);
         }
 
         [TestMethod]
-        public void TestEmptyState()
+        public void PatientStateCannotBeEmpty()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, "Carrollton", "", "30117", "770-830-1330", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "",
+                    "11111",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.StateCannotBeEmpty);
         }
 
         [TestMethod]
-        public void TestNullZip()
+        public void PatientStateCannotBeAllSpaces()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, "Carrollton", "GA", null, "770-830-1330", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "     ",
+                    "11111",  true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.StateCannotBeEmpty);
+        }
+
+        [TestMethod]
+        public void PatientStateShouldNotBeTooLong()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "Last", "First", DateTime.Today, "Male"
+                    , "777-777-7777", "Address", "", "Carrollton", "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST", "11111", true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.StateIsTooLong);
+        }
+
+        [TestMethod]
+        public void PatientZipCodeCannotBeNull()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    null,  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.ZipcodeCannotBeNull);
         }
 
         [TestMethod]
-        public void TestEmptyZip()
+        public void PatientZipCodeCannotBeEmpty()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, "Carrollton", "GA", "", "770-830-1330", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "",  true);
             });
             Assert.AreEqual(message.Message, PatientErrorMessages.ZipcodeCannotBeEmpty);
         }
 
         [TestMethod]
-        public void TestNullPhone()
+        public void PatientZipCodeCannotBeAllSpaces()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, "Carrollton", "GA", "30117", null, true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "      ",  true);
             });
+            Assert.AreEqual(message.Message, PatientErrorMessages.ZipcodeCannotBeEmpty);
+        }
+
+        [TestMethod]
+        public void PatientZipCodeMustBeAllDigits()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "ddddd",  true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.ZipcodeMustBeAllDigits);
+        }
+
+        [TestMethod]
+        public void PatientZipCodeCannotContainLessThanFiveDigits()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "1234",  true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.ZipcodeMustHaveFiveCharacters);
+        }
+
+        [TestMethod]
+        public void PatientZipCodeCannotContainMoreThanFiveDigits()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                    "123456",  true);
+            });
+            Assert.AreEqual(message.Message, PatientErrorMessages.ZipcodeMustHaveFiveCharacters);
+        }
+
+        [TestMethod]
+        public void PatientPhoneNumberCannotBeNull()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", null, "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
+            });
+
             Assert.AreEqual(message.Message, PatientErrorMessages.PhoneNumberCannotBeNull);
         }
 
         [TestMethod]
-        public void TestEmptyPhone()
+        public void PatientPhoneNumberCannotBeEmpty()
         {
             var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, "Carrollton", "GA", "30117", "", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
             });
+
             Assert.AreEqual(message.Message, PatientErrorMessages.PhoneNumberCannotBeEmpty);
         }
 
         [TestMethod]
-        public void TestInvalidPhoneNoDashes()
+        public void PatientPhoneNumberCannotBeAllSpaces()
         {
-            var message = Assert.ThrowsException<FormatException>(() =>
+            var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, "Carrollton", "GA", "30117", "7708301330", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "       ", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
             });
+
+            Assert.AreEqual(message.Message, PatientErrorMessages.PhoneNumberCannotBeEmpty);
+        }
+
+        [TestMethod]
+        public void PatientPhoneNumberCannotContainLessThanTwelveDigits()
+        {
+            var message = Assert.ThrowsException<ArgumentException>(() =>
+            {
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "770-770-777", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
+            });
+
             Assert.AreEqual(message.Message, PatientErrorMessages.InvalidPhoneNumberFormat);
         }
 
         [TestMethod]
-        public void TestInvalidPhoneCorrectFormatWithLetters()
+        public void PatientPhoneNumberCannotContainMoreThanTwelveDigits()
         {
-            var message = Assert.ThrowsException<FormatException>(() =>
+            var message = Assert.ThrowsException<ArgumentException>(() =>
             {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, "Carrollton", "GA", "30117", "7t0-8A0-13s0", true);
+                _ = new Patient(100, "First", "Last", DateTime.Today, "Male", "770-770-77755", "Address", "", "Carrollton", "Georgia",
+                    "11111", true);
             });
+
             Assert.AreEqual(message.Message, PatientErrorMessages.InvalidPhoneNumberFormat);
         }
 
         [TestMethod]
-        public void TestInvalidPhoneTooManyDigits()
+        public void ShouldCreateValidPatient()
         {
-            var message = Assert.ThrowsException<FormatException>(() =>
-            {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, "Carrollton", "GA", "30117", "7705-8305-13305", true);
-            });
-            Assert.AreEqual(message.Message, PatientErrorMessages.InvalidPhoneNumberFormat);
-        }
+            var patient = _ = new Patient(100, "Last", "First", DateTime.Today, "Male", "777-777-7777", "Address", "", "Carrollton", "Georgia",
+                "11111", true);
 
-        [TestMethod]
-        public void TestInvalidPhoneWithParantheses()
-        {
-            var message = Assert.ThrowsException<FormatException>(() =>
-            {
-                _ = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, "Carrollton", "GA", "30117", "(770) 830-1330", true);
-            });
-            Assert.AreEqual(message.Message, PatientErrorMessages.InvalidPhoneNumberFormat);
-        }
-
-        [TestMethod]
-        public void TestValidPatientCreated()
-        {
-            var patient = new Patient(1, "first1", "last1", new DateTime(2000, 1, 1), "Male", "123 address", null, "Carrollton", "GA", "30117", "770-830-1330", true);
-            Assert.AreEqual(1, patient.PatientId);
-            Assert.AreEqual("first1", patient.FirstName);
-            Assert.AreEqual("last1", patient.LastName);
-            Assert.AreEqual(new DateTime(2000, 1, 1), patient.DateOfBirth);
+            Assert.AreEqual(100, patient.PatientId);
+            Assert.AreEqual("First", patient.FirstName);
+            Assert.AreEqual("Last", patient.LastName);
+            Assert.AreEqual(DateTime.Today, patient.DateOfBirth);
             Assert.AreEqual("Male", patient.Gender);
-            Assert.AreEqual("123 address", patient.AddressOne);
-            Assert.IsNull(patient.AddressTwo);
+            Assert.AreEqual("Address", patient.AddressOne);
+            Assert.AreEqual("", patient.AddressTwo);
             Assert.AreEqual("Carrollton", patient.City);
-            Assert.AreEqual("GA", patient.State);
-            Assert.AreEqual("30117", patient.Zipcode);
-            Assert.AreEqual("770-830-1330", patient.PhoneNumber);
-            Assert.IsTrue(patient.Status);
+            Assert.AreEqual("Georgia", patient.State);
+            Assert.AreEqual("11111", patient.Zipcode);
+            Assert.AreEqual("777-777-7777", patient.PhoneNumber);
+            Assert.AreEqual(true, patient.Status);
         }
     }
 }
