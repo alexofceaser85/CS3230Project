@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using CS3230Project.ErrorMessages;
 using CS3230Project.Model;
 using CS3230Project.Model.Users.Patients;
+using CS3230Project.Settings;
 using MySql.Data.MySqlClient;
+using static System.Windows.Forms.AxHost;
 
 namespace CS3230Project.DAL.Patients
 {
@@ -243,14 +245,20 @@ namespace CS3230Project.DAL.Patients
                 switch (currDetail.Key)
                 {
                     case "patientLastNameTextBox":
-                        commandText += "lastName = @lastName";
-                        comm.Parameters.Add("@lastName", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
+                        if (currDetail.Value.Length <= PatientSettings.NameMaximumLength)
+                        {
+                            commandText += "lastName = @lastName";
+                            comm.Parameters.Add("@lastName", MySqlDbType.String).Value = currDetail.Value;
+                            numberOfDetailsChanged++;
+                        }
                         break;
                     case "patientFirstNameTextBox":
-                        commandText += "firstName = @firstName";
-                        comm.Parameters.Add("@firstName", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
+                        if (currDetail.Value.Length <= PatientSettings.NameMaximumLength)
+                        {
+                            commandText += "firstName = @firstName";
+                            comm.Parameters.Add("@firstName", MySqlDbType.String).Value = currDetail.Value;
+                            numberOfDetailsChanged++;
+                        }
                         break;
                     case "patientDateOfBirthPicker":
                         commandText += "dateOfBirth = @dateOfBirth";
@@ -258,12 +266,15 @@ namespace CS3230Project.DAL.Patients
                         numberOfDetailsChanged++;
                         break;
                     case "patientGenderComboBox":
-                        commandText += "gender = @gender";
-                        comm.Parameters.Add("@gender", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
+                        if (currDetail.Value.Length <= PatientSettings.GenderMaximumLength)
+                        {
+                            commandText += "gender = @gender";
+                            comm.Parameters.Add("@gender", MySqlDbType.String).Value = currDetail.Value;
+                            numberOfDetailsChanged++;
+                        }
                         break;
                     case "patientPhoneNumberTextBox":
-                        if (DataValidator.IsValidPhoneNumberFormat(updatedDetails["patientPhoneNumberTextBox"]))
+                        if (DataValidator.IsValidPhoneNumberFormat(currDetail.Value))
                         {
                             commandText += "phone = @phone";
                             comm.Parameters.Add("@phone", MySqlDbType.String).Value = currDetail.Value;
@@ -271,27 +282,39 @@ namespace CS3230Project.DAL.Patients
                         }
                         break;
                     case "patientAddressOneTextBox":
-                        commandText += "addressOne = @addressOne";
-                        comm.Parameters.Add("@addressOne", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
+                        if (currDetail.Value.Length <= PatientSettings.AddressComponentMaximumLength)
+                        {
+                            commandText += "addressOne = @addressOne";
+                            comm.Parameters.Add("@addressOne", MySqlDbType.String).Value = currDetail.Value;
+                            numberOfDetailsChanged++;
+                        }
                         break;
                     case "patientAddressTwoTextBox":
-                        commandText += "addressTwo = @addressTwo";
-                        comm.Parameters.Add("@addressTwo", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
+                        if (currDetail.Value.Length <= PatientSettings.AddressComponentMaximumLength)
+                        {
+                            commandText += "addressTwo = @addressTwo";
+                            comm.Parameters.Add("@addressTwo", MySqlDbType.String).Value = currDetail.Value;
+                            numberOfDetailsChanged++;
+                        }
                         break;
                     case "patientCityTextBox":
-                        commandText += "city = @city";
-                        comm.Parameters.Add("@city", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
+                        if (currDetail.Value.Length <= PatientSettings.AddressComponentMaximumLength)
+                        {
+                            commandText += "city = @city";
+                            comm.Parameters.Add("@city", MySqlDbType.String).Value = currDetail.Value;
+                            numberOfDetailsChanged++;
+                        }
                         break;
                     case "patientStateComboBox":
-                        commandText += "state = @state";
-                        comm.Parameters.Add("@state", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
+                        if (currDetail.Value.Length <= PatientSettings.StateMaximumLength)
+                        {
+                            commandText += "state = @state";
+                            comm.Parameters.Add("@state", MySqlDbType.String).Value = currDetail.Value;
+                            numberOfDetailsChanged++;
+                        }
                         break;
                     case "patientZipcodeTextBox":
-                        if (DataValidator.IsValidZipCodeFormat(updatedDetails["patientZipcodeTextBox"]))
+                        if (DataValidator.IsValidZipCodeFormat(currDetail.Value))
                         {
                             commandText += "zipcode = @zipcode";
                             comm.Parameters.Add("@zipcode", MySqlDbType.String).Value = currDetail.Value;
