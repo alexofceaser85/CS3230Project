@@ -11,6 +11,8 @@ namespace CS3230Project.View
     /// </summary>
     public partial class EditPatient : Form
     {
+        private static string editPatientErrorHeader = "Unable To Edit Patient";
+        private static string editPatientLoadingErrorHeader = "Unable To Edit Patient";
         private Dictionary<string, string> updatedDetails;
         private string[] states;
 
@@ -20,11 +22,18 @@ namespace CS3230Project.View
         /// <param name="patient">The patient.</param>
         public EditPatient(Patient patient)
         {
-            this.InitializeComponent();
-            this.updatedDetails = new Dictionary<string, string>();
-            this.bindLabelsToCurrentUser();
-            this.loadPatientData(patient);
-            this.updatedDetails.Add("PatientId", patient.PatientId.ToString());
+            try
+            {
+                this.InitializeComponent();
+                this.updatedDetails = new Dictionary<string, string>();
+                this.bindLabelsToCurrentUser();
+                this.loadPatientData(patient);
+                this.updatedDetails.Add("PatientId", patient.PatientId.ToString());
+            }
+            catch (ArgumentException errorMessage)
+            {
+                MessageBox.Show(errorMessage.Message, editPatientLoadingErrorHeader);
+            }
         }
 
         private void loadPatientData(Patient patient)
@@ -77,15 +86,22 @@ namespace CS3230Project.View
 
         private void submitChangesButton_Click(object sender, EventArgs e)
         {
-            PatientManager.ModifyPatient(this.updatedDetails);
-            Form searchPatientForm = new SearchPatient();
-            searchPatientForm.Location = Location;
-            searchPatientForm.StartPosition = FormStartPosition.Manual;
-            searchPatientForm.FormClosing += delegate { Show(); };
-            Hide();
-            searchPatientForm.Size = this.Size;
-            searchPatientForm.ShowDialog();
-            Close();
+            try
+            {
+                PatientManager.ModifyPatient(this.updatedDetails);
+                Form searchPatientForm = new SearchPatient();
+                searchPatientForm.Location = Location;
+                searchPatientForm.StartPosition = FormStartPosition.Manual;
+                searchPatientForm.FormClosing += delegate { Show(); };
+                Hide();
+                searchPatientForm.Size = this.Size;
+                searchPatientForm.ShowDialog();
+                Close();
+            }
+            catch (ArgumentException errorMessage)
+            {
+                MessageBox.Show(errorMessage.Message, editPatientErrorHeader);
+            }
         }
 
         private void patientDateOfBirthPicker_ValueChanged(object sender, EventArgs e)
