@@ -1,9 +1,8 @@
-﻿using CS3230Project.Model.Accounts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using CS3230Project.ErrorMessages;
 using CS3230Project.Model.Users.Patients;
+using CS3230Project.View.Validation;
 
 namespace CS3230Project.View
 {
@@ -15,7 +14,6 @@ namespace CS3230Project.View
         private static string editPatientErrorHeader = "Unable To Edit Patient";
         private static string editPatientLoadingErrorHeader = "Unable To Edit Patient";
         private Dictionary<string, string> updatedDetails;
-        private string[] states;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EditPatient" /> class.
@@ -27,9 +25,9 @@ namespace CS3230Project.View
             {
                 this.InitializeComponent();
                 this.updatedDetails = new Dictionary<string, string>();
-                this.bindLabelsToCurrentUser();
                 this.loadPatientData(patient);
                 this.updatedDetails.Add("PatientId", patient.PatientId.ToString());
+                this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesButton_Click;
             }
             catch (ArgumentException errorMessage)
             {
@@ -53,42 +51,11 @@ namespace CS3230Project.View
 
         }
 
-        private void bindLabelsToCurrentUser()
-        {
-            this.loggedInAsLabel.Text = $"Logged In As: {CurrentUser.User.UserName}";
-            this.userIdLabel.Text = $"User ID: {CurrentUser.User.Id}";
-            this.nameLabel.Text = $"Name: {CurrentUser.User.FirstName} {CurrentUser.User.LastName}";
-        }
-
-        private void logoutButton_Click(object sender, EventArgs e)
-        {
-            CurrentUser.User = null;
-            Form homeForm = new Login();
-            homeForm.Location = Location;
-            homeForm.StartPosition = FormStartPosition.Manual;
-            homeForm.FormClosing += delegate { Show(); };
-            Hide();
-            homeForm.Size = this.Size;
-            homeForm.ShowDialog();
-            Close();
-        }
-
-        private void backToHomeButton_Click(object sender, EventArgs e)
-        {
-            Form homeForm = new Home();
-            homeForm.Location = Location;
-            homeForm.StartPosition = FormStartPosition.Manual;
-            homeForm.FormClosing += delegate { Show(); };
-            Hide();
-            homeForm.Size = this.Size;
-            homeForm.ShowDialog();
-            Close();
-        }
-
         private void submitChangesButton_Click(object sender, EventArgs e)
         {
             try
             {
+                this.verifyAll();
                 PatientManager.ModifyPatient(this.updatedDetails);
                 Form searchPatientForm = new SearchPatient();
                 searchPatientForm.Location = Location;
@@ -107,6 +74,8 @@ namespace CS3230Project.View
 
         private void patientDateOfBirthPicker_ValueChanged(object sender, EventArgs e)
         {
+            PatientValidation.VerifyDateInputs(this.patientDateOfBirthPicker, this.dateOfBirthErrorMessage);
+
             if (((DateTimePicker)sender).Name != null && !this.updatedDetails.ContainsKey(((DateTimePicker)sender).Name))
             {
                 this.updatedDetails.Add(((DateTimePicker)sender).Name, ((DateTimePicker)sender).Value.ToString("yyyy-MM-dd"));
@@ -119,14 +88,7 @@ namespace CS3230Project.View
 
         private void patientDetailComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (((ComboBox)sender).Name != null && !this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
-            {
-                this.updatedDetails.Add(((ComboBox)sender).Name, ((ComboBox)sender).Text);
-            }
-            else if (((ComboBox)sender).Name != null && this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
-            {
-                this.updatedDetails[((ComboBox)sender).Name] = ((ComboBox)sender).Text;
-            }
+
         }
 
         private void patientDetailTextBox_LeaveFocus(object sender, EventArgs e)
@@ -139,6 +101,66 @@ namespace CS3230Project.View
             {
                 this.updatedDetails[((TextBox)sender).Name] = ((TextBox)sender).Text;
             }
+        }
+
+        private void verifyAll()
+        {
+            PatientValidation.VerifyLastNameInputs(this.patientLastNameTextBox, this.lastNameErrorMessage);
+            PatientValidation.VerifyFirstNameInputs(this.patientFirstNameTextBox, this.firstNameErrorMessage);
+            PatientValidation.VerifyPhoneNumberInputs(this.patientPhoneNumberTextBox, this.phoneNumberErrorMessage);
+            PatientValidation.VerifyAddressOneInputs(this.patientAddressOneTextBox, this.addressOneErrorMessage);
+            PatientValidation.VerifyCityInputs(this.patientCityTextBox, this.cityErrorMessage);
+            PatientValidation.VerifyGenderInputs(this.patientGenderComboBox, this.genderErrorMessage);
+            PatientValidation.VerifyStateInputs(this.patientStateComboBox, this.stateErrorMessage);
+            PatientValidation.VerifyZipCodeInputs(this.patientZipcodeTextBox, this.zipCodeErrorMessage);
+            PatientValidation.VerifyStatusInputs(this.patientStatusComboBox, this.statusErrorMessage);
+        }
+
+        private void patientLastNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PatientValidation.VerifyLastNameInputs(this.patientLastNameTextBox, this.lastNameErrorMessage);
+        }
+
+        private void patientFirstNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PatientValidation.VerifyFirstNameInputs(this.patientFirstNameTextBox, this.firstNameErrorMessage);
+        }
+
+        private void patientPhoneNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PatientValidation.VerifyPhoneNumberInputs(this.patientPhoneNumberTextBox, this.phoneNumberErrorMessage);
+        }
+
+        private void patientAddressOneTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PatientValidation.VerifyAddressOneInputs(this.patientAddressOneTextBox, this.addressOneErrorMessage);
+        }
+
+        private void patientCityTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PatientValidation.VerifyCityInputs(this.patientCityTextBox, this.cityErrorMessage);
+        }
+
+        private void patientGenderComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PatientValidation.VerifyGenderInputs(this.patientGenderComboBox, this.genderErrorMessage);
+            this.patientDetailComboBox_SelectedIndexChanged(sender, e);
+        }
+
+        private void patientStateComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PatientValidation.VerifyStateInputs(this.patientStateComboBox, this.stateErrorMessage);
+            this.patientDetailComboBox_SelectedIndexChanged(sender, e);
+        }
+
+        private void patientZipcodeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PatientValidation.VerifyZipCodeInputs(this.patientZipcodeTextBox, this.zipCodeErrorMessage);
+        }
+
+        private void patientStatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PatientValidation.VerifyStatusInputs(this.patientStatusComboBox, this.statusErrorMessage);
         }
     }
 }

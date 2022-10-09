@@ -20,27 +20,6 @@ namespace CS3230Project.View
         public SearchPatient()
         {
             this.InitializeComponent();
-            this.bindLabelsToCurrentUser();
-        }
-
-        private void bindLabelsToCurrentUser()
-        {
-            this.loggedInAsLabel.Text = $"Logged In As: {CurrentUser.User.UserName}";
-            this.userIdLabel.Text = $"User ID: {CurrentUser.User.Id}";
-            this.nameLabel.Text = $"Name: {CurrentUser.User.FirstName} {CurrentUser.User.LastName}";
-        }
-
-        private void logoutButton_Click(object sender, EventArgs e)
-        {
-            CurrentUser.User = null;
-            Form homeForm = new Login();
-            homeForm.Location = Location;
-            homeForm.StartPosition = FormStartPosition.Manual;
-            homeForm.FormClosing += delegate { Show(); };
-            Hide();
-            homeForm.Size = this.Size;
-            homeForm.ShowDialog();
-            Close();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -120,6 +99,7 @@ namespace CS3230Project.View
                 Hide();
                 editForm.Size = this.Size;
                 editForm.ShowDialog();
+                dataGridView.CurrentCell.Selected = false;
                 Close();
             }
 
