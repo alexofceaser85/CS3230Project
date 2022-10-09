@@ -13,15 +13,7 @@ namespace CS3230Project.View.Components.Footers
         /// </summary>
         public event EventHandler SubmitButtonEventHandler;
 
-        private Form currentForm;
-
-        /// <summary>
-        /// Initializes a new <see cref="SubmitChangesFooter"/>
-        /// </summary>
-        public SubmitChangesFooter()
-        {
-            this.InitializeComponent();
-        }
+        private readonly Form currentForm;
 
         /// <summary>
         /// Initializes a new <see cref="SubmitChangesFooter"/>

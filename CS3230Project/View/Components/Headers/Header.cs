@@ -10,14 +10,6 @@ namespace CS3230Project.View.Components.Headers
     public partial class Header : UserControl
     {
         private readonly Form currentForm;
-        /// <summary>
-        /// Instantiates a new <see cref="Header"/>
-        /// </summary>
-        public Header()
-        {
-            this.InitializeComponent();
-            this.bindLabelsToCurrentUser();
-        }
 
         /// <summary>
         /// Instantiates a new <see cref="Header"/>
