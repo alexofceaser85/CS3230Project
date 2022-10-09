@@ -79,8 +79,8 @@ namespace CS3230Project.View
             this.patientDateOfBirthErrorMessage = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.patientDateOfBirthPicker = new System.Windows.Forms.DateTimePicker();
-            this.header1 = new CS3230Project.View.Components.Headers.Header(this);
-            this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter(this);
+            this.header1 = new CS3230Project.View.Components.Headers.Header();
+            this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();

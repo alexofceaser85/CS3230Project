@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using CS3230Project.View.WindowSwitching;
 
 namespace CS3230Project.View
 {
@@ -14,30 +15,24 @@ namespace CS3230Project.View
         public Home()
         {
             this.InitializeComponent();
+            this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
+        }
+
+        private void Header1OnLogoutEventHandler(object sender, EventArgs e)
+        {
+            SwitchForms.SwitchToLogin(this);
         }
 
         private void registerPatientButton_Click(object sender, EventArgs e)
         {
             Form registerPatientForm = new RegisterPatient();
-            registerPatientForm.Location = Location;
-            registerPatientForm.StartPosition = FormStartPosition.Manual;
-            registerPatientForm.FormClosing += delegate { Show(); };
-            Hide();
-            registerPatientForm.Size = this.Size;
-            registerPatientForm.ShowDialog();
-            Close();
+            SwitchForms.Switch(this, registerPatientForm);
         }
 
         private void searchPatientsButton_Click(object sender, EventArgs e)
         {
             Form searchPatientForm = new SearchPatient();
-            searchPatientForm.Location = Location;
-            searchPatientForm.StartPosition = FormStartPosition.Manual;
-            searchPatientForm.FormClosing += delegate { Show(); };
-            Hide();
-            searchPatientForm.Size = this.Size;
-            searchPatientForm.ShowDialog();
-            Close();
+            SwitchForms.Switch(this, searchPatientForm);
         }
     }
 }

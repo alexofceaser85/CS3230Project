@@ -83,8 +83,8 @@ namespace CS3230Project.View
             this.patientStatusComboBox = new System.Windows.Forms.ComboBox();
             this.statusErrorMessage = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.header1 = new CS3230Project.View.Components.Headers.Header(this);
-            this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter(this);
+            this.header1 = new CS3230Project.View.Components.Headers.Header();
+            this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -864,6 +864,7 @@ namespace CS3230Project.View
             this.patientStatusComboBox.Name = "patientStatusComboBox";
             this.patientStatusComboBox.Size = new System.Drawing.Size(245, 21);
             this.patientStatusComboBox.TabIndex = 2;
+            this.patientStatusComboBox.SelectedIndexChanged += new System.EventHandler(this.patientStatusComboBox_SelectedIndexChanged);
             // 
             // statusErrorMessage
             // 

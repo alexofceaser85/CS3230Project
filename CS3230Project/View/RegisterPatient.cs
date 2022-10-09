@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using CS3230Project.Model.Users.Patients;
 using CS3230Project.View.Validation;
+using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Users;
 
 namespace CS3230Project.View
@@ -21,6 +22,18 @@ namespace CS3230Project.View
         {
             this.InitializeComponent();
             this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesFooter1OnSubmitButtonEventHandler;
+            this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
+            this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
+        }
+
+        private void Header1OnLogoutEventHandler(object sender, EventArgs e)
+        {
+            SwitchForms.SwitchToLogin(this);
+        }
+
+        private void SubmitChangesFooter1OnBackButtonEventHandler(object sender, EventArgs e)
+        {
+            SwitchForms.SwitchBackToHome(this);
         }
 
         private void submitChangesFooter1OnSubmitButtonEventHandler(object sender, EventArgs e)
@@ -44,13 +57,7 @@ namespace CS3230Project.View
                 );
                 PatientManagerViewModel.AddPatient(patientToAdd);
                 Form homeForm = new Home();
-                homeForm.Location = Location;
-                homeForm.StartPosition = FormStartPosition.Manual;
-                homeForm.FormClosing += delegate { Show(); };
-                Hide();
-                homeForm.Size = Size;
-                homeForm.ShowDialog();
-                Close();
+                SwitchForms.Switch(this, homeForm);
             }
             catch (ArgumentException)
             {

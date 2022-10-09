@@ -9,15 +9,15 @@ namespace CS3230Project.View.Components.Headers
     /// </summary>
     public partial class Header : UserControl
     {
-        private readonly Form currentForm;
-
+        /// <summary>
+        /// The event handler for a logout
+        /// </summary>
+        public event EventHandler LogoutEventHandler;
         /// <summary>
         /// Instantiates a new <see cref="Header"/>
         /// </summary>
-        /// <param name="currentForm">The form the header is in</param>
-        public Header(Form currentForm)
+        public Header()
         {
-            this.currentForm = currentForm;
             this.InitializeComponent();
             this.bindLabelsToCurrentUser();
         }
@@ -34,20 +34,7 @@ namespace CS3230Project.View.Components.Headers
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            CurrentUser.User = null;
-            Form form1 = new Login();
-            form1.Location = Location;
-            form1.StartPosition = FormStartPosition.Manual;
-            form1.FormClosing += delegate { Show(); };
-            if (this.currentForm != null)
-            {
-                this.currentForm.Hide();
-            }
-            form1.ShowDialog();
-            if (this.currentForm != null)
-            {
-                this.currentForm.Close();
-            }
+            this.LogoutEventHandler?.Invoke(sender, e);
         }
     }
 }

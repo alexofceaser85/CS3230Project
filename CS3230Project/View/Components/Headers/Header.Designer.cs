@@ -60,6 +60,10 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.loggedInAsLabel, 0, 0);
@@ -71,12 +75,13 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(121, 63);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(121, 65);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // loggedInAsLabel
             // 
             this.loggedInAsLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.loggedInAsLabel.AutoEllipsis = true;
             this.loggedInAsLabel.AutoSize = true;
             this.loggedInAsLabel.Location = new System.Drawing.Point(3, 4);
             this.loggedInAsLabel.Name = "loggedInAsLabel";
@@ -88,6 +93,7 @@
             // userIdLabel
             // 
             this.userIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.userIdLabel.AutoEllipsis = true;
             this.userIdLabel.AutoSize = true;
             this.userIdLabel.Location = new System.Drawing.Point(3, 25);
             this.userIdLabel.Name = "userIdLabel";
@@ -98,8 +104,9 @@
             // nameLabel
             // 
             this.nameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.nameLabel.AutoEllipsis = true;
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(3, 46);
+            this.nameLabel.Location = new System.Drawing.Point(3, 47);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(35, 13);
             this.nameLabel.TabIndex = 2;

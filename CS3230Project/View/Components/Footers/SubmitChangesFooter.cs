@@ -13,15 +13,16 @@ namespace CS3230Project.View.Components.Footers
         /// </summary>
         public event EventHandler SubmitButtonEventHandler;
 
-        private readonly Form currentForm;
+        /// <summary>
+        /// The handler for if the submit button is clicked
+        /// </summary>
+        public event EventHandler BackButtonEventHandler;
 
         /// <summary>
         /// Initializes a new <see cref="SubmitChangesFooter"/>
-        /// <param name="currentForm"> The current Form</param>
         /// </summary>
-        public SubmitChangesFooter(Form currentForm)
+        public SubmitChangesFooter()
         {
-            this.currentForm = currentForm;
             this.InitializeComponent();
         }
 
@@ -32,14 +33,7 @@ namespace CS3230Project.View.Components.Footers
 
         private void backToHome_Click(object sender, EventArgs e)
         {
-            Form homeForm = new Home();
-            homeForm.Location = this.currentForm.Location;
-            homeForm.StartPosition = FormStartPosition.Manual;
-            homeForm.FormClosing += delegate { Show(); };
-            this.currentForm.Hide();
-            homeForm.Size = this.currentForm.Size;
-            homeForm.ShowDialog();
-            this.currentForm.Close();
+            this.BackButtonEventHandler?.Invoke(sender, e);
         }
     }
 }

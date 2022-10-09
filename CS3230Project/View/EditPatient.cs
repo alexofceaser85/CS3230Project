@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using CS3230Project.Model.Users.Patients;
 using CS3230Project.View.Validation;
+using CS3230Project.View.WindowSwitching;
 
 namespace CS3230Project.View
 {
@@ -28,11 +29,23 @@ namespace CS3230Project.View
                 this.loadPatientData(patient);
                 this.updatedDetails.Add("PatientId", patient.PatientId.ToString());
                 this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesButton_Click;
+                this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
+                this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
             }
             catch (ArgumentException errorMessage)
             {
                 MessageBox.Show(errorMessage.Message, editPatientLoadingErrorHeader);
             }
+        }
+
+        private void Header1OnLogoutEventHandler(object sender, EventArgs e)
+        {
+            SwitchForms.SwitchToLogin(this);
+        }
+
+        private void SubmitChangesFooter1OnBackButtonEventHandler(object sender, EventArgs e)
+        {
+            SwitchForms.SwitchBackToHome(this);
         }
 
         private void loadPatientData(Patient patient)
@@ -58,13 +71,7 @@ namespace CS3230Project.View
                 this.verifyAll();
                 PatientManager.ModifyPatient(this.updatedDetails);
                 Form searchPatientForm = new SearchPatient();
-                searchPatientForm.Location = Location;
-                searchPatientForm.StartPosition = FormStartPosition.Manual;
-                searchPatientForm.FormClosing += delegate { Show(); };
-                Hide();
-                searchPatientForm.Size = this.Size;
-                searchPatientForm.ShowDialog();
-                Close();
+                SwitchForms.Switch(this, searchPatientForm);
             }
             catch (ArgumentException errorMessage)
             {
@@ -84,11 +91,6 @@ namespace CS3230Project.View
             {
                 this.updatedDetails[((DateTimePicker)sender).Name] = ((DateTimePicker)sender).Value.ToString("yyyy-MM-dd");
             }
-        }
-
-        private void patientDetailComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void patientDetailTextBox_LeaveFocus(object sender, EventArgs e)
@@ -144,13 +146,11 @@ namespace CS3230Project.View
         private void patientGenderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PatientValidation.VerifyGenderInputs(this.patientGenderComboBox, this.genderErrorMessage);
-            this.patientDetailComboBox_SelectedIndexChanged(sender, e);
         }
 
         private void patientStateComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PatientValidation.VerifyStateInputs(this.patientStateComboBox, this.stateErrorMessage);
-            this.patientDetailComboBox_SelectedIndexChanged(sender, e);
         }
 
         private void patientZipcodeTextBox_TextChanged(object sender, EventArgs e)

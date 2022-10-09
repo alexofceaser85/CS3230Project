@@ -156,6 +156,7 @@
       <DependentUpon>SearchPatient.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Validation\PatientValidation.cs" />
+    <Compile Include="View\WindowSwitching\SwitchForms.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

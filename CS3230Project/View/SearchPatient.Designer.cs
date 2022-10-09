@@ -64,7 +64,7 @@ namespace CS3230Project.View
             this.searchButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.header1 = new CS3230Project.View.Components.Headers.Header(this);
+            this.header1 = new CS3230Project.View.Components.Headers.Header();
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PatientDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CS3230Project.Model.Users.Patients;
+using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Users;
 
 namespace CS3230Project.View
@@ -20,6 +21,12 @@ namespace CS3230Project.View
         public SearchPatient()
         {
             this.InitializeComponent();
+            this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
+        }
+
+        private void Header1OnLogoutEventHandler(object sender, EventArgs e)
+        {
+            SwitchForms.SwitchToLogin(this);
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -71,14 +78,7 @@ namespace CS3230Project.View
 
         private void backToHomeButton_Click(object sender, EventArgs e)
         {
-            Form homeForm = new Home();
-            homeForm.Location = Location;
-            homeForm.StartPosition = FormStartPosition.Manual;
-            homeForm.FormClosing += delegate { Show(); };
-            Hide();
-            homeForm.Size = this.Size;
-            homeForm.ShowDialog();
-            Close();
+            SwitchForms.SwitchBackToHome(this);
         }
 
         private void PatientDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -93,14 +93,7 @@ namespace CS3230Project.View
             {
                 DataGridViewSelectedCellCollection cells = dataGridView.SelectedCells;
                 Form editForm = new EditPatient(this.createPatient(cells));
-                editForm.Location = Location;
-                editForm.StartPosition = FormStartPosition.Manual;
-                editForm.FormClosing += delegate { Show(); };
-                Hide();
-                editForm.Size = this.Size;
-                editForm.ShowDialog();
-                dataGridView.CurrentCell.Selected = false;
-                Close();
+                SwitchForms.Switch(this, editForm);
             }
 
         }
