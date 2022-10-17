@@ -178,6 +178,9 @@
         /// </summary>
         public static string ZipcodeMustBeAllDigits =
             "The zip code is in incorrect format, must be all digits";
+
+        public static string ZipCodeMustBeAllDigitsAndHaveFiveCharacters =
+            "The zip code must be five characters, all digits";
         /// <summary>
         /// Error message for null phone number
         /// </summary>
@@ -190,7 +193,11 @@
         /// Error message for an invalid phone number format
         /// </summary>
         public static string InvalidPhoneNumberFormat =
-            "The provided phone number is not in the correct format (XXX-XXX-XXXX)";
+            "Phone number not in the correct format";
+        /// <summary>
+        /// Error message for an empty patient status
+        /// </summary>
+        public static string PatientStatusCannotBeEmpty = "The patient status cannot be empty";
         /// <summary>
         /// Error message for a null patient to add
         /// </summary>

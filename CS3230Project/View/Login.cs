@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Accounts;
 
 namespace CS3230Project.View
@@ -28,14 +29,8 @@ namespace CS3230Project.View
 
                 if (isLoginSuccessful)
                 {
-                    Form form1 = new Home();
-                    form1.Location = Location;
-                    form1.StartPosition = FormStartPosition.Manual;
-                    form1.FormClosing += delegate { Show(); };
-                    Hide();
-                    form1.Size = this.Size;
-                    form1.ShowDialog();
-                    Close();
+                    Form homeForm = new Home();
+                    SwitchForms.Switch(this, homeForm);
                 }
                 else
                 {

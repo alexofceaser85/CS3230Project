@@ -106,11 +106,23 @@
     <Compile Include="Model\Users\Patients\Patient.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="ViewModel\Users\PatientManagerViewModel.cs" />
+    <Compile Include="View\Components\Footers\SubmitChangesFooter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Components\Footers\SubmitChangesFooter.Designer.cs">
+      <DependentUpon>SubmitChangesFooter.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\EditPatient.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\EditPatient.Designer.cs">
       <DependentUpon>EditPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Components\Headers\Header.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Components\Headers\Header.Designer.cs">
+      <DependentUpon>Header.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Home.cs">
       <SubType>Form</SubType>
@@ -143,6 +155,8 @@
     <Compile Include="View\SearchPatient.Designer.cs">
       <DependentUpon>SearchPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Validation\PatientValidation.cs" />
+    <Compile Include="View\WindowSwitching\SwitchForms.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -153,8 +167,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Components\Footers\SubmitChangesFooter.resx">
+      <DependentUpon>SubmitChangesFooter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\EditPatient.resx">
       <DependentUpon>EditPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Components\Headers\Header.resx">
+      <DependentUpon>Header.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

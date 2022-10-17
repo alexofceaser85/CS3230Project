@@ -60,7 +60,7 @@ namespace CS3230Project.DAL.Patients
 
             comm.Parameters.Add("@lastName", MySqlDbType.String).Value = lastName;
             comm.Parameters.Add("@firstName", MySqlDbType.String).Value = firstName;
-            comm.Parameters.Add("@dateOfBirth", MySqlDbType.String).Value = dateOfBirth;
+            comm.Parameters.Add("@dateOfBirth", MySqlDbType.Date).Value = dateOfBirth;
             comm.Parameters.Add("@gender", MySqlDbType.String).Value = gender;
             comm.Parameters.Add("@phoneNumber", MySqlDbType.String).Value = phoneNumber;
             comm.Parameters.Add("@addressOne", MySqlDbType.String).Value = addressOne;

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using CS3230Project.Model.Accounts;
+using CS3230Project.View.WindowSwitching;
 
 namespace CS3230Project.View
 {
@@ -15,50 +15,24 @@ namespace CS3230Project.View
         public Home()
         {
             this.InitializeComponent();
-            this.bindLabelsToCurrentUser();
+            this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
         }
 
-        private void bindLabelsToCurrentUser()
+        private void Header1OnLogoutEventHandler(object sender, EventArgs e)
         {
-            this.loggedInAsLabel.Text = $"Logged In As: {CurrentUser.User.UserName}";
-            this.userIdLabel.Text = $"User ID: {CurrentUser.User.Id}";
-            this.nameLabel.Text = $"Name: {CurrentUser.User.FirstName} {CurrentUser.User.LastName}";
-        }
-
-        private void logoutButton_Click(object sender, EventArgs e)
-        {
-            CurrentUser.User = null;
-            Form form1 = new Login();
-            form1.Location = Location;
-            form1.StartPosition = FormStartPosition.Manual;
-            form1.FormClosing += delegate { Show(); };
-            Hide();
-            form1.ShowDialog();
-            Close();
+            SwitchForms.SwitchToLogin(this);
         }
 
         private void registerPatientButton_Click(object sender, EventArgs e)
         {
             Form registerPatientForm = new RegisterPatient();
-            registerPatientForm.Location = Location;
-            registerPatientForm.StartPosition = FormStartPosition.Manual;
-            registerPatientForm.FormClosing += delegate { Show(); };
-            Hide();
-            registerPatientForm.Size = this.Size;
-            registerPatientForm.ShowDialog();
-            Close();
+            SwitchForms.Switch(this, registerPatientForm);
         }
 
         private void searchPatientsButton_Click(object sender, EventArgs e)
         {
             Form searchPatientForm = new SearchPatient();
-            searchPatientForm.Location = Location;
-            searchPatientForm.StartPosition = FormStartPosition.Manual;
-            searchPatientForm.FormClosing += delegate { Show(); };
-            Hide();
-            searchPatientForm.Size = this.Size;
-            searchPatientForm.ShowDialog();
-            Close();
+            SwitchForms.Switch(this, searchPatientForm);
         }
     }
 }
