@@ -47,22 +47,22 @@ namespace CS3230Project.DAL.Accounts
 
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
-            const string query = "select firstName, lastName, ID, userName " +
+            const string query = "select firstName, lastName, nurses.employeeID, userName " +
                                  "from nurses, accounts " +
-                                 "where nurses.ID = accounts.employeeID " +
+                                 "where nurses.employeeID = accounts.employeeID " +
                                  "and exists (" +
                                  "  select userName, `password` " +
                                  "  from accounts " +
                                  "  where userName = @username " +
                                  "  and `password` = @password " +
-                                 "  and accounts.employeeID = nurses.ID);";
+                                 "  and accounts.employeeID = nurses.employeeID);";
 
             using var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@userName", MySqlDbType.String).Value = userName;
             command.Parameters.Add("@password", MySqlDbType.String).Value = password;
 
             using var reader = command.ExecuteReader();
-            var idOrdinal = reader.GetOrdinal("ID");
+            var idOrdinal = reader.GetOrdinal("employeeID");
             var firstNameOrdinal = reader.GetOrdinal("firstName");
             var lastNameOrdinal = reader.GetOrdinal("lastName");
             var userNameOrdinal = reader.GetOrdinal("userName");
@@ -70,7 +70,7 @@ namespace CS3230Project.DAL.Accounts
             while (reader.Read()) 
             { 
                 CurrentUser.User = new Nurse(
-                    idOrdinal, 
+                    reader.GetInt32(idOrdinal), 
                     reader.GetFieldValueCheckNull<string>(firstNameOrdinal), 
                     reader.GetFieldValueCheckNull<string>(lastNameOrdinal), 
                     reader.GetFieldValueCheckNull<string>(userNameOrdinal));
