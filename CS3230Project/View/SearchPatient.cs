@@ -84,18 +84,25 @@ namespace CS3230Project.View
         private void PatientDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dataGridView = sender as DataGridView;
-            if (dataGridView == null)
+
+            if (dataGridView == null || e.RowIndex >= dataGridView.RowCount - 1)
             {
                 return;
             }
 
-            if (dataGridView.CurrentRow.Selected)
+            if (dataGridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 12)
             {
-                DataGridViewSelectedCellCollection cells = dataGridView.SelectedCells;
-                Form editForm = new EditPatient(this.createPatient(cells));
-                SwitchForms.Switch(this, editForm);
+                SwitchForms.Switch(this, new Appointments());
             }
-
+            else
+            {
+                if (dataGridView.CurrentRow.Selected)
+                {
+                    DataGridViewSelectedCellCollection cells = dataGridView.SelectedCells;
+                    Form editForm = new EditPatient(this.createPatient(cells));
+                    SwitchForms.Switch(this, editForm);
+                }
+            }
         }
 
         private Patient createPatient(DataGridViewSelectedCellCollection cells)
