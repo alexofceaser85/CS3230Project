@@ -3,6 +3,9 @@ using CS3230Project.Model.Appointments;
 
 namespace CS3230Project.ViewModel.Appointments
 {
+    /// <summary>
+    /// The view model for the appointment manager
+    /// </summary>
     public static class AppointmentManagerViewModel
     {
         /// <summary>

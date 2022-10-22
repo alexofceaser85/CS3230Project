@@ -121,7 +121,7 @@ namespace CS3230Project.Model.Users.Patients
             {
                 throw new ArgumentException(PatientErrorMessages.LastNameCannotBeEmpty);
             }
-            if (lastName.Length > PatientSettings.NameMaximumLength)
+            if (lastName.Length > UserSettings.NameMaximumLength)
             {
                 throw new ArgumentException(PatientErrorMessages.LastNameIsTooLong);
             }
@@ -133,7 +133,7 @@ namespace CS3230Project.Model.Users.Patients
             {
                 throw new ArgumentException(PatientErrorMessages.FirstNameCannotBeEmpty);
             }
-            if (firstName.Length > PatientSettings.NameMaximumLength)
+            if (firstName.Length > UserSettings.NameMaximumLength)
             {
                 throw new ArgumentException(PatientErrorMessages.FirstNameIsTooLong);
             }
@@ -153,7 +153,7 @@ namespace CS3230Project.Model.Users.Patients
             {
                 throw new ArgumentException(PatientErrorMessages.GenderCannotBeEmpty);
             }
-            if (gender.Length > PatientSettings.GenderMaximumLength)
+            if (gender.Length > UserSettings.GenderMaximumLength)
             {
                 throw new ArgumentException(PatientErrorMessages.GenderIsTooLong);
             }
@@ -177,7 +177,7 @@ namespace CS3230Project.Model.Users.Patients
             {
                 throw new ArgumentException(PatientErrorMessages.AddressOneCannotBeEmpty);
             }
-            if (addressOne.Length > PatientSettings.AddressComponentMaximumLength)
+            if (addressOne.Length > UserSettings.AddressComponentMaximumLength)
             {
                 throw new ArgumentException(PatientErrorMessages.AddressOneIsTooLong);
             }
@@ -185,7 +185,7 @@ namespace CS3230Project.Model.Users.Patients
             {
                 throw new ArgumentException(PatientErrorMessages.AddressTwoCannotBeNull);
             }
-            if (addressTwo.Length > PatientSettings.AddressComponentMaximumLength)
+            if (addressTwo.Length > UserSettings.AddressComponentMaximumLength)
             {
                 throw new ArgumentException(PatientErrorMessages.AddressTwoIsTooLong);
             }
@@ -197,7 +197,7 @@ namespace CS3230Project.Model.Users.Patients
             {
                 throw new ArgumentException(PatientErrorMessages.CityCannotBeEmpty);
             }
-            if (city.Length > PatientSettings.AddressComponentMaximumLength)
+            if (city.Length > UserSettings.AddressComponentMaximumLength)
             {
                 throw new ArgumentException(PatientErrorMessages.CityIsTooLong);
             }
@@ -221,11 +221,11 @@ namespace CS3230Project.Model.Users.Patients
             {
                 throw new ArgumentException(PatientErrorMessages.ZipcodeCannotBeEmpty);
             }
-            if (zipcode.Length < PatientSettings.ZipCodeLength)
+            if (zipcode.Length < UserSettings.ZipCodeLength)
             {
                 throw new ArgumentException(PatientErrorMessages.ZipcodeMustHaveFiveCharacters);
             }
-            if (zipcode.Length > PatientSettings.ZipCodeLength)
+            if (zipcode.Length > UserSettings.ZipCodeLength)
             {
                 throw new ArgumentException(PatientErrorMessages.ZipcodeMustHaveFiveCharacters);
             }

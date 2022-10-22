@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CS3230Project.ViewModel.Appointments;
 
@@ -22,8 +15,8 @@ namespace CS3230Project.View
         /// <param name="patientId">The patient for the appointments</param>
         public Appointments(int patientId)
         {
-            InitializeComponent();
-            this.footer2.BackButtonEventHandler += Footer2OnBackButtonEventHandler;
+            this.InitializeComponent();
+            this.footer2.BackButtonEventHandler += this.Footer2OnBackButtonEventHandler;
             this.addUpcomingAppointments(patientId);
             this.addPreviousAppointments(patientId);
         }

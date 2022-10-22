@@ -33,6 +33,7 @@ namespace CS3230Project.Model.Appointments
         /// <summary>
         /// Initializes a new <see cref="Appointment"/>
         /// </summary>
+        /// <param name="appointmentId">The ID for the appointment</param>
         /// <param name="patient"></param>
         /// <param name="date"></param>
         /// <param name="doctor"></param>
@@ -42,8 +43,7 @@ namespace CS3230Project.Model.Appointments
         {
             if (appointmentId < 0)
             {
-                //TODO Add error message
-                throw new ArgumentException();
+                throw new ArgumentException(AppointmentErrorMessages.AppointmentIdCannotBeLessThanZero);
             }
             if (patient == null)
             {
@@ -65,7 +65,7 @@ namespace CS3230Project.Model.Appointments
                 throw new ArgumentException(AppointmentErrorMessages.ReasonCannotBeEmpty);
             }
 
-            if (reason.Length > 100)
+            if (reason.Length > Settings.AppointmentSettings.AppointmentReasonMaximumLength)
             {
                 throw new ArgumentException(AppointmentErrorMessages.ReasonCannotBeTooLong);
             }

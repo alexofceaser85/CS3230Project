@@ -178,7 +178,9 @@
         /// </summary>
         public static string ZipcodeMustBeAllDigits =
             "The zip code is in incorrect format, must be all digits";
-
+        /// <summary>
+        /// The error message for a zip code not all digits and five characters
+        /// </summary>
         public static string ZipCodeMustBeAllDigitsAndHaveFiveCharacters =
             "The zip code must be five characters, all digits";
         /// <summary>
@@ -371,6 +373,10 @@
     public static class AppointmentErrorMessages
     {
         /// <summary>
+        /// The error message for an appointment ID less than zero
+        /// </summary>
+        public static string AppointmentIdCannotBeLessThanZero = "The appointment ID cannot be less than zero";
+        /// <summary>
         /// The error message for a null appointment patient
         /// </summary>
         public static string PatientCannotBeNull = "The appointment patient cannot be null";
@@ -391,5 +397,17 @@
         /// The error message for an appointment reason that is too long
         /// </summary>
         public static string ReasonCannotBeTooLong = "The appointment reason is too long";
+    }
+
+    /// <summary>
+    /// The error messages for the appointment manager
+    /// </summary>
+    public static class AppointmentManagerErrorMessages
+    {
+        /// <summary>
+        /// The error message for a patient ID less than zero 
+        /// </summary>
+        public static string PatientIdCannotBeLessThanZero =
+            "The patient ID to get appointments for cannot be less than zero";
     }
 }

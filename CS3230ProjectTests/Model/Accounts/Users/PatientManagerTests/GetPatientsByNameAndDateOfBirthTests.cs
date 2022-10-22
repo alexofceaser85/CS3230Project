@@ -2,7 +2,6 @@
 using CS3230Project.Model.Users.Patients;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 
 namespace CS3230ProjectTests.Model.Accounts.Users.PatientManagerTests
 {
