@@ -3,7 +3,7 @@
     /// <summary>
     /// The settings for the patient
     /// </summary>
-    public class PatientSettings
+    public class UserSettings
     {
         /// <summary>
         /// The maximum length of the patient name
@@ -25,5 +25,16 @@
         /// The maximum length of the patient's state
         /// </summary>
         public const int StateMaximumLength = 50;
+    }
+
+    /// <summary>
+    /// The settings for the appointment
+    /// </summary>
+    public class AppointmentSettings
+    {
+        /// <summary>
+        /// The maximum length for an appointment reason
+        /// </summary>
+        public const int AppointmentReasonMaximumLength = 100;
     }
 }

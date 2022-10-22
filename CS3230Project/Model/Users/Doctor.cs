@@ -1,13 +1,14 @@
 ﻿using System;
 using CS3230Project.ErrorMessages;
+using CS3230Project.Model.Users.Patients;
 using CS3230Project.Settings;
 
-namespace CS3230Project.Model.Users.Patients
+namespace CS3230Project.Model.Users
 {
     /// <summary>
-    ///     Holds the information for a patient
+    /// The doctor user
     /// </summary>
-    public class Patient
+    public class Doctor
     {
         /// <summary>
         ///     The ID for the patient
@@ -64,10 +65,6 @@ namespace CS3230Project.Model.Users.Patients
         /// </summary>
         public string PhoneNumber { get; }
 
-        /// <summary>
-        ///     The status status for the patient
-        /// </summary>
-        public bool Status { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Patient" />
@@ -104,134 +101,133 @@ namespace CS3230Project.Model.Users.Patients
         /// <param name="city">The city.</param>
         /// <param name="state">The state.</param>
         /// <param name="zipcode">The zipcode.</param>
-        /// <param name="status">if set to <c>true</c> [status].</param>
         /// <exception cref="System.ArgumentException"></exception>
-        public Patient(int patientId, string lastName, string firstName, DateTime dateOfBirth, string gender, string phoneNumber,
-            string addressOne, string addressTwo, string city, string state, string zipcode, bool status)
+        public Doctor(int patientId, string lastName, string firstName, DateTime dateOfBirth, string gender, string phoneNumber,
+            string addressOne, string addressTwo, string city, string state, string zipcode)
         {
             if (patientId < 0)
             {
-                throw new ArgumentException(PatientErrorMessages.PatientIdCannotBeLessThanZero);
+                throw new ArgumentException(DoctorErrorMessages.DoctorIdCannotBeLessThanZero);
             }
             if (lastName == null)
             {
-                throw new ArgumentException(PatientErrorMessages.LastNameCannotBeNull);
+                throw new ArgumentException(DoctorErrorMessages.LastNameCannotBeNull);
             }
             if (lastName.Trim().Length == 0)
             {
-                throw new ArgumentException(PatientErrorMessages.LastNameCannotBeEmpty);
+                throw new ArgumentException(DoctorErrorMessages.LastNameCannotBeEmpty);
             }
             if (lastName.Length > UserSettings.NameMaximumLength)
             {
-                throw new ArgumentException(PatientErrorMessages.LastNameIsTooLong);
+                throw new ArgumentException(DoctorErrorMessages.LastNameIsTooLong);
             }
             if (firstName == null)
             {
-                throw new ArgumentException(PatientErrorMessages.FirstNameCannotBeNull);
+                throw new ArgumentException(DoctorErrorMessages.FirstNameCannotBeNull);
             }
             if (firstName.Trim().Length == 0)
             {
-                throw new ArgumentException(PatientErrorMessages.FirstNameCannotBeEmpty);
+                throw new ArgumentException(DoctorErrorMessages.FirstNameCannotBeEmpty);
             }
             if (firstName.Length > UserSettings.NameMaximumLength)
             {
-                throw new ArgumentException(PatientErrorMessages.FirstNameIsTooLong);
+                throw new ArgumentException(DoctorErrorMessages.FirstNameIsTooLong);
             }
             if (dateOfBirth < new DateTime(1900, 1, 1))
             {
-                throw new ArgumentException(PatientErrorMessages.DateOfBirthCannotBeBefore1900);
+                throw new ArgumentException(DoctorErrorMessages.DateOfBirthCannotBeBefore1900);
             }
             if (dateOfBirth > DateTime.Now)
             {
-                throw new ArgumentException(PatientErrorMessages.DateOfBirthCannotBeInTheFuture);
+                throw new ArgumentException(DoctorErrorMessages.DateOfBirthCannotBeInTheFuture);
             }
             if (gender == null)
             {
-                throw new ArgumentException(PatientErrorMessages.GenderCannotBeNull);
+                throw new ArgumentException(DoctorErrorMessages.GenderCannotBeNull);
             }
             if (gender.Trim().Length == 0)
             {
-                throw new ArgumentException(PatientErrorMessages.GenderCannotBeEmpty);
+                throw new ArgumentException(DoctorErrorMessages.GenderCannotBeEmpty);
             }
             if (gender.Length > UserSettings.GenderMaximumLength)
             {
-                throw new ArgumentException(PatientErrorMessages.GenderIsTooLong);
+                throw new ArgumentException(DoctorErrorMessages.GenderIsTooLong);
             }
             if (phoneNumber == null)
             {
-                throw new ArgumentException(PatientErrorMessages.PhoneNumberCannotBeNull);
+                throw new ArgumentException(DoctorErrorMessages.PhoneNumberCannotBeNull);
             }
             if (phoneNumber.Trim().Length == 0)
             {
-                throw new ArgumentException(PatientErrorMessages.PhoneNumberCannotBeEmpty);
+                throw new ArgumentException(DoctorErrorMessages.PhoneNumberCannotBeEmpty);
             }
             if (!DataValidator.IsValidPhoneNumberFormat(phoneNumber))
             {
-                throw new ArgumentException(PatientErrorMessages.InvalidPhoneNumberFormat);
+                throw new ArgumentException(DoctorErrorMessages.InvalidPhoneNumberFormat);
             }
             if (addressOne == null)
             {
-                throw new ArgumentException(PatientErrorMessages.AddressOneCannotBeNull);
+                throw new ArgumentException(DoctorErrorMessages.AddressOneCannotBeNull);
             }
             if (addressOne.Trim().Length == 0)
             {
-                throw new ArgumentException(PatientErrorMessages.AddressOneCannotBeEmpty);
+                throw new ArgumentException(DoctorErrorMessages.AddressOneCannotBeEmpty);
             }
             if (addressOne.Length > UserSettings.AddressComponentMaximumLength)
             {
-                throw new ArgumentException(PatientErrorMessages.AddressOneIsTooLong);
+                throw new ArgumentException(DoctorErrorMessages.AddressOneIsTooLong);
             }
             if (addressTwo == null)
             {
-                throw new ArgumentException(PatientErrorMessages.AddressTwoCannotBeNull);
+                throw new ArgumentException(DoctorErrorMessages.AddressTwoCannotBeNull);
             }
             if (addressTwo.Length > UserSettings.AddressComponentMaximumLength)
             {
-                throw new ArgumentException(PatientErrorMessages.AddressTwoIsTooLong);
+                throw new ArgumentException(DoctorErrorMessages.AddressTwoIsTooLong);
             }
             if (city == null)
             {
-                throw new ArgumentException(PatientErrorMessages.CityCannotBeNull);
+                throw new ArgumentException(DoctorErrorMessages.CityCannotBeNull);
             }
             if (city.Trim().Length == 0)
             {
-                throw new ArgumentException(PatientErrorMessages.CityCannotBeEmpty);
+                throw new ArgumentException(DoctorErrorMessages.CityCannotBeEmpty);
             }
             if (city.Length > UserSettings.AddressComponentMaximumLength)
             {
-                throw new ArgumentException(PatientErrorMessages.CityIsTooLong);
+                throw new ArgumentException(DoctorErrorMessages.CityIsTooLong);
             }
             if (state == null)
             {
-                throw new ArgumentException(PatientErrorMessages.StateCannotBeNull);
+                throw new ArgumentException(DoctorErrorMessages.StateCannotBeNull);
             }
             if (state.Trim().Length == 0)
             {
-                throw new ArgumentException(PatientErrorMessages.StateCannotBeEmpty);
+                throw new ArgumentException(DoctorErrorMessages.StateCannotBeEmpty);
             }
             if (state.Length > 50)
             {
-                throw new ArgumentException(PatientErrorMessages.StateIsTooLong);
+                throw new ArgumentException(DoctorErrorMessages.StateIsTooLong);
             }
             if (zipcode == null)
             {
-                throw new ArgumentException(PatientErrorMessages.ZipcodeCannotBeNull);
+                throw new ArgumentException(DoctorErrorMessages.ZipcodeCannotBeNull);
             }
             if (zipcode.Trim().Length == 0)
             {
-                throw new ArgumentException(PatientErrorMessages.ZipcodeCannotBeEmpty);
+                throw new ArgumentException(DoctorErrorMessages.ZipcodeCannotBeEmpty);
             }
             if (zipcode.Length < UserSettings.ZipCodeLength)
             {
-                throw new ArgumentException(PatientErrorMessages.ZipcodeMustHaveFiveCharacters);
+                throw new ArgumentException(DoctorErrorMessages.ZipcodeMustHaveFiveCharacters);
             }
             if (zipcode.Length > UserSettings.ZipCodeLength)
             {
-                throw new ArgumentException(PatientErrorMessages.ZipcodeMustHaveFiveCharacters);
+                throw new ArgumentException(DoctorErrorMessages.ZipcodeMustHaveFiveCharacters);
             }
             if (!DataValidator.IsValidZipCodeFormat(zipcode))
             {
-                throw new ArgumentException(PatientErrorMessages.ZipcodeMustBeAllDigits);
+                throw new ArgumentException(DoctorErrorMessages.ZipcodeMustBeAllDigits);
             }
 
             this.PatientId = patientId;
@@ -245,7 +241,6 @@ namespace CS3230Project.Model.Users.Patients
             this.State = state;
             this.Zipcode = zipcode;
             this.PhoneNumber = phoneNumber;
-            this.Status = status;
         }
     }
 }
