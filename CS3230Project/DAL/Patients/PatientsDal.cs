@@ -73,6 +73,51 @@ namespace CS3230Project.DAL.Patients
             return comm.ExecuteNonQuery() > 0;
         }
 
+        public static Patient GetPatientById(int patientId)
+        {
+            Patient patient = null;
+            using var connection = new MySqlConnection(Connection.ConnectionString);
+            connection.Open();
+            const string query =
+                "select *" +
+                "from patients where patientID = @patientId";
+            using var command = new MySqlCommand(query, connection);
+            command.Parameters.Add("@patientId", MySqlDbType.Int32).Value = patientId;
+
+            using var reader = command.ExecuteReader();
+            var patientIdOrdinal = reader.GetOrdinal("patientID");
+            var lastNameOrdinal = reader.GetOrdinal("lastName");
+            var firstNameOrdinal = reader.GetOrdinal("firstName");
+            var dateOfBirthOrdinal = reader.GetOrdinal("dateOfBirth");
+            var genderOrdinal = reader.GetOrdinal("gender");
+            var phoneNumberOrdinal = reader.GetOrdinal("phone");
+            var addressOneOrdinal = reader.GetOrdinal("addressOne");
+            var addressTwoOrdinal = reader.GetOrdinal("addressTwo");
+            var cityOrdinal = reader.GetOrdinal("city");
+            var stateOrdinal = reader.GetOrdinal("state");
+            var zipcodeOrdinal = reader.GetOrdinal("zipcode");
+            var statusOrdinal = reader.GetOrdinal("status");
+
+            while (reader.Read())
+            {
+                patient = new Patient(
+                    reader.GetInt32(patientIdOrdinal),
+                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
+                    reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
+                    reader.GetFieldValue<DateTime>(dateOfBirthOrdinal),
+                    reader.GetFieldValueCheckNull<string>(genderOrdinal),
+                    reader.GetFieldValueCheckNull<string>(phoneNumberOrdinal),
+                    reader.GetFieldValueCheckNull<string>(addressOneOrdinal),
+                    reader.GetFieldValueCheckNull<string>(addressTwoOrdinal),
+                    reader.GetFieldValueCheckNull<string>(cityOrdinal),
+                    reader.GetFieldValueCheckNull<string>(stateOrdinal),
+                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal),
+                    reader.GetFieldValue<bool>(statusOrdinal));
+            }
+
+            return patient;
+        }
+
         /// <summary>
         ///     Gets all the patients with the provided name.
         ///     Precondition:
