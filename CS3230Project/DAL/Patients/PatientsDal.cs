@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CS3230Project.ErrorMessages;
 using CS3230Project.Model;
 using CS3230Project.Model.Users.Patients;
 using CS3230Project.Settings;
-using CS3230Project.View;
 using MySql.Data.MySqlClient;
-using static System.Windows.Forms.AxHost;
 
 namespace CS3230Project.DAL.Patients
 {
@@ -73,6 +70,11 @@ namespace CS3230Project.DAL.Patients
             return comm.ExecuteNonQuery() > 0;
         }
 
+        /// <summary>
+        /// Gets the patient by ID
+        /// </summary>
+        /// <param name="patientId">The ID to get</param>
+        /// <returns>The patient with that ID</returns>
         public static Patient GetPatientById(int patientId)
         {
             Patient patient = null;
@@ -295,7 +297,7 @@ namespace CS3230Project.DAL.Patients
                 switch (currDetail.Key)
                 {
                     case "patientLastNameTextBox":
-                        if (currDetail.Value.Length <= PatientSettings.NameMaximumLength)
+                        if (currDetail.Value.Length <= UserSettings.NameMaximumLength)
                         {
                             commandText += "lastName = @lastName";
                             comm.Parameters.Add("@lastName", MySqlDbType.String).Value = currDetail.Value;
@@ -308,7 +310,7 @@ namespace CS3230Project.DAL.Patients
                         }
                         break;
                         case "patientFirstNameTextBox":
-                        if (currDetail.Value.Length <= PatientSettings.NameMaximumLength)
+                        if (currDetail.Value.Length <= UserSettings.NameMaximumLength)
                         {
                             commandText += "firstName = @firstName";
                             comm.Parameters.Add("@firstName", MySqlDbType.String).Value = currDetail.Value;
@@ -326,7 +328,7 @@ namespace CS3230Project.DAL.Patients
                         numberOfDetailsChanged++;
                         break;
                     case "patientGenderComboBox":
-                        if (currDetail.Value.Length <= PatientSettings.GenderMaximumLength)
+                        if (currDetail.Value.Length <= UserSettings.GenderMaximumLength)
                         {
                             commandText += "gender = @gender";
                             comm.Parameters.Add("@gender", MySqlDbType.String).Value = currDetail.Value;
@@ -352,7 +354,7 @@ namespace CS3230Project.DAL.Patients
                         }
                         break;
                     case "patientAddressOneTextBox":
-                        if (currDetail.Value.Length <= PatientSettings.AddressComponentMaximumLength)
+                        if (currDetail.Value.Length <= UserSettings.AddressComponentMaximumLength)
                         {
                             commandText += "addressOne = @addressOne";
                             comm.Parameters.Add("@addressOne", MySqlDbType.String).Value = currDetail.Value;
@@ -365,7 +367,7 @@ namespace CS3230Project.DAL.Patients
                         }
                         break;
                     case "patientAddressTwoTextBox":
-                        if (currDetail.Value.Length <= PatientSettings.AddressComponentMaximumLength)
+                        if (currDetail.Value.Length <= UserSettings.AddressComponentMaximumLength)
                         {
                             commandText += "addressTwo = @addressTwo";
                             comm.Parameters.Add("@addressTwo", MySqlDbType.String).Value = currDetail.Value;
@@ -378,7 +380,7 @@ namespace CS3230Project.DAL.Patients
                         }
                         break;
                     case "patientCityTextBox":
-                        if (currDetail.Value.Length <= PatientSettings.AddressComponentMaximumLength)
+                        if (currDetail.Value.Length <= UserSettings.AddressComponentMaximumLength)
                         {
                             commandText += "city = @city";
                             comm.Parameters.Add("@city", MySqlDbType.String).Value = currDetail.Value;
@@ -391,7 +393,7 @@ namespace CS3230Project.DAL.Patients
                         }
                         break;
                     case "patientStateComboBox":
-                        if (currDetail.Value.Length <= PatientSettings.StateMaximumLength)
+                        if (currDetail.Value.Length <= UserSettings.StateMaximumLength)
                         {
                             commandText += "state = @state";
                             comm.Parameters.Add("@state", MySqlDbType.String).Value = currDetail.Value;

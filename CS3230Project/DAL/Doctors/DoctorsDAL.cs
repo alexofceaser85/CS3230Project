@@ -48,7 +48,7 @@ namespace CS3230Project.DAL.Doctors
                     reader.GetInt32(patientIdOrdinal),
                     reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
-                    reader.GetFieldValue<DateTime>(dateOfBirthOrdinal),
+                    reader.GetFieldValueCheckNull<DateTime>(dateOfBirthOrdinal),
                     reader.GetFieldValueCheckNull<string>(genderOrdinal),
                     reader.GetFieldValueCheckNull<string>(phoneNumberOrdinal),
                     reader.GetFieldValueCheckNull<string>(addressOneOrdinal),
