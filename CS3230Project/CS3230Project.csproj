@@ -118,6 +118,12 @@
     <Compile Include="View\Appointments.Designer.cs">
       <DependentUpon>Appointments.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Checkup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Checkup.Designer.cs">
+      <DependentUpon>Checkup.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Components\Footers\Footer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </Compile>
     <EmbeddedResource Include="View\Appointments.resx">
       <DependentUpon>Appointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Checkup.resx">
+      <DependentUpon>Checkup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Components\Footers\Footer.resx">
       <DependentUpon>Footer.cs</DependentUpon>

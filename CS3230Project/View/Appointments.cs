@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Appointments;
 
 namespace CS3230Project.View
@@ -57,6 +58,21 @@ namespace CS3230Project.View
                 };
 
                 this.previousAppointmentsTable.Rows.Add(appointmentDetails);
+            }
+        }
+
+        private void upcomingAppointmentsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+
+            if (dataGridView == null || e.RowIndex >= dataGridView.RowCount - 1)
+            {
+                return;
+            }
+
+            if (upcomingAppointmentsTable.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 4)
+            {
+                SwitchForms.Switch(this, new Checkup());
             }
         }
     }
