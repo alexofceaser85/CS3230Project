@@ -36,5 +36,10 @@
         /// The maximum length for an appointment reason
         /// </summary>
         public const int AppointmentReasonMaximumLength = 100;
+
+        /// <summary>
+        /// The format of the date time
+        /// </summary>
+        public const string DateTimeFormat = "MM/dd/yyyy HH:mm";
     }
 }

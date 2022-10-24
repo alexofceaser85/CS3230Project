@@ -32,6 +32,19 @@ namespace CS3230Project.View
         {
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.PatientDataGridView = new System.Windows.Forms.DataGridView();
+            this.PatientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddressOne = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddressTwo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZipCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Actions = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.returnToHomeButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -53,19 +66,6 @@ namespace CS3230Project.View
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.header1 = new CS3230Project.View.Components.Headers.Header();
-            this.Actions = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZipCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddressTwo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddressOne = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PatientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PatientDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -120,6 +120,98 @@ namespace CS3230Project.View
             this.PatientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.PatientDataGridView.Size = new System.Drawing.Size(1036, 129);
             this.PatientDataGridView.TabIndex = 5;
+            // 
+            // PatientID
+            // 
+            this.PatientID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.PatientID.HeaderText = "ID";
+            this.PatientID.MinimumWidth = 6;
+            this.PatientID.Name = "PatientID";
+            // 
+            // LastName
+            // 
+            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LastName.HeaderText = "Last Name";
+            this.LastName.MinimumWidth = 6;
+            this.LastName.Name = "LastName";
+            // 
+            // FirstName
+            // 
+            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FirstName.HeaderText = "First Name";
+            this.FirstName.MinimumWidth = 6;
+            this.FirstName.Name = "FirstName";
+            // 
+            // DateOfBirth
+            // 
+            this.DateOfBirth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DateOfBirth.HeaderText = "Date of Birth";
+            this.DateOfBirth.MinimumWidth = 6;
+            this.DateOfBirth.Name = "DateOfBirth";
+            // 
+            // Gender
+            // 
+            this.Gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Gender.HeaderText = "Gender";
+            this.Gender.MinimumWidth = 6;
+            this.Gender.Name = "Gender";
+            // 
+            // PhoneNumber
+            // 
+            this.PhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.PhoneNumber.HeaderText = "Phone";
+            this.PhoneNumber.MinimumWidth = 6;
+            this.PhoneNumber.Name = "PhoneNumber";
+            // 
+            // AddressOne
+            // 
+            this.AddressOne.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AddressOne.HeaderText = "Address 1";
+            this.AddressOne.MinimumWidth = 6;
+            this.AddressOne.Name = "AddressOne";
+            // 
+            // AddressTwo
+            // 
+            this.AddressTwo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AddressTwo.HeaderText = "Address 2";
+            this.AddressTwo.MinimumWidth = 6;
+            this.AddressTwo.Name = "AddressTwo";
+            // 
+            // City
+            // 
+            this.City.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.City.HeaderText = "City";
+            this.City.MinimumWidth = 6;
+            this.City.Name = "City";
+            // 
+            // State
+            // 
+            this.State.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.State.HeaderText = "State";
+            this.State.MinimumWidth = 6;
+            this.State.Name = "State";
+            // 
+            // ZipCode
+            // 
+            this.ZipCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ZipCode.HeaderText = "Zip Code";
+            this.ZipCode.MinimumWidth = 6;
+            this.ZipCode.Name = "ZipCode";
+            // 
+            // Status
+            // 
+            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
+            // 
+            // Actions
+            // 
+            this.Actions.HeaderText = "Actions";
+            this.Actions.Name = "Actions";
+            this.Actions.Text = "Appointments";
+            this.Actions.UseColumnTextForButtonValue = true;
+            this.Actions.Width = 48;
             // 
             // label5
             // 
@@ -397,98 +489,6 @@ namespace CS3230Project.View
             this.header1.Name = "header1";
             this.header1.Size = new System.Drawing.Size(1042, 70);
             this.header1.TabIndex = 13;
-            // 
-            // Actions
-            // 
-            this.Actions.HeaderText = "Actions";
-            this.Actions.Name = "Actions";
-            this.Actions.Text = "Appointments";
-            this.Actions.UseColumnTextForButtonValue = true;
-            this.Actions.Width = 48;
-            // 
-            // Status
-            // 
-            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
-            // 
-            // ZipCode
-            // 
-            this.ZipCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ZipCode.HeaderText = "Zip Code";
-            this.ZipCode.MinimumWidth = 6;
-            this.ZipCode.Name = "ZipCode";
-            // 
-            // State
-            // 
-            this.State.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.State.HeaderText = "State";
-            this.State.MinimumWidth = 6;
-            this.State.Name = "State";
-            // 
-            // City
-            // 
-            this.City.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.City.HeaderText = "City";
-            this.City.MinimumWidth = 6;
-            this.City.Name = "City";
-            // 
-            // AddressTwo
-            // 
-            this.AddressTwo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.AddressTwo.HeaderText = "Address 2";
-            this.AddressTwo.MinimumWidth = 6;
-            this.AddressTwo.Name = "AddressTwo";
-            // 
-            // AddressOne
-            // 
-            this.AddressOne.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.AddressOne.HeaderText = "Address 1";
-            this.AddressOne.MinimumWidth = 6;
-            this.AddressOne.Name = "AddressOne";
-            // 
-            // PhoneNumber
-            // 
-            this.PhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.PhoneNumber.HeaderText = "Phone";
-            this.PhoneNumber.MinimumWidth = 6;
-            this.PhoneNumber.Name = "PhoneNumber";
-            // 
-            // Gender
-            // 
-            this.Gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Gender.HeaderText = "Gender";
-            this.Gender.MinimumWidth = 6;
-            this.Gender.Name = "Gender";
-            // 
-            // DateOfBirth
-            // 
-            this.DateOfBirth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DateOfBirth.HeaderText = "Date of Birth";
-            this.DateOfBirth.MinimumWidth = 6;
-            this.DateOfBirth.Name = "DateOfBirth";
-            // 
-            // FirstName
-            // 
-            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FirstName.HeaderText = "First Name";
-            this.FirstName.MinimumWidth = 6;
-            this.FirstName.Name = "FirstName";
-            // 
-            // LastName
-            // 
-            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LastName.HeaderText = "Last Name";
-            this.LastName.MinimumWidth = 6;
-            this.LastName.Name = "LastName";
-            // 
-            // PatientID
-            // 
-            this.PatientID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.PatientID.HeaderText = "ID";
-            this.PatientID.MinimumWidth = 6;
-            this.PatientID.Name = "PatientID";
             // 
             // SearchPatient
             // 
