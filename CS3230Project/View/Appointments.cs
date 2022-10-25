@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using CS3230Project.Settings;
 using CS3230Project.ViewModel.Appointments;
 
 namespace CS3230Project.View
@@ -9,6 +10,7 @@ namespace CS3230Project.View
     /// </summary>
     public partial class Appointments : Form
     {
+        private readonly int patientId;
         /// <summary>
         /// Initializes a new <see cref="Appointments"/>
         /// </summary>
@@ -16,9 +18,10 @@ namespace CS3230Project.View
         public Appointments(int patientId)
         {
             this.InitializeComponent();
+            this.patientId = patientId;
             this.footer2.BackButtonEventHandler += this.Footer2OnBackButtonEventHandler;
-            this.addUpcomingAppointments(patientId);
-            this.addPreviousAppointments(patientId);
+            this.addUpcomingAppointments();
+            this.addPreviousAppointments();
         }
 
         private void Footer2OnBackButtonEventHandler(object sender, EventArgs e)
@@ -26,15 +29,15 @@ namespace CS3230Project.View
             WindowSwitching.SwitchForms.SwitchBackToHome(this);
         }
 
-        private void addUpcomingAppointments(int patientId)
+        private void addUpcomingAppointments()
         {
             this.upcomingAppointmentsTable.Rows.Clear();
-            foreach (var appointment in AppointmentManagerViewModel.GetUpcomingAppointments(patientId))
+            foreach (var appointment in AppointmentManagerViewModel.GetUpcomingAppointments(this.patientId))
             {
                 string[] appointmentDetails =
                 {
                     (appointment.Patient.FirstName + " " + appointment.Patient.LastName),
-                    appointment.Date.ToShortDateString(),
+                    appointment.Date.ToString(AppointmentSettings.DateTimeFormat),
                     (appointment.Doctor.FirstName + " " + appointment.Doctor.LastName),
                     appointment.Reason
                 };
@@ -43,10 +46,10 @@ namespace CS3230Project.View
             }
         }
 
-        private void addPreviousAppointments(int patientId)
+        private void addPreviousAppointments()
         {
             this.previousAppointmentsTable.Rows.Clear();
-            foreach (var appointment in AppointmentManagerViewModel.GetPreviousAppointments(patientId))
+            foreach (var appointment in AppointmentManagerViewModel.GetPreviousAppointments(this.patientId))
             {
                 string[] appointmentDetails =
                 {
@@ -58,6 +61,11 @@ namespace CS3230Project.View
 
                 this.previousAppointmentsTable.Rows.Add(appointmentDetails);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WindowSwitching.SwitchForms.Switch(this, new CreateAppointment(this.patientId));
         }
     }
 }

@@ -13,7 +13,7 @@ namespace CS3230Project.Model.Users
         /// <summary>
         ///     The ID for the patient
         /// </summary>
-        public int PatientId { get; }
+        public int DoctorId { get; }
 
         /// <summary>
         /// The last name for the patient
@@ -230,7 +230,7 @@ namespace CS3230Project.Model.Users
                 throw new ArgumentException(DoctorErrorMessages.ZipcodeMustBeAllDigits);
             }
 
-            this.PatientId = patientId;
+            this.DoctorId = patientId;
             this.LastName = lastName;
             this.FirstName = firstName;
             this.DateOfBirth = dateOfBirth;

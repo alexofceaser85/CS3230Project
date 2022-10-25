@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CS3230Project.Model.Appointments;
 
 namespace CS3230Project.ViewModel.Appointments
@@ -26,6 +27,19 @@ namespace CS3230Project.ViewModel.Appointments
         public static List<Appointment> GetPreviousAppointments(int patientId)
         {
             return AppointmentManager.GetPreviousAppointments(patientId);
+        }
+        /// <summary>
+        /// Adds an appointment
+        /// </summary>
+        /// <param name="patientId">The patient ID to add an appointment for</param>
+        /// <param name="appointmentDateTime">The date and time of the appointment</param>
+        /// <param name="doctorId">The ID of the attending doctor</param>
+        /// <param name="reason">The reason for the appointment</param>
+        /// <returns></returns>
+        public static bool AddAppointment(int patientId, DateTime appointmentDateTime, int doctorId,
+            string reason)
+        {
+            return AppointmentManager.AddAppointment(patientId, appointmentDateTime, doctorId, reason);
         }
     }
 }
