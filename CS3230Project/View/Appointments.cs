@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using CS3230Project.Model.Appointments;
+using CS3230Project.Model.Users.Patients;
 using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Appointments;
 
@@ -10,6 +13,9 @@ namespace CS3230Project.View
     /// </summary>
     public partial class Appointments : Form
     {
+        private List<Appointment> previousAppointments;
+        private List<Appointment> upcomingAppointments;
+
         /// <summary>
         /// Initializes a new <see cref="Appointments"/>
         /// </summary>
@@ -18,6 +24,8 @@ namespace CS3230Project.View
         {
             this.InitializeComponent();
             this.footer2.BackButtonEventHandler += this.Footer2OnBackButtonEventHandler;
+            this.previousAppointments = new List<Appointment>();
+            this.upcomingAppointments = new List<Appointment>();
             this.addUpcomingAppointments(patientId);
             this.addPreviousAppointments(patientId);
         }
@@ -41,6 +49,7 @@ namespace CS3230Project.View
                 };
 
                 this.upcomingAppointmentsTable.Rows.Add(appointmentDetails);
+                this.upcomingAppointments.Add(appointment);
             }
         }
 
@@ -58,6 +67,7 @@ namespace CS3230Project.View
                 };
 
                 this.previousAppointmentsTable.Rows.Add(appointmentDetails);
+                this.previousAppointments.Add(appointment);
             }
         }
 
@@ -72,8 +82,36 @@ namespace CS3230Project.View
 
             if (upcomingAppointmentsTable.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
-                SwitchForms.Switch(this, new Checkup());
+                var appointmentID = this.getAppointmentID(e);
+                if (appointmentID >= 0)
+                {
+                    SwitchForms.Switch(this, new Checkup(appointmentID));
+                }
             }
+        }
+
+        private int getAppointmentID(DataGridViewCellEventArgs e)
+        {
+            var splitNamePatient = upcomingAppointmentsTable.Rows[e.RowIndex].Cells[0].Value.ToString().Split(' ');
+            var patientFirstName = splitNamePatient[0];
+            var patientLastName = splitNamePatient[1];
+            var splitNameDoctor = upcomingAppointmentsTable.Rows[e.RowIndex].Cells[2].Value.ToString().Split(' ');
+            var doctorFirstName = splitNameDoctor[0];
+            var doctorLastName = splitNameDoctor[1];
+            var appointmentDate = upcomingAppointmentsTable.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+            foreach (var appointment in this.upcomingAppointments)
+            {
+                if (appointment.Patient.FirstName == patientFirstName &&
+                    appointment.Patient.LastName == patientLastName &&
+                    appointment.Doctor.FirstName == doctorFirstName && appointment.Doctor.LastName == doctorLastName &&
+                    appointment.Date.ToString("MM/dd/yyyy") == appointmentDate)
+                {
+                    return appointment.AppointmentId;
+                }
+            }
+
+            return -1;
         }
     }
 }

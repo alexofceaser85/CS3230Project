@@ -410,4 +410,31 @@
         public static string PatientIdCannotBeLessThanZero =
             "The patient ID to get appointments for cannot be less than zero";
     }
+
+    public static class VisitErrorMessages
+    {
+        public static string AppointmentIDCannotBeLessThanZero = "Appointment ID cannot be less than zero.";
+
+        public static string NurseIDCannotBeLessThanZero = "Nurse ID cannot be less than zero.";
+
+        public static string BodyTempCannotBeLessThanZero = "Body temp cannot be less than zero.";
+
+        public static string PulseCannotBeLessThanZero = "Pulse cannot be less than zero.";
+
+        public static string HeightCannotBeLessThanZero = "Height cannot be less than zero.";
+
+        public static string WeightCannotBeLessThanZero = "Weight cannot be less than zero.";
+
+        public static string SymptomsCannotBeEmpty = "Symptoms cannot be empty.";
+
+        public static string SymptomsCannotBeNull = "Symptoms cannot be null.";
+
+        public static string SystolicBloodPressureCannotBeLessThanZero =
+            "Systolic Blood Pressure cannot be less than zero.";
+
+        public static string DiastolicBloodPressureCannotBeLessThanZero =
+            "Diastolic Blood Pressure cannot be less than zero.";
+
+        public static string VisitToAddCannotBeNull = "Visit to add cannot be null.";
+    }
 }

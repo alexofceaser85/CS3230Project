@@ -102,6 +102,7 @@
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\Doctors\DoctorsDAL.cs" />
     <Compile Include="DAL\Patients\PatientsDal.cs" />
+    <Compile Include="DAL\Visits\VisitDal.cs" />
     <Compile Include="ErrorMessages\ErrorMessages.cs" />
     <Compile Include="Model\Appointments\Appointment.cs" />
     <Compile Include="Model\Appointments\AppointmentManager.cs" />
@@ -109,6 +110,8 @@
     <Compile Include="Model\Users\Doctor.cs" />
     <Compile Include="Model\Users\Patients\PatientManager.cs" />
     <Compile Include="Model\Users\Patients\Patient.cs" />
+    <Compile Include="Model\Visits\Visit.cs" />
+    <Compile Include="Model\Visits\VisitManager.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="ViewModel\Appointments\AppointmentManagerViewModel.cs" />
     <Compile Include="ViewModel\Users\PatientManagerViewModel.cs" />
