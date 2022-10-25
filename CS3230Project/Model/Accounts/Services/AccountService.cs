@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography;
+using System.Text;
 using CS3230Project.DAL.Accounts;
 using CS3230Project.ErrorMessages;
 
@@ -41,7 +43,20 @@ namespace CS3230Project.Model.Accounts.Services
                 throw new ArgumentException(AccountsErrorMessages.LoginPasswordCannotBeEmpty);
             }
 
-            return AccountsDAL.Login(username, password);
+            return AccountsDAL.Login(username, hashPassword(password));
+        }
+
+        private static string hashPassword(string passwordToHash)
+        {
+            using HashAlgorithm algorithm = SHA256.Create();
+            var bytes = algorithm.ComputeHash(Encoding.UTF8.GetBytes(passwordToHash));
+            var builder = new StringBuilder();
+            foreach (var passwordByte in bytes)
+            {
+                builder.Append(passwordByte.ToString("x2"));
+            }
+            var hashedPassword = builder.ToString();
+            return hashedPassword;
         }
     }
 }
