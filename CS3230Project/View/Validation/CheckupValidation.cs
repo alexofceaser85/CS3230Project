@@ -191,6 +191,11 @@ namespace CS3230Project.View.Validation
                 symptomsTextBoxErrorMessage.Font = LabelNotCollapsedFont;
                 symptomsTextBoxErrorMessage.Text = ErrorMessages.VisitErrorMessages.SymptomsCannotBeEmpty;
             }
+            else if (symptomsTextBox.Text.Trim().Length > 100)
+            {
+                symptomsTextBoxErrorMessage.Font = LabelNotCollapsedFont;
+                symptomsTextBoxErrorMessage.Text = ErrorMessages.VisitErrorMessages.SymptomsLengthIsTooLong;
+            }
             else
             {
                 symptomsTextBoxErrorMessage.Font = LabelCollapsedFont;

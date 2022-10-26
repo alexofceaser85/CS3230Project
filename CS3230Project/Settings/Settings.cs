@@ -37,4 +37,15 @@
         /// </summary>
         public const int AppointmentReasonMaximumLength = 100;
     }
+
+    /// <summary>
+    ///   the settings for the checkup
+    /// </summary>
+    public class VisitSettings
+    {
+        /// <summary>
+        /// The maximum length for the checkup symptoms
+        /// </summary>
+        public const int VisitSymptomsMaximumLength = 100;
+    }
 }

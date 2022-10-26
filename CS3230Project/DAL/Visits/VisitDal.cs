@@ -30,15 +30,15 @@ namespace CS3230Project.DAL.Visits
                 throw new ArgumentException(VisitErrorMessages.VisitToAddCannotBeNull);
             }
 
-            var appointmentID = visitToAdd.appointmentID;
-            var nurseID = visitToAdd.nurseID;
-            var bodyTemp = visitToAdd.bodyTemp;
-            var pulse = visitToAdd.pulse;
-            var height = visitToAdd.height;
-            var weight = visitToAdd.weight;
-            var symptoms = visitToAdd.symptoms;
-            var systolicBloodPressure = visitToAdd.systolicBloodPressure;
-            var diastolicBloodPressure = visitToAdd.diastolicBloodPressure;
+            var appointmentID = visitToAdd.AppointmentID;
+            var nurseID = visitToAdd.NurseID;
+            var bodyTemp = visitToAdd.BodyTemp;
+            var pulse = visitToAdd.Pulse;
+            var height = visitToAdd.Height;
+            var weight = visitToAdd.Weight;
+            var symptoms = visitToAdd.Symptoms;
+            var systolicBloodPressure = visitToAdd.SystolicBloodPressure;
+            var diastolicBloodPressure = visitToAdd.DiastolicBloodPressure;
 
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();

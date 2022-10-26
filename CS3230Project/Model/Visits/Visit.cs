@@ -12,63 +12,64 @@ namespace CS3230Project.Model.Visits
         /// <summary>
         /// The ID for the appointment
         /// </summary>
-        public int appointmentID { get; }
+        public int AppointmentID { get; }
         /// <summary>
         /// The ID for the nurse assisting with the visit
         /// </summary>
-        public int nurseID { get; }
+        public int NurseID { get; }
         /// <summary>
         /// The body temp of the patient at the time of the visit
         /// </summary>
-        public double bodyTemp { get; }
+        public double BodyTemp { get; }
         /// <summary>
-        /// The pulse of the patient at the time of the visit
+        /// The Pulse of the patient at the time of the visit
         /// </summary>
-        public int pulse { get; }
+        public int Pulse { get; }
         /// <summary>
-        /// The height of the patient at the time of the visit
+        /// The Height of the patient at the time of the visit
         /// </summary>
-        public double height { get; }
+        public double Height { get; }
         /// <summary>
-        /// The weight of the patient at the time of the visit
+        /// The Weight of the patient at the time of the visit
         /// </summary>
-        public double weight { get; }
+        public double Weight { get; }
         /// <summary>
-        /// The height of the patient at the time of the visit
+        /// The Height of the patient at the time of the visit
         /// </summary>
-        public string symptoms { get; }
+        public string Symptoms { get; }
         /// <summary>
         /// The systolic blood pressure of the patient at the time of the visit
         /// </summary>
-        public int systolicBloodPressure { get; }
+        public int SystolicBloodPressure { get; }
         /// <summary>
         /// The diastolic blood pressure of the patient at the time of the visit
         /// </summary>
-        public int diastolicBloodPressure { get; }
+        public int DiastolicBloodPressure { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Visit" /> class.
         ///
         /// Precondition:
-        ///     appointmentID MORE THAN OR EQUAL TO 0
-        ///     AND nurseID MORE THAN OR EQUAL TO 0
-        ///     AND bodyTemp MORE THAN OR EQUAL TO 0
-        ///     AND pulse MORE THAN OR EQUAL TO 0
-        ///     AND height MORE THAN OR EQUAL TO 0
-        ///     AND weight MORE THAN OR EQUAL TO 0
-        ///     AND !symptoms.isEmpty()
-        ///     AND symptoms != null
-        ///     AND systolicBloodPressure MORE THAN OR EQUAL TO 0
-        ///     AND diastolicBloodPressure MORE THAN OR EQUAL TO 0
+        ///     AppointmentID MORE THAN OR EQUAL TO 0
+        ///     AND NurseID MORE THAN OR EQUAL TO 0
+        ///     AND BodyTemp MORE THAN OR EQUAL TO 0
+        ///     AND Pulse MORE THAN OR EQUAL TO 0
+        ///     AND Height MORE THAN OR EQUAL TO 0
+        ///     AND Weight MORE THAN OR EQUAL TO 0
+        ///     AND !Symptoms.isEmpty()
+        ///     AND Symptoms != null
+        ///     AND Symptoms.length() LESS THAN OR EQUAL TO 100
+        ///     AND SystolicBloodPressure MORE THAN OR EQUAL TO 0
+        ///     AND DiastolicBloodPressure MORE THAN OR EQUAL TO 0
         /// Post-condition: visits.length = visits.length @prev + 1
         /// </summary>
         /// <param name="appointmentID">The appointment identifier.</param>
         /// <param name="nurseID">The nurse identifier.</param>
         /// <param name="bodyTemp">The body temporary.</param>
-        /// <param name="pulse">The pulse.</param>
-        /// <param name="height">The height.</param>
-        /// <param name="weight">The weight.</param>
-        /// <param name="symptoms">The symptoms.</param>
+        /// <param name="pulse">The Pulse.</param>
+        /// <param name="height">The Height.</param>
+        /// <param name="weight">The Weight.</param>
+        /// <param name="symptoms">The Symptoms.</param>
         /// <param name="systolicBloodPressure">The systolic blood pressure.</param>
         /// <param name="diastolicBloodPressure">The diastolic blood pressure.</param>
         /// <exception cref="System.ArgumentException"></exception>
@@ -106,6 +107,10 @@ namespace CS3230Project.Model.Visits
             {
                 throw new ArgumentException(VisitErrorMessages.SymptomsCannotBeNull);
             }
+            if (symptoms.Length > Settings.VisitSettings.VisitSymptomsMaximumLength)
+            {
+                throw new ArgumentException(VisitErrorMessages.SymptomsLengthIsTooLong);
+            }
             if (systolicBloodPressure < 0)
             {
                 throw new ArgumentException(VisitErrorMessages.SystolicBloodPressureCannotBeLessThanZero);
@@ -115,15 +120,15 @@ namespace CS3230Project.Model.Visits
                 throw new ArgumentException(VisitErrorMessages.DiastolicBloodPressureCannotBeLessThanZero);
             }
 
-            this.appointmentID = appointmentID;
-            this.nurseID = nurseID;
-            this.bodyTemp = bodyTemp;
-            this.pulse = pulse;
-            this.height = height;
-            this.weight = weight;
-            this.symptoms = symptoms;
-            this.systolicBloodPressure = systolicBloodPressure;
-            this.diastolicBloodPressure = diastolicBloodPressure;
+            this.AppointmentID = appointmentID;
+            this.NurseID = nurseID;
+            this.BodyTemp = bodyTemp;
+            this.Pulse = pulse;
+            this.Height = height;
+            this.Weight = weight;
+            this.Symptoms = symptoms;
+            this.SystolicBloodPressure = systolicBloodPressure;
+            this.DiastolicBloodPressure = diastolicBloodPressure;
         }
     }
 }

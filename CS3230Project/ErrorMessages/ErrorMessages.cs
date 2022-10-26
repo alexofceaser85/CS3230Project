@@ -485,6 +485,10 @@
         /// </summary>
         public static string SymptomsCannotBeNull = "Symptoms cannot be null.";
         /// <summary>
+        /// The error message for visit symptoms length is too long
+        /// </summary>
+        public static string SymptomsLengthIsTooLong = "The visit symptoms is too long.";
+        /// <summary>
         /// The error message for systolic blood pressure cannot be less than zero
         /// </summary>
         public static string SystolicBloodPressureCannotBeLessThanZero =

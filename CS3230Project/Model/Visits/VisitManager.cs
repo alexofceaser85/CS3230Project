@@ -11,7 +11,7 @@ namespace CS3230Project.Model.Visits
         /// <summary>
         /// Adds the visit.
         /// Precondition: none
-        /// Post-condition: visits.length = visits.length @prev + 1
+        /// Post-condition: none
         /// </summary>
         /// <param name="visitToAdd">The visit to add.</param>
         /// <returns>
