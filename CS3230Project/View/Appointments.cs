@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CS3230Project.Model.Appointments;
-using CS3230Project.Model.Users.Patients;
 using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Appointments;
 

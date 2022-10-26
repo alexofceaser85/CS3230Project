@@ -184,6 +184,7 @@
     <Compile Include="View\SearchPatient.Designer.cs">
       <DependentUpon>SearchPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Validation\CheckupValidation.cs" />
     <Compile Include="View\Validation\PatientValidation.cs" />
     <Compile Include="View\WindowSwitching\SwitchForms.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

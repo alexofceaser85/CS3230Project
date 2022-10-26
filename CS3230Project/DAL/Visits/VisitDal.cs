@@ -1,17 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CS3230Project.ErrorMessages;
 using CS3230Project.Model.Visits;
 using MySql.Data.MySqlClient;
 
 namespace CS3230Project.DAL.Visits
 {
+    /// <summary>
+    ///   The data access layer for the visits
+    /// </summary>
     public class VisitDal
     {
 
+        /// <summary>
+        /// Adds the visit.
+        ///
+        /// Precondition: visitToAdd != null
+        /// Post-condition: visits.length == visits.length @prev  + 1
+        /// </summary>
+        /// <param name="visitToAdd">The visit to add.</param>
+        /// <returns>
+        ///   returns true if the visit was added to the database
+        ///   returns false if the visit was not added to the database
+        /// </returns>
+        /// <exception cref="System.ArgumentException"></exception>
         public static bool AddVisit(Visit visitToAdd)
         {
             if (visitToAdd == null)

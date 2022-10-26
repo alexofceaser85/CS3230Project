@@ -411,30 +411,112 @@
             "The patient ID to get appointments for cannot be less than zero";
     }
 
+    /// <summary>
+    ///   The error messages for the visits
+    /// </summary>
     public static class VisitErrorMessages
     {
+        /// <summary>
+        /// The error message for appointment id cannot be less than zero
+        /// </summary>
         public static string AppointmentIDCannotBeLessThanZero = "Appointment ID cannot be less than zero.";
-
+        /// <summary>
+        /// The error message for nurse id cannot be less than zero
+        /// </summary>
         public static string NurseIDCannotBeLessThanZero = "Nurse ID cannot be less than zero.";
-
+        /// <summary>
+        /// The error message for nurse cannot be empty
+        /// </summary>
+        public static string NurseCannotBeEmpty = "Nurse cannot be empty.";
+        /// <summary>
+        /// The error message for body temp cannot be less than zero
+        /// </summary>
         public static string BodyTempCannotBeLessThanZero = "Body temp cannot be less than zero.";
-
+        /// <summary>
+        /// The error message for body temp cannot be empty
+        /// </summary>
+        public static string BodyTempCannotBeEmpty = "Body temp cannot be empty.";
+        /// <summary>
+        /// The error message for body temp must be a valid decimal number.
+        /// </summary>
+        public static string BodyTempMustBeValidDecimal = "Body temp must be a valid decimal number.";
+        /// <summary>
+        /// The error message for pulse cannot be less than zero
+        /// </summary>
         public static string PulseCannotBeLessThanZero = "Pulse cannot be less than zero.";
-
+        /// <summary>
+        /// The error message for pulse cannot be empty
+        /// </summary>
+        public static string PulseCannotBeEmpty = "Pulse cannot be empty.";
+        /// <summary>
+        /// The error message for pulse must be a valid integer
+        /// </summary>
+        public static string PulseMustBeValidInteger = "Pulse must be a valid integer.";
+        /// <summary>
+        /// The error message for height cannot be less than zero
+        /// </summary>
         public static string HeightCannotBeLessThanZero = "Height cannot be less than zero.";
-
+        /// <summary>
+        /// The error message for height cannot be empty
+        /// </summary>
+        public static string HeightCannotBeEmpty = "Height cannot be empty.";
+        /// <summary>
+        /// The error message for height must be a valid decimal number
+        /// </summary>
+        public static string HeightMustBeValidDecimal = "Height must be a valid decimal number.";
+        /// <summary>
+        /// The error message for weight cannot be less than zero
+        /// </summary>
         public static string WeightCannotBeLessThanZero = "Weight cannot be less than zero.";
-
+        /// <summary>
+        /// The error message for weight cannot be empty
+        /// </summary>
+        public static string WeightCannotBeEmpty = "Weight cannot be empty.";
+        /// <summary>
+        /// The error message for weight must be a valid decimal number
+        /// </summary>
+        public static string WeightMustBeValidDecimal = "Weight must be a valid decimal number.";
+        /// <summary>
+        /// The error message for symptoms cannot be empty
+        /// </summary>
         public static string SymptomsCannotBeEmpty = "Symptoms cannot be empty.";
-
+        /// <summary>
+        /// The error message for symptoms cannot be null
+        /// </summary>
         public static string SymptomsCannotBeNull = "Symptoms cannot be null.";
-
+        /// <summary>
+        /// The error message for systolic blood pressure cannot be less than zero
+        /// </summary>
         public static string SystolicBloodPressureCannotBeLessThanZero =
             "Systolic Blood Pressure cannot be less than zero.";
-
+        /// <summary>
+        /// The error message for systolic blood pressure cannot be empty
+        /// </summary>
+        public static string SystolicBloodPressureCannotBeEmpty =
+            "Systolic Blood Pressure cannot be empty.";
+        /// <summary>
+        /// The error message for systolic blood pressure must be a valid integer
+        /// </summary>
+        public static string SystolicBloodPressureMustBeValidInteger =
+            "Systolic Blood Pressure must be a valid integer.";
+        /// <summary>
+        /// The error message for diastolic blood pressure cannot be less than zero
+        /// </summary>
         public static string DiastolicBloodPressureCannotBeLessThanZero =
             "Diastolic Blood Pressure cannot be less than zero.";
-
+        /// <summary>
+        /// The error message for diastolic blood pressure cannot be empty
+        /// </summary>
+        public static string DiastolicBloodPressureCannotBeEmpty =
+            "Diastolic Blood Pressure cannot be empty.";
+        /// <summary>
+        /// The error message for diastolic blood pressure must be a valid integer
+        /// </summary>
+        public static string DiastolicBloodPressureMustBeValidInteger =
+            "Diastolic Blood Pressure must be a valid integer.";
+        /// <summary>
+        /// The error message for visit to add cannot be null
+        /// </summary>
         public static string VisitToAddCannotBeNull = "Visit to add cannot be null.";
     }
 }

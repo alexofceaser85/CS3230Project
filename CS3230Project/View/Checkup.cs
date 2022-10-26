@@ -1,23 +1,25 @@
 ﻿using CS3230Project.View.WindowSwitching;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CS3230Project.Model.Users;
 using CS3230Project.Model.Users.Nurses;
 using CS3230Project.Model.Visits;
+using CS3230Project.View.Validation;
 
 namespace CS3230Project.View
 {
+    /// <summary>
+    ///   The Checkup form
+    /// </summary>
     public partial class Checkup : Form
     {
         private int appointmentID;
+        private readonly string invalidInputErrorMessage = "Invalid Values for the checkup details";
+        private readonly string invalidInputErrorHeader = "Unable to add new checkup";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Checkup" /> class.
+        /// </summary>
+        /// <param name="appointmentID">The appointment identifier.</param>
         public Checkup(int appointmentID)
         {
             InitializeComponent();
@@ -63,25 +65,78 @@ namespace CS3230Project.View
                 Form searchPatientForm = new SearchPatient();
                 SwitchForms.Switch(this, searchPatientForm);
             }
-            catch (ArgumentException errorMessage)
+            catch (Exception)
             {
-                MessageBox.Show(errorMessage.Message); // add checkup header?
+                MessageBox.Show(this.invalidInputErrorMessage, this.invalidInputErrorHeader);
             }
         }
 
         private int getNurseID(string nurseInfo)
         {
             string[] nurseInfoSplit = nurseInfo.Split(' ');
-            var firstName = nurseInfoSplit[0];
-            var lastName = nurseInfoSplit[1];
-            var ID = nurseInfoSplit[3];
 
-            return Int32.Parse(ID);
+            if (nurseInfoSplit.Length > 2)
+            {
+                var firstName = nurseInfoSplit[0];
+                var lastName = nurseInfoSplit[1];
+                var ID = nurseInfoSplit[3];
+                return Int32.Parse(ID);
+            }
+
+            return -1;
+
         }
 
         private void verifyAll()
         {
+            CheckupValidation.VerifySystolicBloodPressureInput(this.systolicBloodPressureTextBox, this.systolicBloodPressureErrorMessage);
+            CheckupValidation.VerifyDiastolicBloodPressureInput(this.diastolicBloodPressureTextBox, this.diastolicBloodPressureErrorMessage);
+            CheckupValidation.VerifyBodyTemperatureInput(this.bodyTemperatureTextBox, this.bodyTempErrorMessage);
+            CheckupValidation.VerifyPulseInput(this.pulseTextBox, this.pulseErrorMessage);
+            CheckupValidation.VerifyHeightInput(this.heightTextBox, this.heightErrorMessage);
+            CheckupValidation.VerifyWeightInput(this.weightTextBox, this.weightErrorMessage);
+            CheckupValidation.VerifyNurseInput(this.nurseComboBox, this.nurseErrorMessage);
+            CheckupValidation.VerifySymptomsInput(this.symptomsTextBox, this.symptomsErrorMessage);
+        }
 
+        private void systolicBloodPressureTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CheckupValidation.VerifySystolicBloodPressureInput(this.systolicBloodPressureTextBox, this.systolicBloodPressureErrorMessage);
+        }
+
+        private void diastolicBloodPressureTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CheckupValidation.VerifyDiastolicBloodPressureInput(this.diastolicBloodPressureTextBox, this.diastolicBloodPressureErrorMessage);
+        }
+
+        private void bodyTemperatureTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CheckupValidation.VerifyBodyTemperatureInput(this.bodyTemperatureTextBox, this.bodyTempErrorMessage);
+        }
+
+        private void pulseTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CheckupValidation.VerifyPulseInput(this.pulseTextBox, this.pulseErrorMessage);
+        }
+
+        private void heightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CheckupValidation.VerifyHeightInput(this.heightTextBox, this.heightErrorMessage);
+        }
+
+        private void weightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CheckupValidation.VerifyWeightInput(this.weightTextBox, this.weightErrorMessage);
+        }
+
+        private void nurseComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckupValidation.VerifyNurseInput(this.nurseComboBox, this.nurseErrorMessage);
+        }
+
+        private void symptomsTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CheckupValidation.VerifySymptomsInput(this.symptomsTextBox, this.symptomsErrorMessage);
         }
     }
 }

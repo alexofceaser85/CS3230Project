@@ -1,17 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using CS3230Project.ErrorMessages;
 using CS3230Project.Model.Users;
 using MySql.Data.MySqlClient;
 
 namespace CS3230Project.DAL.Nurses
 {
+    /// <summary>
+    ///   The data access layer for the nurses
+    /// </summary>
     public static class NurseDal
     {
 
+        /// <summary>
+        /// Gets the nurses.
+        ///
+        /// Precondition: none
+        /// Post-condition: none
+        /// </summary>
+        /// <returns>
+        ///   A list of all the nurses
+        /// </returns>
         public static List<Nurse> GetNurses()
         {
             using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -22,11 +31,22 @@ namespace CS3230Project.DAL.Nurses
             return NurseDal.createNurses(command);
         }
 
+        /// <summary>
+        /// Gets the nurse by identifier.
+        ///
+        /// Precondition: ID MORE THAN OR EQUAL TO 0
+        /// Post-condition: none
+        /// </summary>
+        /// <param name="ID">The identifier.</param>
+        /// <returns>
+        ///   the nurse with the provided ID
+        /// </returns>
+        /// <exception cref="System.ArgumentException"></exception>
         public static Nurse GetNurseByID(int ID)
         {
             if (ID < 0)
             {
-                throw new ArgumentException(); //TODO: add error message
+                throw new ArgumentException(NurseErrorMessages.IdCannotBeLessThanZero);
             }
 
             Nurse nurse = null;
