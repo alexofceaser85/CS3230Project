@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CS3230Project.ErrorMessages;
 using CS3230Project.Model.Users.Patients;
 using CS3230Project.Settings;
@@ -65,6 +66,8 @@ namespace CS3230Project.Model.Users
         /// </summary>
         public string PhoneNumber { get; }
 
+        public List<string> Specialties { get; }
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Patient" />
@@ -89,6 +92,7 @@ namespace CS3230Project.Model.Users
         ///     AND zipcode.isEmpty() == false
         ///     AND phoneNumber != null
         ///     AND phoneNumber.isEmpty() == false
+        ///     AND specialties != null
         /// </summary>
         /// <param name="patientId">The identifier.</param>
         /// <param name="firstName">The first name.</param>
@@ -102,10 +106,10 @@ namespace CS3230Project.Model.Users
         /// <param name="state">The state.</param>
         /// <param name="zipcode">The zipcode.</param>
         /// <exception cref="System.ArgumentException"></exception>
-        public Doctor(int patientId, string lastName, string firstName, DateTime dateOfBirth, string gender, string phoneNumber,
-            string addressOne, string addressTwo, string city, string state, string zipcode)
+        public Doctor(int doctorId, string lastName, string firstName, DateTime dateOfBirth, string gender, string phoneNumber,
+            string addressOne, string addressTwo, string city, string state, string zipcode, List<string> specialties)
         {
-            if (patientId < 0)
+            if (doctorId < 0)
             {
                 throw new ArgumentException(DoctorErrorMessages.DoctorIdCannotBeLessThanZero);
             }
@@ -229,8 +233,12 @@ namespace CS3230Project.Model.Users
             {
                 throw new ArgumentException(DoctorErrorMessages.ZipcodeMustBeAllDigits);
             }
+            if (specialties == null)
+            {
+                throw new ArgumentException(DoctorErrorMessages.SpecialtiesCannotBeNull);
+            }
 
-            this.DoctorId = patientId;
+            this.DoctorId = doctorId;
             this.LastName = lastName;
             this.FirstName = firstName;
             this.DateOfBirth = dateOfBirth;
@@ -241,6 +249,7 @@ namespace CS3230Project.Model.Users
             this.State = state;
             this.Zipcode = zipcode;
             this.PhoneNumber = phoneNumber;
+            this.Specialties = specialties;
         }
     }
 }

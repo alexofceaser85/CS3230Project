@@ -31,7 +31,7 @@ namespace CS3230Project.DAL.Doctors
             command.Parameters.Add("@doctorId", MySqlDbType.Int32).Value = doctorId;
 
             using var reader = command.ExecuteReader();
-            var patientIdOrdinal = reader.GetOrdinal("doctorId");
+            var doctorIdOrdinal = reader.GetOrdinal("doctorId");
             var lastNameOrdinal = reader.GetOrdinal("lastName");
             var firstNameOrdinal = reader.GetOrdinal("firstName");
             var dateOfBirthOrdinal = reader.GetOrdinal("dateOfBirth");
@@ -46,7 +46,7 @@ namespace CS3230Project.DAL.Doctors
             while (reader.Read())
             {
                 doctor = new Doctor(
-                    reader.GetInt32(patientIdOrdinal),
+                    reader.GetInt32(doctorIdOrdinal),
                     reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
                     reader.GetFieldValueCheckNull<DateTime>(dateOfBirthOrdinal),
@@ -56,7 +56,8 @@ namespace CS3230Project.DAL.Doctors
                     reader.GetFieldValueCheckNull<string>(addressTwoOrdinal),
                     reader.GetFieldValueCheckNull<string>(cityOrdinal),
                     reader.GetFieldValueCheckNull<string>(stateOrdinal),
-                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal));
+                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal),
+                    getDoctorSpecialties(reader.GetInt32(doctorIdOrdinal)));
             }
             return doctor;
         }
@@ -79,7 +80,7 @@ namespace CS3230Project.DAL.Doctors
             command.Parameters.Add("@dateTimeToGet", MySqlDbType.DateTime).Value = dateTimeToGet;
 
             using var reader = command.ExecuteReader();
-            var patientIdOrdinal = reader.GetOrdinal("doctorId");
+            var doctorIdOrdinal = reader.GetOrdinal("doctorId");
             var lastNameOrdinal = reader.GetOrdinal("lastName");
             var firstNameOrdinal = reader.GetOrdinal("firstName");
             var dateOfBirthOrdinal = reader.GetOrdinal("dateOfBirth");
@@ -94,7 +95,7 @@ namespace CS3230Project.DAL.Doctors
             while (reader.Read())
             {
                 var doctor = new Doctor(
-                    reader.GetInt32(patientIdOrdinal),
+                    reader.GetInt32(doctorIdOrdinal),
                     reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
                     reader.GetFieldValueCheckNull<DateTime>(dateOfBirthOrdinal),
@@ -104,11 +105,34 @@ namespace CS3230Project.DAL.Doctors
                     reader.GetFieldValueCheckNull<string>(addressTwoOrdinal),
                     reader.GetFieldValueCheckNull<string>(cityOrdinal),
                     reader.GetFieldValueCheckNull<string>(stateOrdinal),
-                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal));
+                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal),
+                    getDoctorSpecialties(reader.GetInt32(doctorIdOrdinal)));
                 doctors.Add(doctor);
             }
 
             return doctors;
+        }
+
+        private static List<string> getDoctorSpecialties(int doctorId)
+        {
+            var specialties = new List<string>();
+            const string query =
+                "select specialtyName " +
+                "from specialty " +
+                "where doctorId = @doctorId ";
+            using var connection = new MySqlConnection(Connection.ConnectionString);
+            connection.Open();
+            using var command = new MySqlCommand(query, connection);
+            command.Parameters.Add("@doctorId", MySqlDbType.Int32).Value = doctorId;
+            using var reader = command.ExecuteReader();
+            var specialtyOrdinal = reader.GetOrdinal("specialtyName");
+
+            while (reader.Read())
+            {
+                specialties.Add(reader.GetFieldValueCheckNull<string>(specialtyOrdinal));
+            }
+
+            return specialties;
         }
     }
 }
