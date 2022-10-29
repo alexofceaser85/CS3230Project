@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CS3230Project.Settings;
+using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Appointments;
 
 namespace CS3230Project.View
@@ -26,7 +27,7 @@ namespace CS3230Project.View
 
         private void Footer2OnBackButtonEventHandler(object sender, EventArgs e)
         {
-            WindowSwitching.SwitchForms.SwitchBackToHome(this);
+            SwitchForms.SwitchBackToHome(this);
         }
 
         private void addUpcomingAppointments()
@@ -65,7 +66,16 @@ namespace CS3230Project.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            WindowSwitching.SwitchForms.Switch(this, new CreateAppointment(this.patientId));
+            SwitchForms.Switch(this, new CreateAppointment(this.patientId));
+        }
+
+        private void upcomingAppointmentsTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex < 4)
+            {
+                var appointment = AppointmentManagerViewModel.GetUpcomingAppointments(this.patientId)[e.RowIndex];
+                SwitchForms.Switch(this, new EditAppointment(appointment, this.patientId));
+            }
         }
     }
 }

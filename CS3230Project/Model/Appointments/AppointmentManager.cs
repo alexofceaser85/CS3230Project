@@ -101,5 +101,54 @@ namespace CS3230Project.Model.Appointments
 
             return AppointmentsDAL.AddAppointment(patientId, appointmentDateTime, doctorId, reason);
         }
+
+        /// <summary>
+        /// Modifies an appointment
+        ///
+        /// Precondition:
+        ///     modifiedAppointmentDateTime MORE THAN Current Day
+        ///     AND modifiedDoctorId MORE THAN OR EQUAL TO 0
+        ///     AND modifiedReason != null
+        ///     AND modifiedReason.Length != 0
+        /// Postcondition:
+        ///     The appointment info is modified
+        /// </summary>
+        /// <param name="appointmentId">The ID of the appointment to modify</param>
+        /// <param name="modifiedAppointmentDateTime">The appointment date time</param>
+        /// <param name="modifiedDoctorId">The doctor ID</param>
+        /// <param name="modifiedReason">The reason</param>
+        /// <returns></returns>
+        public static bool ModifyAppointment(int appointmentId, DateTime modifiedAppointmentDateTime, int modifiedDoctorId, string modifiedReason)
+        {
+
+            if (modifiedAppointmentDateTime < DateTime.Today)
+            {
+                throw new ArgumentException(AppointmentManagerErrorMessages
+                    .DateTimeCannotBeInThePast);
+            }
+
+            if (modifiedDoctorId < 0)
+            {
+                throw new ArgumentException(AppointmentManagerErrorMessages
+                    .DoctorIdToAddCannotBeLessThanZero);
+            }
+
+            if (modifiedReason == null)
+            {
+                throw new ArgumentException(AppointmentManagerErrorMessages.AppointmentReasonCannotBeNull);
+            }
+
+            if (modifiedReason.Trim().Length == 0)
+            {
+                throw new ArgumentException(AppointmentManagerErrorMessages.AppointmentReasonCannotBeEmpty);
+            }
+
+            if (modifiedReason.Length > AppointmentSettings.AppointmentReasonMaximumLength)
+            {
+                throw new ArgumentException(AppointmentManagerErrorMessages.AppointmentReasonCannotBeAboveMaxLength);
+            }
+
+            return AppointmentsDAL.ModifyAppointment(appointmentId, modifiedAppointmentDateTime, modifiedDoctorId, modifiedReason);
+        }
     }
 }
