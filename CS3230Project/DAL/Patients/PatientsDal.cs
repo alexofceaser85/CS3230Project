@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using CS3230Project.ErrorMessages;
 using CS3230Project.Model.Users.Patients;
 using MySql.Data.MySqlClient;
 

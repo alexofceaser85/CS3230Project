@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using CS3230Project.ErrorMessages;
 using CS3230Project.Model.Appointments;
 using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Appointments;
@@ -85,6 +86,10 @@ namespace CS3230Project.View
                 if (appointmentID >= 0)
                 {
                     SwitchForms.Switch(this, new Checkup(appointmentID));
+                }
+                else
+                {
+                    throw new ArgumentException(AppointmentErrorMessages.AppointmentIdCannotBeLessThanZero);
                 }
             }
         }
