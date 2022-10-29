@@ -66,6 +66,9 @@ namespace CS3230Project.Model.Users
         /// </summary>
         public string PhoneNumber { get; }
 
+        /// <summary>
+        ///     The specialties for the doctor
+        /// </summary>
         public List<string> Specialties { get; }
 
 
@@ -94,7 +97,7 @@ namespace CS3230Project.Model.Users
         ///     AND phoneNumber.isEmpty() == false
         ///     AND specialties != null
         /// </summary>
-        /// <param name="patientId">The identifier.</param>
+        /// <param name="doctorId">The identifier.</param>
         /// <param name="firstName">The first name.</param>
         /// <param name="lastName">The last name.</param>
         /// <param name="dateOfBirth">The date of birth.</param>
@@ -105,6 +108,7 @@ namespace CS3230Project.Model.Users
         /// <param name="city">The city.</param>
         /// <param name="state">The state.</param>
         /// <param name="zipcode">The zipcode.</param>
+        /// <param name="specialties">The doctor specialties</param>
         /// <exception cref="System.ArgumentException"></exception>
         public Doctor(int doctorId, string lastName, string firstName, DateTime dateOfBirth, string gender, string phoneNumber,
             string addressOne, string addressTwo, string city, string state, string zipcode, List<string> specialties)
