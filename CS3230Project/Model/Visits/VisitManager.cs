@@ -1,4 +1,6 @@
 ﻿using CS3230Project.DAL.Visits;
+using CS3230Project.ErrorMessages;
+using System;
 
 namespace CS3230Project.Model.Visits
 {
@@ -10,8 +12,7 @@ namespace CS3230Project.Model.Visits
 
         /// <summary>
         /// Adds the visit.
-        /// Precondition: none
-        /// Post-condition: none
+        /// Precondition: visitToAdd != null
         /// </summary>
         /// <param name="visitToAdd">The visit to add.</param>
         /// <returns>
@@ -19,6 +20,11 @@ namespace CS3230Project.Model.Visits
         /// </returns>
         public static bool AddVisit(Visit visitToAdd)
         {
+            if (visitToAdd == null)
+            {
+                throw new ArgumentException(VisitErrorMessages.VisitToAddCannotBeNull);
+            }
+
             return VisitDal.AddVisit(visitToAdd);
         }
 

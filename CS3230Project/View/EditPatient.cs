@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using CS3230Project.ErrorMessages;
 using CS3230Project.Model.Users.Patients;
 using CS3230Project.View.Validation;
 using CS3230Project.View.WindowSwitching;
+using CS3230Project.ViewModel.Users;
 
 namespace CS3230Project.View
 {
@@ -13,7 +15,7 @@ namespace CS3230Project.View
     public partial class EditPatient : Form
     {
         private static string editPatientErrorHeader = "Unable To Edit Patient";
-        private static string editPatientLoadingErrorHeader = "Unable To Edit Patient";
+        private static string editPatientLoadingErrorHeader = "Unable To Edit Patient"; 
         private Dictionary<string, string> updatedDetails;
 
         /// <summary>
@@ -69,14 +71,48 @@ namespace CS3230Project.View
             try
             {
                 this.verifyAll();
-                PatientManager.ModifyPatient(this.updatedDetails);
-                Form searchPatientForm = new SearchPatient();
-                SwitchForms.Switch(this, searchPatientForm);
+                if (this.ValidateModifiedData())
+                {
+                    PatientManagerViewModel.ModifyPatient(this.updatedDetails);
+                    Form searchPatientForm = new SearchPatient();
+                    SwitchForms.Switch(this, searchPatientForm);
+                }
+                else
+                {
+                    MessageBox.Show(PatientErrorMessages.UpdatedPatientDetailsAreInvalid, editPatientErrorHeader);
+                }
             }
             catch (ArgumentException errorMessage)
             {
                 MessageBox.Show(errorMessage.Message, editPatientErrorHeader);
             }
+        }
+
+        private bool ValidateModifiedData()
+        {
+            List<Label> errorLabels = new List<Label>
+            {
+                lastNameErrorMessage,
+                firstNameErrorMessage,
+                dateOfBirthErrorMessage,
+                genderErrorMessage,
+                phoneNumberErrorMessage,
+                addressOneErrorMessage,
+                cityErrorMessage,
+                stateErrorMessage,
+                zipCodeErrorMessage,
+                statusErrorMessage
+            };
+
+            foreach (var currentLabel in errorLabels)
+            {
+                if (!currentLabel.Text.Equals(""))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private void patientDateOfBirthPicker_ValueChanged(object sender, EventArgs e)
@@ -146,11 +182,29 @@ namespace CS3230Project.View
         private void patientGenderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PatientValidation.VerifyGenderInputs(this.patientGenderComboBox, this.genderErrorMessage);
+
+            if (((ComboBox)sender).Name != null && !this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
+            {
+                this.updatedDetails.Add(((ComboBox)sender).Name, ((ComboBox)sender).Text);
+            }
+            else if (((ComboBox)sender).Name != null && this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
+            {
+                this.updatedDetails[((ComboBox)sender).Name] = ((ComboBox)sender).Text;
+            }
         }
 
         private void patientStateComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PatientValidation.VerifyStateInputs(this.patientStateComboBox, this.stateErrorMessage);
+
+            if (((ComboBox)sender).Name != null && !this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
+            {
+                this.updatedDetails.Add(((ComboBox)sender).Name, ((ComboBox)sender).Text);
+            }
+            else if (((ComboBox)sender).Name != null && this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
+            {
+                this.updatedDetails[((ComboBox)sender).Name] = ((ComboBox)sender).Text;
+            }
         }
 
         private void patientZipcodeTextBox_TextChanged(object sender, EventArgs e)
@@ -161,6 +215,15 @@ namespace CS3230Project.View
         private void patientStatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PatientValidation.VerifyStatusInputs(this.patientStatusComboBox, this.statusErrorMessage);
+
+            if (((ComboBox)sender).Name != null && !this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
+            {
+                this.updatedDetails.Add(((ComboBox)sender).Name, ((ComboBox)sender).Text);
+            }
+            else if (((ComboBox)sender).Name != null && this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
+            {
+                this.updatedDetails[((ComboBox)sender).Name] = ((ComboBox)sender).Text;
+            }
         }
     }
 }

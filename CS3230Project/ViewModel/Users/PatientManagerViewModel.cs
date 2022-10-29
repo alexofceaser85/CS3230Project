@@ -64,5 +64,20 @@ namespace CS3230Project.ViewModel.Users
         {
             return PatientManager.GetPatientsByNameAndDateOfBirth(firstName, lastName, dateOfBirth);
         }
+
+        /// <summary>
+        /// Modifies the patient.
+        ///
+        /// Precondition: none
+        /// Post-condition: none
+        /// </summary>
+        /// <param name="updatedDetails">The updated details.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        public static bool ModifyPatient(Dictionary<string, string> updatedDetails)
+        {
+            return PatientManager.ModifyPatient(updatedDetails);
+        }
     }
 }

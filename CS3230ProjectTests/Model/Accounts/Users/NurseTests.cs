@@ -123,7 +123,7 @@ namespace CS3230ProjectTests.Model.Accounts.Users
         {
             var nurse = new Nurse(1, "TestFirst", "TestLast", "FirstLast");
 
-            Assert.AreEqual(1, nurse.Id);
+            Assert.AreEqual(1, nurse.NurseId);
             Assert.AreEqual("TestFirst", nurse.FirstName);
             Assert.AreEqual("TestLast", nurse.LastName);
             Assert.AreEqual("FirstLast", nurse.UserName);

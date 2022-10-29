@@ -41,6 +41,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.symptomsTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.symptomsErrorMessage = new System.Windows.Forms.Label();
             this.tableLayoutPanel73 = new System.Windows.Forms.TableLayoutPanel();
             this.heightErrorMessage = new System.Windows.Forms.Label();
             this.heightTextBox = new System.Windows.Forms.TextBox();
@@ -67,7 +68,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.header1 = new CS3230Project.View.Components.Headers.Header();
             this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter();
-            this.symptomsErrorMessage = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel63.SuspendLayout();
             this.tableLayoutPanel64.SuspendLayout();
@@ -276,6 +276,16 @@
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Symptoms";
+            // 
+            // symptomsErrorMessage
+            // 
+            this.symptomsErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.symptomsErrorMessage.AutoSize = true;
+            this.symptomsErrorMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.symptomsErrorMessage.Location = new System.Drawing.Point(3, 78);
+            this.symptomsErrorMessage.Name = "symptomsErrorMessage";
+            this.symptomsErrorMessage.Size = new System.Drawing.Size(0, 13);
+            this.symptomsErrorMessage.TabIndex = 2;
             // 
             // tableLayoutPanel73
             // 
@@ -591,16 +601,6 @@
             this.submitChangesFooter1.Name = "submitChangesFooter1";
             this.submitChangesFooter1.Size = new System.Drawing.Size(800, 46);
             this.submitChangesFooter1.TabIndex = 8;
-            // 
-            // symptomsErrorMessage
-            // 
-            this.symptomsErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.symptomsErrorMessage.AutoSize = true;
-            this.symptomsErrorMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.symptomsErrorMessage.Location = new System.Drawing.Point(3, 78);
-            this.symptomsErrorMessage.Name = "symptomsErrorMessage";
-            this.symptomsErrorMessage.Size = new System.Drawing.Size(0, 13);
-            this.symptomsErrorMessage.TabIndex = 2;
             // 
             // Checkup
             // 

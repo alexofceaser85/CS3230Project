@@ -116,6 +116,7 @@
     <Compile Include="Model\Visits\VisitManager.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="ViewModel\Appointments\AppointmentManagerViewModel.cs" />
+    <Compile Include="ViewModel\Checkups\CheckupManagerViewModel.cs" />
     <Compile Include="ViewModel\Users\PatientManagerViewModel.cs" />
     <Compile Include="View\Appointments.cs">
       <SubType>Form</SubType>

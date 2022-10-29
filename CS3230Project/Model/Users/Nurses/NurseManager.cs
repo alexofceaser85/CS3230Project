@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CS3230Project.DAL.Nurses;
+using CS3230Project.ErrorMessages;
 
 namespace CS3230Project.Model.Users.Nurses
 {
@@ -26,7 +28,7 @@ namespace CS3230Project.Model.Users.Nurses
         /// <summary>
         /// Gets the nurse by identifier.
         ///
-        /// Precondition: none
+        /// Precondition: ID MORE THAN OR EQUAL TO 0
         /// Post-condition: none
         /// </summary>
         /// <param name="ID">The identifier.</param>
@@ -35,6 +37,11 @@ namespace CS3230Project.Model.Users.Nurses
         /// </returns>
         public static Nurse GetNurseByID(int ID)
         {
+            if (ID < 0)
+            {
+                throw new ArgumentException(NurseErrorMessages.IdCannotBeLessThanZero);
+            }
+
             return NurseDal.GetNurseByID(ID);
         }
     }

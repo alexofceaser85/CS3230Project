@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using CS3230Project.Model.Users.Nurses;
 using CS3230Project.Model.Visits;
 using CS3230Project.View.Validation;
+using CS3230Project.ViewModel.Checkups;
 
 namespace CS3230Project.View
 {
@@ -34,7 +35,7 @@ namespace CS3230Project.View
         {
             foreach (var nurse in NurseManager.GetNurses())
             {
-                var nurseInfo = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.Id;
+                var nurseInfo = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.NurseId;
                 this.nurseComboBox.Items.Add(nurseInfo);
             }
         }
@@ -61,7 +62,7 @@ namespace CS3230Project.View
                     Convert.ToDouble(this.weightTextBox.Text), this.symptomsTextBox.Text, 
                     Convert.ToInt16(this.systolicBloodPressureTextBox.Text), 
                     Convert.ToInt16(this.diastolicBloodPressureTextBox.Text));
-                VisitManager.AddVisit(visitToAdd);
+                CheckupManagerViewModel.AddVisit(visitToAdd);
                 Form searchPatientForm = new SearchPatient();
                 SwitchForms.Switch(this, searchPatientForm);
             }

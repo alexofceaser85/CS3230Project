@@ -65,7 +65,7 @@ namespace CS3230Project.View
                 string[] patientDetails =
                 {
                     currPatient.PatientId.ToString(), currPatient.LastName, currPatient.FirstName,
-                    currPatient.DateOfBirth.ToString(), currPatient.Gender, currPatient.PhoneNumber,
+                    currPatient.DateOfBirth.ToString("d"), currPatient.Gender, currPatient.PhoneNumber,
                     currPatient.AddressOne, currPatient.AddressTwo, currPatient.City, currPatient.State,
                     currPatient.Zipcode, currPatient.Status.ToString()
                 };

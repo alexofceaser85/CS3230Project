@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using CS3230Project.ErrorMessages;
 using CS3230Project.Model.Users;
 using MySql.Data.MySqlClient;
 
@@ -34,7 +33,7 @@ namespace CS3230Project.DAL.Nurses
         /// <summary>
         /// Gets the nurse by identifier.
         ///
-        /// Precondition: ID MORE THAN OR EQUAL TO 0
+        /// Precondition: none
         /// Post-condition: none
         /// </summary>
         /// <param name="ID">The identifier.</param>
@@ -44,11 +43,6 @@ namespace CS3230Project.DAL.Nurses
         /// <exception cref="System.ArgumentException"></exception>
         public static Nurse GetNurseByID(int ID)
         {
-            if (ID < 0)
-            {
-                throw new ArgumentException(NurseErrorMessages.IdCannotBeLessThanZero);
-            }
-
             Nurse nurse = null;
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
@@ -69,10 +63,23 @@ namespace CS3230Project.DAL.Nurses
             var cityOrdinal = reader.GetOrdinal("city");
             var stateOrdinal = reader.GetOrdinal("state");
             var zipcodeOrdinal = reader.GetOrdinal("zipcode");
+            var usernameOrdinal = 2; //will be removed after merge, I think.
 
             while (reader.Read())
             {
-                nurse = new Nurse(reader.GetInt32(nurseIDOrdinal), reader.GetFieldValueCheckNull<string>(firstNameOrdinal), reader.GetFieldValueCheckNull<string>(lastNameOrdinal), "username");
+                nurse = new Nurse(
+                    reader.GetInt32(nurseIDOrdinal),
+                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
+                    reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
+                    reader.GetFieldValueCheckNull<DateTime>(dateOfBirthOrdinal),
+                    reader.GetFieldValueCheckNull<string>(genderOrdinal),
+                    reader.GetFieldValueCheckNull<string>(phoneOrdinal),
+                    reader.GetFieldValueCheckNull<string>(addressOneOrdinal),
+                    reader.GetFieldValueCheckNull<string>(addressTwoOrdinal),
+                    reader.GetFieldValueCheckNull<string>(cityOrdinal),
+                    reader.GetFieldValueCheckNull<string>(stateOrdinal),
+                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal),
+                    reader.GetFieldValueCheckNull<string>(usernameOrdinal));
             }
 
             return nurse;
@@ -95,10 +102,23 @@ namespace CS3230Project.DAL.Nurses
             var cityOrdinal = reader.GetOrdinal("city");
             var stateOrdinal = reader.GetOrdinal("state");
             var zipcodeOrdinal = reader.GetOrdinal("zipcode");
+            var usernameOrdinal = 2; //will be removed after merge, I think.
 
             while (reader.Read())
             {
-                nurses.Add(new Nurse(reader.GetInt32(nurseIDOrdinal), reader.GetFieldValueCheckNull<string>(firstNameOrdinal), reader.GetFieldValueCheckNull<string>(lastNameOrdinal), "username"));
+                nurses.Add(new Nurse(
+                    reader.GetInt32(nurseIDOrdinal),
+                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
+                    reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
+                    reader.GetFieldValueCheckNull<DateTime>(dateOfBirthOrdinal),
+                    reader.GetFieldValueCheckNull<string>(genderOrdinal),
+                    reader.GetFieldValueCheckNull<string>(phoneOrdinal),
+                    reader.GetFieldValueCheckNull<string>(addressOneOrdinal),
+                    reader.GetFieldValueCheckNull<string>(addressTwoOrdinal),
+                    reader.GetFieldValueCheckNull<string>(cityOrdinal),
+                    reader.GetFieldValueCheckNull<string>(stateOrdinal),
+                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal),
+                    reader.GetFieldValueCheckNull<string>(usernameOrdinal)));
             }
 
             return nurses;

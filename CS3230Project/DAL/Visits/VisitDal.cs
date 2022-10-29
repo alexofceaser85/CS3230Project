@@ -1,6 +1,4 @@
-﻿using System;
-using CS3230Project.ErrorMessages;
-using CS3230Project.Model.Visits;
+﻿using CS3230Project.Model.Visits;
 using MySql.Data.MySqlClient;
 
 namespace CS3230Project.DAL.Visits
@@ -14,8 +12,7 @@ namespace CS3230Project.DAL.Visits
         /// <summary>
         /// Adds the visit.
         ///
-        /// Precondition: visitToAdd != null
-        /// Post-condition: visits.length == visits.length @prev  + 1
+        /// Precondition: none
         /// </summary>
         /// <param name="visitToAdd">The visit to add.</param>
         /// <returns>
@@ -25,11 +22,6 @@ namespace CS3230Project.DAL.Visits
         /// <exception cref="System.ArgumentException"></exception>
         public static bool AddVisit(Visit visitToAdd)
         {
-            if (visitToAdd == null)
-            {
-                throw new ArgumentException(VisitErrorMessages.VisitToAddCannotBeNull);
-            }
-
             var appointmentID = visitToAdd.AppointmentID;
             var nurseID = visitToAdd.NurseID;
             var bodyTemp = visitToAdd.BodyTemp;
