@@ -36,6 +36,53 @@ namespace CS3230Project.DAL.Appointments
             return getAppointments(query, patientIdParam);
         }
 
+        /// <summary>
+        /// Adds an appointment
+        /// </summary>
+        /// <param name="patientId">The patient ID to add an appointment for</param>
+        /// <param name="appointmentDateTime">The date and time for the appointment</param>
+        /// <param name="doctorId">The ID of the doctor attending the appointment</param>
+        /// <param name="reason">The reason for the appointment</param>
+        /// <returns>True if the appointment was added, false otherwise</returns>
+        public static bool AddAppointment(int patientId, DateTime appointmentDateTime, int doctorId, string reason)
+        {
+            using var connection = new MySqlConnection(Connection.ConnectionString);
+            connection.Open();
+            const string query =
+                "insert into appointments (patientId, appointmentDateTime, doctorId, reason) " +
+                "VALUES (@patientId, @appointmentDateTime, @doctorId, @reason)";
+            using var command = new MySqlCommand(query, connection);
+            command.Parameters.Add("@patientId", MySqlDbType.Int32).Value = patientId;
+            command.Parameters.Add("@appointmentDateTime", MySqlDbType.DateTime).Value = appointmentDateTime;
+            command.Parameters.Add("@doctorId", MySqlDbType.Int32).Value = doctorId;
+            command.Parameters.Add("@reason", MySqlDbType.String).Value = reason;
+            return command.ExecuteNonQuery() > 0;
+        }
+
+        /// <summary>
+        /// Modifies an existing appointment
+        /// </summary>
+        /// <param name="appointmentId">The ID of the appointment to modify</param>
+        /// <param name="modifiedAppointmentDateTime">The modified appointment date time</param>
+        /// <param name="modifiedDoctorId">The modified appointment doctor ID</param>
+        /// <param name="modifiedReason">The modified appointment reason</param>
+        /// <returns></returns>
+        public static bool ModifyAppointment(int appointmentId, DateTime modifiedAppointmentDateTime, int modifiedDoctorId, string modifiedReason)
+        {
+            using var connection = new MySqlConnection(Connection.ConnectionString);
+            connection.Open();
+            const string query =
+                "update appointments " +
+                "SET appointmentDateTime = @appointmentDateTime, doctorId = @doctorId, reason = @reason " +
+                "WHERE appointmentId = @appointmentId";
+            using var command = new MySqlCommand(query, connection);
+            command.Parameters.Add("@appointmentId", MySqlDbType.Int32).Value = appointmentId;
+            command.Parameters.Add("@appointmentDateTime", MySqlDbType.DateTime).Value = modifiedAppointmentDateTime;
+            command.Parameters.Add("@doctorId", MySqlDbType.Int32).Value = modifiedDoctorId;
+            command.Parameters.Add("@reason", MySqlDbType.String).Value = modifiedReason;
+            return command.ExecuteNonQuery() > 0;
+        }
+
         private static List<Appointment> getAppointments(string query, int patientIdParam)
         {
             var appointments = new List<Appointment>();

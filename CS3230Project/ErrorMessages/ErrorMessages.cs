@@ -471,6 +471,8 @@
         /// Error message for an empty updated patient details
         /// </summary>
         public static string UpdatedDoctorDetailsCannotBeEmpty = "The updated doctor details cannot be empty.";
+
+        public static string SpecialtiesCannotBeNull = "The doctors specialties cannot be null";
     }
 
     /// <summary>
@@ -513,8 +515,61 @@
         /// <summary>
         /// The error message for a patient ID less than zero 
         /// </summary>
-        public static string PatientIdCannotBeLessThanZero =
+        public static string PatientIdToGetCannotBeLessThanZero =
             "The patient ID to get appointments for cannot be less than zero";
+        /// <summary>
+        /// The error message for a patient ID less than zero 
+        /// </summary>
+        public static string PatientIdToAddCannotBeLessThanZero =
+            "The patient ID to add an appointment for cannot be less than zero";
+        /// <summary>
+        /// The error message for a date time in the past
+        /// </summary>
+        public static string DateTimeCannotBeInThePast =
+            "The appointment date and time must be in the future";
+        /// <summary>
+        /// The error message for a doctor ID less than zero
+        /// </summary>
+        public static string DoctorIdToAddCannotBeLessThanZero =
+            "The doctor ID to add an appointment for cannot be less than zero";
+        /// <summary>
+        /// The error message for a null appointment reason
+        /// </summary>
+        public static string AppointmentReasonCannotBeNull = "The appointment reason cannot be null";
+        /// <summary>
+        /// The error message for an empty appointment reason
+        /// </summary>
+        public static string AppointmentReasonCannotBeEmpty = "The appointment reason cannot be empty";
+        /// <summary>
+        /// The appointment reason cannot be above the maximum length
+        /// </summary>
+        public static string AppointmentReasonCannotBeAboveMaxLength =
+            "The appointment reason cannot be above max length";
+    }
+
+    /// <summary>
+    /// The error messages for the Create Appointment form validation
+    /// </summary>
+    public class CreateAppointmentValidationMessages
+    {
+        /// <summary>
+        /// The error message for a date time in the past
+        /// </summary>
+        public static string DateTimeCannotBeInThePast =
+            "The appointment date and time must be in the future";
+        /// <summary>
+        /// The error message for an empty doctor selection
+        /// </summary>
+        public static string DoctorSelectionCannotBeEmpty = "Must select a doctor";
+        /// <summary>
+        /// The error message for an empty appointment reason
+        /// </summary>
+        public static string AppointmentReasonCannotBeEmpty = "The appointment reason cannot be empty";
+        /// <summary>
+        /// The appointment reason cannot be above the maximum length
+        /// </summary>
+        public static string AppointmentReasonCannotBeAboveMaxLength =
+            "The appointment reason cannot be above max length";
     }
 
     /// <summary>

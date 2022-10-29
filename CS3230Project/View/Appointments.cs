@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using CS3230Project.ErrorMessages;
 using CS3230Project.Model.Appointments;
+using CS3230Project.Settings;
 using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Appointments;
 
@@ -13,8 +14,10 @@ namespace CS3230Project.View
     /// </summary>
     public partial class Appointments : Form
     {
+
         private List<Appointment> previousAppointments;
         private List<Appointment> upcomingAppointments;
+        private readonly int patientId;
 
         /// <summary>
         /// Initializes a new <see cref="Appointments"/>
@@ -23,27 +26,29 @@ namespace CS3230Project.View
         public Appointments(int patientId)
         {
             this.InitializeComponent();
+            this.patientId = patientId;
             this.footer2.BackButtonEventHandler += this.Footer2OnBackButtonEventHandler;
             this.previousAppointments = new List<Appointment>();
             this.upcomingAppointments = new List<Appointment>();
             this.addUpcomingAppointments(patientId);
             this.addPreviousAppointments(patientId);
+
         }
 
         private void Footer2OnBackButtonEventHandler(object sender, EventArgs e)
         {
-            WindowSwitching.SwitchForms.SwitchBackToHome(this);
+            SwitchForms.SwitchBackToHome(this);
         }
 
-        private void addUpcomingAppointments(int patientId)
+        private void addUpcomingAppointments()
         {
             this.upcomingAppointmentsTable.Rows.Clear();
-            foreach (var appointment in AppointmentManagerViewModel.GetUpcomingAppointments(patientId))
+            foreach (var appointment in AppointmentManagerViewModel.GetUpcomingAppointments(this.patientId))
             {
                 string[] appointmentDetails =
                 {
                     (appointment.Patient.FirstName + " " + appointment.Patient.LastName),
-                    appointment.Date.ToShortDateString(),
+                    appointment.Date.ToString(AppointmentSettings.DateTimeFormat),
                     (appointment.Doctor.FirstName + " " + appointment.Doctor.LastName),
                     appointment.Reason
                 };
@@ -53,10 +58,10 @@ namespace CS3230Project.View
             }
         }
 
-        private void addPreviousAppointments(int patientId)
+        private void addPreviousAppointments()
         {
             this.previousAppointmentsTable.Rows.Clear();
-            foreach (var appointment in AppointmentManagerViewModel.GetPreviousAppointments(patientId))
+            foreach (var appointment in AppointmentManagerViewModel.GetPreviousAppointments(this.patientId))
             {
                 string[] appointmentDetails =
                 {
@@ -116,6 +121,20 @@ namespace CS3230Project.View
             }
 
             return -1;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SwitchForms.Switch(this, new CreateAppointment(this.patientId));
+        }
+
+        private void upcomingAppointmentsTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex < 4)
+            {
+                var appointment = AppointmentManagerViewModel.GetUpcomingAppointments(this.patientId)[e.RowIndex];
+                SwitchForms.Switch(this, new EditAppointment(appointment, this.patientId));
+            }
         }
     }
 }
