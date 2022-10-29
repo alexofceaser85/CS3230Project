@@ -195,6 +195,7 @@
             this.upcomingAppointmentsTable.ReadOnly = true;
             this.upcomingAppointmentsTable.Size = new System.Drawing.Size(791, 104);
             this.upcomingAppointmentsTable.TabIndex = 1;
+            this.upcomingAppointmentsTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.upcomingAppointmentsTable_CellClick);
             // 
             // Patient
             // 

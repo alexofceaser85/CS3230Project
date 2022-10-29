@@ -138,6 +138,12 @@
     <Compile Include="View\CreateAppointment.Designer.cs">
       <DependentUpon>CreateAppointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EditAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditAppointment.Designer.cs">
+      <DependentUpon>EditAppointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\EditPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\CreateAppointment.resx">
       <DependentUpon>CreateAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EditAppointment.resx">
+      <DependentUpon>EditAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EditPatient.resx">
       <DependentUpon>EditPatient.cs</DependentUpon>

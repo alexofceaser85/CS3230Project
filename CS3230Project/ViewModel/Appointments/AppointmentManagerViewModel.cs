@@ -41,5 +41,18 @@ namespace CS3230Project.ViewModel.Appointments
         {
             return AppointmentManager.AddAppointment(patientId, appointmentDateTime, doctorId, reason);
         }
+
+        /// <summary>
+        /// Modifies an existing appointment
+        /// </summary>
+        /// <param name="appointmentId">The modified appointment ID</param>
+        /// <param name="modifiedAppointmentDateTime">The modified appointment ID</param>
+        /// <param name="modifiedDoctorId">The modified appointment doctor id</param>
+        /// <param name="modifiedReason">The modified appointment reason</param>
+        /// <returns>True if the appointment was modified, false otherwise</returns>
+        public static bool ModifyAppointment(int appointmentId, DateTime modifiedAppointmentDateTime, int modifiedDoctorId, string modifiedReason)
+        {
+            return AppointmentManager.ModifyAppointment(appointmentId, modifiedAppointmentDateTime, modifiedDoctorId, modifiedReason);
+        }
     }
 }
