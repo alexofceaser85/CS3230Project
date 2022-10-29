@@ -30,8 +30,8 @@ namespace CS3230Project.View
             this.footer2.BackButtonEventHandler += this.Footer2OnBackButtonEventHandler;
             this.previousAppointments = new List<Appointment>();
             this.upcomingAppointments = new List<Appointment>();
-            this.addUpcomingAppointments(patientId);
-            this.addPreviousAppointments(patientId);
+            this.addUpcomingAppointments();
+            this.addPreviousAppointments();
 
         }
 
