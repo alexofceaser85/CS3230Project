@@ -33,20 +33,22 @@
             this.footer2 = new CS3230Project.View.Components.Footers.Footer();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.previousAppointmentsTable = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.upcomingAppointmentsTable = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreviousAppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.upcomingAppointmentsTable = new System.Windows.Forms.DataGridView();
             this.Patient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Doctor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UpcomingAppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Actions = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previousAppointmentsTable)).BeginInit();
@@ -127,12 +129,68 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
+            this.PreviousAppointmentID,
             this.dataGridViewButtonColumn1});
             this.previousAppointmentsTable.Location = new System.Drawing.Point(3, 203);
             this.previousAppointmentsTable.Name = "previousAppointmentsTable";
             this.previousAppointmentsTable.ReadOnly = true;
             this.previousAppointmentsTable.Size = new System.Drawing.Size(791, 104);
             this.previousAppointmentsTable.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 180);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(115, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Previous Appointments";
+            // 
+            // upcomingAppointmentsTable
+            // 
+            this.upcomingAppointmentsTable.AllowUserToAddRows = false;
+            this.upcomingAppointmentsTable.AllowUserToDeleteRows = false;
+            this.upcomingAppointmentsTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.upcomingAppointmentsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.upcomingAppointmentsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.upcomingAppointmentsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Patient,
+            this.AppointmentDate,
+            this.Doctor,
+            this.Reason,
+            this.UpcomingAppointmentID,
+            this.Actions});
+            this.upcomingAppointmentsTable.Location = new System.Drawing.Point(3, 23);
+            this.upcomingAppointmentsTable.Name = "upcomingAppointmentsTable";
+            this.upcomingAppointmentsTable.ReadOnly = true;
+            this.upcomingAppointmentsTable.Size = new System.Drawing.Size(791, 104);
+            this.upcomingAppointmentsTable.TabIndex = 1;
+            this.upcomingAppointmentsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.upcomingAppointmentsTable_CellContentClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Upcoming Appointments";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.button1.BackColor = System.Drawing.Color.LightSlateGray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(319, 133);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(159, 44);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Create Appointment";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -158,6 +216,12 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
+            // PreviousAppointmentID
+            // 
+            this.PreviousAppointmentID.HeaderText = "Appointment ID";
+            this.PreviousAppointmentID.Name = "PreviousAppointmentID";
+            this.PreviousAppointmentID.ReadOnly = true;
+            // 
             // dataGridViewButtonColumn1
             // 
             this.dataGridViewButtonColumn1.HeaderText = "Actions";
@@ -165,37 +229,6 @@
             this.dataGridViewButtonColumn1.ReadOnly = true;
             this.dataGridViewButtonColumn1.Text = "Visit";
             this.dataGridViewButtonColumn1.UseColumnTextForButtonValue = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 180);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Previous Appointments";
-            // 
-            // upcomingAppointmentsTable
-            // 
-            this.upcomingAppointmentsTable.AllowUserToAddRows = false;
-            this.upcomingAppointmentsTable.AllowUserToDeleteRows = false;
-            this.upcomingAppointmentsTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.upcomingAppointmentsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.upcomingAppointmentsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.upcomingAppointmentsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Patient,
-            this.AppointmentDate,
-            this.Doctor,
-            this.Reason,
-            this.Actions});
-            this.upcomingAppointmentsTable.Location = new System.Drawing.Point(3, 23);
-            this.upcomingAppointmentsTable.Name = "upcomingAppointmentsTable";
-            this.upcomingAppointmentsTable.ReadOnly = true;
-            this.upcomingAppointmentsTable.Size = new System.Drawing.Size(791, 104);
-            this.upcomingAppointmentsTable.TabIndex = 1;
-            this.upcomingAppointmentsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.upcomingAppointmentsTable_CellContentClick);
             // 
             // Patient
             // 
@@ -221,6 +254,12 @@
             this.Reason.Name = "Reason";
             this.Reason.ReadOnly = true;
             // 
+            // UpcomingAppointmentID
+            // 
+            this.UpcomingAppointmentID.HeaderText = "Appointment ID";
+            this.UpcomingAppointmentID.Name = "UpcomingAppointmentID";
+            this.UpcomingAppointmentID.ReadOnly = true;
+            // 
             // Actions
             // 
             this.Actions.HeaderText = "Actions";
@@ -228,29 +267,6 @@
             this.Actions.ReadOnly = true;
             this.Actions.Text = "Visit";
             this.Actions.UseColumnTextForButtonValue = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Upcoming Appointments";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.button1.BackColor = System.Drawing.Color.LightSlateGray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(319, 133);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 44);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Create Appointment";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Appointments
             // 
@@ -277,18 +293,20 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView upcomingAppointmentsTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Patient;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AppointmentDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Doctor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Reason;
-        private System.Windows.Forms.DataGridViewButtonColumn Actions;
         private System.Windows.Forms.DataGridView previousAppointmentsTable;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PreviousAppointmentID;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Patient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AppointmentDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Doctor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reason;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UpcomingAppointmentID;
+        private System.Windows.Forms.DataGridViewButtonColumn Actions;
     }
 }

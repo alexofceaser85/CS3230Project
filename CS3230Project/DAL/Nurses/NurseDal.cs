@@ -52,7 +52,6 @@ namespace CS3230Project.DAL.Nurses
 
             using var reader = command.ExecuteReader();
             var nurseIDOrdinal = reader.GetOrdinal("nurseId");
-            var employeeIDOrdinal = reader.GetOrdinal("employeeId");
             var firstNameOrdinal = reader.GetOrdinal("firstName");
             var lastNameOrdinal = reader.GetOrdinal("lastName");
             var dateOfBirthOrdinal = reader.GetOrdinal("dateOfBirth");
@@ -63,7 +62,6 @@ namespace CS3230Project.DAL.Nurses
             var cityOrdinal = reader.GetOrdinal("city");
             var stateOrdinal = reader.GetOrdinal("state");
             var zipcodeOrdinal = reader.GetOrdinal("zipcode");
-            var usernameOrdinal = 2; //will be removed after merge, I think.
 
             while (reader.Read())
             {
@@ -78,8 +76,7 @@ namespace CS3230Project.DAL.Nurses
                     reader.GetFieldValueCheckNull<string>(addressTwoOrdinal),
                     reader.GetFieldValueCheckNull<string>(cityOrdinal),
                     reader.GetFieldValueCheckNull<string>(stateOrdinal),
-                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal),
-                    reader.GetFieldValueCheckNull<string>(usernameOrdinal));
+                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal));
             }
 
             return nurse;
@@ -91,7 +88,6 @@ namespace CS3230Project.DAL.Nurses
 
             using var reader = command.ExecuteReader();
             var nurseIDOrdinal = reader.GetOrdinal("nurseId");
-            var employeeIDOrdinal = reader.GetOrdinal("employeeId");
             var firstNameOrdinal = reader.GetOrdinal("firstName");
             var lastNameOrdinal = reader.GetOrdinal("lastName");
             var dateOfBirthOrdinal = reader.GetOrdinal("dateOfBirth");
@@ -102,7 +98,6 @@ namespace CS3230Project.DAL.Nurses
             var cityOrdinal = reader.GetOrdinal("city");
             var stateOrdinal = reader.GetOrdinal("state");
             var zipcodeOrdinal = reader.GetOrdinal("zipcode");
-            var usernameOrdinal = 2; //will be removed after merge, I think.
 
             while (reader.Read())
             {
@@ -117,8 +112,7 @@ namespace CS3230Project.DAL.Nurses
                     reader.GetFieldValueCheckNull<string>(addressTwoOrdinal),
                     reader.GetFieldValueCheckNull<string>(cityOrdinal),
                     reader.GetFieldValueCheckNull<string>(stateOrdinal),
-                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal),
-                    reader.GetFieldValueCheckNull<string>(usernameOrdinal)));
+                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal)));
             }
 
             return nurses;

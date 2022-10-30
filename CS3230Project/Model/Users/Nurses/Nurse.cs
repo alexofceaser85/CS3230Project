@@ -64,7 +64,7 @@ namespace CS3230Project.Model.Users
         /// <summary>
         /// The user name for the nurse
         /// </summary>
-        public string UserName { get; }
+        public string UserName { get; set; }
 
         /// <summary>
         /// Initializes a new <see cref="Nurse"/>
@@ -89,8 +89,6 @@ namespace CS3230Project.Model.Users
         ///     AND zipcode.isEmpty() == false
         ///     AND phoneNumber != null
         ///     AND phoneNumber.isEmpty() == false
-        ///     AND userName != null
-        ///     AND userName.isEmpty() == false
         /// </summary>
         /// <param name="nurseId">The nurses ID</param>
         /// <param name="firstName">The nurses first name</param>
@@ -103,8 +101,7 @@ namespace CS3230Project.Model.Users
         /// <param name="city">The city.</param>
         /// <param name="state">The state.</param>
         /// <param name="zipcode">The zipcode.</param>
-        /// <param name="userName">The nurses user name</param>
-        public Nurse(int nurseId, string firstName, string lastName, DateTime dateOfBirth, string gender, string phoneNumber, string addressOne, string addressTwo, string city, string state, string zipcode, string userName)
+        public Nurse(int nurseId, string firstName, string lastName, DateTime dateOfBirth, string gender, string phoneNumber, string addressOne, string addressTwo, string city, string state, string zipcode)
         {
             if (nurseId < 0)
             {
@@ -190,7 +187,7 @@ namespace CS3230Project.Model.Users
             {
                 throw new ArgumentException(NurseErrorMessages.StateCannotBeEmpty);
             }
-            if (state.Length > 50)
+            if (state.Length > Settings.UserSettings.StateMaximumLength)
             {
                 throw new ArgumentException(NurseErrorMessages.StateIsTooLong);
             }
@@ -214,14 +211,6 @@ namespace CS3230Project.Model.Users
             {
                 throw new ArgumentException(NurseErrorMessages.ZipcodeMustBeAllDigits);
             }
-            if (userName == null)
-            {
-                throw new ArgumentException(NurseErrorMessages.UserNameCannotBeNull);
-            }
-            if (userName.Trim().Length == 0)
-            {
-                throw new ArgumentException(NurseErrorMessages.UserNameCannotBeEmpty);
-            }
 
             this.NurseId = nurseId;
             this.FirstName = firstName;
@@ -234,7 +223,7 @@ namespace CS3230Project.Model.Users
             this.City = city;
             this.State = state;
             this.Zipcode = zipcode;
-            this.UserName = userName;
+            this.UserName = "";
         }
     }
 }

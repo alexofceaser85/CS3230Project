@@ -92,8 +92,8 @@ namespace CS3230Project.DAL.Patients
             {
                 patient = new Patient(
                     reader.GetInt32(patientIdOrdinal),
-                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
+                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValue<DateTime>(dateOfBirthOrdinal),
                     reader.GetFieldValueCheckNull<string>(genderOrdinal),
                     reader.GetFieldValueCheckNull<string>(phoneNumberOrdinal),
@@ -241,8 +241,8 @@ namespace CS3230Project.DAL.Patients
             {
                 matchingPatients.Add(new Patient(
                     reader.GetInt32(patientIdOrdinal),
-                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
+                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValue<DateTime>(dateOfBirthOrdinal),
                     reader.GetFieldValueCheckNull<string>(genderOrdinal),
                     reader.GetFieldValueCheckNull<string>(phoneNumberOrdinal),

@@ -48,7 +48,7 @@ namespace CS3230Project.DAL.Accounts
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
             const string query = "select *" +
-                                 "from nurses, accounts " +
+                                "from nurses, accounts " +
                                  "where nurses.employeeID = accounts.employeeID " +
                                  "and exists (" +
                                  "  select userName, `password` " +
@@ -62,7 +62,6 @@ namespace CS3230Project.DAL.Accounts
             command.Parameters.Add("@password", MySqlDbType.String).Value = password;
 
             using var reader = command.ExecuteReader();
-            var idOrdinal = reader.GetOrdinal("employeeID");
             var firstNameOrdinal = reader.GetOrdinal("firstName");
             var lastNameOrdinal = reader.GetOrdinal("lastName");
             var userNameOrdinal = reader.GetOrdinal("userName");
@@ -89,8 +88,9 @@ namespace CS3230Project.DAL.Accounts
                     reader.GetFieldValueCheckNull<string>(addressTwoOrdinal),
                     reader.GetFieldValueCheckNull<string>(cityOrdinal),
                     reader.GetFieldValueCheckNull<string>(stateOrdinal),
-                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal),
-                    reader.GetFieldValueCheckNull<string>(userNameOrdinal));
+                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal));
+
+                    CurrentUser.User.UserName = reader.GetFieldValueCheckNull<string>(userNameOrdinal);
             }
 
             return CurrentUser.User != null;
