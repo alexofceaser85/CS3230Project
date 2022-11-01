@@ -95,7 +95,7 @@ namespace CS3230Project.View
             {
                 this.verifyAll();
 
-                var nurseID = this.getNurseID((string)this.nurseComboBox.Text);
+                var nurseID = this.getNurseID(this.nurseComboBox.Text);
                 Visit visitToAdd = new Visit(this.appointmentID, nurseID, Convert.ToDouble(this.bodyTemperatureTextBox.Text), 
                     Convert.ToInt16(this.pulseTextBox.Text), Convert.ToDouble(this.heightTextBox.Text),
                     Convert.ToDouble(this.weightTextBox.Text), this.symptomsTextBox.Text, 

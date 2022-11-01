@@ -187,7 +187,7 @@ namespace CS3230Project.Model.Users
             {
                 throw new ArgumentException(NurseErrorMessages.StateCannotBeEmpty);
             }
-            if (state.Length > Settings.UserSettings.StateMaximumLength)
+            if (state.Length > UserSettings.StateMaximumLength)
             {
                 throw new ArgumentException(NurseErrorMessages.StateIsTooLong);
             }
