@@ -1,4 +1,6 @@
-﻿using CS3230Project.Model.Visits;
+﻿using System.Runtime.CompilerServices;
+using CS3230Project.Model.Appointments;
+using CS3230Project.Model.Visits;
 using MySql.Data.MySqlClient;
 
 namespace CS3230Project.DAL.Visits
@@ -51,6 +53,54 @@ namespace CS3230Project.DAL.Visits
             comm.Parameters.Add("@diastolicBloodPressure", MySqlDbType.Int16).Value = diastolicBloodPressure;
 
             return comm.ExecuteNonQuery() > 0;
+        }
+
+        public static Visit GetVisit(int appointmentID)
+        {
+            using var connection = new MySqlConnection(Connection.ConnectionString);
+            connection.Open();
+
+            if (appointmentID >= 0)
+            {
+                const string query =
+                    "select nurseId, bodyTemp, pulse, height, weight, symptoms, systolicBloodPressure, diastolicBloodPressure " +
+                    "from visit where @appointmentId = appointmentId";
+                using var command = new MySqlCommand(query, connection);
+
+                return VisitDal.createVisit(command, appointmentID);
+            }
+
+            return null;
+        }
+
+        private static Visit createVisit(MySqlCommand command, int appointmentId)
+        {
+            command.Parameters.Add("@appointmentId", MySqlDbType.Int16).Value = appointmentId;
+            using var reader = command.ExecuteReader();
+            var nurseIdOrdinal = reader.GetOrdinal("nurseId");
+            var bodyTempOrdinal = reader.GetOrdinal("bodyTemp");
+            var pulseOrdinal = reader.GetOrdinal("pulse");
+            var heightOrdinal = reader.GetOrdinal("height");
+            var weightOrdinal = reader.GetOrdinal("weight");
+            var symptomsOrdinal = reader.GetOrdinal("symptoms");
+            var systolicBloodPressureOrdinal = reader.GetOrdinal("systolicBloodPressure");
+            var diastolicBloodPressureOrdinal = reader.GetOrdinal("diastolicBloodPressure");
+
+            Visit visit = null;
+            while (reader.Read())
+            {
+                visit = new Visit(appointmentId,
+                    reader.GetInt32(nurseIdOrdinal),
+                    reader.GetDouble(bodyTempOrdinal),
+                    reader.GetInt32(pulseOrdinal),
+                    reader.GetDouble(heightOrdinal),
+                    reader.GetDouble(weightOrdinal),
+                    reader.GetFieldValueCheckNull<string>(symptomsOrdinal),
+                    reader.GetInt32(systolicBloodPressureOrdinal),
+                    reader.GetInt32(diastolicBloodPressureOrdinal));
+            }
+
+            return visit;
         }
 
     }

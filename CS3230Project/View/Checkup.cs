@@ -1,6 +1,7 @@
 ﻿using CS3230Project.View.WindowSwitching;
 using System;
 using System.Windows.Forms;
+using CS3230Project.Model.Users;
 using CS3230Project.Model.Users.Nurses;
 using CS3230Project.Model.Visits;
 using CS3230Project.View.Validation;
@@ -24,11 +25,49 @@ namespace CS3230Project.View
         public Checkup(int appointmentID)
         {
             InitializeComponent();
-            this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesFooter1OnSubmitButtonEventHandler;
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
             this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
             this.appointmentID = appointmentID;
-            this.populateNurseComboBox();
+            this.checkIfVisitExists(appointmentID);
+        }
+
+        private void checkIfVisitExists(int appointmentID)
+        {
+            Visit visit = CheckupManagerViewModel.GetVisit(appointmentID);
+            if (visit == null)
+            {
+                this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesFooter1OnSubmitButtonEventHandler;
+                this.populateNurseComboBox();
+            }
+            else
+            {
+                displayCheckupDetails(visit);
+            }
+        }
+
+        private void displayCheckupDetails(Visit visit)
+        {
+            this.systolicBloodPressureTextBox.Text = visit.SystolicBloodPressure.ToString();
+            this.systolicBloodPressureTextBox.Enabled = false;
+            this.diastolicBloodPressureTextBox.Text = visit.DiastolicBloodPressure.ToString();
+            this.diastolicBloodPressureTextBox.Enabled = false;
+            this.bodyTemperatureTextBox.Text = visit.BodyTemp.ToString();
+            this.bodyTemperatureTextBox.Enabled = false;
+            this.pulseTextBox.Text = visit.Pulse.ToString();
+            this.pulseTextBox.Enabled = false;
+            this.heightTextBox.Text = visit.Height.ToString();
+            this.heightTextBox.Enabled = false;
+            this.weightTextBox.Text = visit.Weight.ToString();
+            this.weightTextBox.Enabled = false;
+            this.symptomsTextBox.Text = visit.Symptoms;
+            this.symptomsTextBox.Enabled = false;
+
+            Nurse nurse = NurseManager.GetNurseByID(visit.NurseID);
+            this.nurseComboBox.Items.Add(nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.NurseId);
+            this.nurseComboBox.SelectedItem = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.NurseId;
+            this.nurseComboBox.Enabled = false;
+
+            this.submitChangesFooter1.HideSubmitButton(this.submitChangesFooter1);
         }
 
         private void populateNurseComboBox()

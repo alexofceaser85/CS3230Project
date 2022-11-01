@@ -28,5 +28,15 @@ namespace CS3230Project.Model.Visits
             return VisitDal.AddVisit(visitToAdd);
         }
 
+        public static Visit GetVisit(int appointmentID)
+        {
+            if (appointmentID < 0)
+            {
+                throw new ArgumentException(VisitErrorMessages.AppointmentIDCannotBeLessThanZero);
+            }
+
+            return VisitDal.GetVisit(appointmentID);
+        }
+
     }
 }

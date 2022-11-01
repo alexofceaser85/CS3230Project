@@ -683,5 +683,9 @@
         /// The error message for visit to add cannot be null
         /// </summary>
         public static string VisitToAddCannotBeNull = "Visit to add cannot be null.";
+        /// <summary>
+        /// The error message for footer cannot be null
+        /// </summary>
+        public static string FooterCannotBeNull = "Footer cannot be null.";
     }
 }

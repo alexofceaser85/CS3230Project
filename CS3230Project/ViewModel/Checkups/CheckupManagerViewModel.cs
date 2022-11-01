@@ -23,5 +23,10 @@ namespace CS3230Project.ViewModel.Checkups
             return VisitManager.AddVisit(visitToAdd);
         }
 
+        public static Visit GetVisit(int appointmentID)
+        {
+            return VisitManager.GetVisit(appointmentID);
+        }
+
     }
 }
