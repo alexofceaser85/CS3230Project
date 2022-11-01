@@ -55,6 +55,16 @@ namespace CS3230Project.DAL.Visits
             return comm.ExecuteNonQuery() > 0;
         }
 
+        /// <summary>
+        /// Gets the visit.
+        ///
+        /// Precondition: none
+        /// Post-condition: none
+        /// </summary>
+        /// <param name="appointmentID">The appointment identifier.</param>
+        /// <returns>
+        ///   The visit, if exists
+        /// </returns>
         public static Visit GetVisit(int appointmentID)
         {
             using var connection = new MySqlConnection(Connection.ConnectionString);

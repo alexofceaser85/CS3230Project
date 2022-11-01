@@ -471,7 +471,9 @@
         /// Error message for an empty updated patient details
         /// </summary>
         public static string UpdatedDoctorDetailsCannotBeEmpty = "The updated doctor details cannot be empty.";
-
+        /// <summary>
+        /// Error message for doctor specialties cannot be null
+        /// </summary>
         public static string SpecialtiesCannotBeNull = "The doctors specialties cannot be null";
     }
 

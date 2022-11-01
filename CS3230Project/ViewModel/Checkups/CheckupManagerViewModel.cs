@@ -23,6 +23,16 @@ namespace CS3230Project.ViewModel.Checkups
             return VisitManager.AddVisit(visitToAdd);
         }
 
+        /// <summary>
+        /// Gets the visit.
+        ///
+        /// Precondition: none
+        /// Post-condition: none
+        /// </summary>
+        /// <param name="appointmentID">The appointment identifier.</param>
+        /// <returns>
+        ///   The visit, if exists
+        /// </returns>
         public static Visit GetVisit(int appointmentID)
         {
             return VisitManager.GetVisit(appointmentID);
