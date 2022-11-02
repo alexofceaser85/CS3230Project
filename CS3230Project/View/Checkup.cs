@@ -41,32 +41,35 @@ namespace CS3230Project.View
             }
             else
             {
-                displayCheckupDetails(visit);
+                this.displayCheckupDetails(visit);
             }
         }
 
         private void displayCheckupDetails(Visit visit)
         {
             this.systolicBloodPressureTextBox.Text = visit.SystolicBloodPressure.ToString();
-            this.systolicBloodPressureTextBox.Enabled = false;
             this.diastolicBloodPressureTextBox.Text = visit.DiastolicBloodPressure.ToString();
-            this.diastolicBloodPressureTextBox.Enabled = false;
             this.bodyTemperatureTextBox.Text = visit.BodyTemp.ToString();
-            this.bodyTemperatureTextBox.Enabled = false;
             this.pulseTextBox.Text = visit.Pulse.ToString();
-            this.pulseTextBox.Enabled = false;
             this.heightTextBox.Text = visit.Height.ToString();
-            this.heightTextBox.Enabled = false;
             this.weightTextBox.Text = visit.Weight.ToString();
-            this.weightTextBox.Enabled = false;
             this.symptomsTextBox.Text = visit.Symptoms;
-            this.symptomsTextBox.Enabled = false;
 
             Nurse nurse = NurseManager.GetNurseByID(visit.NurseID);
             this.nurseComboBox.Items.Add(nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.NurseId);
             this.nurseComboBox.SelectedItem = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.NurseId;
-            this.nurseComboBox.Enabled = false;
+        }
 
+        private void disableFormControls(Visit visit)
+        {
+            this.systolicBloodPressureTextBox.Enabled = false;
+            this.diastolicBloodPressureTextBox.Enabled = false;
+            this.bodyTemperatureTextBox.Enabled = false;
+            this.pulseTextBox.Enabled = false;
+            this.heightTextBox.Enabled = false;
+            this.weightTextBox.Enabled = false;
+            this.symptomsTextBox.Enabled = false;
+            this.nurseComboBox.Enabled = false;
             this.submitChangesFooter1.HideSubmitButton(this.submitChangesFooter1);
         }
 

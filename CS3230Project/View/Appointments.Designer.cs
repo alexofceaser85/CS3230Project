@@ -136,7 +136,7 @@
             this.previousAppointmentsTable.ReadOnly = true;
             this.previousAppointmentsTable.Size = new System.Drawing.Size(791, 104);
             this.previousAppointmentsTable.TabIndex = 4;
-            this.previousAppointmentsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.upcomingAppointmentsTable_CellContentClick);
+            this.previousAppointmentsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.previousAppointmentsTable_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
