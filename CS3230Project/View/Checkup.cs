@@ -22,31 +22,26 @@ namespace CS3230Project.View
         /// Initializes a new instance of the <see cref="Checkup" /> class.
         /// </summary>
         /// <param name="appointmentID">The appointment identifier.</param>
-        public Checkup(int appointmentID, bool isUpcomingAppointment)
+        public Checkup(int appointmentID)
         {
             InitializeComponent();
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
             this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
             this.appointmentID = appointmentID;
-            this.checkIfVisitExists(appointmentID, isUpcomingAppointment);
+            this.checkIfVisitExists(appointmentID);
         }
 
-        private void checkIfVisitExists(int appointmentID, bool isUpcomingAppointment)
+        private void checkIfVisitExists(int appointmentID)
         {
             Visit visit = CheckupManagerViewModel.GetVisit(appointmentID);
-            if (visit == null && isUpcomingAppointment)
+            if (visit == null)
             {
                 this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesFooter1OnSubmitButtonEventHandler;
                 this.populateNurseComboBox();
             }
-            else if (visit == null && !isUpcomingAppointment)
-            {
-                this.disableFormControls(visit);
-            }
             else
             {
                 this.displayCheckupDetails(visit);
-                this.disableFormControls(visit);
             }
         }
 

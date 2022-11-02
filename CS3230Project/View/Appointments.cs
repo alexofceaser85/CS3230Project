@@ -90,7 +90,7 @@ namespace CS3230Project.View
 
                 if (appointmentID >= 0)
                 {
-                       SwitchForms.Switch(this, new Checkup(appointmentID, true));
+                       SwitchForms.Switch(this, new Checkup(appointmentID));
                 }
                 else
                 {
@@ -114,7 +114,7 @@ namespace CS3230Project.View
                     int.Parse((string)previousAppointmentsTable.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value);
                 if (appointmentID >= 0)
                 {
-                       SwitchForms.Switch(this, new Checkup(appointmentID, false));
+                       SwitchForms.Switch(this, new Checkup(appointmentID));
                 }
                 else
                 {
