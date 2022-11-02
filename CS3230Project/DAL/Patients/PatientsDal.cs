@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using CS3230Project.ErrorMessages;
-using CS3230Project.Model;
 using CS3230Project.Model.Users.Patients;
-using CS3230Project.Settings;
 using MySql.Data.MySqlClient;
 
 namespace CS3230Project.DAL.Patients
@@ -14,12 +10,9 @@ namespace CS3230Project.DAL.Patients
     /// </summary>
     public static class PatientsDal
     {
-        private static string editPatientErrorHeader = "Unable To Edit Patient";
-
         /// <summary>
         ///     Adds the patient.
-        ///     Precondition:
-        ///     patient != null
+        ///     Precondition: none
         /// </summary>
         /// <param name="patientToAdd">The patient to add.</param>
         /// <returns>
@@ -29,11 +22,6 @@ namespace CS3230Project.DAL.Patients
         /// <exception cref="System.ArgumentException"></exception>
         public static bool AddPatient(Patient patientToAdd)
         {
-            if (patientToAdd == null)
-            {
-                throw new ArgumentException(PatientErrorMessages.PatientToAddCannotBeNull);
-            }
-
             var patientId = patientToAdd.PatientId;
             var firstName = patientToAdd.FirstName;
             var lastName = patientToAdd.LastName;
@@ -104,8 +92,8 @@ namespace CS3230Project.DAL.Patients
             {
                 patient = new Patient(
                     reader.GetInt32(patientIdOrdinal),
-                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
+                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValue<DateTime>(dateOfBirthOrdinal),
                     reader.GetFieldValueCheckNull<string>(genderOrdinal),
                     reader.GetFieldValueCheckNull<string>(phoneNumberOrdinal),
@@ -253,8 +241,8 @@ namespace CS3230Project.DAL.Patients
             {
                 matchingPatients.Add(new Patient(
                     reader.GetInt32(patientIdOrdinal),
-                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
+                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValue<DateTime>(dateOfBirthOrdinal),
                     reader.GetFieldValueCheckNull<string>(genderOrdinal),
                     reader.GetFieldValueCheckNull<string>(phoneNumberOrdinal),
@@ -297,127 +285,65 @@ namespace CS3230Project.DAL.Patients
                 switch (currDetail.Key)
                 {
                     case "patientLastNameTextBox":
-                        if (currDetail.Value.Length <= UserSettings.NameMaximumLength)
-                        {
-                            commandText += "lastName = @lastName";
-                            comm.Parameters.Add("@lastName", MySqlDbType.String).Value = currDetail.Value;
-                            numberOfDetailsChanged++;
-                        }
-                        else
-                        {
-                            MessageBox.Show(PatientErrorMessages.LastNameIsTooLong, editPatientErrorHeader);
-                            return false;
-                        }
+                        commandText += "lastName = @lastName";
+                        comm.Parameters.Add("@lastName", MySqlDbType.String).Value = currDetail.Value;
+                        numberOfDetailsChanged++;
                         break;
-                        case "patientFirstNameTextBox":
-                        if (currDetail.Value.Length <= UserSettings.NameMaximumLength)
-                        {
-                            commandText += "firstName = @firstName";
-                            comm.Parameters.Add("@firstName", MySqlDbType.String).Value = currDetail.Value;
-                            numberOfDetailsChanged++;
-                        }
-                        else
-                        {
-                            MessageBox.Show(PatientErrorMessages.FirstNameIsTooLong, editPatientErrorHeader);
-                            return false;
-                        }
+
+                    case "patientFirstNameTextBox":
+                        commandText += "firstName = @firstName";
+                        comm.Parameters.Add("@firstName", MySqlDbType.String).Value = currDetail.Value;
+                        numberOfDetailsChanged++;
                         break;
+
                     case "patientDateOfBirthPicker":
                         commandText += "dateOfBirth = @dateOfBirth";
                         comm.Parameters.Add("@dateOfBirth", MySqlDbType.Date).Value = DateTime.Parse(currDetail.Value);
                         numberOfDetailsChanged++;
                         break;
+
                     case "patientGenderComboBox":
-                        if (currDetail.Value.Length <= UserSettings.GenderMaximumLength)
-                        {
-                            commandText += "gender = @gender";
-                            comm.Parameters.Add("@gender", MySqlDbType.String).Value = currDetail.Value;
-                            numberOfDetailsChanged++;
-                        }
-                        else
-                        {
-                            MessageBox.Show(PatientErrorMessages.GenderIsTooLong, editPatientErrorHeader);
-                            return false;
-                        }
+                        commandText += "gender = @gender";
+                        comm.Parameters.Add("@gender", MySqlDbType.String).Value = currDetail.Value;
+                        numberOfDetailsChanged++;
                         break;
+
                     case "patientPhoneNumberTextBox":
-                        if (DataValidator.IsValidPhoneNumberFormat(currDetail.Value))
-                        {
-                            commandText += "phone = @phone";
-                            comm.Parameters.Add("@phone", MySqlDbType.String).Value = currDetail.Value;
-                            numberOfDetailsChanged++;
-                        }
-                        else
-                        {
-                            MessageBox.Show(PatientErrorMessages.InvalidPhoneNumberFormat, editPatientErrorHeader);
-                            return false;
-                        }
+                        commandText += "phone = @phone";
+                        comm.Parameters.Add("@phone", MySqlDbType.String).Value = currDetail.Value;
+                        numberOfDetailsChanged++;
                         break;
+
                     case "patientAddressOneTextBox":
-                        if (currDetail.Value.Length <= UserSettings.AddressComponentMaximumLength)
-                        {
-                            commandText += "addressOne = @addressOne";
-                            comm.Parameters.Add("@addressOne", MySqlDbType.String).Value = currDetail.Value;
-                            numberOfDetailsChanged++;
-                        }
-                        else
-                        {
-                            MessageBox.Show(PatientErrorMessages.AddressOneIsTooLong, editPatientErrorHeader);
-                            return false;
-                        }
+                        commandText += "addressOne = @addressOne";
+                        comm.Parameters.Add("@addressOne", MySqlDbType.String).Value = currDetail.Value;
+                        numberOfDetailsChanged++;
                         break;
+
                     case "patientAddressTwoTextBox":
-                        if (currDetail.Value.Length <= UserSettings.AddressComponentMaximumLength)
-                        {
-                            commandText += "addressTwo = @addressTwo";
-                            comm.Parameters.Add("@addressTwo", MySqlDbType.String).Value = currDetail.Value;
-                            numberOfDetailsChanged++;
-                        }
-                        else
-                        {
-                            MessageBox.Show(PatientErrorMessages.AddressTwoIsTooLong, editPatientErrorHeader);
-                            return false;
-                        }
+                        commandText += "addressTwo = @addressTwo";
+                        comm.Parameters.Add("@addressTwo", MySqlDbType.String).Value = currDetail.Value;
+                        numberOfDetailsChanged++;
                         break;
+
                     case "patientCityTextBox":
-                        if (currDetail.Value.Length <= UserSettings.AddressComponentMaximumLength)
-                        {
-                            commandText += "city = @city";
-                            comm.Parameters.Add("@city", MySqlDbType.String).Value = currDetail.Value;
-                            numberOfDetailsChanged++;
-                        }
-                        else
-                        {
-                            MessageBox.Show(PatientErrorMessages.CityIsTooLong, editPatientErrorHeader);
-                            return false;
-                        }
+                        commandText += "city = @city";
+                        comm.Parameters.Add("@city", MySqlDbType.String).Value = currDetail.Value;
+                        numberOfDetailsChanged++;
                         break;
+
                     case "patientStateComboBox":
-                        if (currDetail.Value.Length <= UserSettings.StateMaximumLength)
-                        {
-                            commandText += "state = @state";
-                            comm.Parameters.Add("@state", MySqlDbType.String).Value = currDetail.Value;
-                            numberOfDetailsChanged++;
-                        }
-                        else
-                        {
-                            MessageBox.Show(PatientErrorMessages.StateIsTooLong, editPatientErrorHeader);
-                            return false;
-                        }
+                        commandText += "state = @state";
+                        comm.Parameters.Add("@state", MySqlDbType.String).Value = currDetail.Value;
+                        numberOfDetailsChanged++;
                         break;
+
                     case "patientZipcodeTextBox":
-                        if (DataValidator.IsValidZipCodeFormat(currDetail.Value))
-                        {
-                            commandText += "zipcode = @zipcode";
-                            comm.Parameters.Add("@zipcode", MySqlDbType.String).Value = currDetail.Value;
-                            numberOfDetailsChanged++;
-                        }
-                        else
-                        {
-                            MessageBox.Show(PatientErrorMessages.ZipcodeMustHaveFiveCharacters, editPatientErrorHeader);
-                            return false;
-                        }
+                        commandText += "zipcode = @zipcode";
+                        comm.Parameters.Add("@zipcode", MySqlDbType.String).Value = currDetail.Value;
+                        numberOfDetailsChanged++;
                         break;
+
                     case "patientStatusComboBox":
                         commandText += "status = @status";
                         comm.Parameters.Add("@status", MySqlDbType.Int16).Value =

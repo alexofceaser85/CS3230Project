@@ -101,17 +101,23 @@
     <Compile Include="DAL\Appointments\AppointmentsDAL.cs" />
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\Doctors\DoctorsDAL.cs" />
+    <Compile Include="DAL\Nurses\NurseDal.cs" />
     <Compile Include="DAL\Patients\PatientsDal.cs" />
+    <Compile Include="DAL\Visits\VisitDal.cs" />
     <Compile Include="ErrorMessages\ErrorMessages.cs" />
     <Compile Include="Model\Appointments\Appointment.cs" />
     <Compile Include="Model\Appointments\AppointmentManager.cs" />
     <Compile Include="Model\DataValidator.cs" />
     <Compile Include="Model\Users\Doctor.cs" />
+    <Compile Include="Model\Users\Nurses\NurseManager.cs" />
     <Compile Include="Model\Users\DoctorManager.cs" />
     <Compile Include="Model\Users\Patients\PatientManager.cs" />
     <Compile Include="Model\Users\Patients\Patient.cs" />
+    <Compile Include="Model\Visits\Visit.cs" />
+    <Compile Include="Model\Visits\VisitManager.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="ViewModel\Appointments\AppointmentManagerViewModel.cs" />
+    <Compile Include="ViewModel\Checkups\CheckupManagerViewModel.cs" />
     <Compile Include="ViewModel\Doctors\DoctorsManagerViewModel.cs" />
     <Compile Include="ViewModel\Users\PatientManagerViewModel.cs" />
     <Compile Include="View\Appointments.cs">
@@ -119,6 +125,12 @@
     </Compile>
     <Compile Include="View\Appointments.Designer.cs">
       <DependentUpon>Appointments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Checkup.Designer.cs">
+      <DependentUpon>Checkup.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Components\Footers\Footer.cs">
       <SubType>UserControl</SubType>
@@ -170,7 +182,7 @@
     </Compile>
     <Compile Include="Model\Accounts\Services\AccountService.cs" />
     <Compile Include="Model\Accounts\CurrentUser.cs" />
-    <Compile Include="Model\Users\Nurse.cs" />
+    <Compile Include="Model\Users\Nurses\Nurse.cs" />
     <Compile Include="DAL\DataHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -187,6 +199,7 @@
     <Compile Include="View\SearchPatient.Designer.cs">
       <DependentUpon>SearchPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Validation\CheckupValidation.cs" />
     <Compile Include="View\Validation\AppointmentValidation.cs" />
     <Compile Include="View\Validation\PatientValidation.cs" />
     <Compile Include="View\WindowSwitching\SwitchForms.cs" />
@@ -202,6 +215,9 @@
     </Compile>
     <EmbeddedResource Include="View\Appointments.resx">
       <DependentUpon>Appointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Checkup.resx">
+      <DependentUpon>Checkup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Components\Footers\Footer.resx">
       <DependentUpon>Footer.cs</DependentUpon>

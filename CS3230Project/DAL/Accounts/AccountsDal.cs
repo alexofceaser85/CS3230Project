@@ -47,8 +47,8 @@ namespace CS3230Project.DAL.Accounts
 
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
-            const string query = "select firstName, lastName, nurses.employeeID, userName " +
-                                 "from nurses, accounts " +
+            const string query = "select *" +
+                                "from nurses, accounts " +
                                  "where nurses.employeeID = accounts.employeeID " +
                                  "and exists (" +
                                  "  select userName, `password` " +
@@ -62,18 +62,35 @@ namespace CS3230Project.DAL.Accounts
             command.Parameters.Add("@password", MySqlDbType.String).Value = password;
 
             using var reader = command.ExecuteReader();
-            var idOrdinal = reader.GetOrdinal("employeeID");
             var firstNameOrdinal = reader.GetOrdinal("firstName");
             var lastNameOrdinal = reader.GetOrdinal("lastName");
             var userNameOrdinal = reader.GetOrdinal("userName");
+            var nurseIdOrdinal = reader.GetOrdinal("nurseId");
+            var dateOfBirthOrdinal = reader.GetOrdinal("dateOfBirth");
+            var genderOrdinal = reader.GetOrdinal("gender");
+            var phoneOrdinal = reader.GetOrdinal("phone");
+            var addressOneOrdinal = reader.GetOrdinal("addressOne");
+            var addressTwoOrdinal = reader.GetOrdinal("addressTwo");
+            var cityOrdinal = reader.GetOrdinal("city");
+            var stateOrdinal = reader.GetOrdinal("state");
+            var zipcodeOrdinal = reader.GetOrdinal("zipcode");
 
-            while (reader.Read()) 
-            { 
+            while (reader.Read())
+            {
                 CurrentUser.User = new Nurse(
-                    reader.GetInt32(idOrdinal), 
-                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal), 
-                    reader.GetFieldValueCheckNull<string>(lastNameOrdinal), 
-                    reader.GetFieldValueCheckNull<string>(userNameOrdinal));
+                    reader.GetInt32(nurseIdOrdinal),
+                    reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
+                    reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
+                    reader.GetFieldValueCheckNull<DateTime>(dateOfBirthOrdinal),
+                    reader.GetFieldValueCheckNull<string>(genderOrdinal),
+                    reader.GetFieldValueCheckNull<string>(phoneOrdinal),
+                    reader.GetFieldValueCheckNull<string>(addressOneOrdinal),
+                    reader.GetFieldValueCheckNull<string>(addressTwoOrdinal),
+                    reader.GetFieldValueCheckNull<string>(cityOrdinal),
+                    reader.GetFieldValueCheckNull<string>(stateOrdinal),
+                    reader.GetFieldValueCheckNull<string>(zipcodeOrdinal));
+
+                    CurrentUser.User.UserName = reader.GetFieldValueCheckNull<string>(userNameOrdinal);
             }
 
             return CurrentUser.User != null;

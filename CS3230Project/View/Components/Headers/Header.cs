@@ -27,7 +27,7 @@ namespace CS3230Project.View.Components.Headers
             if (CurrentUser.User != null)
             {
                 this.loggedInAsLabel.Text = $"Logged In As: {CurrentUser.User.UserName}";
-                this.userIdLabel.Text = $"User ID: {CurrentUser.User.Id}";
+                this.userIdLabel.Text = $"User ID: {CurrentUser.User.NurseId}";
                 this.nameLabel.Text = $"Name: {CurrentUser.User.FirstName} {CurrentUser.User.LastName}";
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using CS3230Project.ErrorMessages;
 
 namespace CS3230Project.View.Components.Footers
 {
@@ -34,6 +35,23 @@ namespace CS3230Project.View.Components.Footers
         private void backToHome_Click(object sender, EventArgs e)
         {
             this.BackButtonEventHandler?.Invoke(sender, e);
+        }
+
+        /// <summary>
+        /// Hides the submit button.
+        ///
+        /// Precondition: footer != null
+        /// Post-Condition: the submit button is hidden.
+        /// </summary>
+        /// <param name="footer">The footer.</param>
+        public void HideSubmitButton(SubmitChangesFooter footer)
+        {
+            if (footer == null)
+            {
+                throw new ArgumentException(VisitErrorMessages.FooterCannotBeNull);
+            }
+
+            footer.Submit.Hide();
         }
     }
 }

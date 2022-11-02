@@ -65,12 +65,12 @@ namespace CS3230Project.View
                 string[] patientDetails =
                 {
                     currPatient.PatientId.ToString(), currPatient.LastName, currPatient.FirstName,
-                    currPatient.DateOfBirth.ToString(), currPatient.Gender, currPatient.PhoneNumber,
+                    currPatient.DateOfBirth.ToString("MM/dd/yyyy"), currPatient.Gender, currPatient.PhoneNumber,
                     currPatient.AddressOne, currPatient.AddressTwo, currPatient.City, currPatient.State,
                     currPatient.Zipcode, currPatient.Status.ToString()
                 };
                 this.PatientDataGridView.Rows.Add(patientDetails);
-                this.PatientDataGridView.CellClick +=
+                this.PatientDataGridView.CellClick += 
                     this.PatientDataGridView_CellClick;
             }
         }

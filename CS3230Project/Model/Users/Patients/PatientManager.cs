@@ -14,12 +14,17 @@ namespace CS3230Project.Model.Users.Patients
         /// Adds a patient
         ///
         /// Precondition: patientToAdd != null
-        /// Postcondition: The patient is added
+        /// Post-condition: The patient is added
         /// </summary>
         /// <param name="patientToAdd">The patient to add</param>
         /// <returns>True if the patient was added, false otherwise</returns>
         public static bool AddPatient(Patient patientToAdd)
         {
+            if (patientToAdd == null)
+            {
+                throw new ArgumentException(PatientErrorMessages.PatientToAddCannotBeNull);
+            }
+
             return PatientsDal.AddPatient(patientToAdd);
         }
 
@@ -112,7 +117,7 @@ namespace CS3230Project.Model.Users.Patients
         /// <summary>
         ///     Modifies the patient.
         ///     Precondition:
-        ///     updatedDetails != null AND updatedDetails.Count > 0
+        ///     updatedDetails != null AND updatedDetails.Count MORE THAN 0
         /// </summary>
         /// <param name="updatedDetails">The updated details.</param>
         /// <returns>

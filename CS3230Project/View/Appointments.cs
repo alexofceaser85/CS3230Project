@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using CS3230Project.ErrorMessages;
+using CS3230Project.Model.Appointments;
 using CS3230Project.Settings;
 using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Appointments;
@@ -11,7 +14,11 @@ namespace CS3230Project.View
     /// </summary>
     public partial class Appointments : Form
     {
+
+        private List<Appointment> previousAppointments;
+        private List<Appointment> upcomingAppointments;
         private readonly int patientId;
+
         /// <summary>
         /// Initializes a new <see cref="Appointments"/>
         /// </summary>
@@ -21,8 +28,11 @@ namespace CS3230Project.View
             this.InitializeComponent();
             this.patientId = patientId;
             this.footer2.BackButtonEventHandler += this.Footer2OnBackButtonEventHandler;
+            this.previousAppointments = new List<Appointment>();
+            this.upcomingAppointments = new List<Appointment>();
             this.addUpcomingAppointments();
             this.addPreviousAppointments();
+
         }
 
         private void Footer2OnBackButtonEventHandler(object sender, EventArgs e)
@@ -40,10 +50,11 @@ namespace CS3230Project.View
                     (appointment.Patient.FirstName + " " + appointment.Patient.LastName),
                     appointment.Date.ToString(AppointmentSettings.DateTimeFormat),
                     (appointment.Doctor.FirstName + " " + appointment.Doctor.LastName),
-                    appointment.Reason
+                    appointment.Reason, appointment.AppointmentId.ToString()
                 };
 
                 this.upcomingAppointmentsTable.Rows.Add(appointmentDetails);
+                this.upcomingAppointments.Add(appointment);
             }
         }
 
@@ -57,10 +68,34 @@ namespace CS3230Project.View
                     (appointment.Patient.FirstName + " " + appointment.Patient.LastName),
                     appointment.Date.ToShortDateString(),
                     (appointment.Doctor.FirstName + " " + appointment.Doctor.LastName),
-                    appointment.Reason
+                    appointment.Reason, appointment.AppointmentId.ToString()
                 };
 
                 this.previousAppointmentsTable.Rows.Add(appointmentDetails);
+                this.previousAppointments.Add(appointment);
+            }
+        }
+
+        private void upcomingAppointmentsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+            if (dataGridView == null || e.RowIndex >= dataGridView.RowCount)
+            {
+                return;
+            }
+
+            if (upcomingAppointmentsTable.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 5)
+            {
+                var appointmentID = int.Parse((string)upcomingAppointmentsTable.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value);
+
+                if (appointmentID >= 0)
+                {
+                    SwitchForms.Switch(this, new Checkup(appointmentID));
+                }
+                else
+                {
+                    throw new ArgumentException(AppointmentErrorMessages.AppointmentIdCannotBeLessThanZero);
+                }
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using CS3230Project.Model;
+using CS3230Project.Settings;
 
 namespace CS3230Project.View.Validation
 {
@@ -25,6 +26,11 @@ namespace CS3230Project.View.Validation
                 patientLastNameTextBoxErrorMessage.Font = LabelNotCollapsedFont;
                 patientLastNameTextBoxErrorMessage.Text = ErrorMessages.PatientErrorMessages.LastNameCannotBeEmpty;
             }
+            else if (patientLastNameTextBox.Text.Length > UserSettings.NameMaximumLength)
+            {
+                patientLastNameTextBoxErrorMessage.Font = LabelNotCollapsedFont;
+                patientLastNameTextBoxErrorMessage.Text = ErrorMessages.PatientErrorMessages.LastNameIsTooLong;
+            }
             else
             {
                 patientLastNameTextBoxErrorMessage.Font = LabelCollapsedFont;
@@ -43,6 +49,11 @@ namespace CS3230Project.View.Validation
             {
                 patientFirstNameErrorMessage.Font = LabelNotCollapsedFont;
                 patientFirstNameErrorMessage.Text = ErrorMessages.PatientErrorMessages.FirstNameCannotBeEmpty;
+            }
+            else if (patientFirstNameTextBox.Text.Length > UserSettings.NameMaximumLength)
+            {
+                patientFirstNameErrorMessage.Font = LabelNotCollapsedFont;
+                patientFirstNameErrorMessage.Text = ErrorMessages.PatientErrorMessages.FirstNameIsTooLong;
             }
             else
             {
@@ -87,6 +98,11 @@ namespace CS3230Project.View.Validation
                 patientGenderErrorMessage.Font = LabelNotCollapsedFont;
                 patientGenderErrorMessage.Text = ErrorMessages.PatientErrorMessages.GenderCannotBeEmpty;
             }
+            else if (patientGenderDropBox.Text.Length > UserSettings.GenderMaximumLength)
+            {
+                patientGenderErrorMessage.Font = LabelNotCollapsedFont;
+                patientGenderErrorMessage.Text = ErrorMessages.PatientErrorMessages.GenderIsTooLong;
+            }
             else
             {
                 patientGenderErrorMessage.Font = LabelCollapsedFont;
@@ -130,6 +146,11 @@ namespace CS3230Project.View.Validation
                 patientAddressOneErrorMessage.Text = ErrorMessages.PatientErrorMessages.AddressOneCannotBeEmpty;
                 patientAddressOneErrorMessage.Font = LabelNotCollapsedFont;
             }
+            else if (patientAddressOneTextBox.Text.Length > UserSettings.AddressComponentMaximumLength)
+            {
+                patientAddressOneErrorMessage.Font = LabelNotCollapsedFont;
+                patientAddressOneErrorMessage.Text = ErrorMessages.PatientErrorMessages.AddressOneIsTooLong;
+            }
             else
             {
                 patientAddressOneErrorMessage.Font = LabelCollapsedFont;
@@ -149,6 +170,11 @@ namespace CS3230Project.View.Validation
                 patientCityErrorMessage.Text = ErrorMessages.PatientErrorMessages.CityCannotBeEmpty;
                 patientCityErrorMessage.Font = LabelNotCollapsedFont;
             }
+            else if (patientCityTextBox.Text.Length > UserSettings.AddressComponentMaximumLength)
+            {
+                patientCityErrorMessage.Font = LabelNotCollapsedFont;
+                patientCityErrorMessage.Text = ErrorMessages.PatientErrorMessages.CityIsTooLong;
+            }
             else
             {
                 patientCityErrorMessage.Font = LabelCollapsedFont;
@@ -167,6 +193,11 @@ namespace CS3230Project.View.Validation
             {
                 patientStateErrorMessage.Text = ErrorMessages.PatientErrorMessages.StateCannotBeEmpty;
                 patientStateErrorMessage.Font = LabelNotCollapsedFont;
+            }
+            else if (patientStateTextBox.Text.Length > UserSettings.StateMaximumLength)
+            {
+                patientStateErrorMessage.Font = LabelNotCollapsedFont;
+                patientStateErrorMessage.Text = ErrorMessages.PatientErrorMessages.StateIsTooLong;
             }
             else
             {

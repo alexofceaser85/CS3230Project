@@ -42,4 +42,15 @@
         /// </summary>
         public const string DateTimeFormat = "MM/dd/yyyy HH:mm";
     }
+
+    /// <summary>
+    ///   the settings for the checkup
+    /// </summary>
+    public class VisitSettings
+    {
+        /// <summary>
+        /// The maximum length for the checkup symptoms
+        /// </summary>
+        public const int VisitSymptomsMaximumLength = 100;
+    }
 }
