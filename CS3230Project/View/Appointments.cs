@@ -90,7 +90,31 @@ namespace CS3230Project.View
 
                 if (appointmentID >= 0)
                 {
-                    SwitchForms.Switch(this, new Checkup(appointmentID));
+                       SwitchForms.Switch(this, new Checkup(appointmentID, true));
+                }
+                else
+                {
+                    throw new ArgumentException(AppointmentErrorMessages.AppointmentIdCannotBeLessThanZero);
+                }
+            }
+        }
+
+        private void previousAppointmentsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+            if (dataGridView == null || e.RowIndex >= dataGridView.RowCount)
+            {
+                return;
+            }
+
+            if (previousAppointmentsTable.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 &&
+                e.ColumnIndex == 5)
+            {
+                var appointmentID =
+                    int.Parse((string)previousAppointmentsTable.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value);
+                if (appointmentID >= 0)
+                {
+                       SwitchForms.Switch(this, new Checkup(appointmentID, false));
                 }
                 else
                 {
