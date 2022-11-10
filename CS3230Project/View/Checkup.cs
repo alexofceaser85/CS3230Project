@@ -102,7 +102,6 @@ namespace CS3230Project.View
                 this.displayCheckupDetails(visit);
 
             }
-            this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesFooter1OnSubmitButtonEventHandler;
         }
 
         private void displayCheckupDetails(Visit visit)
@@ -154,31 +153,23 @@ namespace CS3230Project.View
 
         private void submitChangesFooter1OnSubmitButtonEventHandlerEditExistingVisit(object sender, EventArgs e)
         {
-            this.testManager.SubmitTests();
-            SwitchForms.Switch(this, new Appointments(this.patientId));
+            try
+            {
+                CheckupManagerViewModel.ModifyVisit(this.getVisitInfo());
+                this.testManager.SubmitTests();
+                SwitchForms.Switch(this, new Appointments(this.patientId));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(this.invalidInputErrorMessage, this.invalidInputErrorHeader);
+            }
         }
 
         private void submitChangesFooter1OnSubmitButtonEventHandlerSubmitNewVisit(object sender, EventArgs e)
         {
             try
             {
-                this.verifyAll();
-                var nurseId = this.getNurseID(this.nurseComboBox.Text);
-                Visit visitToAdd = new Visit(this.appointmentId, nurseId, Convert.ToDouble(this.bodyTemperatureTextBox.Text), 
-                    Convert.ToInt16(this.pulseTextBox.Text), Convert.ToDouble(this.heightTextBox.Text),
-                    Convert.ToDouble(this.weightTextBox.Text), this.symptomsTextBox.Text, 
-                    Convert.ToInt16(this.systolicBloodPressureTextBox.Text), 
-                    Convert.ToInt16(this.diastolicBloodPressureTextBox.Text));
-
-                if (CheckupManagerViewModel.GetVisit(this.appointmentID) == null)
-                {
-                    CheckupManagerViewModel.AddVisit(visitToAdd);
-                }
-                else
-                {
-                    CheckupManagerViewModel.ModifyVisit(visitToAdd);
-                }
-                
+                CheckupManagerViewModel.AddVisit(this.getVisitInfo());
                 this.testManager.SubmitTests();
                 SwitchForms.Switch(this, new Appointments(this.patientId));
 
@@ -187,6 +178,18 @@ namespace CS3230Project.View
             {
                 MessageBox.Show(this.invalidInputErrorMessage, this.invalidInputErrorHeader);
             }
+        }
+
+        private Visit getVisitInfo()
+        {
+            this.verifyAll();
+            var nurseId = this.getNurseID(this.nurseComboBox.Text);
+            Visit visit = new Visit(this.appointmentId, nurseId, Convert.ToDouble(this.bodyTemperatureTextBox.Text),
+                Convert.ToInt16(this.pulseTextBox.Text), Convert.ToDouble(this.heightTextBox.Text),
+                Convert.ToDouble(this.weightTextBox.Text), this.symptomsTextBox.Text,
+                Convert.ToInt16(this.systolicBloodPressureTextBox.Text),
+                Convert.ToInt16(this.diastolicBloodPressureTextBox.Text));
+            return visit;
         }
 
         private int getNurseID(string nurseInfo)
