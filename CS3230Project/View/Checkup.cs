@@ -1,11 +1,13 @@
 ﻿using CS3230Project.View.WindowSwitching;
 using System;
 using System.Windows.Forms;
+using CS3230Project.Model.Tests;
 using CS3230Project.Model.Users;
 using CS3230Project.Model.Users.Nurses;
 using CS3230Project.Model.Visits;
 using CS3230Project.View.Validation;
 using CS3230Project.ViewModel.Checkups;
+using CS3230Project.ViewModel.Tests;
 
 namespace CS3230Project.View
 {
@@ -14,33 +16,89 @@ namespace CS3230Project.View
     /// </summary>
     public partial class Checkup : Form
     {
-        private int appointmentID;
+        private readonly int appointmentId;
+        private readonly int patientId;
+        private readonly TestsManagerViewModel testManager;
         private readonly string invalidInputErrorMessage = "Invalid Values for the checkup details";
         private readonly string invalidInputErrorHeader = "Unable to add new checkup";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Checkup" /> class.
         /// </summary>
-        /// <param name="appointmentID">The appointment identifier.</param>
-        public Checkup(int appointmentID)
+        /// <param name="appointmentId">The appointment identifier.</param>
+        /// <param name="patientId">The patient identifier</param>
+        public Checkup(int appointmentId, int patientId)
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
             this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
-            this.appointmentID = appointmentID;
-            this.checkIfVisitExists(appointmentID);
+            this.appointmentId = appointmentId;
+            this.patientId = patientId;
+            this.testManager = new TestsManagerViewModel(this.appointmentId);
+            this.updateTestData();
+            this.checkIfVisitExists(appointmentId);
         }
 
-        private void checkIfVisitExists(int appointmentID)
+        private void updateTestData()
         {
-            Visit visit = CheckupManagerViewModel.GetVisit(appointmentID);
+            this.updateCompletedTests();
+            this.updateSubmittedTests();
+            this.updateNonSubmittedTests();
+        }
+
+        private void updateCompletedTests()
+        {
+            this.CompletedTestsTable.Rows.Clear();
+            foreach (var submittedTest in this.testManager.PerformedTests)
+            {
+                string[] testDetails =
+                {
+                    submittedTest.AppointmentId.ToString(), submittedTest.Code.ToString(), submittedTest.Name,
+                    submittedTest.IsAbnormal.ToString(), submittedTest.TestDateTime.ToString("DD-MM-YYYY"),
+                    submittedTest.Results
+                };
+                this.CompletedTestsTable.Rows.Add(testDetails);
+            }
+        }
+
+        private void updateSubmittedTests()
+        {
+            foreach (var submittedTest in this.testManager.NotPerformedTests)
+            {
+                string[] testDetails =
+                {
+                    submittedTest.AppointmentId.ToString(), submittedTest.Code.ToString(), submittedTest.Name,
+                    "Pending", "Pending", "Pending"
+                };
+                this.NotCompletedTestsTable.Rows.Add(testDetails);
+            }
+        }
+
+        private void updateNonSubmittedTests()
+        {
+            this.PendingTestsTable.Rows.Clear();
+            foreach (var submittedTest in this.testManager.NotSubmittedTests)
+            {
+                string[] testDetails =
+                {
+                    submittedTest.AppointmentId.ToString(), submittedTest.Code.ToString(), submittedTest.Name,
+                };
+                this.PendingTestsTable.Rows.Add(testDetails);
+            }
+        }
+
+        private void checkIfVisitExists(int appointmentId)
+        {
+            Visit visit = CheckupManagerViewModel.GetVisit(appointmentId);
             if (visit == null)
             {
-                this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesFooter1OnSubmitButtonEventHandler;
+                this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesFooter1OnSubmitButtonEventHandlerSubmitNewVisit;
                 this.populateNurseComboBox();
             }
             else
             {
+                this.submitChangesFooter1.SubmitButtonEventHandler +=
+                    this.submitChangesFooter1OnSubmitButtonEventHandlerEditExistingVisit;
                 this.displayCheckupDetails(visit);
             }
         }
@@ -55,7 +113,7 @@ namespace CS3230Project.View
             this.weightTextBox.Text = visit.Weight.ToString();
             this.symptomsTextBox.Text = visit.Symptoms;
 
-            Nurse nurse = NurseManager.GetNurseByID(visit.NurseID);
+            var nurse = NurseManager.GetNurseByID(visit.NurseID);
             this.nurseComboBox.Items.Add(nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.NurseId);
             this.nurseComboBox.SelectedItem = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.NurseId;
         }
@@ -89,24 +147,29 @@ namespace CS3230Project.View
 
         private void SubmitChangesFooter1OnBackButtonEventHandler(object sender, EventArgs e)
         {
-            SwitchForms.SwitchBackToHome(this);
+            SwitchForms.Switch(this, new Appointments(this.patientId));
         }
 
-        private void submitChangesFooter1OnSubmitButtonEventHandler(object sender, EventArgs e)
+        private void submitChangesFooter1OnSubmitButtonEventHandlerEditExistingVisit(object sender, EventArgs e)
+        {
+            this.testManager.SubmitTests();
+            SwitchForms.Switch(this, new Appointments(this.patientId));
+        }
+
+        private void submitChangesFooter1OnSubmitButtonEventHandlerSubmitNewVisit(object sender, EventArgs e)
         {
             try
             {
                 this.verifyAll();
-
-                var nurseID = this.getNurseID(this.nurseComboBox.Text);
-                Visit visitToAdd = new Visit(this.appointmentID, nurseID, Convert.ToDouble(this.bodyTemperatureTextBox.Text), 
+                var nurseId = this.getNurseID(this.nurseComboBox.Text);
+                Visit visitToAdd = new Visit(this.appointmentId, nurseId, Convert.ToDouble(this.bodyTemperatureTextBox.Text), 
                     Convert.ToInt16(this.pulseTextBox.Text), Convert.ToDouble(this.heightTextBox.Text),
                     Convert.ToDouble(this.weightTextBox.Text), this.symptomsTextBox.Text, 
                     Convert.ToInt16(this.systolicBloodPressureTextBox.Text), 
                     Convert.ToInt16(this.diastolicBloodPressureTextBox.Text));
                 CheckupManagerViewModel.AddVisit(visitToAdd);
-                Form searchPatientForm = new SearchPatient();
-                SwitchForms.Switch(this, searchPatientForm);
+                this.testManager.SubmitTests();
+                SwitchForms.Switch(this, new Appointments(this.patientId));
             }
             catch (Exception)
             {
@@ -180,6 +243,33 @@ namespace CS3230Project.View
         private void symptomsTextBox_TextChanged(object sender, EventArgs e)
         {
             CheckupValidation.VerifySymptomsInput(this.symptomsTextBox, this.symptomsErrorMessage);
+        }
+
+        private void AddTestButton_Click(object sender, EventArgs e)
+        {
+            var pendingTestDialog = new AddPendingTest(this.appointmentId, this.testManager.NotSubmittedTests);
+            pendingTestDialog.TestAddedEvent += this.TestAddedEvent;
+            pendingTestDialog.ShowDialog();
+        }
+
+        private void TestAddedEvent(object sender, TestAddedEventArgs e)
+        {
+            this.testManager.AddNonSubmittedTest(new NotPerformedTest(this.appointmentId, e.TestAdded.Code, e.TestAdded.Name));
+            this.updateNonSubmittedTests();
+        }
+
+        private void PendingTestsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+            {
+                this.testManager.RemoveNonSubmittedTest(this.testManager.NotSubmittedTests[e.RowIndex]);
+                this.updateNonSubmittedTests();
+            }
+        }
+
+        private void NotCompletedTestsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SwitchForms.Switch(this, new AddTestResults(this.testManager.NotPerformedTests[e.RowIndex], this.appointmentId, this.patientId));
         }
     }
 }
