@@ -694,4 +694,65 @@
         /// </summary>
         public static string ModifiedVisitCannotBeNull = "Modified visit cannot be null.";
     }
+    /// <summary>
+    /// The error messages for the tests
+    /// </summary>
+    public static class TestsErrorMessages
+    {
+        /// <summary>
+        /// The appointment id for a test cannot be less than zero
+        /// </summary>
+        public static string AppointmentIdForTestCannotBeLessThanZero =
+            "The appointment id for a test cannot be less than zero";
+        /// <summary>
+        /// The test's code cannot be less than zero
+        /// </summary>
+        public static string TestCodeForTestCannotBeLessThanZero = "The test code cannot be less than zero";
+        /// <summary>
+        /// The test's name cannot be null
+        /// </summary>
+        public static string TestNameCannotBeNull = "The test name cannot be null";
+        /// <summary>
+        /// The test's name cannot be empty
+        /// </summary>
+        public static string TestNameCannotBeEmpty = "The test name cannot be empty";
+        /// <summary>
+        /// The test's results cannot be null
+        /// </summary>
+        public static string TestResultsCannotBeNull = "The test results cannot be null";
+        /// <summary>
+        /// The test's results cannot be empty
+        /// </summary>
+        public static string TestResultsCannotBeEmpty = "The test results cannot be empty";
+    }
+
+    /// <summary>
+    /// The error messages for the test manager
+    /// </summary>
+    public class TestManagerErrorMessages
+    {
+        /// <summary>
+        /// The error message saying the test results cannot be null
+        /// </summary>
+        public static string TestResultsToAddCannotBeNull = "The test results to add cannot be null";
+
+        /// <summary>
+        /// The error message saying the test results to add cannot be empty
+        /// </summary>
+        public static string TestResultsCannotBeEmpty = "The test results to add cannot be empty";
+
+        /// <summary>
+        /// The non submitted test to add cannot be null
+        /// </summary>
+        public static string NonSubmittedTestToAddCannotBeNull = "The test to add cannot be null";
+
+        /// <summary>
+        /// The non submitted test to remove cannot be null
+        /// </summary>
+        public static string NonSubmittedTestToRemoveCannotBeNull = "The test to remove cannot be null";
+        /// <summary>
+        /// The date of the test results cannot be before the current date
+        /// </summary>
+        public static string CannotAddTestResultsBeforeCurrentDate = "Cannot add test results before the current date";
+    }
 }

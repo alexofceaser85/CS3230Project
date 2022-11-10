@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.header1 = new CS3230Project.View.Components.Headers.Header();
+            this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,8 +43,6 @@
             this.AppointmentDateLabel = new System.Windows.Forms.Label();
             this.AppointmentDoctorErrorMessage = new System.Windows.Forms.Label();
             this.AppointmentReasonErrorMessage = new System.Windows.Forms.Label();
-            this.header1 = new CS3230Project.View.Components.Headers.Header();
-            this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -66,6 +66,28 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 514);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // header1
+            // 
+            this.header1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.header1.BackColor = System.Drawing.Color.AliceBlue;
+            this.header1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.header1.Location = new System.Drawing.Point(3, 3);
+            this.header1.Name = "header1";
+            this.header1.Size = new System.Drawing.Size(794, 72);
+            this.header1.TabIndex = 0;
+            // 
+            // submitChangesFooter1
+            // 
+            this.submitChangesFooter1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.submitChangesFooter1.Location = new System.Drawing.Point(3, 462);
+            this.submitChangesFooter1.Name = "submitChangesFooter1";
+            this.submitChangesFooter1.Size = new System.Drawing.Size(794, 49);
+            this.submitChangesFooter1.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
@@ -196,6 +218,7 @@
             this.appointmentDatePicker.Name = "appointmentDatePicker";
             this.appointmentDatePicker.Size = new System.Drawing.Size(269, 20);
             this.appointmentDatePicker.TabIndex = 7;
+            this.appointmentDatePicker.ValueChanged += new System.EventHandler(this.appointmentDatePicker_ValueChanged);
             // 
             // AppointmentDateLabel
             // 
@@ -227,28 +250,6 @@
             this.AppointmentReasonErrorMessage.Name = "AppointmentReasonErrorMessage";
             this.AppointmentReasonErrorMessage.Size = new System.Drawing.Size(0, 2);
             this.AppointmentReasonErrorMessage.TabIndex = 11;
-            // 
-            // header1
-            // 
-            this.header1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.header1.BackColor = System.Drawing.Color.AliceBlue;
-            this.header1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.header1.Location = new System.Drawing.Point(3, 3);
-            this.header1.Name = "header1";
-            this.header1.Size = new System.Drawing.Size(794, 72);
-            this.header1.TabIndex = 0;
-            // 
-            // submitChangesFooter1
-            // 
-            this.submitChangesFooter1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.submitChangesFooter1.Location = new System.Drawing.Point(3, 462);
-            this.submitChangesFooter1.Name = "submitChangesFooter1";
-            this.submitChangesFooter1.Size = new System.Drawing.Size(794, 49);
-            this.submitChangesFooter1.TabIndex = 1;
             // 
             // EditAppointment
             // 

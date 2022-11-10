@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using CS3230Project.Model.Appointments;
 using CS3230Project.Model.Users;
@@ -19,6 +21,7 @@ namespace CS3230Project.View
         private readonly string invalidInputErrorHeader = "Unable to edit Appointment";
         private readonly int patientId;
         private readonly Appointment appointmentToEdit;
+        private List<Doctor> availableDoctors;
 
         /// <summary>
         /// Initializes a new <see cref="EditAppointment"/>
@@ -30,6 +33,7 @@ namespace CS3230Project.View
             this.InitializeComponent();
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
             this.submitChangesFooter1.SubmitButtonEventHandler += this.SubmitChangesFooter1OnSubmitButtonEventHandler;
+            this.availableDoctors = new List<Doctor>();
             this.appointmentDatePicker.Format = DateTimePickerFormat.Custom;
             this.appointmentDatePicker.CustomFormat = AppointmentSettings.DateTimeFormat;
             this.appointmentToEdit = appointmentToEdit;
@@ -41,10 +45,14 @@ namespace CS3230Project.View
         private void populateEditAppointmentValues()
         {
             this.reasonTextBox.Text = this.appointmentToEdit.Reason;
-            this.populateDoctorsDropDown();
-            this.appointmentDoctorDropDown.Sorted = true;
-            this.appointmentDoctorDropDown.SelectedIndex =
-                this.appointmentDoctorDropDown.FindString(this.convertDoctorToDoctorString(this.appointmentToEdit.Doctor));
+            this.availableDoctors = DoctorsManagerViewModel.GetAvailableDoctors(this.appointmentDatePicker.Value);
+            this.addCurrentAppointmentDoctorAsAvailableDoctor();
+        }
+
+        private void addCurrentAppointmentDoctorAsAvailableDoctor()
+        {
+            this.availableDoctors.Add(this.appointmentToEdit.Doctor);
+            this.availableDoctors = this.availableDoctors.OrderBy(d => d.DoctorId).ToList();
         }
 
         private void SubmitChangesFooter1OnSubmitButtonEventHandler(object sender, EventArgs e)
@@ -54,7 +62,7 @@ namespace CS3230Project.View
                 this.validateAll();
                 var appointmentDate = this.convertAppointmentDateTimeToZero();
                 AppointmentManagerViewModel.ModifyAppointment(this.appointmentToEdit.AppointmentId, appointmentDate,
-                    this.appointmentDoctorDropDown.SelectedIndex + 1, this.reasonTextBox.Text);
+                    this.availableDoctors[this.appointmentDoctorDropDown.SelectedIndex].DoctorId, this.reasonTextBox.Text);
                 SwitchForms.Switch(this, new Appointments(this.patientId));
             }
             catch (ArgumentException)
@@ -86,19 +94,29 @@ namespace CS3230Project.View
         {
             this.appointmentDoctorDropDown.Items.Clear();
             var appointmentDate = this.convertAppointmentDateTimeToZero();
-            foreach (var doctor in DoctorsManagerViewModel.GetAvailableDoctors(appointmentDate))
+
+            if (appointmentDate == this.appointmentToEdit.Date)
+            {
+                this.addCurrentAppointmentDoctorAsAvailableDoctor();
+            }
+
+            foreach (var doctor in this.availableDoctors)
             {
                 var doctorString = this.convertDoctorToDoctorString(doctor);
                 this.appointmentDoctorDropDown.Items.Add(doctorString);
             }
-
-            var currentAppointmentDoctorString = this.convertDoctorToDoctorString(this.appointmentToEdit.Doctor);
-            this.appointmentDoctorDropDown.Items.Add(currentAppointmentDoctorString);
         }
 
         private string convertDoctorToDoctorString(Doctor doctor)
         {
             return doctor.DoctorId + ", " + doctor.FirstName + ' ' + doctor.LastName;
+        }
+
+        private void appointmentDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            this.availableDoctors = DoctorsManagerViewModel.GetAvailableDoctors(this.appointmentDatePicker.Value);
+            this.availableDoctors = this.availableDoctors.OrderBy(d => d.DoctorId).ToList();
+            this.populateDoctorsDropDown();
         }
     }
 }
