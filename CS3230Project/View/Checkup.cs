@@ -34,15 +34,15 @@ namespace CS3230Project.View
         private void checkIfVisitExists(int appointmentID)
         {
             Visit visit = CheckupManagerViewModel.GetVisit(appointmentID);
-            if (visit == null)
-            {
-                this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesFooter1OnSubmitButtonEventHandler;
-                this.populateNurseComboBox();
-            }
-            else
+            if (visit != null)
             {
                 this.displayCheckupDetails(visit);
             }
+            else
+            {
+                this.populateNurseComboBox();
+            }
+            this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesFooter1OnSubmitButtonEventHandler;
         }
 
         private void displayCheckupDetails(Visit visit)
@@ -104,7 +104,16 @@ namespace CS3230Project.View
                     Convert.ToDouble(this.weightTextBox.Text), this.symptomsTextBox.Text, 
                     Convert.ToInt16(this.systolicBloodPressureTextBox.Text), 
                     Convert.ToInt16(this.diastolicBloodPressureTextBox.Text));
-                CheckupManagerViewModel.AddVisit(visitToAdd);
+
+                if (CheckupManagerViewModel.GetVisit(this.appointmentID) == null)
+                {
+                    CheckupManagerViewModel.AddVisit(visitToAdd);
+                }
+                else
+                {
+                    CheckupManagerViewModel.ModifyVisit(visitToAdd);
+                }
+
                 Form searchPatientForm = new SearchPatient();
                 SwitchForms.Switch(this, searchPatientForm);
             }

@@ -56,6 +56,49 @@ namespace CS3230Project.DAL.Visits
         }
 
         /// <summary>
+        /// Modifies the visit.
+        ///
+        /// Precondition: none
+        /// Post-condition: the visit is modified with the provided details
+        /// </summary>
+        /// <param name="modifiedVisit">The modified visit.</param>
+        /// <returns>
+        ///   True if the visit was successfully modified
+        ///   False if the visit was not modified
+        /// </returns>
+        public static bool ModifyVisit(Visit modifiedVisit)
+        {
+            var appointmentID = modifiedVisit.AppointmentID;
+            var nurseID = modifiedVisit.NurseID;
+            var bodyTemp = modifiedVisit.BodyTemp;
+            var pulse = modifiedVisit.Pulse;
+            var height = modifiedVisit.Height;
+            var weight = modifiedVisit.Weight;
+            var symptoms = modifiedVisit.Symptoms;
+            var systolicBloodPressure = modifiedVisit.SystolicBloodPressure;
+            var diastolicBloodPressure = modifiedVisit.DiastolicBloodPressure;
+
+            using var connection = new MySqlConnection(Connection.ConnectionString);
+            connection.Open();
+            var comm = connection.CreateCommand();
+            comm.CommandText = "update visit set nurseId = @nurseId, bodyTemp = @bodyTemp, pulse = @pulse, "
+                               + "height = @height, weight = @weight, symptoms = @symptoms, systolicBloodPressure = @systolicBloodPressure, "
+                               + "diastolicBloodPressure = @diastolicBloodPressure where appointmentId = @appointmentId";
+
+            comm.Parameters.Add("@appointmentId", MySqlDbType.Int16).Value = appointmentID;
+            comm.Parameters.Add("@nurseId", MySqlDbType.Int16).Value = nurseID;
+            comm.Parameters.Add("@bodyTemp", MySqlDbType.Decimal).Value = bodyTemp;
+            comm.Parameters.Add("@pulse", MySqlDbType.Int16).Value = pulse;
+            comm.Parameters.Add("@height", MySqlDbType.Decimal).Value = height;
+            comm.Parameters.Add("@weight", MySqlDbType.Decimal).Value = weight;
+            comm.Parameters.Add("@symptoms", MySqlDbType.String).Value = symptoms;
+            comm.Parameters.Add("@systolicBloodPressure", MySqlDbType.Int16).Value = systolicBloodPressure;
+            comm.Parameters.Add("@diastolicBloodPressure", MySqlDbType.Int16).Value = diastolicBloodPressure;
+
+            return comm.ExecuteNonQuery() > 0;
+        }
+
+        /// <summary>
         /// Gets the visit.
         ///
         /// Precondition: none

@@ -91,15 +91,16 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.41637F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.58363F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 238F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 318F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel63, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(-1, 76);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(-1, 94);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.333333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95.66666F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 321);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1067, 395);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel63
@@ -112,14 +113,14 @@
             this.tableLayoutPanel63.Controls.Add(this.tableLayoutPanel64, 0, 0);
             this.tableLayoutPanel63.Controls.Add(this.flowLayoutPanel5, 0, 1);
             this.tableLayoutPanel63.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel63.Location = new System.Drawing.Point(254, 23);
-            this.tableLayoutPanel63.Margin = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel63.Location = new System.Drawing.Point(338, 28);
+            this.tableLayoutPanel63.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.tableLayoutPanel63.Name = "tableLayoutPanel63";
             this.tableLayoutPanel63.RowCount = 3;
-            this.tableLayoutPanel63.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel63.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
             this.tableLayoutPanel63.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 99.99999F));
-            this.tableLayoutPanel63.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel63.Size = new System.Drawing.Size(298, 278);
+            this.tableLayoutPanel63.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel63.Size = new System.Drawing.Size(397, 343);
             this.tableLayoutPanel63.TabIndex = 5;
             // 
             // tableLayoutPanel64
@@ -133,7 +134,7 @@
             this.tableLayoutPanel64.Name = "tableLayoutPanel64";
             this.tableLayoutPanel64.RowCount = 1;
             this.tableLayoutPanel64.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel64.Size = new System.Drawing.Size(298, 40);
+            this.tableLayoutPanel64.Size = new System.Drawing.Size(397, 49);
             this.tableLayoutPanel64.TabIndex = 0;
             // 
             // label75
@@ -141,9 +142,10 @@
             this.label75.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label75.AutoSize = true;
             this.label75.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label75.Location = new System.Drawing.Point(75, 0);
+            this.label75.Location = new System.Drawing.Point(125, 0);
+            this.label75.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(147, 40);
+            this.label75.Size = new System.Drawing.Size(147, 49);
             this.label75.TabIndex = 0;
             this.label75.Text = "Enter Checkup";
             this.label75.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -154,9 +156,10 @@
             this.flowLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel5.Controls.Add(this.tableLayoutPanel65);
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 43);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(4, 53);
+            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(292, 212);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(389, 261);
             this.flowLayoutPanel5.TabIndex = 1;
             this.flowLayoutPanel5.WrapContents = false;
             // 
@@ -176,10 +179,11 @@
             this.tableLayoutPanel65.Controls.Add(this.tableLayoutPanel76, 0, 0);
             this.tableLayoutPanel65.Controls.Add(this.tableLayoutPanel77, 0, 2);
             this.tableLayoutPanel65.Controls.Add(this.tableLayoutPanel3, 0, 6);
-            this.tableLayoutPanel65.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel65.MaximumSize = new System.Drawing.Size(265, 0);
+            this.tableLayoutPanel65.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel65.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel65.MaximumSize = new System.Drawing.Size(353, 0);
             this.tableLayoutPanel65.Name = "tableLayoutPanel65";
-            this.tableLayoutPanel65.Padding = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel65.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tableLayoutPanel65.RowCount = 8;
             this.tableLayoutPanel65.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel65.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -190,8 +194,8 @@
             this.tableLayoutPanel65.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel65.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel65.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel65.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel65.Size = new System.Drawing.Size(265, 577);
+            this.tableLayoutPanel65.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel65.Size = new System.Drawing.Size(353, 691);
             this.tableLayoutPanel65.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -201,13 +205,14 @@
             this.tableLayoutPanel4.Controls.Add(this.nurseErrorMessage, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.nurseComboBox, 0, 1);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(8, 398);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(11, 470);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(246, 68);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(328, 84);
             this.tableLayoutPanel4.TabIndex = 8;
             // 
             // nurseErrorMessage
@@ -215,7 +220,8 @@
             this.nurseErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.nurseErrorMessage.AutoSize = true;
             this.nurseErrorMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.nurseErrorMessage.Location = new System.Drawing.Point(3, 50);
+            this.nurseErrorMessage.Location = new System.Drawing.Point(4, 63);
+            this.nurseErrorMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nurseErrorMessage.Name = "nurseErrorMessage";
             this.nurseErrorMessage.Size = new System.Drawing.Size(0, 13);
             this.nurseErrorMessage.TabIndex = 2;
@@ -225,7 +231,8 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.label2.Location = new System.Drawing.Point(3, 3);
+            this.label2.Location = new System.Drawing.Point(4, 6);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 0;
@@ -235,9 +242,10 @@
             // 
             this.nurseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.nurseComboBox.FormattingEnabled = true;
-            this.nurseComboBox.Location = new System.Drawing.Point(3, 23);
+            this.nurseComboBox.Location = new System.Drawing.Point(4, 29);
+            this.nurseComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.nurseComboBox.Name = "nurseComboBox";
-            this.nurseComboBox.Size = new System.Drawing.Size(240, 21);
+            this.nurseComboBox.Size = new System.Drawing.Size(319, 24);
             this.nurseComboBox.TabIndex = 1;
             this.nurseComboBox.SelectedIndexChanged += new System.EventHandler(this.nurseComboBox_SelectedIndexChanged);
             // 
@@ -248,21 +256,23 @@
             this.tableLayoutPanel2.Controls.Add(this.symptomsTextBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.symptomsErrorMessage, 0, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(8, 472);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(11, 562);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(246, 97);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(328, 119);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // symptomsTextBox
             // 
-            this.symptomsTextBox.Location = new System.Drawing.Point(3, 23);
+            this.symptomsTextBox.Location = new System.Drawing.Point(4, 29);
+            this.symptomsTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.symptomsTextBox.Multiline = true;
             this.symptomsTextBox.Name = "symptomsTextBox";
-            this.symptomsTextBox.Size = new System.Drawing.Size(240, 47);
+            this.symptomsTextBox.Size = new System.Drawing.Size(319, 57);
             this.symptomsTextBox.TabIndex = 1;
             this.symptomsTextBox.TextChanged += new System.EventHandler(this.symptomsTextBox_TextChanged);
             // 
@@ -271,7 +281,8 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.label3.Location = new System.Drawing.Point(3, 3);
+            this.label3.Location = new System.Drawing.Point(4, 6);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 0;
@@ -282,7 +293,8 @@
             this.symptomsErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.symptomsErrorMessage.AutoSize = true;
             this.symptomsErrorMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.symptomsErrorMessage.Location = new System.Drawing.Point(3, 78);
+            this.symptomsErrorMessage.Location = new System.Drawing.Point(4, 98);
+            this.symptomsErrorMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.symptomsErrorMessage.Name = "symptomsErrorMessage";
             this.symptomsErrorMessage.Size = new System.Drawing.Size(0, 13);
             this.symptomsErrorMessage.TabIndex = 2;
@@ -296,13 +308,14 @@
             this.tableLayoutPanel73.Controls.Add(this.heightErrorMessage, 0, 2);
             this.tableLayoutPanel73.Controls.Add(this.heightTextBox, 0, 1);
             this.tableLayoutPanel73.Controls.Add(this.label87, 0, 0);
-            this.tableLayoutPanel73.Location = new System.Drawing.Point(8, 261);
+            this.tableLayoutPanel73.Location = new System.Drawing.Point(11, 303);
+            this.tableLayoutPanel73.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel73.Name = "tableLayoutPanel73";
             this.tableLayoutPanel73.RowCount = 3;
-            this.tableLayoutPanel73.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel73.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel73.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel73.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel73.Size = new System.Drawing.Size(249, 58);
+            this.tableLayoutPanel73.Size = new System.Drawing.Size(331, 69);
             this.tableLayoutPanel73.TabIndex = 4;
             // 
             // heightErrorMessage
@@ -310,17 +323,19 @@
             this.heightErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.heightErrorMessage.AutoSize = true;
             this.heightErrorMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.heightErrorMessage.Location = new System.Drawing.Point(3, 45);
+            this.heightErrorMessage.Location = new System.Drawing.Point(4, 56);
+            this.heightErrorMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.heightErrorMessage.Name = "heightErrorMessage";
             this.heightErrorMessage.Size = new System.Drawing.Size(0, 13);
             this.heightErrorMessage.TabIndex = 4;
             // 
             // heightTextBox
             // 
-            this.heightTextBox.Location = new System.Drawing.Point(3, 23);
+            this.heightTextBox.Location = new System.Drawing.Point(4, 29);
+            this.heightTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.heightTextBox.MaxLength = 12;
             this.heightTextBox.Name = "heightTextBox";
-            this.heightTextBox.Size = new System.Drawing.Size(243, 20);
+            this.heightTextBox.Size = new System.Drawing.Size(323, 22);
             this.heightTextBox.TabIndex = 2;
             this.heightTextBox.TextChanged += new System.EventHandler(this.heightTextBox_TextChanged);
             // 
@@ -329,7 +344,8 @@
             this.label87.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label87.AutoSize = true;
             this.label87.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label87.Location = new System.Drawing.Point(3, 3);
+            this.label87.Location = new System.Drawing.Point(4, 6);
+            this.label87.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label87.Name = "label87";
             this.label87.Size = new System.Drawing.Size(42, 13);
             this.label87.TabIndex = 0;
@@ -347,13 +363,14 @@
             this.tableLayoutPanel74.Controls.Add(this.pulseErrorMessage, 0, 2);
             this.tableLayoutPanel74.Controls.Add(this.label89, 0, 0);
             this.tableLayoutPanel74.Controls.Add(this.pulseTextBox, 0, 1);
-            this.tableLayoutPanel74.Location = new System.Drawing.Point(8, 198);
+            this.tableLayoutPanel74.Location = new System.Drawing.Point(11, 231);
+            this.tableLayoutPanel74.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel74.Name = "tableLayoutPanel74";
             this.tableLayoutPanel74.RowCount = 3;
             this.tableLayoutPanel74.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.90909F));
             this.tableLayoutPanel74.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.09091F));
             this.tableLayoutPanel74.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel74.Size = new System.Drawing.Size(249, 57);
+            this.tableLayoutPanel74.Size = new System.Drawing.Size(331, 64);
             this.tableLayoutPanel74.TabIndex = 3;
             // 
             // pulseErrorMessage
@@ -361,7 +378,8 @@
             this.pulseErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pulseErrorMessage.AutoSize = true;
             this.pulseErrorMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pulseErrorMessage.Location = new System.Drawing.Point(3, 43);
+            this.pulseErrorMessage.Location = new System.Drawing.Point(4, 50);
+            this.pulseErrorMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pulseErrorMessage.Name = "pulseErrorMessage";
             this.pulseErrorMessage.Size = new System.Drawing.Size(0, 13);
             this.pulseErrorMessage.TabIndex = 4;
@@ -371,7 +389,8 @@
             this.label89.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label89.AutoSize = true;
             this.label89.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label89.Location = new System.Drawing.Point(3, 2);
+            this.label89.Location = new System.Drawing.Point(4, 3);
+            this.label89.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label89.Name = "label89";
             this.label89.Size = new System.Drawing.Size(34, 13);
             this.label89.TabIndex = 0;
@@ -379,9 +398,10 @@
             // 
             // pulseTextBox
             // 
-            this.pulseTextBox.Location = new System.Drawing.Point(3, 20);
+            this.pulseTextBox.Location = new System.Drawing.Point(4, 24);
+            this.pulseTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.pulseTextBox.Name = "pulseTextBox";
-            this.pulseTextBox.Size = new System.Drawing.Size(243, 20);
+            this.pulseTextBox.Size = new System.Drawing.Size(323, 22);
             this.pulseTextBox.TabIndex = 3;
             this.pulseTextBox.TextChanged += new System.EventHandler(this.pulseTextBox_TextChanged);
             // 
@@ -397,13 +417,14 @@
             this.tableLayoutPanel75.Controls.Add(this.diastolicBloodPressureErrorMessage, 0, 2);
             this.tableLayoutPanel75.Controls.Add(this.label91, 0, 0);
             this.tableLayoutPanel75.Controls.Add(this.diastolicBloodPressureTextBox, 0, 1);
-            this.tableLayoutPanel75.Location = new System.Drawing.Point(8, 71);
+            this.tableLayoutPanel75.Location = new System.Drawing.Point(11, 82);
+            this.tableLayoutPanel75.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel75.Name = "tableLayoutPanel75";
             this.tableLayoutPanel75.RowCount = 3;
-            this.tableLayoutPanel75.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel75.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel75.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel75.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel75.Size = new System.Drawing.Size(249, 58);
+            this.tableLayoutPanel75.Size = new System.Drawing.Size(331, 69);
             this.tableLayoutPanel75.TabIndex = 1;
             // 
             // diastolicBloodPressureErrorMessage
@@ -411,7 +432,8 @@
             this.diastolicBloodPressureErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.diastolicBloodPressureErrorMessage.AutoSize = true;
             this.diastolicBloodPressureErrorMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diastolicBloodPressureErrorMessage.Location = new System.Drawing.Point(3, 45);
+            this.diastolicBloodPressureErrorMessage.Location = new System.Drawing.Point(4, 56);
+            this.diastolicBloodPressureErrorMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.diastolicBloodPressureErrorMessage.Name = "diastolicBloodPressureErrorMessage";
             this.diastolicBloodPressureErrorMessage.Size = new System.Drawing.Size(0, 13);
             this.diastolicBloodPressureErrorMessage.TabIndex = 3;
@@ -421,7 +443,8 @@
             this.label91.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label91.AutoSize = true;
             this.label91.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label91.Location = new System.Drawing.Point(3, 3);
+            this.label91.Location = new System.Drawing.Point(4, 6);
+            this.label91.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label91.Name = "label91";
             this.label91.Size = new System.Drawing.Size(130, 13);
             this.label91.TabIndex = 0;
@@ -429,10 +452,11 @@
             // 
             // diastolicBloodPressureTextBox
             // 
-            this.diastolicBloodPressureTextBox.Location = new System.Drawing.Point(3, 23);
+            this.diastolicBloodPressureTextBox.Location = new System.Drawing.Point(4, 29);
+            this.diastolicBloodPressureTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.diastolicBloodPressureTextBox.MaxLength = 25;
             this.diastolicBloodPressureTextBox.Name = "diastolicBloodPressureTextBox";
-            this.diastolicBloodPressureTextBox.Size = new System.Drawing.Size(243, 20);
+            this.diastolicBloodPressureTextBox.Size = new System.Drawing.Size(323, 22);
             this.diastolicBloodPressureTextBox.TabIndex = 1;
             this.diastolicBloodPressureTextBox.TextChanged += new System.EventHandler(this.diastolicBloodPressureTextBox_TextChanged);
             // 
@@ -448,13 +472,14 @@
             this.tableLayoutPanel76.Controls.Add(this.systolicBloodPressureErrorMessage, 0, 2);
             this.tableLayoutPanel76.Controls.Add(this.label93, 0, 0);
             this.tableLayoutPanel76.Controls.Add(this.systolicBloodPressureTextBox, 0, 1);
-            this.tableLayoutPanel76.Location = new System.Drawing.Point(8, 8);
+            this.tableLayoutPanel76.Location = new System.Drawing.Point(11, 10);
+            this.tableLayoutPanel76.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel76.Name = "tableLayoutPanel76";
             this.tableLayoutPanel76.RowCount = 3;
             this.tableLayoutPanel76.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.90909F));
             this.tableLayoutPanel76.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.09091F));
             this.tableLayoutPanel76.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel76.Size = new System.Drawing.Size(249, 57);
+            this.tableLayoutPanel76.Size = new System.Drawing.Size(331, 64);
             this.tableLayoutPanel76.TabIndex = 0;
             // 
             // systolicBloodPressureErrorMessage
@@ -462,7 +487,8 @@
             this.systolicBloodPressureErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.systolicBloodPressureErrorMessage.AutoSize = true;
             this.systolicBloodPressureErrorMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.systolicBloodPressureErrorMessage.Location = new System.Drawing.Point(3, 43);
+            this.systolicBloodPressureErrorMessage.Location = new System.Drawing.Point(4, 50);
+            this.systolicBloodPressureErrorMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.systolicBloodPressureErrorMessage.Name = "systolicBloodPressureErrorMessage";
             this.systolicBloodPressureErrorMessage.Size = new System.Drawing.Size(0, 13);
             this.systolicBloodPressureErrorMessage.TabIndex = 3;
@@ -472,7 +498,8 @@
             this.label93.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label93.AutoSize = true;
             this.label93.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label93.Location = new System.Drawing.Point(3, 2);
+            this.label93.Location = new System.Drawing.Point(4, 3);
+            this.label93.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label93.Name = "label93";
             this.label93.Size = new System.Drawing.Size(124, 13);
             this.label93.TabIndex = 0;
@@ -480,10 +507,11 @@
             // 
             // systolicBloodPressureTextBox
             // 
-            this.systolicBloodPressureTextBox.Location = new System.Drawing.Point(3, 20);
+            this.systolicBloodPressureTextBox.Location = new System.Drawing.Point(4, 24);
+            this.systolicBloodPressureTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.systolicBloodPressureTextBox.MaxLength = 25;
             this.systolicBloodPressureTextBox.Name = "systolicBloodPressureTextBox";
-            this.systolicBloodPressureTextBox.Size = new System.Drawing.Size(243, 20);
+            this.systolicBloodPressureTextBox.Size = new System.Drawing.Size(323, 22);
             this.systolicBloodPressureTextBox.TabIndex = 1;
             this.systolicBloodPressureTextBox.TextChanged += new System.EventHandler(this.systolicBloodPressureTextBox_TextChanged);
             // 
@@ -499,13 +527,14 @@
             this.tableLayoutPanel77.Controls.Add(this.bodyTempErrorMessage, 0, 2);
             this.tableLayoutPanel77.Controls.Add(this.label95, 0, 0);
             this.tableLayoutPanel77.Controls.Add(this.bodyTemperatureTextBox, 0, 1);
-            this.tableLayoutPanel77.Location = new System.Drawing.Point(8, 135);
+            this.tableLayoutPanel77.Location = new System.Drawing.Point(11, 159);
+            this.tableLayoutPanel77.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel77.Name = "tableLayoutPanel77";
             this.tableLayoutPanel77.RowCount = 3;
             this.tableLayoutPanel77.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.90909F));
             this.tableLayoutPanel77.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.09091F));
             this.tableLayoutPanel77.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel77.Size = new System.Drawing.Size(249, 57);
+            this.tableLayoutPanel77.Size = new System.Drawing.Size(331, 64);
             this.tableLayoutPanel77.TabIndex = 2;
             // 
             // bodyTempErrorMessage
@@ -513,7 +542,8 @@
             this.bodyTempErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.bodyTempErrorMessage.AutoSize = true;
             this.bodyTempErrorMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bodyTempErrorMessage.Location = new System.Drawing.Point(3, 43);
+            this.bodyTempErrorMessage.Location = new System.Drawing.Point(4, 50);
+            this.bodyTempErrorMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bodyTempErrorMessage.Name = "bodyTempErrorMessage";
             this.bodyTempErrorMessage.Size = new System.Drawing.Size(0, 13);
             this.bodyTempErrorMessage.TabIndex = 4;
@@ -523,7 +553,8 @@
             this.label95.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label95.AutoSize = true;
             this.label95.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label95.Location = new System.Drawing.Point(3, 2);
+            this.label95.Location = new System.Drawing.Point(4, 3);
+            this.label95.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label95.Name = "label95";
             this.label95.Size = new System.Drawing.Size(99, 13);
             this.label95.TabIndex = 0;
@@ -531,9 +562,10 @@
             // 
             // bodyTemperatureTextBox
             // 
-            this.bodyTemperatureTextBox.Location = new System.Drawing.Point(3, 20);
+            this.bodyTemperatureTextBox.Location = new System.Drawing.Point(4, 24);
+            this.bodyTemperatureTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.bodyTemperatureTextBox.Name = "bodyTemperatureTextBox";
-            this.bodyTemperatureTextBox.Size = new System.Drawing.Size(243, 20);
+            this.bodyTemperatureTextBox.Size = new System.Drawing.Size(323, 22);
             this.bodyTemperatureTextBox.TabIndex = 3;
             this.bodyTemperatureTextBox.TextChanged += new System.EventHandler(this.bodyTemperatureTextBox_TextChanged);
             // 
@@ -544,13 +576,14 @@
             this.tableLayoutPanel3.Controls.Add(this.weightErrorMessage, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.weightTextBox, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(8, 325);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(11, 380);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(246, 67);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(328, 82);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // weightErrorMessage
@@ -558,17 +591,19 @@
             this.weightErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.weightErrorMessage.AutoSize = true;
             this.weightErrorMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.weightErrorMessage.Location = new System.Drawing.Point(3, 49);
+            this.weightErrorMessage.Location = new System.Drawing.Point(4, 62);
+            this.weightErrorMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.weightErrorMessage.Name = "weightErrorMessage";
             this.weightErrorMessage.Size = new System.Drawing.Size(0, 13);
             this.weightErrorMessage.TabIndex = 4;
             // 
             // weightTextBox
             // 
-            this.weightTextBox.Location = new System.Drawing.Point(3, 23);
+            this.weightTextBox.Location = new System.Drawing.Point(4, 29);
+            this.weightTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.weightTextBox.MaxLength = 12;
             this.weightTextBox.Name = "weightTextBox";
-            this.weightTextBox.Size = new System.Drawing.Size(240, 20);
+            this.weightTextBox.Size = new System.Drawing.Size(319, 22);
             this.weightTextBox.TabIndex = 3;
             this.weightTextBox.TextChanged += new System.EventHandler(this.weightTextBox_TextChanged);
             // 
@@ -577,7 +612,8 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Location = new System.Drawing.Point(4, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 0;
@@ -589,27 +625,30 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.header1.BackColor = System.Drawing.Color.AliceBlue;
             this.header1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.header1.Location = new System.Drawing.Point(2, 1);
+            this.header1.Location = new System.Drawing.Point(3, 1);
+            this.header1.Margin = new System.Windows.Forms.Padding(5);
             this.header1.Name = "header1";
-            this.header1.Size = new System.Drawing.Size(797, 76);
+            this.header1.Size = new System.Drawing.Size(1062, 93);
             this.header1.TabIndex = 6;
             // 
             // submitChangesFooter1
             // 
             this.submitChangesFooter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.submitChangesFooter1.Location = new System.Drawing.Point(0, 404);
+            this.submitChangesFooter1.Location = new System.Drawing.Point(0, 497);
+            this.submitChangesFooter1.Margin = new System.Windows.Forms.Padding(5);
             this.submitChangesFooter1.Name = "submitChangesFooter1";
-            this.submitChangesFooter1.Size = new System.Drawing.Size(800, 46);
+            this.submitChangesFooter1.Size = new System.Drawing.Size(1067, 57);
             this.submitChangesFooter1.TabIndex = 8;
             // 
             // Checkup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.submitChangesFooter1);
             this.Controls.Add(this.header1);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Checkup";
             this.Text = "Checkup";
             this.tableLayoutPanel1.ResumeLayout(false);

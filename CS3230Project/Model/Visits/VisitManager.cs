@@ -29,6 +29,28 @@ namespace CS3230Project.Model.Visits
         }
 
         /// <summary>
+        /// Modifies the visit.
+        ///
+        /// Precondition: modifiedVisit != null
+        /// Post-condition: the visit is modified with the provided details
+        /// </summary>
+        /// <param name="modifiedVisit">The modified visit.</param>
+        /// <returns>
+        ///   True if the visit was successfully modified
+        ///   False if the visit was not modified
+        /// </returns>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static bool ModifyVisit(Visit modifiedVisit)
+        {
+            if (modifiedVisit == null)
+            {
+                throw new ArgumentException(VisitErrorMessages.ModifiedVisitCannotBeNull);
+            }
+
+            return VisitDal.ModifyVisit(modifiedVisit);
+        }
+
+        /// <summary>
         /// Gets the visit.
         ///
         /// Precondition: appointmentID MORE THAN OR EQUAL TO 0
