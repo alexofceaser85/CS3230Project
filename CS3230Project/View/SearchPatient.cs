@@ -91,7 +91,7 @@ namespace CS3230Project.View
 
             if (dataGridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 12)
             {
-                SwitchForms.Switch(this, new Appointments(this.createPatient(dataGridView.SelectedCells).PatientId));
+                SwitchForms.Switch(this, new Appointments(this.createPatient(dataGridView.SelectedCells)));
             }
             else
             {

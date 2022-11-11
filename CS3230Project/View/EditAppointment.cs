@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using CS3230Project.Model.Appointments;
 using CS3230Project.Model.Users;
+using CS3230Project.Model.Users.Patients;
 using CS3230Project.Settings;
 using CS3230Project.View.Validation;
 using CS3230Project.View.WindowSwitching;
@@ -19,7 +20,7 @@ namespace CS3230Project.View
     {
         private readonly string invalidInputErrorMessage = "Invalid Values for Editing Appointment";
         private readonly string invalidInputErrorHeader = "Unable to edit Appointment";
-        private readonly int patientId;
+        private readonly Patient patient;
         private readonly Appointment appointmentToEdit;
         private List<Doctor> availableDoctors;
 
@@ -27,17 +28,20 @@ namespace CS3230Project.View
         /// Initializes a new <see cref="EditAppointment"/>
         /// </summary>
         /// <param name="appointmentToEdit">The appointment to edit</param>
-        /// <param name="patientId">The patient ID for the appointment</param>
-        public EditAppointment(Appointment appointmentToEdit, int patientId)
+        /// <param name="patient">The patient ID for the appointment</param>
+        public EditAppointment(Appointment appointmentToEdit, Patient patient)
         {
             this.InitializeComponent();
+            this.PatientNameAndIdLabel.Text = $"{patient.PatientId}, {patient.LastName}, {patient.FirstName}";
+            this.PatientDateOfBirthLabel.Text = $"Birthdate: {patient.DateOfBirth}";
+            this.PatientPhoneNumberLabel.Text = $"Phone: {patient.PhoneNumber}";
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
             this.submitChangesFooter1.SubmitButtonEventHandler += this.SubmitChangesFooter1OnSubmitButtonEventHandler;
             this.availableDoctors = new List<Doctor>();
             this.appointmentDatePicker.Format = DateTimePickerFormat.Custom;
             this.appointmentDatePicker.CustomFormat = AppointmentSettings.DateTimeFormat;
             this.appointmentToEdit = appointmentToEdit;
-            this.patientId = patientId;
+            this.patient = patient;
             this.appointmentDatePicker.Value = this.appointmentToEdit.Date;
             this.populateEditAppointmentValues();
         }
@@ -63,7 +67,7 @@ namespace CS3230Project.View
                 var appointmentDate = this.convertAppointmentDateTimeToZero();
                 AppointmentManagerViewModel.ModifyAppointment(this.appointmentToEdit.AppointmentId, appointmentDate,
                     this.availableDoctors[this.appointmentDoctorDropDown.SelectedIndex].DoctorId, this.reasonTextBox.Text);
-                SwitchForms.Switch(this, new Appointments(this.patientId));
+                SwitchForms.Switch(this, new Appointments(this.patient));
             }
             catch (ArgumentException)
             {

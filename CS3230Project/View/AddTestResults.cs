@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using CS3230Project.Model.Tests;
+using CS3230Project.Model.Users;
+using CS3230Project.Model.Users.Patients;
 using CS3230Project.View.Validation;
 using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Tests;
@@ -17,19 +19,21 @@ namespace CS3230Project.View
 
         private readonly NotPerformedTest testToAddResults;
         private readonly int appointmentId;
-        private readonly int patientId;
+        private readonly Patient patient;
+        private readonly Doctor doctor;
         private readonly TestsManagerViewModel testManager;
         /// <summary>
         /// Initiates a new <see cref="AddTestResults"/>
         /// </summary>
         /// <param name="testToAddResults">The test to add results to</param>
         /// <param name="appointmentId">The appointment Id</param>
-        /// <param name="patientId">The patient Id</param>
-        public AddTestResults(NotPerformedTest testToAddResults, int appointmentId, int patientId)
+        /// <param name="patient">The patient Id</param>
+        public AddTestResults(NotPerformedTest testToAddResults, int appointmentId, Patient patient, Doctor doctor)
         {
             this.testManager = new TestsManagerViewModel(this.appointmentId);
             this.appointmentId = appointmentId;
-            this.patientId= patientId;
+            this.patient = patient;
+            this.doctor = doctor;
             this.testToAddResults = testToAddResults;
             this.InitializeComponent();
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
@@ -45,7 +49,7 @@ namespace CS3230Project.View
 
         private void SubmitChangesFooter1OnBackButtonEventHandler(object sender, EventArgs e)
         {
-            SwitchForms.Switch(this, new Checkup(this.appointmentId, this.patientId));
+            SwitchForms.Switch(this, new Checkup(this.appointmentId, this.patient, this.doctor));
         }
 
         private void SubmitChangesFooter1OnSubmitButtonEventHandler(object sender, EventArgs e)
@@ -56,7 +60,7 @@ namespace CS3230Project.View
                 this.testManager.AddTestResults(new PerformedTest(this.appointmentId, this.testToAddResults.Code,
                     this.testToAddResults.Name, this.TestResultsTextInput.Text, this.TestAbnormalCheckBox.Checked,
                     this.TestDateTimePicker.Value));
-                SwitchForms.Switch(this, new Checkup(this.appointmentId, this.patientId));
+                SwitchForms.Switch(this, new Checkup(this.appointmentId, this.patient, this.doctor));
             }
             catch (ArgumentException)
             {
