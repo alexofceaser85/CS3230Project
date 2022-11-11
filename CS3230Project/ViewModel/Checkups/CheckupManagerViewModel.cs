@@ -24,6 +24,22 @@ namespace CS3230Project.ViewModel.Checkups
         }
 
         /// <summary>
+        /// Modifies the visit.
+        ///
+        /// Precondition: none
+        /// Post-condition: the visit is modified with the provided details
+        /// </summary>
+        /// <param name="modifiedVisit">The modified visit.</param>
+        /// <returns>
+        ///   True if the visit was successfully modified
+        ///   False if the visit was not modified
+        /// </returns>
+        public static bool ModifyVisit(Visit modifiedVisit)
+        {
+            return VisitManager.ModifyVisit(modifiedVisit);
+        }
+
+        /// <summary>
         /// Gets the visit.
         ///
         /// Precondition: none

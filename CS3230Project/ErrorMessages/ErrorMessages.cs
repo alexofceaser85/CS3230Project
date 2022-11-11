@@ -689,6 +689,10 @@
         /// The error message for footer cannot be null
         /// </summary>
         public static string FooterCannotBeNull = "Footer cannot be null.";
+        /// <summary>
+        /// The error message for modified visit cannot be null
+        /// </summary>
+        public static string ModifiedVisitCannotBeNull = "Modified visit cannot be null.";
     }
     /// <summary>
     /// The error messages for the tests
