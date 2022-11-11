@@ -21,6 +21,7 @@ namespace CS3230Project.View.Validation
         public static void VerifySystolicBloodPressureInput(TextBox systolicBloodPressureTextBox,
             Label systolicBloodPressureTextBoxErrorMessage)
         {
+            systolicBloodPressureTextBoxErrorMessage.ForeColor = Color.Red;
             if (systolicBloodPressureTextBox.Text.Trim().Length == 0)
             {
                 systolicBloodPressureTextBoxErrorMessage.Font = LabelNotCollapsedFont;
@@ -46,6 +47,7 @@ namespace CS3230Project.View.Validation
         public static void VerifyDiastolicBloodPressureInput(TextBox diastolicBloodPressureTextBox,
             Label diastolicBloodPressureTextBoxErrorMessage)
         {
+            diastolicBloodPressureTextBoxErrorMessage.ForeColor = Color.Red;
             if (diastolicBloodPressureTextBox.Text.Trim().Length == 0)
             {
                 diastolicBloodPressureTextBoxErrorMessage.Font = LabelNotCollapsedFont;
@@ -71,6 +73,7 @@ namespace CS3230Project.View.Validation
         public static void VerifyBodyTemperatureInput(TextBox bodyTemperatureTextBox,
             Label bodyTemperatureTextBoxErrorMessage)
         {
+            bodyTemperatureTextBoxErrorMessage.ForeColor = Color.Red;
             if (bodyTemperatureTextBox.Text.Trim().Length == 0)
             {
                 bodyTemperatureTextBoxErrorMessage.Font = LabelNotCollapsedFont;
@@ -95,6 +98,7 @@ namespace CS3230Project.View.Validation
         /// <param name="pulseTextBoxErrorMessage">The pulse text box error message.</param>
         public static void VerifyPulseInput(TextBox pulseTextBox, Label pulseTextBoxErrorMessage)
         {
+            pulseTextBoxErrorMessage.ForeColor = Color.Red;
             if (pulseTextBox.Text.Trim().Length == 0)
             {
                 pulseTextBoxErrorMessage.Font = LabelNotCollapsedFont;
@@ -119,6 +123,7 @@ namespace CS3230Project.View.Validation
         /// <param name="heightTextBoxErrorMessage">The height text box error message.</param>
         public static void VerifyHeightInput(TextBox heightTextBox, Label heightTextBoxErrorMessage)
         {
+            heightTextBoxErrorMessage.ForeColor = Color.Red;
             if (heightTextBox.Text.Trim().Length == 0)
             {
                 heightTextBoxErrorMessage.Font = LabelNotCollapsedFont;
@@ -143,6 +148,7 @@ namespace CS3230Project.View.Validation
         /// <param name="weightTextBoxErrorMessage">The weight text box error message.</param>
         public static void VerifyWeightInput(TextBox weightTextBox, Label weightTextBoxErrorMessage)
         {
+            weightTextBoxErrorMessage.ForeColor = Color.Red;
             if (weightTextBox.Text.Trim().Length == 0)
             {
                 weightTextBoxErrorMessage.Font = LabelNotCollapsedFont;
@@ -167,6 +173,7 @@ namespace CS3230Project.View.Validation
         /// <param name="nurseComboBoxErrorMessage">The nurse ComboBox error message.</param>
         public static void VerifyNurseInput(ComboBox nurseComboBox, Label nurseComboBoxErrorMessage)
         {
+            nurseComboBoxErrorMessage.ForeColor = Color.Red;
             if (nurseComboBox.Text.Trim().Length == 0)
             {
                 nurseComboBoxErrorMessage.Font = LabelNotCollapsedFont;
@@ -186,6 +193,7 @@ namespace CS3230Project.View.Validation
         /// <param name="symptomsTextBoxErrorMessage">The symptoms text box error message.</param>
         public static void VerifySymptomsInput(TextBox symptomsTextBox, Label symptomsTextBoxErrorMessage)
         {
+            symptomsTextBoxErrorMessage.ForeColor = Color.Red;
             if (symptomsTextBox.Text.Trim().Length == 0)
             {
                 symptomsTextBoxErrorMessage.Font = LabelNotCollapsedFont;

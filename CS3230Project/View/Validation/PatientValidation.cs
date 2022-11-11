@@ -21,6 +21,7 @@ namespace CS3230Project.View.Validation
         /// <param name="patientLastNameTextBoxErrorMessage">The label to show the violation</param>
         public static void VerifyLastNameInputs(TextBox patientLastNameTextBox, Label patientLastNameTextBoxErrorMessage)
         {
+            patientLastNameTextBoxErrorMessage.ForeColor = Color.Red;
             if (patientLastNameTextBox.Text.Trim().Length == 0)
             {
                 patientLastNameTextBoxErrorMessage.Font = LabelNotCollapsedFont;
@@ -45,6 +46,7 @@ namespace CS3230Project.View.Validation
         /// <param name="patientFirstNameErrorMessage">The label to show the violation</param>
         public static void VerifyFirstNameInputs(TextBox patientFirstNameTextBox, Label patientFirstNameErrorMessage)
         {
+            patientFirstNameErrorMessage.ForeColor = Color.Red;
             if (patientFirstNameTextBox.Text.Trim().Length == 0)
             {
                 patientFirstNameErrorMessage.Font = LabelNotCollapsedFont;
@@ -69,6 +71,7 @@ namespace CS3230Project.View.Validation
         /// <param name="patientDateOfBirthErrorMessage">The label to show the violation</param>
         public static void VerifyDateInputs(DateTimePicker patientDateOfBirthPicker, Label patientDateOfBirthErrorMessage)
         {
+            patientDateOfBirthErrorMessage.ForeColor = Color.Red;
             if (patientDateOfBirthPicker.Value < new DateTime(1900, 1, 1))
             {
                 patientDateOfBirthErrorMessage.Font = LabelNotCollapsedFont;
@@ -93,6 +96,7 @@ namespace CS3230Project.View.Validation
         /// <param name="patientGenderErrorMessage">The label to show the violation</param>
         public static void VerifyGenderInputs(ComboBox patientGenderDropBox, Label patientGenderErrorMessage)
         {
+            patientGenderErrorMessage.ForeColor = Color.Red;
             if (patientGenderDropBox.Text.Trim().Length == 0)
             {
                 patientGenderErrorMessage.Font = LabelNotCollapsedFont;
@@ -118,6 +122,7 @@ namespace CS3230Project.View.Validation
         public static void VerifyPhoneNumberInputs(TextBox patientPhoneNumberTextBox,
             Label patientPhoneNumberErrorMessage)
         {
+            patientPhoneNumberErrorMessage.ForeColor = Color.Red;
             if (patientPhoneNumberTextBox.Text.Trim().Length == 0)
             {
                 patientPhoneNumberErrorMessage.Text = ErrorMessages.PatientErrorMessages.PhoneNumberCannotBeEmpty;
@@ -141,6 +146,7 @@ namespace CS3230Project.View.Validation
         /// <param name="patientAddressOneErrorMessage">The label to show the violation</param>
         public static void VerifyAddressOneInputs(TextBox patientAddressOneTextBox, Label patientAddressOneErrorMessage)
         {
+            patientAddressOneErrorMessage.ForeColor = Color.Red;
             if (patientAddressOneTextBox.Text.Trim().Length == 0)
             {
                 patientAddressOneErrorMessage.Text = ErrorMessages.PatientErrorMessages.AddressOneCannotBeEmpty;
@@ -165,6 +171,7 @@ namespace CS3230Project.View.Validation
         /// <param name="patientCityErrorMessage">The label to show the violation</param>
         public static void VerifyCityInputs(TextBox patientCityTextBox, Label patientCityErrorMessage)
         {
+            patientCityErrorMessage.ForeColor = Color.Red;
             if (patientCityTextBox.Text.Trim().Length == 0)
             {
                 patientCityErrorMessage.Text = ErrorMessages.PatientErrorMessages.CityCannotBeEmpty;
@@ -189,6 +196,7 @@ namespace CS3230Project.View.Validation
         /// <param name="patientStateErrorMessage">The label to show the violation</param>
         public static void VerifyStateInputs(ComboBox patientStateTextBox, Label patientStateErrorMessage)
         {
+            patientStateErrorMessage.ForeColor = Color.Red;
             if (patientStateTextBox.Text.Trim().Length == 0)
             {
                 patientStateErrorMessage.Text = ErrorMessages.PatientErrorMessages.StateCannotBeEmpty;
@@ -213,6 +221,7 @@ namespace CS3230Project.View.Validation
         /// <param name="patientZipCodeErrorMessage">The label to show the violation</param>
         public static void VerifyZipCodeInputs(TextBox patientZipCodeTextBox, Label patientZipCodeErrorMessage)
         {
+            patientZipCodeErrorMessage.ForeColor = Color.Red;
             if (patientZipCodeTextBox.Text.Trim().Length == 0)
             {
                 patientZipCodeErrorMessage.Text = ErrorMessages.PatientErrorMessages.ZipcodeCannotBeEmpty;
@@ -236,6 +245,7 @@ namespace CS3230Project.View.Validation
         /// <param name="patientStatusErrorMessage">The label to show the violation</param>
         public static void VerifyStatusInputs(ComboBox patientStatusTextBox, Label patientStatusErrorMessage)
         {
+            patientStatusErrorMessage.ForeColor = Color.Red;
             if (patientStatusTextBox.Text.Trim().Length == 0)
             {
                 patientStatusErrorMessage.Text = ErrorMessages.PatientErrorMessages.PatientStatusCannotBeEmpty;

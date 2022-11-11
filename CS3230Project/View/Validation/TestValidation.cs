@@ -20,6 +20,7 @@ namespace CS3230Project.View.Validation
         /// <param name="dateErrorMessage">The error message for the date</param>
         public static void VerifyDateInput(DateTimePicker dateInput, Label dateErrorMessage)
         {
+            dateErrorMessage.ForeColor = Color.Red;
             if (dateInput.Value < DateTime.Today)
             {
                 dateErrorMessage.Font = LabelNotCollapsedFont;
@@ -38,6 +39,7 @@ namespace CS3230Project.View.Validation
         /// <param name="resultsErrorMessage">The error message for the results</param>
         public static void VerifyTestResults(TextBox resultsTextInput, Label resultsErrorMessage)
         {
+            resultsErrorMessage.ForeColor = Color.Red;
             if (resultsTextInput.Text.Trim().Length == 0)
             {
                 resultsErrorMessage.Font = LabelNotCollapsedFont;
