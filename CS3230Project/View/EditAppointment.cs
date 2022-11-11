@@ -28,7 +28,7 @@ namespace CS3230Project.View
         /// Initializes a new <see cref="EditAppointment"/>
         /// </summary>
         /// <param name="appointmentToEdit">The appointment to edit</param>
-        /// <param name="patient">The patient ID for the appointment</param>
+        /// <param name="patient">The patient for the appointment</param>
         public EditAppointment(Appointment appointmentToEdit, Patient patient)
         {
             this.InitializeComponent();

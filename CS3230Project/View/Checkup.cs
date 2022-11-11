@@ -28,7 +28,8 @@ namespace CS3230Project.View
         /// Initializes a new instance of the <see cref="Checkup" /> class.
         /// </summary>
         /// <param name="appointmentId">The appointment identifier.</param>
-        /// <param name="patientId">The patient</param>
+        /// <param name="patient">The patient</param>
+        /// <param name="doctor">The doctor</param>
         public Checkup(int appointmentId, Patient patient, Doctor doctor)
         {
             this.InitializeComponent();

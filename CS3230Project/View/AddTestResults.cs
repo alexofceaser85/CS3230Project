@@ -27,7 +27,8 @@ namespace CS3230Project.View
         /// </summary>
         /// <param name="testToAddResults">The test to add results to</param>
         /// <param name="appointmentId">The appointment Id</param>
-        /// <param name="patient">The patient Id</param>
+        /// <param name="patient">The patient</param>
+        /// <param name="doctor">The doctor</param>
         public AddTestResults(NotPerformedTest testToAddResults, int appointmentId, Patient patient, Doctor doctor)
         {
             this.testManager = new TestsManagerViewModel(this.appointmentId);

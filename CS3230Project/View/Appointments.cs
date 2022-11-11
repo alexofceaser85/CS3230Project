@@ -15,7 +15,6 @@ namespace CS3230Project.View
     /// </summary>
     public partial class Appointments : Form
     {
-
         private List<Appointment> previousAppointments;
         private List<Appointment> upcomingAppointments;
         private readonly Patient patient;
