@@ -755,4 +755,19 @@
         /// </summary>
         public static string CannotAddTestResultsBeforeCurrentDate = "Cannot add test results before the current date";
     }
+
+    public class DiagnosisErrorMessages
+    {
+        public static string DiagnosisIdCannotBeLessThanZero = "Diagnosis Id cannot be less than zero.";
+
+        public static string AppointmentIdCannotBeLessThanZero = "Appointment Id cannot be less than zero.";
+
+        public static string DiagnosisDescriptionCannotBeEmpty = "Diagnosis description cannot be empty.";
+
+        public static string DiagnosisDescriptionCannotBeNull = "Diagnosis description cannot be null.";
+
+        public static string DiagnosisToAddCannotBeNull = "Diagnosis to add cannot be null.";
+
+        public static string ModifiedDiagnosisCannotBeNull = "The modified diagnosis cannot be null.";
+    }
 }

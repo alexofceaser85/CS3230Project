@@ -100,6 +100,7 @@
     <Compile Include="DAL\Accounts\AccountsDal.cs" />
     <Compile Include="DAL\Appointments\AppointmentsDAL.cs" />
     <Compile Include="DAL\Connection.cs" />
+    <Compile Include="DAL\Diagnosis\DiagnosisDal.cs" />
     <Compile Include="DAL\Doctors\DoctorsDAL.cs" />
     <Compile Include="DAL\Nurses\NurseDal.cs" />
     <Compile Include="DAL\Patients\PatientsDal.cs" />
@@ -109,6 +110,8 @@
     <Compile Include="Model\Appointments\Appointment.cs" />
     <Compile Include="Model\Appointments\AppointmentManager.cs" />
     <Compile Include="Model\DataValidator.cs" />
+    <Compile Include="Model\Diagnosis\Diagnosis.cs" />
+    <Compile Include="Model\Diagnosis\DiagnosisManager.cs" />
     <Compile Include="Model\Tests\PerformedTest.cs" />
     <Compile Include="Model\Tests\NotPerformedTest.cs" />
     <Compile Include="Model\Tests\Test.cs" />
