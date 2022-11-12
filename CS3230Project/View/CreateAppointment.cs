@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using CS3230Project.Model.Users.Patients;
 using CS3230Project.Settings;
 using CS3230Project.View.Validation;
 using CS3230Project.ViewModel.Appointments;
@@ -14,25 +15,28 @@ namespace CS3230Project.View
     {
         private readonly string invalidInputErrorMessage = "Invalid Values for Creating Appointment";
         private readonly string invalidInputErrorHeader = "Unable to create Appointment";
-        private readonly int patientId;
+        private readonly Patient patient;
         /// <summary>
         /// Creates a new <see cref="CreateAppointment"/>
         /// </summary>
-        /// <param name="patientId">The id of the patient who the appointment is for</param>
-        public CreateAppointment(int patientId)
+        /// <param name="patient">The appointment's patient</param>
+        public CreateAppointment(Patient patient)
         {
             this.InitializeComponent();
+            this.PatientNameAndIdLabel.Text = $"{patient.PatientId}, {patient.LastName}, {patient.FirstName}";
+            this.PatientDateOfBirthLabel.Text = $"Birthdate: {patient.DateOfBirth}";
+            this.PatientPhoneNumberLabel.Text = $"Phone: {patient.PhoneNumber}";
             this.submitChangesFooter1.SubmitButtonEventHandler += this.SubmitChangesFooter1OnSubmitButtonEventHandler;
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
             this.appointmentDatePicker.Format = DateTimePickerFormat.Custom;
             this.appointmentDatePicker.CustomFormat = AppointmentSettings.DateTimeFormat;
-            this.patientId = patientId;
+            this.patient = patient;
             this.populateDoctorsDropDown();
         }
 
         private void SubmitChangesFooter1OnBackButtonEventHandler(object sender, EventArgs e)
         {
-            WindowSwitching.SwitchForms.Switch(this, new Appointments(this.patientId));
+            WindowSwitching.SwitchForms.Switch(this, new Appointments(this.patient));
         }
 
         private void SubmitChangesFooter1OnSubmitButtonEventHandler(object sender, EventArgs e)
@@ -41,9 +45,9 @@ namespace CS3230Project.View
             {
                 this.validateAll();
                 var appointmentDate = this.convertAppointmentDateTimeToZero();
-                AppointmentManagerViewModel.AddAppointment(this.patientId, appointmentDate,
+                AppointmentManagerViewModel.AddAppointment(this.patient.PatientId, appointmentDate,
                     this.appointmentDoctorDropDown.SelectedIndex + 1, this.reasonTextBox.Text);
-                WindowSwitching.SwitchForms.Switch(this, new Appointments(this.patientId));
+                WindowSwitching.SwitchForms.Switch(this, new Appointments(this.patient));
             }
             catch (ArgumentException)
             {

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using CS3230Project.Model.Tests;
 using CS3230Project.Model.Users;
 using CS3230Project.Model.Users.Nurses;
+using CS3230Project.Model.Users.Patients;
 using CS3230Project.Model.Visits;
 using CS3230Project.View.Validation;
 using CS3230Project.ViewModel.Checkups;
@@ -17,7 +18,8 @@ namespace CS3230Project.View
     public partial class Checkup : Form
     {
         private readonly int appointmentId;
-        private readonly int patientId;
+        private readonly Patient patient;
+        private readonly Doctor doctor;
         private readonly TestsManagerViewModel testManager;
         private readonly string invalidInputErrorMessage = "Invalid Values for the checkup details";
         private readonly string invalidInputErrorHeader = "Unable to add new checkup";
@@ -26,14 +28,17 @@ namespace CS3230Project.View
         /// Initializes a new instance of the <see cref="Checkup" /> class.
         /// </summary>
         /// <param name="appointmentId">The appointment identifier.</param>
-        /// <param name="patientId">The patient identifier</param>
-        public Checkup(int appointmentId, int patientId)
+        /// <param name="patient">The patient</param>
+        /// <param name="doctor">The doctor</param>
+        public Checkup(int appointmentId, Patient patient, Doctor doctor)
         {
             this.InitializeComponent();
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
             this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
             this.appointmentId = appointmentId;
-            this.patientId = patientId;
+            this.patient = patient;
+            this.doctor = doctor;
+            this.loadPatientAndDoctorInfo();
             this.testManager = new TestsManagerViewModel(this.appointmentId);
             this.updateTestData();
             this.checkIfVisitExists(appointmentId);
@@ -104,6 +109,16 @@ namespace CS3230Project.View
             }
         }
 
+        private void loadPatientAndDoctorInfo()
+        {
+            this.PatientNameAndIdLabel.Text = $"{patient.PatientId}, {patient.LastName}, {patient.FirstName}";
+            this.PatientDateOfBirthLabel.Text = $"Birthdate: {patient.DateOfBirth}";
+            this.PatientPhoneNumberLabel.Text = $"Phone: {patient.PhoneNumber}";
+            this.DoctorNameAndIdLabel.Text = $"{doctor.DoctorId}, {doctor.LastName}, {doctor.FirstName}";
+            this.DoctorDateOfBirthLabel.Text = $"Birthdate: {doctor.DateOfBirth}";
+            this.DoctorPhoneNumberLabel.Text = $"Phone: {doctor.PhoneNumber}";
+        }
+
         private void displayCheckupDetails(Visit visit)
         {
             this.systolicBloodPressureTextBox.Text = visit.SystolicBloodPressure.ToString();
@@ -148,7 +163,7 @@ namespace CS3230Project.View
 
         private void SubmitChangesFooter1OnBackButtonEventHandler(object sender, EventArgs e)
         {
-            SwitchForms.Switch(this, new Appointments(this.patientId));
+            SwitchForms.Switch(this, new Appointments(this.patient));
         }
 
         private void submitChangesFooter1OnSubmitButtonEventHandlerEditExistingVisit(object sender, EventArgs e)
@@ -157,7 +172,7 @@ namespace CS3230Project.View
             {
                 CheckupManagerViewModel.ModifyVisit(this.getVisitInfo());
                 this.testManager.SubmitTests();
-                SwitchForms.Switch(this, new Appointments(this.patientId));
+                SwitchForms.Switch(this, new Appointments(this.patient));
             }
             catch (Exception)
             {
@@ -171,7 +186,7 @@ namespace CS3230Project.View
             {
                 CheckupManagerViewModel.AddVisit(this.getVisitInfo());
                 this.testManager.SubmitTests();
-                SwitchForms.Switch(this, new Appointments(this.patientId));
+                SwitchForms.Switch(this, new Appointments(this.patient));
 
             }
             catch (Exception)
@@ -284,7 +299,7 @@ namespace CS3230Project.View
 
         private void NotCompletedTestsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            SwitchForms.Switch(this, new AddTestResults(this.testManager.NotPerformedTests[e.RowIndex], this.appointmentId, this.patientId));
+            SwitchForms.Switch(this, new AddTestResults(this.testManager.NotPerformedTests[e.RowIndex], this.appointmentId, this.patient, this.doctor));
         }
     }
 }

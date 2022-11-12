@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using CS3230Project.ErrorMessages;
 using CS3230Project.Model.Appointments;
+using CS3230Project.Model.Users.Patients;
 using CS3230Project.Settings;
 using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Appointments;
@@ -14,19 +15,18 @@ namespace CS3230Project.View
     /// </summary>
     public partial class Appointments : Form
     {
-
         private List<Appointment> previousAppointments;
         private List<Appointment> upcomingAppointments;
-        private readonly int patientId;
+        private readonly Patient patient;
 
         /// <summary>
         /// Initializes a new <see cref="Appointments"/>
         /// </summary>
-        /// <param name="patientId">The patient for the appointments</param>
-        public Appointments(int patientId)
+        /// <param name="patient">The patient for the appointments</param>
+        public Appointments(Patient patient)
         {
             this.InitializeComponent();
-            this.patientId = patientId;
+            this.patient = patient;
             this.footer2.BackButtonEventHandler += this.Footer2OnBackButtonEventHandler;
             this.previousAppointments = new List<Appointment>();
             this.upcomingAppointments = new List<Appointment>();
@@ -43,7 +43,7 @@ namespace CS3230Project.View
         private void addUpcomingAppointments()
         {
             this.upcomingAppointmentsTable.Rows.Clear();
-            foreach (var appointment in AppointmentManagerViewModel.GetUpcomingAppointments(this.patientId))
+            foreach (var appointment in AppointmentManagerViewModel.GetUpcomingAppointments(this.patient.PatientId))
             {
                 string[] appointmentDetails =
                 {
@@ -61,7 +61,7 @@ namespace CS3230Project.View
         private void addPreviousAppointments()
         {
             this.previousAppointmentsTable.Rows.Clear();
-            foreach (var appointment in AppointmentManagerViewModel.GetPreviousAppointments(this.patientId))
+            foreach (var appointment in AppointmentManagerViewModel.GetPreviousAppointments(this.patient.PatientId))
             {
                 string[] appointmentDetails =
                 {
@@ -90,7 +90,7 @@ namespace CS3230Project.View
 
                 if (appointmentID >= 0)
                 {
-                       SwitchForms.Switch(this, new Checkup(appointmentID, this.patientId));
+                       SwitchForms.Switch(this, new Checkup(appointmentID, this.patient, this.upcomingAppointments[e.RowIndex].Doctor));
                 }
                 else
                 {
@@ -114,7 +114,7 @@ namespace CS3230Project.View
                     int.Parse((string)previousAppointmentsTable.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value);
                 if (appointmentID >= 0)
                 {
-                       SwitchForms.Switch(this, new Checkup(appointmentID, this.patientId));
+                       SwitchForms.Switch(this, new Checkup(appointmentID, this.patient, this.previousAppointments[e.RowIndex].Doctor));
                 }
                 else
                 {
@@ -125,15 +125,15 @@ namespace CS3230Project.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SwitchForms.Switch(this, new CreateAppointment(this.patientId));
+            SwitchForms.Switch(this, new CreateAppointment(this.patient));
         }
 
         private void upcomingAppointmentsTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex < 4)
             {
-                var appointment = AppointmentManagerViewModel.GetUpcomingAppointments(this.patientId)[e.RowIndex];
-                SwitchForms.Switch(this, new EditAppointment(appointment, this.patientId));
+                var appointment = AppointmentManagerViewModel.GetUpcomingAppointments(this.patient.PatientId)[e.RowIndex];
+                SwitchForms.Switch(this, new EditAppointment(appointment, this.patient));
             }
         }
     }
