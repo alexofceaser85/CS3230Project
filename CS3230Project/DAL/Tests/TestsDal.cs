@@ -19,9 +19,7 @@ namespace CS3230Project.DAL.Tests
             var tests = new List<PerformedTest>();
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
-            var query = "select appointmentId, tests.testCode, name, results, isAbnormal, testDateTime " +
-                        "from visittests, tests " +
-                        "where visittests.testCode = tests.testcode and appointmentId = @appointmentId and testDateTime is not null";
+            var query = "call uspGetCompletedTestsForAppointment(@appointmentId);";
             using var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@appointmentId", MySqlDbType.Int32).Value = appointmentId;
             using var reader = command.ExecuteReader();
@@ -57,9 +55,7 @@ namespace CS3230Project.DAL.Tests
             var tests = new List<NotPerformedTest>();
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
-            var query = "select appointmentId, tests.testCode, name, results, isAbnormal, testDateTime " +
-                        "from visittests, tests " +
-                        "where visittests.testCode = tests.testcode and appointmentId = @appointmentId and testDateTime is null";
+            var query = "call uspGetNonCompletedTestsForAppointment(@appointmentId);";
             using var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@appointmentId", MySqlDbType.Int32).Value = appointmentId;
             using var reader = command.ExecuteReader();
@@ -88,7 +84,7 @@ namespace CS3230Project.DAL.Tests
             var tests = new List<AvailableTest>();
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
-            var query = "select tests.testcode, name from tests where not exists(select visittests.testcode from visittests where appointmentId = @appointmentId and tests.testcode = visittests.testCode);";
+            var query = "call uspGetPossibleTests(@appointmentId)";
             using var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@appointmentId", MySqlDbType.Int32).Value = appointmentId;
             using var reader = command.ExecuteReader();
