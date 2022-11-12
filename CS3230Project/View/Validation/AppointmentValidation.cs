@@ -20,6 +20,7 @@ namespace CS3230Project.View.Validation
         /// <param name="dateErrorMessage">The error message for the date</param>
         public static void VerifyDateInput(DateTimePicker dateInput, Label dateErrorMessage)
         {
+            dateErrorMessage.ForeColor = Color.Red;
             if (dateInput.Value < DateTime.Today)
             {
                 dateErrorMessage.Font = LabelNotCollapsedFont;
@@ -39,6 +40,7 @@ namespace CS3230Project.View.Validation
         /// <param name="doctorErrorMessage">The error message for the doctor</param>
         public static void VerifyDoctorInput(ComboBox doctorComboBox, Label doctorErrorMessage)
         {
+            doctorErrorMessage.ForeColor = Color.Red;
             if (doctorComboBox.SelectedItem == null)
             {
                 doctorErrorMessage.Font = LabelNotCollapsedFont;
@@ -58,6 +60,7 @@ namespace CS3230Project.View.Validation
         /// <param name="reasonErrorMessage">The error message for the reason</param>
         public static void VerifyReasonInput(TextBox reasonTextBox, Label reasonErrorMessage)
         {
+            reasonErrorMessage.ForeColor = Color.Red;
             if (reasonTextBox.Text.Length == 0)
             {
                 reasonErrorMessage.Font = LabelNotCollapsedFont;
