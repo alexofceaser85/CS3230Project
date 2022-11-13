@@ -23,7 +23,6 @@ namespace CS3230Project.DAL.Diagnosis
         /// </returns>
         public static bool AddDiagnosis(Model.Diagnosis.Diagnosis diagnosisToAdd)
         {
-            var diagnosisId = diagnosisToAdd.DiagnosisId;
             var appointmentId = diagnosisToAdd.AppointmentId;
             var diagnosisDescription = diagnosisToAdd.DiagnosisDescription;
             var isFinal = diagnosisToAdd.IsFinal;
@@ -32,11 +31,10 @@ namespace CS3230Project.DAL.Diagnosis
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
             var comm = connection.CreateCommand();
-            comm.CommandText = "insert into diagnosis (diagnosisId, appointmentId, diagnosisDescription, isFinal, " +
-                               "basedOnTestResults) VALUES (@diagnosisId, @appointmentId, @diagnosisDescription, " +
+            comm.CommandText = "insert into diagnosis (appointmentId, diagnosisDescription, isFinal, " +
+                               "basedOnTestResults) VALUES (@appointmentId, @diagnosisDescription, " +
                                "@isFinal, @basedOnTestResults)";
 
-            comm.Parameters.Add("@diagnosisId", MySqlDbType.Int16).Value = diagnosisId;
             comm.Parameters.Add("@appointmentId", MySqlDbType.Int16).Value = appointmentId;
             comm.Parameters.Add("@diagnosisDescription", MySqlDbType.String).Value = diagnosisDescription;
             comm.Parameters.Add("@isFinal", MySqlDbType.Int16).Value = isFinal;
@@ -51,17 +49,17 @@ namespace CS3230Project.DAL.Diagnosis
         /// Precondition: none
         /// Post-condition: the diagnosis is modified with the provided details
         /// </summary>
-        /// <param name="diagnosisToModify">The diagnosis to modify.</param>
+        /// <param name="modifiedDiagnosis">The diagnosis to modify.</param>
         /// <returns>
         ///   true if the diagnosis was modified with the provided details
         ///   false if the diagnosis was not modified with the provided details
         /// </returns>
-        public static bool ModifyDiagnosis(Model.Diagnosis.Diagnosis diagnosisToModify)
+        public static bool ModifyDiagnosis(Model.Diagnosis.Diagnosis modifiedDiagnosis)
         {
-            var diagnosisId = diagnosisToModify.DiagnosisId;
-            var diagnosisDescription = diagnosisToModify.DiagnosisDescription;
-            var isFinal = diagnosisToModify.IsFinal;
-            var basedOnTestResult = diagnosisToModify.BasedOnTestResults;
+            var diagnosisId = modifiedDiagnosis.DiagnosisId;
+            var diagnosisDescription = modifiedDiagnosis.DiagnosisDescription;
+            var isFinal = modifiedDiagnosis.IsFinal;
+            var basedOnTestResult = modifiedDiagnosis.BasedOnTestResults;
 
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();

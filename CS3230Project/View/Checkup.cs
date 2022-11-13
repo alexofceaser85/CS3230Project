@@ -1,6 +1,8 @@
 ﻿using CS3230Project.View.WindowSwitching;
 using System;
 using System.Windows.Forms;
+using CS3230Project.DAL.Diagnosis;
+using CS3230Project.Model.Diagnosis;
 using CS3230Project.Model.Tests;
 using CS3230Project.Model.Users;
 using CS3230Project.Model.Users.Nurses;
@@ -8,6 +10,7 @@ using CS3230Project.Model.Users.Patients;
 using CS3230Project.Model.Visits;
 using CS3230Project.View.Validation;
 using CS3230Project.ViewModel.Checkups;
+using CS3230Project.ViewModel.Diagnosis;
 using CS3230Project.ViewModel.Tests;
 
 namespace CS3230Project.View
@@ -20,6 +23,7 @@ namespace CS3230Project.View
         private readonly int appointmentId;
         private readonly Patient patient;
         private readonly Doctor doctor;
+        private Diagnosis diagnosis;
         private readonly TestsManagerViewModel testManager;
         private readonly string invalidInputErrorMessage = "Invalid Values for the checkup details";
         private readonly string invalidInputErrorHeader = "Unable to add new checkup";
@@ -42,6 +46,30 @@ namespace CS3230Project.View
             this.testManager = new TestsManagerViewModel(this.appointmentId);
             this.updateTestData();
             this.checkIfVisitExists(appointmentId);
+            this.diagnosis = DiagnosisManagerViewModel.GetDiagnosis(this.appointmentId);
+            this.updateDiagnosisData();
+        }
+
+        private void disableDiagnosisControlsIfFinal()
+        {
+            if (this.diagnosis.IsFinal)
+            {
+                this.diagnosisDescriptionTextBox.Enabled = false;
+                this.isFinalCheckBox.Enabled = false;
+                this.basedOnTestResultsCheckBox.Enabled = false;
+                this.submitDiagnosisButton.Enabled = false;
+            }
+        }
+
+        private void updateDiagnosisData()
+        {
+            if (this.diagnosis != null)
+            {
+                this.diagnosisDescriptionTextBox.Text = this.diagnosis.DiagnosisDescription;
+                this.isFinalCheckBox.Checked = this.diagnosis.IsFinal;
+                this.basedOnTestResultsCheckBox.Checked = this.diagnosis.BasedOnTestResults;
+                this.disableDiagnosisControlsIfFinal();
+            }
         }
 
         private void updateTestData()
@@ -302,9 +330,25 @@ namespace CS3230Project.View
             SwitchForms.Switch(this, new AddTestResults(this.testManager.NotPerformedTests[e.RowIndex], this.appointmentId, this.patient, this.doctor));
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void SubmitDiagnosis_Click(object sender, EventArgs e)
         {
-
+            if (this.diagnosis == null)
+            {
+                DiagnosisManagerViewModel.AddDiagnosis(new Diagnosis(null, this.appointmentId,
+                    this.diagnosisDescriptionTextBox.Text, this.isFinalCheckBox.Checked,
+                    this.basedOnTestResultsCheckBox.Checked));
+                this.diagnosis = DiagnosisManagerViewModel.GetDiagnosis(this.appointmentId);
+                this.disableDiagnosisControlsIfFinal();
+                MessageBox.Show("The patient's diagnosis has been added.");
+            }
+            else
+            {
+                DiagnosisManagerViewModel.ModifyDiagnosis(new Diagnosis(this.diagnosis.DiagnosisId, this.appointmentId, this.diagnosisDescriptionTextBox.Text,
+                    this.isFinalCheckBox.Checked, this.basedOnTestResultsCheckBox.Checked));
+                this.diagnosis = DiagnosisManagerViewModel.GetDiagnosis(this.appointmentId);
+                this.disableDiagnosisControlsIfFinal();
+                MessageBox.Show("The patient's diagnosis has been updated.");
+            }
         }
     }
 }

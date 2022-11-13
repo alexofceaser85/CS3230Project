@@ -127,6 +127,7 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="ViewModel\Appointments\AppointmentManagerViewModel.cs" />
     <Compile Include="ViewModel\Checkups\CheckupManagerViewModel.cs" />
+    <Compile Include="ViewModel\Diagnosis\DiagnosisManagerViewModel.cs" />
     <Compile Include="ViewModel\Doctors\DoctorsManagerViewModel.cs" />
     <Compile Include="ViewModel\Tests\TestsManagerViewModel.cs" />
     <Compile Include="ViewModel\Users\PatientManagerViewModel.cs" />

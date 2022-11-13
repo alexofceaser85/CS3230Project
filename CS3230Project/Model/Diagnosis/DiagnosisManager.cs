@@ -35,23 +35,23 @@ namespace CS3230Project.Model.Diagnosis
         /// <summary>
         /// Modifies the diagnosis.
         ///
-        /// Precondition: diagnosisToModify != null
+        /// Precondition: modifiedDiagnosis != null
         /// Post-condition: the diagnosis is modified with the provided details
         /// </summary>
-        /// <param name="diagnosisToModify">The diagnosis to modify.</param>
+        /// <param name="modifiedDiagnosis">The diagnosis to modify.</param>
         /// <returns>
         ///   true if the diagnosis was modified with the provided details
         ///   false if the diagnosis was not modified with the provided details
         /// </returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static bool ModifyDiagnosis(Diagnosis diagnosisToModify)
+        public static bool ModifyDiagnosis(Diagnosis modifiedDiagnosis)
         {
-            if (diagnosisToModify == null)
+            if (modifiedDiagnosis == null)
             {
                 throw new ArgumentException(DiagnosisErrorMessages.ModifiedDiagnosisCannotBeNull);
             }
 
-            return DiagnosisDal.ModifyDiagnosis(diagnosisToModify);
+            return DiagnosisDal.ModifyDiagnosis(modifiedDiagnosis);
         }
 
         /// <summary>

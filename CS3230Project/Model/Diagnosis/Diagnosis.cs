@@ -11,7 +11,7 @@ namespace CS3230Project.Model.Diagnosis
         /// <summary>
         /// Gets the diagnosis identifier.
         /// </summary>
-        public int DiagnosisId { get; }
+        public int? DiagnosisId { get; }
         /// <summary>
         /// Gets the appointment identifier.
         /// </summary>
@@ -43,7 +43,7 @@ namespace CS3230Project.Model.Diagnosis
         /// <param name="isFinal">if set to <c>true</c> [is final].</param>
         /// <param name="basedOnTestResults">if set to <c>true</c> [based on test results].</param>
         /// <exception cref="System.ArgumentException"></exception>
-        public Diagnosis(int diagnosisId, int appointmentId, string diagnosisDescription, bool isFinal, bool basedOnTestResults)
+        public Diagnosis(int? diagnosisId, int appointmentId, string diagnosisDescription, bool isFinal, bool basedOnTestResults)
         {
             if (diagnosisId < 0)
             {
