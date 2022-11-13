@@ -1,7 +1,6 @@
 ﻿using CS3230Project.View.WindowSwitching;
 using System;
 using System.Windows.Forms;
-using CS3230Project.DAL.Diagnosis;
 using CS3230Project.Model.Diagnosis;
 using CS3230Project.Model.Tests;
 using CS3230Project.Model.Users;
@@ -58,6 +57,8 @@ namespace CS3230Project.View
                 this.isFinalCheckBox.Enabled = false;
                 this.basedOnTestResultsCheckBox.Enabled = false;
                 this.submitDiagnosisButton.Enabled = false;
+                this.disableFormControls();
+                this.disableTestControls();
             }
         }
 
@@ -162,7 +163,7 @@ namespace CS3230Project.View
             this.nurseComboBox.SelectedItem = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.NurseId;
         }
 
-        private void disableFormControls(Visit visit)
+        private void disableFormControls()
         {
             this.systolicBloodPressureTextBox.Enabled = false;
             this.diastolicBloodPressureTextBox.Enabled = false;
@@ -349,6 +350,14 @@ namespace CS3230Project.View
                 this.disableDiagnosisControlsIfFinal();
                 MessageBox.Show("The patient's diagnosis has been updated.");
             }
+        }
+
+        private void disableTestControls()
+        {
+            this.CompletedTestsTable.Enabled = false;
+            this.NotCompletedTestsTable.Enabled = false;
+            this.PendingTestsTable.Enabled = false;
+            this.AddTestButton.Enabled = false;
         }
     }
 }

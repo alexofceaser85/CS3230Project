@@ -1,13 +1,10 @@
-﻿using System;
-using CS3230Project.Model.Diagnosis;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 namespace CS3230Project.DAL.Diagnosis
 {
+    /// <summary>
+    ///   The data access layer for the diagnosis
+    /// </summary>
     public class DiagnosisDal
     {
         /// <summary>

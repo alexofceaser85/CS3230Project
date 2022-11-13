@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using CS3230Project.Model.Appointments;
-using CS3230Project.Model.Visits;
+﻿using CS3230Project.Model.Visits;
 using MySql.Data.MySqlClient;
 
 namespace CS3230Project.DAL.Visits
