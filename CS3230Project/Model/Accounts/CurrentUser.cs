@@ -10,6 +10,6 @@ namespace CS3230Project.Model.Accounts
         /// <summary>
         /// The currently logged in user
         /// </summary>
-        public static Nurse User { get; set; }
+        public static UserAccount User { get; set; }
     }
 }

@@ -7,20 +7,8 @@ namespace CS3230Project.Model.Users
     /// <summary>
     /// Holds the information for the nurses
     /// </summary>
-    public class Nurse
+    public class Nurse : UserAccount
     {
-        /// <summary>
-        /// The ID for the nurse
-        /// </summary>
-        public int NurseId { get; }
-        /// <summary>
-        /// The first name for the nurse
-        /// </summary>
-        public string FirstName { get; }
-        /// <summary>
-        /// The last name for the nurse
-        /// </summary>
-        public string LastName { get; }
         /// <summary>
         /// Gets the date of birth of the nurse.
         /// </summary>
@@ -61,10 +49,6 @@ namespace CS3230Project.Model.Users
         /// </summary>
         /// <value>The zipcode.</value>
         public string Zipcode { get; }
-        /// <summary>
-        /// The user name for the nurse
-        /// </summary>
-        public string UserName { get; set; }
 
         /// <summary>
         /// Initializes a new <see cref="Nurse"/>
@@ -212,7 +196,7 @@ namespace CS3230Project.Model.Users
                 throw new ArgumentException(NurseErrorMessages.ZipcodeMustBeAllDigits);
             }
 
-            this.NurseId = nurseId;
+            this.Id = nurseId;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.DateOfBirth = dateOfBirth;
