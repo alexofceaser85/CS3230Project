@@ -224,6 +224,7 @@
     </Compile>
     <Compile Include="View\Validation\CheckupValidation.cs" />
     <Compile Include="View\Validation\AppointmentValidation.cs" />
+    <Compile Include="View\Validation\DiagnosisValidation.cs" />
     <Compile Include="View\Validation\PatientValidation.cs" />
     <Compile Include="View\Validation\TestValidation.cs" />
     <Compile Include="View\WindowSwitching\SwitchForms.cs" />

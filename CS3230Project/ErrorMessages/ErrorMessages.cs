@@ -784,5 +784,10 @@
         ///   The error message for modified diagnosis cannot be null
         /// </summary>
         public static string ModifiedDiagnosisCannotBeNull = "The modified diagnosis cannot be null.";
+        /// <summary>
+        ///   The error message for diagnosis description cannot be more than 100 characters
+        /// </summary>
+        public static string DiagnosisDescriptionCannotBeMoreThan100Chars = 
+            "Diagnosis description cannot contain more than 100 characters..";
     }
 }

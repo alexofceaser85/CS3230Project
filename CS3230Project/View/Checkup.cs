@@ -339,23 +339,27 @@ namespace CS3230Project.View
 
         private void SubmitDiagnosis_Click(object sender, EventArgs e)
         {
-            var diagnosis = new Diagnosis(null, this.appointmentId,
-                this.diagnosisDescriptionTextBox.Text, this.isFinalCheckBox.Checked,
-                this.basedOnTestResultsCheckBox.Checked);
-            DiagnosisManagerViewModel.AddDiagnosis(diagnosis);
-            this.diagnoses.Add(diagnosis);
-            MessageBox.Show(this.diagnosisAddedMessage, this.diagnosisAddedHeader);
-            this.diagnosisDescriptionTextBox.Clear();
-            this.isFinalCheckBox.Checked = false;
-            this.basedOnTestResultsCheckBox.Checked = false;
-            this.diagnosisDataGridView.Rows.Clear();
-            this.updateDiagnosesData();
-
-            if (diagnosis.IsFinal)
+            if (DiagnosisValidation.VerifyDiagnosisDescription(this.diagnosisDescriptionTextBox,
+                    this.diagnosisDescriptionErrorMessage))
             {
-                this.disableFormControls();
-                this.disableTestControls();
-                this.disableDiagnosisControls();
+                var diagnosis = new Diagnosis(null, this.appointmentId,
+                    this.diagnosisDescriptionTextBox.Text, this.isFinalCheckBox.Checked,
+                    this.basedOnTestResultsCheckBox.Checked);
+                DiagnosisManagerViewModel.AddDiagnosis(diagnosis);
+                this.diagnoses.Add(diagnosis);
+                MessageBox.Show(this.diagnosisAddedMessage, this.diagnosisAddedHeader);
+                this.diagnosisDescriptionTextBox.Clear();
+                this.isFinalCheckBox.Checked = false;
+                this.basedOnTestResultsCheckBox.Checked = false;
+                this.diagnosisDataGridView.Rows.Clear();
+                this.updateDiagnosesData();
+
+                if (diagnosis.IsFinal)
+                {
+                    this.disableFormControls();
+                    this.disableTestControls();
+                    this.disableDiagnosisControls();
+                }
             }
         }
 
@@ -365,6 +369,11 @@ namespace CS3230Project.View
             this.NotCompletedTestsTable.Enabled = false;
             this.PendingTestsTable.Enabled = false;
             this.AddTestButton.Enabled = false;
+        }
+
+        private void diagnosisDescriptionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            DiagnosisValidation.VerifyDiagnosisDescription(this.diagnosisDescriptionTextBox, this.diagnosisDescriptionErrorMessage);
         }
     }
 }
