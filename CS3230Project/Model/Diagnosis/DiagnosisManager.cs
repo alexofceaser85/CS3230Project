@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CS3230Project.DAL.Diagnosis;
 using CS3230Project.ErrorMessages;
 
@@ -55,24 +56,24 @@ namespace CS3230Project.Model.Diagnosis
         }
 
         /// <summary>
-        /// Gets the diagnosis.
+        /// Gets the diagnoses.
         ///
         /// Precondition: appointmentId MORE THAN OR EQUAL TO 0
         /// Post-condition: none
         /// </summary>
         /// <param name="appointmentId">The appointment identifier.</param>
         /// <returns>
-        ///   The diagnosis, if exists
+        ///   The diagnoses, if exists
         /// </returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static Diagnosis GetDiagnosis(int appointmentId)
+        public static List<Diagnosis> GetDiagnoses(int appointmentId)
         {
             if (appointmentId < 0)
             {
                 throw new ArgumentException(DiagnosisErrorMessages.DiagnosisIdCannotBeLessThanZero);
             }
 
-            return DiagnosisDal.GetDiagnosis(appointmentId);
+            return DiagnosisDal.GetDiagnoses(appointmentId);
         }
 
     }

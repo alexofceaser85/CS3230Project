@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Collections.Generic;
+using MySql.Data.MySqlClient;
 
 namespace CS3230Project.DAL.Diagnosis
 {
@@ -81,9 +82,9 @@ namespace CS3230Project.DAL.Diagnosis
         /// </summary>
         /// <param name="appointmentId">The diagnosis identifier.</param>
         /// <returns>
-        ///   The diagnosis with the provided appointment id, if exists.
+        ///   The diagnoses with the provided appointment id, if exists.
         /// </returns>
-        public static Model.Diagnosis.Diagnosis GetDiagnosis(int appointmentId)
+        public static List<Model.Diagnosis.Diagnosis> GetDiagnoses(int appointmentId)
         {
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
@@ -91,6 +92,7 @@ namespace CS3230Project.DAL.Diagnosis
             const string query = "select diagnosisId, diagnosisDescription, isFinal, basedOnTestResults " +
                                  "from diagnosis where appointmentId = @appointmentId";
             using var command = new MySqlCommand(query, connection);
+            List<Model.Diagnosis.Diagnosis> diagnoses = new List<Model.Diagnosis.Diagnosis>();
 
             command.Parameters.Add("@appointmentId", MySqlDbType.Int16).Value = appointmentId;
             using var reader = command.ExecuteReader();
@@ -99,16 +101,15 @@ namespace CS3230Project.DAL.Diagnosis
             var isFinalOrdinal = reader.GetOrdinal("isFinal");
             var basedOnTestResultsOrdinal = reader.GetOrdinal("basedOnTestResults");
 
-            Model.Diagnosis.Diagnosis diagnosis = null;
             while (reader.Read())
             {
-                diagnosis = new Model.Diagnosis.Diagnosis(reader.GetInt16(diagnosisIdOrdinal), appointmentId,
+                diagnoses.Add(new Model.Diagnosis.Diagnosis(reader.GetInt16(diagnosisIdOrdinal), appointmentId,
                     reader.GetFieldValueCheckNull<string>(diagnosisDescriptionOrdinal),
                     reader.GetBoolean(isFinalOrdinal),
-                    reader.GetBoolean(basedOnTestResultsOrdinal));
+                    reader.GetBoolean(basedOnTestResultsOrdinal)));
             }
 
-            return diagnosis;
+            return diagnoses;
         }
 
     }

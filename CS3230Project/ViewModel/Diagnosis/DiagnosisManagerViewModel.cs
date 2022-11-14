@@ -1,4 +1,5 @@
-﻿using CS3230Project.Model.Diagnosis;
+﻿using System.Collections.Generic;
+using CS3230Project.Model.Diagnosis;
 
 namespace CS3230Project.ViewModel.Diagnosis
 {
@@ -41,18 +42,18 @@ namespace CS3230Project.ViewModel.Diagnosis
         }
 
         /// <summary>
-        /// Gets the diagnosis.
+        /// Gets the diagnoses.
         ///
         /// Precondition: none
         /// Post-condition: none
         /// </summary>
         /// <param name="appointmentId">The appointment identifier.</param>
         /// <returns>
-        ///   The diagnosis with the provided appointment id
+        ///   The diagnoses with the provided appointment id
         /// </returns>
-        public static Model.Diagnosis.Diagnosis GetDiagnosis(int appointmentId)
+        public static List<Model.Diagnosis.Diagnosis> GetDiagnoses(int appointmentId)
         {
-            return DiagnosisManager.GetDiagnosis(appointmentId);
+            return DiagnosisManager.GetDiagnoses(appointmentId);
         }
 
     }
