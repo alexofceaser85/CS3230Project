@@ -19,7 +19,6 @@ namespace CS3230Project.DAL.Visits
         ///   returns true if the visit was added to the database
         ///   returns false if the visit was not added to the database
         /// </returns>
-        /// <exception cref="System.ArgumentException"></exception>
         public static bool AddVisit(Visit visitToAdd)
         {
             var appointmentID = visitToAdd.AppointmentID;

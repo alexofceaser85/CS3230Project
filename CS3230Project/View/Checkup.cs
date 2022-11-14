@@ -27,6 +27,8 @@ namespace CS3230Project.View
         private readonly TestsManagerViewModel testManager;
         private readonly string invalidInputErrorMessage = "Invalid Values for the checkup details";
         private readonly string invalidInputErrorHeader = "Unable to add new checkup";
+        private readonly string diagnosisAddedHeader = "Diagnosis Added";
+        private readonly string diagnosisAddedMessage = "The patient's diagnosis has been added.";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Checkup" /> class.
@@ -342,7 +344,7 @@ namespace CS3230Project.View
                 this.basedOnTestResultsCheckBox.Checked);
             DiagnosisManagerViewModel.AddDiagnosis(diagnosis);
             this.diagnoses.Add(diagnosis);
-            MessageBox.Show("The patient's diagnosis has been added.", "Diagnosis Added");
+            MessageBox.Show(this.diagnosisAddedMessage, this.diagnosisAddedHeader);
             this.diagnosisDescriptionTextBox.Clear();
             this.isFinalCheckBox.Checked = false;
             this.basedOnTestResultsCheckBox.Checked = false;
