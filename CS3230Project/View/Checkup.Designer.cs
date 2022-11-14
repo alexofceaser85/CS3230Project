@@ -129,6 +129,7 @@
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.isFinalCheckBox = new System.Windows.Forms.CheckBox();
             this.basedOnTestResultsCheckBox = new System.Windows.Forms.CheckBox();
+            this.diagnosisDescriptionLabel = new System.Windows.Forms.Label();
             this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter();
             this.header1 = new CS3230Project.View.Components.Headers.Header();
             this.testsManagerViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -230,8 +231,8 @@
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 892F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 393F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(596, 1869);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 413F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(596, 1889);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel63
@@ -1272,20 +1273,22 @@
             // 
             this.tableLayoutPanel13.ColumnCount = 1;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.Controls.Add(this.submitDiagnosisButton, 0, 4);
+            this.tableLayoutPanel13.Controls.Add(this.submitDiagnosisButton, 0, 5);
             this.tableLayoutPanel13.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.diagnosisDataGridView, 0, 1);
-            this.tableLayoutPanel13.Controls.Add(this.diagnosisDescriptionTextBox, 0, 2);
-            this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel14, 0, 3);
+            this.tableLayoutPanel13.Controls.Add(this.diagnosisDescriptionTextBox, 0, 3);
+            this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel14, 0, 4);
+            this.tableLayoutPanel13.Controls.Add(this.diagnosisDescriptionLabel, 0, 2);
             this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 1479);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 5;
+            this.tableLayoutPanel13.RowCount = 6;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(590, 387);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(590, 407);
             this.tableLayoutPanel13.TabIndex = 10;
             // 
             // submitDiagnosisButton
@@ -1295,12 +1298,12 @@
             this.submitDiagnosisButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submitDiagnosisButton.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.submitDiagnosisButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.submitDiagnosisButton.Location = new System.Drawing.Point(206, 332);
+            this.submitDiagnosisButton.Location = new System.Drawing.Point(206, 352);
             this.submitDiagnosisButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.submitDiagnosisButton.Name = "submitDiagnosisButton";
             this.submitDiagnosisButton.Size = new System.Drawing.Size(177, 53);
             this.submitDiagnosisButton.TabIndex = 7;
-            this.submitDiagnosisButton.Text = "Submit Diagnosis";
+            this.submitDiagnosisButton.Text = "Add Diagnosis";
             this.submitDiagnosisButton.UseVisualStyleBackColor = false;
             this.submitDiagnosisButton.Click += new System.EventHandler(this.SubmitDiagnosis_Click);
             // 
@@ -1373,7 +1376,7 @@
             // 
             // diagnosisDescriptionTextBox
             // 
-            this.diagnosisDescriptionTextBox.Location = new System.Drawing.Point(3, 183);
+            this.diagnosisDescriptionTextBox.Location = new System.Drawing.Point(3, 203);
             this.diagnosisDescriptionTextBox.Multiline = true;
             this.diagnosisDescriptionTextBox.Name = "diagnosisDescriptionTextBox";
             this.diagnosisDescriptionTextBox.Size = new System.Drawing.Size(584, 94);
@@ -1386,7 +1389,7 @@
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.Controls.Add(this.isFinalCheckBox, 0, 0);
             this.tableLayoutPanel14.Controls.Add(this.basedOnTestResultsCheckBox, 1, 0);
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 283);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 303);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 1;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1415,6 +1418,16 @@
             this.basedOnTestResultsCheckBox.TabIndex = 1;
             this.basedOnTestResultsCheckBox.Text = "Diagnosis Based on Test Results";
             this.basedOnTestResultsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // diagnosisDescriptionLabel
+            // 
+            this.diagnosisDescriptionLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.diagnosisDescriptionLabel.AutoSize = true;
+            this.diagnosisDescriptionLabel.Location = new System.Drawing.Point(224, 182);
+            this.diagnosisDescriptionLabel.Name = "diagnosisDescriptionLabel";
+            this.diagnosisDescriptionLabel.Size = new System.Drawing.Size(142, 16);
+            this.diagnosisDescriptionLabel.TabIndex = 11;
+            this.diagnosisDescriptionLabel.Text = "Diagnosis Description:";
             // 
             // submitChangesFooter1
             // 
@@ -1602,5 +1615,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.CheckBox isFinalCheckBox;
         private System.Windows.Forms.CheckBox basedOnTestResultsCheckBox;
+        private System.Windows.Forms.Label diagnosisDescriptionLabel;
     }
 }

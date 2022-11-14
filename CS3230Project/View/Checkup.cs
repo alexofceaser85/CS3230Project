@@ -55,6 +55,7 @@ namespace CS3230Project.View
             this.isFinalCheckBox.Enabled = false;
             this.basedOnTestResultsCheckBox.Enabled = false;
             this.submitDiagnosisButton.Enabled = false;
+            this.diagnosisDescriptionLabel.Enabled = false;
         }
 
         private void updateDiagnosesData()
@@ -341,7 +342,7 @@ namespace CS3230Project.View
                 this.basedOnTestResultsCheckBox.Checked);
             DiagnosisManagerViewModel.AddDiagnosis(diagnosis);
             this.diagnoses.Add(diagnosis);
-            MessageBox.Show("The patient's diagnosis has been added.");
+            MessageBox.Show("The patient's diagnosis has been added.", "Diagnosis Added");
             this.diagnosisDescriptionTextBox.Clear();
             this.isFinalCheckBox.Checked = false;
             this.basedOnTestResultsCheckBox.Checked = false;

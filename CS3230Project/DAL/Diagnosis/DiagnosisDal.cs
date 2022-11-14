@@ -75,12 +75,12 @@ namespace CS3230Project.DAL.Diagnosis
         }
 
         /// <summary>
-        /// Gets the diagnosis.
+        /// Gets the diagnoses.
         ///
         /// Precondition: none
         /// Post-condition: none
         /// </summary>
-        /// <param name="appointmentId">The diagnosis identifier.</param>
+        /// <param name="appointmentId">The appointment identifier.</param>
         /// <returns>
         ///   The diagnoses with the provided appointment id, if exists.
         /// </returns>
