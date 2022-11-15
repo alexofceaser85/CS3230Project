@@ -160,6 +160,142 @@
     }
 
     /// <summary>
+    /// The error messages for the admin
+    /// </summary>
+    public static class AdminErrorMessages
+    {
+        /// <summary>
+        /// Error message for id less than zero
+        /// </summary>
+        public static string IdCannotBeLessThanZero = "The admin ID cannot be less than zero";
+        /// <summary>
+        /// Error message for null first name
+        /// </summary>
+        public static string FirstNameCannotBeNull = "The admin first name cannot be null";
+        /// <summary>
+        /// Error message for empty first name
+        /// </summary>
+        public static string FirstNameCannotBeEmpty = "The admin first name cannot be empty";
+        /// <summary>
+        /// Error message for null last name
+        /// </summary>
+        public static string LastNameCannotBeNull = "The admin last name cannot be null";
+        /// <summary>
+        /// Error message for empty last name
+        /// </summary>
+        public static string LastNameCannotBeEmpty = "The admin last name cannot be empty";
+        /// <summary>
+        /// Error message for null user name
+        /// </summary>
+        public static string UserNameCannotBeNull = "The admin user name cannot be null";
+        /// <summary>
+        /// Error message for empty user name
+        /// </summary>
+        public static string UserNameCannotBeEmpty = "The admin user name cannot be empty";
+        /// <summary>
+        /// Error message for date of birth before 1900
+        /// </summary>
+        public static string DateOfBirthCannotBeBefore1900 = "The admin's date of birth cannot be before 1900.";
+        /// <summary>
+        /// Error message for date of birth in the future
+        /// </summary>
+        public static string DateOfBirthCannotBeInTheFuture = "The admin's date of birth cannot be in the future.";
+        /// <summary>
+        /// Error message for null gender
+        /// </summary>
+        public static string GenderCannotBeNull = "The admin's gender cannot be null.";
+        /// <summary>
+        /// Error message for empty gender
+        /// </summary>
+        public static string GenderCannotBeEmpty = "The admin's gender cannot be empty.";
+        /// <summary>
+        /// Error message for gender being too long
+        /// </summary>
+        public static string GenderIsTooLong = "The admin's gender is too long";
+        /// <summary>
+        /// Error message for null street address
+        /// </summary>
+        public static string AddressOneCannotBeNull = "The admin's address one cannot be null.";
+        /// <summary>
+        /// Error message for empty street address
+        /// </summary>
+        public static string AddressOneCannotBeEmpty = "The admin's address one cannot be empty.";
+        /// <summary>
+        /// Error message for address one being too long
+        /// </summary>
+        public static string AddressOneIsTooLong = "The admin's address one is too long";
+        /// <summary>
+        /// Error message for null address two
+        /// </summary>
+        public static string AddressTwoCannotBeNull = "The admin's address two cannot be null";
+        /// <summary>
+        /// Error message for address two being too long
+        /// </summary>
+        public static string AddressTwoIsTooLong = "The admin's two is too long";
+        /// <summary>
+        /// Error message for null city
+        /// </summary>
+        public static string CityCannotBeNull = "The admin's city cannot be null.";
+        /// <summary>
+        /// Error message for empty city
+        /// </summary>
+        public static string CityCannotBeEmpty = "The admin's city cannot be empty.";
+        /// <summary>
+        /// Error message for city being too long
+        /// </summary>
+        public static string CityIsTooLong = "The city is too long";
+        /// <summary>
+        /// Error message for null state
+        /// </summary>
+        public static string StateCannotBeNull = "The admin's state cannot be null.";
+        /// <summary>
+        /// Error message for empty state
+        /// </summary>
+        public static string StateCannotBeEmpty = "The admin's state cannot be empty.";
+        /// <summary>
+        /// Error message for state being too long
+        /// </summary>
+        public static string StateIsTooLong = "The admin's state is too long";
+        /// <summary>
+        /// Error message for null zip code
+        /// </summary>
+        public static string ZipcodeCannotBeNull = "The admin's zip code cannot be null.";
+        /// <summary>
+        /// Error message for empty zip code
+        /// </summary>
+        public static string ZipcodeCannotBeEmpty = "The admin's zip code cannot be empty.";
+        /// <summary>
+        /// Error message for incorrect zip code size
+        /// </summary>
+        public static string ZipcodeMustHaveFiveCharacters =
+            "The zip code is in incorrect format, must have five characters";
+        /// <summary>
+        /// Error message for incorrect zip code format
+        /// </summary>
+        public static string ZipcodeMustBeAllDigits =
+            "The zip code is in incorrect format, must be all digits";
+
+        /// <summary>
+        /// Error message for zip code not having all digits and have five characters
+        /// </summary>
+        public static string ZipCodeMustBeAllDigitsAndHaveFiveCharacters =
+            "The zip code must be five characters, all digits";
+        /// <summary>
+        /// Error message for null phone number
+        /// </summary>
+        public static string PhoneNumberCannotBeNull = "The admin's phone number cannot be null.";
+        /// <summary>
+        /// Error message for empty phone number
+        /// </summary>
+        public static string PhoneNumberCannotBeEmpty = "The admin's phone number cannot be empty.";
+        /// <summary>
+        /// Error message for an invalid phone number format
+        /// </summary>
+        public static string InvalidPhoneNumberFormat =
+            "Phone number not in the correct format";
+    }
+
+    /// <summary>
     ///   The error messages for the patient
     /// </summary>
     public static class PatientErrorMessages

@@ -145,7 +145,7 @@ namespace CS3230Project.DAL.Accounts
 
             while (reader.Read())
             {
-                CurrentUser.User = new Nurse(
+                CurrentUser.User = new Admin(
                     reader.GetInt32(adminIdOrdinal),
                     reader.GetFieldValueCheckNull<string>(firstNameOrdinal),
                     reader.GetFieldValueCheckNull<string>(lastNameOrdinal),
@@ -159,7 +159,6 @@ namespace CS3230Project.DAL.Accounts
                     reader.GetFieldValueCheckNull<string>(zipcodeOrdinal));
 
                 CurrentUser.User.UserName = reader.GetFieldValueCheckNull<string>(userNameOrdinal);
-                //TODO Move Account Type to Constructor.
                 CurrentUser.User.AccountType = AccountType.ADMIN;
             }
 
