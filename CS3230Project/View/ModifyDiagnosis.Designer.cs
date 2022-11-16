@@ -32,6 +32,7 @@
             this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.removeDiagnosisButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.diagnosisDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
@@ -39,7 +40,6 @@
             this.basedOnTestResultsCheckBox = new System.Windows.Forms.CheckBox();
             this.diagnosisDescriptionErrorMessage = new System.Windows.Forms.Label();
             this.diagnosisDescriptionLabel = new System.Windows.Forms.Label();
-            this.removeDiagnosisButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
@@ -110,6 +110,22 @@
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(569, 268);
             this.tableLayoutPanel13.TabIndex = 11;
+            // 
+            // removeDiagnosisButton
+            // 
+            this.removeDiagnosisButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.removeDiagnosisButton.BackColor = System.Drawing.Color.SlateGray;
+            this.removeDiagnosisButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeDiagnosisButton.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.removeDiagnosisButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.removeDiagnosisButton.Location = new System.Drawing.Point(196, 218);
+            this.removeDiagnosisButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.removeDiagnosisButton.Name = "removeDiagnosisButton";
+            this.removeDiagnosisButton.Size = new System.Drawing.Size(177, 48);
+            this.removeDiagnosisButton.TabIndex = 13;
+            this.removeDiagnosisButton.Text = "Remove Diagnosis";
+            this.removeDiagnosisButton.UseVisualStyleBackColor = false;
+            this.removeDiagnosisButton.Click += new System.EventHandler(this.RemoveDiagnosis_Click);
             // 
             // label9
             // 
@@ -191,28 +207,13 @@
             this.diagnosisDescriptionLabel.TabIndex = 11;
             this.diagnosisDescriptionLabel.Text = "Diagnosis Description:";
             // 
-            // removeDiagnosisButton
-            // 
-            this.removeDiagnosisButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.removeDiagnosisButton.BackColor = System.Drawing.Color.SlateGray;
-            this.removeDiagnosisButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeDiagnosisButton.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.removeDiagnosisButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.removeDiagnosisButton.Location = new System.Drawing.Point(196, 218);
-            this.removeDiagnosisButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.removeDiagnosisButton.Name = "removeDiagnosisButton";
-            this.removeDiagnosisButton.Size = new System.Drawing.Size(177, 48);
-            this.removeDiagnosisButton.TabIndex = 13;
-            this.removeDiagnosisButton.Text = "Remove Diagnosis";
-            this.removeDiagnosisButton.UseVisualStyleBackColor = false;
-            this.removeDiagnosisButton.Click += new System.EventHandler(this.RemoveDiagnosis_Click);
-            // 
             // ModifyDiagnosis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximizeBox = false;
             this.Name = "ModifyDiagnosis";
             this.Text = "ModifyDiagnosis";
             this.tableLayoutPanel1.ResumeLayout(false);
