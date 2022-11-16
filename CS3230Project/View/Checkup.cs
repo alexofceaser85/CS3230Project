@@ -24,6 +24,7 @@ namespace CS3230Project.View
         private readonly Patient patient;
         private readonly Doctor doctor;
         private List<Diagnosis> diagnoses;
+        private bool finalDiagnosisExists;
         private readonly TestsManagerViewModel testManager;
         private readonly string invalidInputErrorMessage = "Invalid Values for the checkup details";
         private readonly string invalidInputErrorHeader = "Unable to add new checkup";
@@ -42,6 +43,7 @@ namespace CS3230Project.View
             this.appointmentId = appointmentId;
             this.patient = patient;
             this.doctor = doctor;
+            this.finalDiagnosisExists = false;
             this.loadPatientAndDoctorInfo();
             this.testManager = new TestsManagerViewModel(this.appointmentId);
             this.updateTestData();
@@ -60,6 +62,7 @@ namespace CS3230Project.View
 
                 if (currDiagnosis.IsFinal)
                 {
+                    this.finalDiagnosisExists = true;
                     this.submitDiagnosisButton.Enabled = false;
                     this.disableFormControls();
                     this.disableTestControls();
@@ -348,22 +351,25 @@ namespace CS3230Project.View
 
         private void DiagnosisDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var rowIndex = e.RowIndex;
-            var diagnosisId = (int)this.diagnosisDataGridView.Rows[rowIndex].Cells[0].Value;
-            var diagnoses = DiagnosisManagerViewModel.GetDiagnoses(this.appointmentId);
-            Diagnosis diagnosis = null;
-
-            foreach (var currDiagnosis in diagnoses)
+            if (!this.finalDiagnosisExists)
             {
-                if (currDiagnosis.DiagnosisId == diagnosisId)
-                {
-                    diagnosis = currDiagnosis;
-                }
-            }
+                var rowIndex = e.RowIndex;
+                var diagnosisId = (int)this.diagnosisDataGridView.Rows[rowIndex].Cells[0].Value;
+                var diagnoses = DiagnosisManagerViewModel.GetDiagnoses(this.appointmentId);
+                Diagnosis diagnosis = null;
 
-            var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId);
-            modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
-            modifyDiagnosisDialog.ShowDialog();
+                foreach (var currDiagnosis in diagnoses)
+                {
+                    if (currDiagnosis.DiagnosisId == diagnosisId)
+                    {
+                        diagnosis = currDiagnosis;
+                    }
+                }
+
+                var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId);
+                modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
+                modifyDiagnosisDialog.ShowDialog();
+            }
         }
 
         private void disableTestControls()

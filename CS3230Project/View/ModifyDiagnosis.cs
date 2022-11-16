@@ -6,13 +6,27 @@ using CS3230Project.ViewModel.Diagnosis;
 
 namespace CS3230Project.View
 {
+    /// <summary>
+    ///   The form to add or modify a diagnosis
+    /// </summary>
     public partial class ModifyDiagnosis : Form
     {
-        private Diagnosis diagnosis;
-        private int appointmentId;
+        private readonly Diagnosis diagnosis;
+        private readonly int appointmentId;
 
+        /// <summary>
+        /// The event that a diagnosis was added or modified
+        /// </summary>
         public event EventHandler<DiagnosisSubmitEventArgs> DiagnosisSubmittedEvent;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ModifyDiagnosis" /> class.
+        ///
+        /// Precondition: none
+        /// Post-condition: none
+        /// </summary>
+        /// <param name="diagnosis">The diagnosis.</param>
+        /// <param name="appointmentId">The appointment identifier.</param>
         public ModifyDiagnosis(Diagnosis diagnosis, int appointmentId)
         {
             InitializeComponent();
@@ -30,6 +44,13 @@ namespace CS3230Project.View
             this.submitChangesFooter1.SubmitButtonEventHandler += this.SubmitChangesFooter1OnSubmitButtonEventHandler;
         }
 
+        /// <summary>
+        /// The event on an add or modify diagnosis
+        ///
+        /// Precondition: none
+        /// Post-condition: none
+        /// </summary>
+        /// <param name="args">The <see cref="DiagnosisSubmitEventArgs" /> instance containing the event data.</param>
         protected virtual void OnDiagnosisSubmittedEvent(DiagnosisSubmitEventArgs args)
         {
             if (this.diagnosis != null)
@@ -95,8 +116,15 @@ namespace CS3230Project.View
         }
     }
 
+    /// <summary>
+    ///   The event arguments for a diagnosis added or modified
+    /// </summary>
     public class DiagnosisSubmitEventArgs : EventArgs
     {
+        /// <summary>
+        /// The diagnosis submitted
+        /// </summary>
+        /// <value>The diagnosis submitted.</value>
         public Diagnosis DiagnosisSubmitted { get; set; }
     }
 }
