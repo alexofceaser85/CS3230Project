@@ -38,6 +38,11 @@ namespace CS3230Project.View
                 this.diagnosisDescriptionTextBox.Text = diagnosis.DiagnosisDescription;
                 this.isFinalCheckBox.Checked = diagnosis.IsFinal;
                 this.basedOnTestResultsCheckBox.Checked = diagnosis.BasedOnTestResults;
+                this.removeDiagnosisButton.Show();
+            }
+            else
+            {
+                this.removeDiagnosisButton.Hide();
             }
 
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
@@ -113,6 +118,16 @@ namespace CS3230Project.View
         private void diagnosisDescriptionTextBox_TextChanged(object sender, EventArgs e)
         {
             DiagnosisValidation.VerifyDiagnosisDescription(this.diagnosisDescriptionTextBox, this.diagnosisDescriptionErrorMessage);
+        }
+
+        private void RemoveDiagnosis_Click(object sender, EventArgs e)
+        {
+            if (this.diagnosis.DiagnosisId != null)
+            {
+                DiagnosisManagerViewModel.RemoveDiagnosis((int)this.diagnosis.DiagnosisId);
+            }
+            this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs { DiagnosisSubmitted = diagnosis });
+            this.Close();
         }
     }
 

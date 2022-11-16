@@ -70,10 +70,32 @@ namespace CS3230Project.Model.Diagnosis
         {
             if (appointmentId < 0)
             {
-                throw new ArgumentException(DiagnosisErrorMessages.DiagnosisIdCannotBeLessThanZero);
+                throw new ArgumentException(DiagnosisErrorMessages.AppointmentIdCannotBeLessThanZero);
             }
 
             return DiagnosisDal.GetDiagnoses(appointmentId);
+        }
+
+        /// <summary>
+        /// Removes the diagnosis.
+        ///
+        /// Precondition: diagnosisId MORE THAN OR EQUAL TO 0
+        /// Post-condition: The diagnosis is removed from the database
+        /// </summary>
+        /// <param name="diagnosisId">The diagnosis identifier.</param>
+        /// <returns>
+        ///   True, if the diagnosis is removed
+        ///   False, if the diagnosis is not removed
+        /// </returns>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static bool RemoveDiagnosis(int diagnosisId)
+        {
+            if (diagnosisId < 0)
+            {
+                throw new ArgumentException(DiagnosisErrorMessages.DiagnosisIdCannotBeLessThanZero);
+            }
+
+            return DiagnosisDal.RemoveDiagnosis(diagnosisId);
         }
 
     }

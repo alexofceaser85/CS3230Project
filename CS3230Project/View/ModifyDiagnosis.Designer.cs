@@ -37,8 +37,9 @@
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.isFinalCheckBox = new System.Windows.Forms.CheckBox();
             this.basedOnTestResultsCheckBox = new System.Windows.Forms.CheckBox();
-            this.diagnosisDescriptionLabel = new System.Windows.Forms.Label();
             this.diagnosisDescriptionErrorMessage = new System.Windows.Forms.Label();
+            this.diagnosisDescriptionLabel = new System.Windows.Forms.Label();
+            this.removeDiagnosisButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
@@ -91,14 +92,15 @@
             this.tableLayoutPanel13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel13.ColumnCount = 1;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.Controls.Add(this.removeDiagnosisButton, 0, 5);
             this.tableLayoutPanel13.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.diagnosisDescriptionTextBox, 0, 2);
             this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel14, 0, 4);
             this.tableLayoutPanel13.Controls.Add(this.diagnosisDescriptionErrorMessage, 0, 3);
             this.tableLayoutPanel13.Controls.Add(this.diagnosisDescriptionLabel, 0, 1);
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(125, 80);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(125, 70);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 5;
+            this.tableLayoutPanel13.RowCount = 6;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
@@ -106,7 +108,7 @@
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(569, 247);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(569, 268);
             this.tableLayoutPanel13.TabIndex = 11;
             // 
             // label9
@@ -170,6 +172,15 @@
             this.basedOnTestResultsCheckBox.Text = "Diagnosis Based on Test Results";
             this.basedOnTestResultsCheckBox.UseVisualStyleBackColor = true;
             // 
+            // diagnosisDescriptionErrorMessage
+            // 
+            this.diagnosisDescriptionErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.diagnosisDescriptionErrorMessage.AutoSize = true;
+            this.diagnosisDescriptionErrorMessage.Location = new System.Drawing.Point(284, 150);
+            this.diagnosisDescriptionErrorMessage.Name = "diagnosisDescriptionErrorMessage";
+            this.diagnosisDescriptionErrorMessage.Size = new System.Drawing.Size(0, 16);
+            this.diagnosisDescriptionErrorMessage.TabIndex = 12;
+            // 
             // diagnosisDescriptionLabel
             // 
             this.diagnosisDescriptionLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -180,14 +191,21 @@
             this.diagnosisDescriptionLabel.TabIndex = 11;
             this.diagnosisDescriptionLabel.Text = "Diagnosis Description:";
             // 
-            // diagnosisDescriptionErrorMessage
+            // removeDiagnosisButton
             // 
-            this.diagnosisDescriptionErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.diagnosisDescriptionErrorMessage.AutoSize = true;
-            this.diagnosisDescriptionErrorMessage.Location = new System.Drawing.Point(284, 150);
-            this.diagnosisDescriptionErrorMessage.Name = "diagnosisDescriptionErrorMessage";
-            this.diagnosisDescriptionErrorMessage.Size = new System.Drawing.Size(0, 16);
-            this.diagnosisDescriptionErrorMessage.TabIndex = 12;
+            this.removeDiagnosisButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.removeDiagnosisButton.BackColor = System.Drawing.Color.SlateGray;
+            this.removeDiagnosisButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeDiagnosisButton.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.removeDiagnosisButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.removeDiagnosisButton.Location = new System.Drawing.Point(196, 218);
+            this.removeDiagnosisButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.removeDiagnosisButton.Name = "removeDiagnosisButton";
+            this.removeDiagnosisButton.Size = new System.Drawing.Size(177, 48);
+            this.removeDiagnosisButton.TabIndex = 13;
+            this.removeDiagnosisButton.Text = "Remove Diagnosis";
+            this.removeDiagnosisButton.UseVisualStyleBackColor = false;
+            this.removeDiagnosisButton.Click += new System.EventHandler(this.RemoveDiagnosis_Click);
             // 
             // ModifyDiagnosis
             // 
@@ -220,5 +238,6 @@
         private System.Windows.Forms.CheckBox basedOnTestResultsCheckBox;
         private System.Windows.Forms.Label diagnosisDescriptionErrorMessage;
         private System.Windows.Forms.Label diagnosisDescriptionLabel;
+        private System.Windows.Forms.Button removeDiagnosisButton;
     }
 }

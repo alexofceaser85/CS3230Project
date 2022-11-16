@@ -112,5 +112,27 @@ namespace CS3230Project.DAL.Diagnosis
             return diagnoses;
         }
 
+        /// <summary>
+        /// Removes the diagnosis with the provided diagnosis ID
+        ///
+        /// Precondition: none
+        /// Post-condition: the diagnosis is removed from the database
+        /// </summary>
+        /// <param name="diagnosisId">The diagnosis identifier.</param>
+        /// <returns>
+        ///   True, if the diagnosis is removed
+        ///   False, if the diagnosis is not removed
+        /// </returns>
+        public static bool RemoveDiagnosis(int diagnosisId)
+        {
+            using var connection = new MySqlConnection(Connection.ConnectionString);
+            connection.Open();
+            var comm = connection.CreateCommand();
+            comm.CommandText = "delete from diagnosis where diagnosisId = @diagnosisId";
+            comm.Parameters.Add("@diagnosisId", MySqlDbType.Int16).Value = diagnosisId;
+
+            return comm.ExecuteNonQuery() > 0;
+        }
+
     }
 }

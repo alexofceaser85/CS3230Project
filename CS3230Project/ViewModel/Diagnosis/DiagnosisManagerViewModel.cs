@@ -56,5 +56,21 @@ namespace CS3230Project.ViewModel.Diagnosis
             return DiagnosisManager.GetDiagnoses(appointmentId);
         }
 
+        /// <summary>
+        /// Removes the diagnosis.
+        ///
+        /// Precondition: none
+        /// Post-condition: the diagnosis is removed from the database
+        /// </summary>
+        /// <param name="diagnosisId">The diagnosis identifier.</param>
+        /// <returns>
+        ///   True, if the diagnosis is removed
+        ///   False, if the diagnosis is not removed
+        /// </returns>
+        public static bool RemoveDiagnosis(int diagnosisId)
+        {
+            return DiagnosisManager.RemoveDiagnosis(diagnosisId);
+        }
+
     }
 }
