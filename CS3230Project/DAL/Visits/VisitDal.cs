@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using CS3230Project.Model.Appointments;
-using CS3230Project.Model.Visits;
+﻿using CS3230Project.Model.Visits;
 using MySql.Data.MySqlClient;
 
 namespace CS3230Project.DAL.Visits
@@ -21,7 +19,6 @@ namespace CS3230Project.DAL.Visits
         ///   returns true if the visit was added to the database
         ///   returns false if the visit was not added to the database
         /// </returns>
-        /// <exception cref="System.ArgumentException"></exception>
         public static bool AddVisit(Visit visitToAdd)
         {
             var appointmentID = visitToAdd.AppointmentID;

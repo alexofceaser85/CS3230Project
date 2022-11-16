@@ -1,6 +1,8 @@
 ﻿using CS3230Project.View.WindowSwitching;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using CS3230Project.Model.Diagnosis;
 using CS3230Project.Model.Tests;
 using CS3230Project.Model.Users;
 using CS3230Project.Model.Users.Nurses;
@@ -8,6 +10,7 @@ using CS3230Project.Model.Users.Patients;
 using CS3230Project.Model.Visits;
 using CS3230Project.View.Validation;
 using CS3230Project.ViewModel.Checkups;
+using CS3230Project.ViewModel.Diagnosis;
 using CS3230Project.ViewModel.Tests;
 
 namespace CS3230Project.View
@@ -20,6 +23,8 @@ namespace CS3230Project.View
         private readonly int appointmentId;
         private readonly Patient patient;
         private readonly Doctor doctor;
+        private List<Diagnosis> diagnoses;
+        private bool finalDiagnosisExists;
         private readonly TestsManagerViewModel testManager;
         private readonly string invalidInputErrorMessage = "Invalid Values for the checkup details";
         private readonly string invalidInputErrorHeader = "Unable to add new checkup";
@@ -38,10 +43,32 @@ namespace CS3230Project.View
             this.appointmentId = appointmentId;
             this.patient = patient;
             this.doctor = doctor;
+            this.finalDiagnosisExists = false;
             this.loadPatientAndDoctorInfo();
             this.testManager = new TestsManagerViewModel(this.appointmentId);
             this.updateTestData();
             this.checkIfVisitExists(appointmentId);
+            this.updateDiagnosesData();
+        }
+
+        private void updateDiagnosesData()
+        {
+            this.diagnoses = DiagnosisManagerViewModel.GetDiagnoses(this.appointmentId);
+
+            foreach (var currDiagnosis in this.diagnoses)
+            {
+                this.diagnosisDataGridView.Rows.Add(currDiagnosis.DiagnosisId, currDiagnosis.DiagnosisDescription, currDiagnosis.IsFinal,
+                    currDiagnosis.BasedOnTestResults);
+
+                if (currDiagnosis.IsFinal)
+                {
+                    this.finalDiagnosisExists = true;
+                    this.submitDiagnosisButton.Enabled = false;
+                    this.disableFormControls();
+                    this.disableTestControls();
+                }
+            }
+            
         }
 
         private void updateTestData()
@@ -134,7 +161,7 @@ namespace CS3230Project.View
             this.nurseComboBox.SelectedItem = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.NurseId;
         }
 
-        private void disableFormControls(Visit visit)
+        private void disableFormControls()
         {
             this.systolicBloodPressureTextBox.Enabled = false;
             this.diastolicBloodPressureTextBox.Enabled = false;
@@ -145,6 +172,19 @@ namespace CS3230Project.View
             this.symptomsTextBox.Enabled = false;
             this.nurseComboBox.Enabled = false;
             this.submitChangesFooter1.HideSubmitButton(this.submitChangesFooter1);
+        }
+
+        private void enableFormControls()
+        {
+            this.systolicBloodPressureTextBox.Enabled = true;
+            this.diastolicBloodPressureTextBox.Enabled = true;
+            this.bodyTemperatureTextBox.Enabled = true;
+            this.pulseTextBox.Enabled = true;
+            this.heightTextBox.Enabled = true;
+            this.weightTextBox.Enabled = true;
+            this.symptomsTextBox.Enabled = true;
+            this.nurseComboBox.Enabled = true;
+            this.submitChangesFooter1.ShowSubmitButton(this.submitChangesFooter1);
         }
 
         private void populateNurseComboBox()
@@ -300,6 +340,61 @@ namespace CS3230Project.View
         private void NotCompletedTestsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             SwitchForms.Switch(this, new AddTestResults(this.testManager.NotPerformedTests[e.RowIndex], this.appointmentId, this.patient, this.doctor));
+        }
+
+        private void SubmitDiagnosis_Click(object sender, EventArgs e)
+        {
+            var modifyDiagnosisDialog = new ModifyDiagnosis(null, this.appointmentId);
+            modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
+            modifyDiagnosisDialog.ShowDialog();
+        }
+
+        private void DiagnosisDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!this.finalDiagnosisExists)
+            {
+                var rowIndex = e.RowIndex;
+                var diagnosisId = (int)this.diagnosisDataGridView.Rows[rowIndex].Cells[0].Value;
+                var diagnoses = DiagnosisManagerViewModel.GetDiagnoses(this.appointmentId);
+                Diagnosis diagnosis = null;
+
+                foreach (var currDiagnosis in diagnoses)
+                {
+                    if (currDiagnosis.DiagnosisId == diagnosisId)
+                    {
+                        diagnosis = currDiagnosis;
+                    }
+                }
+
+                var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId);
+                modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
+                modifyDiagnosisDialog.ShowDialog();
+            }
+        }
+
+        private void disableTestControls()
+        {
+            this.CompletedTestsTable.Enabled = false;
+            this.NotCompletedTestsTable.Enabled = false;
+            this.PendingTestsTable.Enabled = false;
+            this.AddTestButton.Enabled = false;
+        }
+
+        private void enableTestControls()
+        {
+            this.CompletedTestsTable.Enabled = true;
+            this.NotCompletedTestsTable.Enabled = true;
+            this.PendingTestsTable.Enabled = true;
+            this.AddTestButton.Enabled = true;
+        }
+
+        private void DiagnosisSubmitEvent(object sender, DiagnosisSubmitEventArgs e)
+        {
+            this.enableFormControls();
+            this.enableTestControls();
+            this.submitDiagnosisButton.Enabled = true;
+            this.diagnosisDataGridView.Rows.Clear();
+            this.updateDiagnosesData();
         }
     }
 }

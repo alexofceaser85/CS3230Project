@@ -16,7 +16,7 @@ namespace CS3230Project.View
     {
         private static string editPatientErrorHeader = "Unable To Edit Patient";
         private static string editPatientLoadingErrorHeader = "Unable To Edit Patient"; 
-        private Dictionary<string, string> updatedDetails;
+        private readonly Dictionary<string, string> updatedDetails;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EditPatient" /> class.

@@ -100,6 +100,7 @@
     <Compile Include="DAL\Accounts\AccountsDal.cs" />
     <Compile Include="DAL\Appointments\AppointmentsDAL.cs" />
     <Compile Include="DAL\Connection.cs" />
+    <Compile Include="DAL\Diagnosis\DiagnosisDal.cs" />
     <Compile Include="DAL\Doctors\DoctorsDAL.cs" />
     <Compile Include="DAL\Nurses\NurseDal.cs" />
     <Compile Include="DAL\Patients\PatientsDal.cs" />
@@ -109,6 +110,8 @@
     <Compile Include="Model\Appointments\Appointment.cs" />
     <Compile Include="Model\Appointments\AppointmentManager.cs" />
     <Compile Include="Model\DataValidator.cs" />
+    <Compile Include="Model\Diagnosis\Diagnosis.cs" />
+    <Compile Include="Model\Diagnosis\DiagnosisManager.cs" />
     <Compile Include="Model\Tests\PerformedTest.cs" />
     <Compile Include="Model\Tests\NotPerformedTest.cs" />
     <Compile Include="Model\Tests\Test.cs" />
@@ -124,6 +127,7 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="ViewModel\Appointments\AppointmentManagerViewModel.cs" />
     <Compile Include="ViewModel\Checkups\CheckupManagerViewModel.cs" />
+    <Compile Include="ViewModel\Diagnosis\DiagnosisManagerViewModel.cs" />
     <Compile Include="ViewModel\Doctors\DoctorsManagerViewModel.cs" />
     <Compile Include="ViewModel\Tests\TestsManagerViewModel.cs" />
     <Compile Include="ViewModel\Users\PatientManagerViewModel.cs" />
@@ -206,6 +210,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\Accounts\AccountServiceViewModel.cs" />
+    <Compile Include="View\ModifyDiagnosis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ModifyDiagnosis.Designer.cs">
+      <DependentUpon>ModifyDiagnosis.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\RegisterPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +230,7 @@
     </Compile>
     <Compile Include="View\Validation\CheckupValidation.cs" />
     <Compile Include="View\Validation\AppointmentValidation.cs" />
+    <Compile Include="View\Validation\DiagnosisValidation.cs" />
     <Compile Include="View\Validation\PatientValidation.cs" />
     <Compile Include="View\Validation\TestValidation.cs" />
     <Compile Include="View\WindowSwitching\SwitchForms.cs" />
@@ -268,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ModifyDiagnosis.resx">
+      <DependentUpon>ModifyDiagnosis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RegisterPatient.resx">
       <DependentUpon>RegisterPatient.cs</DependentUpon>

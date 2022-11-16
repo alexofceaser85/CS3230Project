@@ -755,4 +755,39 @@
         /// </summary>
         public static string CannotAddTestResultsBeforeCurrentDate = "Cannot add test results before the current date";
     }
+
+    /// <summary>
+    ///   The error messages for the Diagnosis
+    /// </summary>
+    public class DiagnosisErrorMessages
+    {   /// <summary>
+        ///   The error message for diagnosis ID cannot be less than zero
+        /// </summary>
+        public static string DiagnosisIdCannotBeLessThanZero = "Diagnosis Id cannot be less than zero.";
+        /// <summary>
+        ///   The error message for appointment id cannot be less than zero
+        /// </summary>
+        public static string AppointmentIdCannotBeLessThanZero = "Appointment Id cannot be less than zero.";
+        /// <summary>
+        ///   The error message for diagnosis description cannot be empty
+        /// </summary>
+        public static string DiagnosisDescriptionCannotBeEmpty = "Diagnosis description cannot be empty.";
+        /// <summary>
+        ///   The error message for diagnosis description cannot be null
+        /// </summary>
+        public static string DiagnosisDescriptionCannotBeNull = "Diagnosis description cannot be null.";
+        /// <summary>
+        ///   The error message diagnosis to add cannot be null
+        /// </summary>
+        public static string DiagnosisToAddCannotBeNull = "Diagnosis to add cannot be null.";
+        /// <summary>
+        ///   The error message for modified diagnosis cannot be null
+        /// </summary>
+        public static string ModifiedDiagnosisCannotBeNull = "The modified diagnosis cannot be null.";
+        /// <summary>
+        ///   The error message for diagnosis description cannot be more than 100 characters
+        /// </summary>
+        public static string DiagnosisDescriptionCannotBeMoreThan100Chars = 
+            "Diagnosis description cannot contain more than 100 characters..";
+    }
 }

@@ -12,7 +12,9 @@ namespace CS3230Project.Model.Visits
 
         /// <summary>
         /// Adds the visit.
+        /// 
         /// Precondition: visitToAdd != null
+        /// Post-condition: the visit is added to the database
         /// </summary>
         /// <param name="visitToAdd">The visit to add.</param>
         /// <returns>

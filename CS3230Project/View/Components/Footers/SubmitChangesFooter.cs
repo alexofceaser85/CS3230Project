@@ -53,5 +53,23 @@ namespace CS3230Project.View.Components.Footers
 
             footer.Submit.Hide();
         }
+
+        /// <summary>
+        /// Shows the submit button.
+        ///
+        /// Precondition: footer !- null
+        /// Post-condition: the submit button is shown
+        /// </summary>
+        /// <param name="footer">The footer.</param>
+        /// <exception cref="System.ArgumentException"></exception>
+        public void ShowSubmitButton(SubmitChangesFooter footer)
+        {
+            if (footer == null)
+            {
+                throw new ArgumentException(VisitErrorMessages.FooterCannotBeNull);
+            }
+
+            footer.Submit.Show();
+        }
     }
 }
