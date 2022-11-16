@@ -27,8 +27,6 @@ namespace CS3230Project.View
         private readonly TestsManagerViewModel testManager;
         private readonly string invalidInputErrorMessage = "Invalid Values for the checkup details";
         private readonly string invalidInputErrorHeader = "Unable to add new checkup";
-        private readonly string diagnosisAddedHeader = "Diagnosis Added";
-        private readonly string diagnosisAddedMessage = "The patient's diagnosis has been added.";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Checkup" /> class.
@@ -51,27 +49,18 @@ namespace CS3230Project.View
             this.updateDiagnosesData();
         }
 
-        private void disableDiagnosisControls()
-        {
-            this.diagnosisDescriptionTextBox.Enabled = false;
-            this.isFinalCheckBox.Enabled = false;
-            this.basedOnTestResultsCheckBox.Enabled = false;
-            this.submitDiagnosisButton.Enabled = false;
-            this.diagnosisDescriptionLabel.Enabled = false;
-        }
-
         private void updateDiagnosesData()
         {
             this.diagnoses = DiagnosisManagerViewModel.GetDiagnoses(this.appointmentId);
 
             foreach (var currDiagnosis in this.diagnoses)
             {
-                this.diagnosisDataGridView.Rows.Add(currDiagnosis.DiagnosisDescription, currDiagnosis.IsFinal,
+                this.diagnosisDataGridView.Rows.Add(currDiagnosis.DiagnosisId, currDiagnosis.DiagnosisDescription, currDiagnosis.IsFinal,
                     currDiagnosis.BasedOnTestResults);
 
                 if (currDiagnosis.IsFinal)
                 {
-                    this.disableDiagnosisControls();
+                    this.submitDiagnosisButton.Enabled = false;
                     this.disableFormControls();
                     this.disableTestControls();
                 }
@@ -180,6 +169,19 @@ namespace CS3230Project.View
             this.symptomsTextBox.Enabled = false;
             this.nurseComboBox.Enabled = false;
             this.submitChangesFooter1.HideSubmitButton(this.submitChangesFooter1);
+        }
+
+        private void enableFormControls()
+        {
+            this.systolicBloodPressureTextBox.Enabled = true;
+            this.diastolicBloodPressureTextBox.Enabled = true;
+            this.bodyTemperatureTextBox.Enabled = true;
+            this.pulseTextBox.Enabled = true;
+            this.heightTextBox.Enabled = true;
+            this.weightTextBox.Enabled = true;
+            this.symptomsTextBox.Enabled = true;
+            this.nurseComboBox.Enabled = true;
+            this.submitChangesFooter1.ShowSubmitButton(this.submitChangesFooter1);
         }
 
         private void populateNurseComboBox()
@@ -339,28 +341,29 @@ namespace CS3230Project.View
 
         private void SubmitDiagnosis_Click(object sender, EventArgs e)
         {
-            if (DiagnosisValidation.VerifyDiagnosisDescription(this.diagnosisDescriptionTextBox,
-                    this.diagnosisDescriptionErrorMessage))
-            {
-                var diagnosis = new Diagnosis(null, this.appointmentId,
-                    this.diagnosisDescriptionTextBox.Text, this.isFinalCheckBox.Checked,
-                    this.basedOnTestResultsCheckBox.Checked);
-                DiagnosisManagerViewModel.AddDiagnosis(diagnosis);
-                this.diagnoses.Add(diagnosis);
-                MessageBox.Show(this.diagnosisAddedMessage, this.diagnosisAddedHeader);
-                this.diagnosisDescriptionTextBox.Clear();
-                this.isFinalCheckBox.Checked = false;
-                this.basedOnTestResultsCheckBox.Checked = false;
-                this.diagnosisDataGridView.Rows.Clear();
-                this.updateDiagnosesData();
+            var modifyDiagnosisDialog = new ModifyDiagnosis(null, this.appointmentId);
+            modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
+            modifyDiagnosisDialog.ShowDialog();
+        }
 
-                if (diagnosis.IsFinal)
+        private void DiagnosisDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var rowIndex = e.RowIndex;
+            var diagnosisId = (int)this.diagnosisDataGridView.Rows[rowIndex].Cells[0].Value;
+            var diagnoses = DiagnosisManagerViewModel.GetDiagnoses(this.appointmentId);
+            Diagnosis diagnosis = null;
+
+            foreach (var currDiagnosis in diagnoses)
+            {
+                if (currDiagnosis.DiagnosisId == diagnosisId)
                 {
-                    this.disableFormControls();
-                    this.disableTestControls();
-                    this.disableDiagnosisControls();
+                    diagnosis = currDiagnosis;
                 }
             }
+
+            var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId);
+            modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
+            modifyDiagnosisDialog.ShowDialog();
         }
 
         private void disableTestControls()
@@ -371,9 +374,21 @@ namespace CS3230Project.View
             this.AddTestButton.Enabled = false;
         }
 
-        private void diagnosisDescriptionTextBox_TextChanged(object sender, EventArgs e)
+        private void enableTestControls()
         {
-            DiagnosisValidation.VerifyDiagnosisDescription(this.diagnosisDescriptionTextBox, this.diagnosisDescriptionErrorMessage);
+            this.CompletedTestsTable.Enabled = true;
+            this.NotCompletedTestsTable.Enabled = true;
+            this.PendingTestsTable.Enabled = true;
+            this.AddTestButton.Enabled = true;
+        }
+
+        private void DiagnosisSubmitEvent(object sender, DiagnosisSubmitEventArgs e)
+        {
+            this.enableFormControls();
+            this.enableTestControls();
+            this.submitDiagnosisButton.Enabled = true;
+            this.diagnosisDataGridView.Rows.Clear();
+            this.updateDiagnosesData();
         }
     }
 }

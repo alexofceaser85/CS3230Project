@@ -53,5 +53,15 @@ namespace CS3230Project.View.Components.Footers
 
             footer.Submit.Hide();
         }
+
+        public void ShowSubmitButton(SubmitChangesFooter footer)
+        {
+            if (footer == null)
+            {
+                throw new ArgumentException(VisitErrorMessages.FooterCannotBeNull);
+            }
+
+            footer.Submit.Show();
+        }
     }
 }
