@@ -122,14 +122,14 @@
             this.submitDiagnosisButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.diagnosisDataGridView = new System.Windows.Forms.DataGridView();
-            this.diagnosisId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diagnosisDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isFinalColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.basedOnTestResultsColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter();
             this.header1 = new CS3230Project.View.Components.Headers.Header();
             this.testsManagerViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.testsManagerViewModelBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.basedOnTestResultsColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.isFinalColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.diagnosisDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diagnosisId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -1351,30 +1351,6 @@
             this.diagnosisDataGridView.TabIndex = 8;
             this.diagnosisDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DiagnosisDataGridView_CellClick);
             // 
-            // diagnosisId
-            // 
-            this.diagnosisId.HeaderText = "Diagnosis ID";
-            this.diagnosisId.Name = "diagnosisId";
-            this.diagnosisId.ReadOnly = true;
-            // 
-            // diagnosisDescriptionColumn
-            // 
-            this.diagnosisDescriptionColumn.HeaderText = "Diagnosis Description";
-            this.diagnosisDescriptionColumn.Name = "diagnosisDescriptionColumn";
-            this.diagnosisDescriptionColumn.ReadOnly = true;
-            // 
-            // isFinalColumn
-            // 
-            this.isFinalColumn.HeaderText = "Is Final Diagnosis";
-            this.isFinalColumn.Name = "isFinalColumn";
-            this.isFinalColumn.ReadOnly = true;
-            // 
-            // basedOnTestResultsColumn
-            // 
-            this.basedOnTestResultsColumn.HeaderText = "Based on Test Results";
-            this.basedOnTestResultsColumn.Name = "basedOnTestResultsColumn";
-            this.basedOnTestResultsColumn.ReadOnly = true;
-            // 
             // submitChangesFooter1
             // 
             this.submitChangesFooter1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -1403,6 +1379,30 @@
             // testsManagerViewModelBindingSource1
             // 
             this.testsManagerViewModelBindingSource1.DataSource = typeof(CS3230Project.ViewModel.Tests.TestsManagerViewModel);
+            // 
+            // basedOnTestResultsColumn
+            // 
+            this.basedOnTestResultsColumn.HeaderText = "Based on Test";
+            this.basedOnTestResultsColumn.Name = "basedOnTestResultsColumn";
+            this.basedOnTestResultsColumn.ReadOnly = true;
+            // 
+            // isFinalColumn
+            // 
+            this.isFinalColumn.HeaderText = "Final";
+            this.isFinalColumn.Name = "isFinalColumn";
+            this.isFinalColumn.ReadOnly = true;
+            // 
+            // diagnosisDescriptionColumn
+            // 
+            this.diagnosisDescriptionColumn.HeaderText = "Description";
+            this.diagnosisDescriptionColumn.Name = "diagnosisDescriptionColumn";
+            this.diagnosisDescriptionColumn.ReadOnly = true;
+            // 
+            // diagnosisId
+            // 
+            this.diagnosisId.HeaderText = "ID";
+            this.diagnosisId.Name = "diagnosisId";
+            this.diagnosisId.ReadOnly = true;
             // 
             // Checkup
             // 

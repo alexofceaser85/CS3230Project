@@ -118,7 +118,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 1, 1);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 90);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -184,7 +184,7 @@ namespace CS3230Project.View
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel7);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 53);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(385, 271);
             this.flowLayoutPanel1.TabIndex = 1;
@@ -206,7 +206,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel11, 0, 2);
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel3, 0, 6);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel7.MaximumSize = new System.Drawing.Size(353, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
@@ -233,7 +233,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel14.Controls.Add(this.label8, 0, 0);
             this.tableLayoutPanel14.Controls.Add(this.tableLayoutPanel15, 0, 1);
             this.tableLayoutPanel14.Location = new System.Drawing.Point(11, 341);
-            this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 2;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -268,7 +268,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel15.Controls.Add(this.tableLayoutPanel18, 0, 2);
             this.tableLayoutPanel15.Controls.Add(this.tableLayoutPanel19, 0, 3);
             this.tableLayoutPanel15.Location = new System.Drawing.Point(4, 17);
-            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 5;
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -292,7 +292,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel20.Controls.Add(this.patientZipcodeTextBox, 0, 1);
             this.tableLayoutPanel20.Controls.Add(this.zipCodeErrorMessage, 0, 2);
             this.tableLayoutPanel20.Location = new System.Drawing.Point(4, 264);
-            this.tableLayoutPanel20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel20.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel20.Name = "tableLayoutPanel20";
             this.tableLayoutPanel20.RowCount = 3;
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -316,7 +316,7 @@ namespace CS3230Project.View
             // patientZipcodeTextBox
             // 
             this.patientZipcodeTextBox.Location = new System.Drawing.Point(4, 29);
-            this.patientZipcodeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientZipcodeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.patientZipcodeTextBox.MaxLength = 5;
             this.patientZipcodeTextBox.Name = "patientZipcodeTextBox";
             this.patientZipcodeTextBox.Size = new System.Drawing.Size(307, 22);
@@ -344,7 +344,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel17.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel17.Controls.Add(this.patientAddressTwoTextBox, 0, 1);
             this.tableLayoutPanel17.Location = new System.Drawing.Point(4, 70);
-            this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
             this.tableLayoutPanel17.RowCount = 2;
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.90909F));
@@ -368,7 +368,7 @@ namespace CS3230Project.View
             // patientAddressTwoTextBox
             // 
             this.patientAddressTwoTextBox.Location = new System.Drawing.Point(4, 26);
-            this.patientAddressTwoTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientAddressTwoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.patientAddressTwoTextBox.MaxLength = 50;
             this.patientAddressTwoTextBox.Name = "patientAddressTwoTextBox";
             this.patientAddressTwoTextBox.Size = new System.Drawing.Size(307, 22);
@@ -388,7 +388,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel16.Controls.Add(this.patientAddressOneTextBox, 0, 1);
             this.tableLayoutPanel16.Controls.Add(this.addressOneErrorMessage, 0, 2);
             this.tableLayoutPanel16.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
             this.tableLayoutPanel16.RowCount = 3;
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -412,7 +412,7 @@ namespace CS3230Project.View
             // patientAddressOneTextBox
             // 
             this.patientAddressOneTextBox.Location = new System.Drawing.Point(4, 29);
-            this.patientAddressOneTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientAddressOneTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.patientAddressOneTextBox.MaxLength = 50;
             this.patientAddressOneTextBox.Name = "patientAddressOneTextBox";
             this.patientAddressOneTextBox.Size = new System.Drawing.Size(307, 22);
@@ -443,7 +443,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel18.Controls.Add(this.patientCityTextBox, 0, 1);
             this.tableLayoutPanel18.Controls.Add(this.cityErrorMessage, 0, 2);
             this.tableLayoutPanel18.Location = new System.Drawing.Point(4, 132);
-            this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
             this.tableLayoutPanel18.RowCount = 3;
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -467,7 +467,7 @@ namespace CS3230Project.View
             // patientCityTextBox
             // 
             this.patientCityTextBox.Location = new System.Drawing.Point(4, 29);
-            this.patientCityTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientCityTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.patientCityTextBox.MaxLength = 50;
             this.patientCityTextBox.Name = "patientCityTextBox";
             this.patientCityTextBox.Size = new System.Drawing.Size(307, 22);
@@ -498,7 +498,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel19.Controls.Add(this.patientStateComboBox, 0, 1);
             this.tableLayoutPanel19.Controls.Add(this.stateErrorMessage, 0, 2);
             this.tableLayoutPanel19.Location = new System.Drawing.Point(4, 198);
-            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel19.Name = "tableLayoutPanel19";
             this.tableLayoutPanel19.RowCount = 3;
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -575,7 +575,7 @@ namespace CS3230Project.View
             "Wisconsin",
             "Wyoming"});
             this.patientStateComboBox.Location = new System.Drawing.Point(4, 29);
-            this.patientStateComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientStateComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.patientStateComboBox.Name = "patientStateComboBox";
             this.patientStateComboBox.Size = new System.Drawing.Size(307, 24);
             this.patientStateComboBox.TabIndex = 1;
@@ -604,7 +604,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel13.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.phoneNumberErrorMessage, 0, 2);
             this.tableLayoutPanel13.Location = new System.Drawing.Point(11, 275);
-            this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 3;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -616,7 +616,7 @@ namespace CS3230Project.View
             // patientPhoneNumberTextBox
             // 
             this.patientPhoneNumberTextBox.Location = new System.Drawing.Point(4, 29);
-            this.patientPhoneNumberTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientPhoneNumberTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.patientPhoneNumberTextBox.MaxLength = 12;
             this.patientPhoneNumberTextBox.Name = "patientPhoneNumberTextBox";
             this.patientPhoneNumberTextBox.Size = new System.Drawing.Size(323, 22);
@@ -659,7 +659,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel12.Controls.Add(this.patientGenderComboBox, 0, 1);
             this.tableLayoutPanel12.Controls.Add(this.genderErrorMessage, 0, 2);
             this.tableLayoutPanel12.Location = new System.Drawing.Point(11, 209);
-            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 3;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -688,7 +688,7 @@ namespace CS3230Project.View
             "Male",
             "Female"});
             this.patientGenderComboBox.Location = new System.Drawing.Point(4, 29);
-            this.patientGenderComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientGenderComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.patientGenderComboBox.Name = "patientGenderComboBox";
             this.patientGenderComboBox.Size = new System.Drawing.Size(323, 24);
             this.patientGenderComboBox.TabIndex = 1;
@@ -717,7 +717,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel10.Controls.Add(this.patientFirstNameTextBox, 0, 1);
             this.tableLayoutPanel10.Controls.Add(this.firstNameErrorMessage, 0, 2);
             this.tableLayoutPanel10.Location = new System.Drawing.Point(11, 77);
-            this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 3;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -741,7 +741,7 @@ namespace CS3230Project.View
             // patientFirstNameTextBox
             // 
             this.patientFirstNameTextBox.Location = new System.Drawing.Point(4, 29);
-            this.patientFirstNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientFirstNameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.patientFirstNameTextBox.MaxLength = 25;
             this.patientFirstNameTextBox.Name = "patientFirstNameTextBox";
             this.patientFirstNameTextBox.Size = new System.Drawing.Size(323, 22);
@@ -772,7 +772,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel9.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.patientLastNameTextBox, 0, 1);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(11, 10);
-            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 3;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -807,7 +807,7 @@ namespace CS3230Project.View
             // patientLastNameTextBox
             // 
             this.patientLastNameTextBox.Location = new System.Drawing.Point(4, 29);
-            this.patientLastNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientLastNameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.patientLastNameTextBox.MaxLength = 25;
             this.patientLastNameTextBox.Name = "patientLastNameTextBox";
             this.patientLastNameTextBox.Size = new System.Drawing.Size(323, 22);
@@ -828,7 +828,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel11.Controls.Add(this.patientDateOfBirthPicker, 0, 1);
             this.tableLayoutPanel11.Controls.Add(this.dateOfBirthErrorMessage, 0, 2);
             this.tableLayoutPanel11.Location = new System.Drawing.Point(11, 143);
-            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 3;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -852,7 +852,7 @@ namespace CS3230Project.View
             // patientDateOfBirthPicker
             // 
             this.patientDateOfBirthPicker.Location = new System.Drawing.Point(4, 29);
-            this.patientDateOfBirthPicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientDateOfBirthPicker.Margin = new System.Windows.Forms.Padding(4);
             this.patientDateOfBirthPicker.Name = "patientDateOfBirthPicker";
             this.patientDateOfBirthPicker.Size = new System.Drawing.Size(323, 22);
             this.patientDateOfBirthPicker.TabIndex = 1;
@@ -934,7 +934,7 @@ namespace CS3230Project.View
             this.tableLayoutPanel1.Controls.Add(this.header1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.submitChangesFooter1, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 1);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 86F));
@@ -951,7 +951,7 @@ namespace CS3230Project.View
             this.header1.BackColor = System.Drawing.Color.AliceBlue;
             this.header1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.header1.Location = new System.Drawing.Point(5, 5);
-            this.header1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.header1.Margin = new System.Windows.Forms.Padding(5);
             this.header1.Name = "header1";
             this.header1.Size = new System.Drawing.Size(987, 76);
             this.header1.TabIndex = 5;
@@ -962,7 +962,7 @@ namespace CS3230Project.View
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.submitChangesFooter1.Location = new System.Drawing.Point(5, 501);
-            this.submitChangesFooter1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.submitChangesFooter1.Margin = new System.Windows.Forms.Padding(5);
             this.submitChangesFooter1.Name = "submitChangesFooter1";
             this.submitChangesFooter1.Size = new System.Drawing.Size(987, 47);
             this.submitChangesFooter1.TabIndex = 6;
