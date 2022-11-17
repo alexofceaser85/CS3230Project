@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using CS3230Project.Model.Users;
 using CS3230Project.Model.Users.Patients;
 using CS3230Project.Settings;
 using CS3230Project.View.Validation;
@@ -13,6 +15,7 @@ namespace CS3230Project.View
     /// </summary>
     public partial class CreateAppointment : Form
     {
+        private List<Doctor> availableDoctors;
         private readonly string invalidInputErrorMessage = "Invalid Values for Creating Appointment";
         private readonly string invalidInputErrorHeader = "Unable to create Appointment";
         private readonly Patient patient;
@@ -23,6 +26,7 @@ namespace CS3230Project.View
         public CreateAppointment(Patient patient)
         {
             this.InitializeComponent();
+            this.availableDoctors = new List<Doctor>();
             this.PatientNameAndIdLabel.Text = $"{patient.PatientId}, {patient.LastName}, {patient.FirstName}";
             this.PatientDateOfBirthLabel.Text = $"Birthdate: {patient.DateOfBirth}";
             this.PatientPhoneNumberLabel.Text = $"Phone: {patient.PhoneNumber}";
@@ -46,7 +50,7 @@ namespace CS3230Project.View
                 this.validateAll();
                 var appointmentDate = this.convertAppointmentDateTimeToZero();
                 AppointmentManagerViewModel.AddAppointment(this.patient.PatientId, appointmentDate,
-                    this.appointmentDoctorDropDown.SelectedIndex + 1, this.reasonTextBox.Text);
+                    this.availableDoctors[this.appointmentDoctorDropDown.SelectedIndex].DoctorId, this.reasonTextBox.Text);
                 WindowSwitching.SwitchForms.Switch(this, new Appointments(this.patient));
             }
             catch (ArgumentException)
@@ -64,7 +68,8 @@ namespace CS3230Project.View
         {
             this.appointmentDoctorDropDown.Items.Clear();
             var appointmentDate = this.convertAppointmentDateTimeToZero();
-            foreach (var doctor in DoctorsManagerViewModel.GetAvailableDoctors(appointmentDate))
+            this.availableDoctors = DoctorsManagerViewModel.GetAvailableDoctors(appointmentDate);
+            foreach (var doctor in this.availableDoctors)
             {
                 var doctorString = doctor.DoctorId + ", " + doctor.FirstName + ' ' + doctor.LastName;
                 this.appointmentDoctorDropDown.Items.Add(doctorString);
@@ -77,7 +82,7 @@ namespace CS3230Project.View
             AppointmentValidation.VerifyDoctorInput(this.appointmentDoctorDropDown, this.AppointmentDoctorErrorMessage);
             AppointmentValidation.VerifyReasonInput(this.reasonTextBox, this.AppointmentReasonErrorMessage);
         }
-
+        
         private DateTime convertAppointmentDateTimeToZero()
         {
             var appointmentDate = this.appointmentDatePicker.Value;

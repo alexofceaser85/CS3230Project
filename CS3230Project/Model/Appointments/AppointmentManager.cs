@@ -99,7 +99,10 @@ namespace CS3230Project.Model.Appointments
                 throw new ArgumentException(AppointmentManagerErrorMessages.AppointmentReasonCannotBeAboveMaxLength);
             }
 
-            return AppointmentsDAL.AddAppointment(patientId, appointmentDateTime, doctorId, reason);
+            var roundedAppointmentDateTime = new DateTime(appointmentDateTime.Year, appointmentDateTime.Month,
+                appointmentDateTime.Day, appointmentDateTime.Hour, appointmentDateTime.Minute, 0);
+
+            return AppointmentsDAL.AddAppointment(patientId, roundedAppointmentDateTime, doctorId, reason);
         }
 
         /// <summary>

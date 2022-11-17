@@ -16,7 +16,9 @@ namespace CS3230Project.Model.Users
         /// <returns>The doctors available for the given date and time</returns>
         public static List<Doctor> GetAvailableDoctors(DateTime dateTimeToGet)
         {
-            return DoctorsDAL.GetAvailableDoctors(dateTimeToGet);
+            var roundedDateTime = new DateTime(dateTimeToGet.Year, dateTimeToGet.Month, dateTimeToGet.Day,
+                dateTimeToGet.Hour, dateTimeToGet.Minute, 0);
+            return DoctorsDAL.GetAvailableDoctors(roundedDateTime);
         }
     }
 }
