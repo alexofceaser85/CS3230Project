@@ -8,6 +8,7 @@ using CS3230Project.Model.Users;
 using CS3230Project.Model.Users.Nurses;
 using CS3230Project.Model.Users.Patients;
 using CS3230Project.Model.Visits;
+using CS3230Project.Settings;
 using CS3230Project.View.Validation;
 using CS3230Project.ViewModel.Checkups;
 using CS3230Project.ViewModel.Diagnosis;
@@ -86,7 +87,7 @@ namespace CS3230Project.View
                 string[] testDetails =
                 {
                     submittedTest.AppointmentId.ToString(), submittedTest.Code.ToString(), submittedTest.Name,
-                    submittedTest.IsAbnormal.ToString(), submittedTest.TestDateTime.ToString("DD-MM-YYYY"),
+                    submittedTest.IsAbnormal.ToString(), submittedTest.TestDateTime.ToString(AppointmentSettings.DateTimeFormat),
                     submittedTest.Results
                 };
                 this.CompletedTestsTable.Rows.Add(testDetails);
