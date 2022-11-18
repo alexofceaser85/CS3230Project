@@ -5,53 +5,53 @@ using CS3230Project.Settings;
 namespace CS3230Project.Model.Users
 {
     /// <summary>
-    /// Holds the information for the nurses
+    /// Holds the information for the admins
     /// </summary>
-    public class Nurse : UserAccount
+    public class Admin : UserAccount
     {
         /// <summary>
-        /// Gets the date of birth of the nurse.
+        /// Gets the date of birth of the admin.
         /// </summary>
         /// <value>The date of birth.</value>
         public DateTime DateOfBirth { get; }
         /// <summary>
-        /// Gets the gender of the nurse.
+        /// Gets the gender of the admin.
         /// </summary>
         /// <value>The gender.</value>
         public string Gender { get; }
         /// <summary>
-        /// Gets the phone number of the nurse.
+        /// Gets the phone number of the admin.
         /// </summary>
         /// <value>The phone number.</value>
         public string PhoneNumber { get; }
         /// <summary>
-        /// Gets the address one of the nurse.
+        /// Gets the address one of the admin.
         /// </summary>
         /// <value>The address one.</value>
         public string AddressOne { get; }
         /// <summary>
-        /// Gets the address two of the nurse.
+        /// Gets the address two of the admin.
         /// </summary>
         /// <value>The address two.</value>
         public string AddressTwo { get; }
         /// <summary>
-        /// Gets the city of the nurse.
+        /// Gets the city of the admin.
         /// </summary>
         /// <value>The city.</value>
         public string City { get; }
         /// <summary>
-        /// Gets the state of the nurse.
+        /// Gets the state of the admin.
         /// </summary>
         /// <value>The state.</value>
         public string State { get; }
         /// <summary>
-        /// Gets the zipcode of the nurse.
+        /// Gets the zipcode of the admin.
         /// </summary>
         /// <value>The zipcode.</value>
         public string Zipcode { get; }
 
         /// <summary>
-        /// Initializes a new <see cref="Nurse"/>
+        /// Initializes a new <see cref="Admin"/>
         ///
         /// Precondition:
         ///     nurseId >= 0
@@ -74,9 +74,9 @@ namespace CS3230Project.Model.Users
         ///     AND phoneNumber != null
         ///     AND phoneNumber.isEmpty() == false
         /// </summary>
-        /// <param name="nurseId">The nurses ID</param>
-        /// <param name="firstName">The nurses first name</param>
-        /// <param name="lastName">The nurses last name</param>
+        /// <param name="adminId">The admins ID</param>
+        /// <param name="firstName">The admins first name</param>
+        /// <param name="lastName">The admins last name</param>
         /// <param name="dateOfBirth">The date of birth.</param>
         /// <param name="gender">The gender.</param>
         /// <param name="phoneNumber">The phone number.</param>
@@ -85,118 +85,118 @@ namespace CS3230Project.Model.Users
         /// <param name="city">The city.</param>
         /// <param name="state">The state.</param>
         /// <param name="zipcode">The zipcode.</param>
-        public Nurse(int nurseId, string firstName, string lastName, DateTime dateOfBirth, string gender, string phoneNumber, string addressOne, string addressTwo, string city, string state, string zipcode)
+        public Admin(int adminId, string firstName, string lastName, DateTime dateOfBirth, string gender, string phoneNumber, string addressOne, string addressTwo, string city, string state, string zipcode)
         {
-            if (nurseId < 0)
+            if (adminId < 0)
             {
-                throw new ArgumentException(NurseErrorMessages.IdCannotBeLessThanZero);
+                throw new ArgumentException(AdminErrorMessages.IdCannotBeLessThanZero);
             }
             if (firstName == null)
             {
-                throw new ArgumentException(NurseErrorMessages.FirstNameCannotBeNull);
+                throw new ArgumentException(AdminErrorMessages.FirstNameCannotBeNull);
             }
             if (firstName.Trim().Length == 0)
             {
-                throw new ArgumentException(NurseErrorMessages.FirstNameCannotBeEmpty);
+                throw new ArgumentException(AdminErrorMessages.FirstNameCannotBeEmpty);
             }
             if (lastName == null)
             {
-                throw new ArgumentException(NurseErrorMessages.LastNameCannotBeNull);
+                throw new ArgumentException(AdminErrorMessages.LastNameCannotBeNull);
             }
             if (lastName.Trim().Length == 0)
             {
-                throw new ArgumentException(NurseErrorMessages.LastNameCannotBeEmpty);
+                throw new ArgumentException(AdminErrorMessages.LastNameCannotBeEmpty);
             }
             if (dateOfBirth < new DateTime(1900, 1, 1))
             {
-                throw new ArgumentException(NurseErrorMessages.DateOfBirthCannotBeBefore1900);
+                throw new ArgumentException(AdminErrorMessages.DateOfBirthCannotBeBefore1900);
             }
             if (dateOfBirth > DateTime.Now)
             {
-                throw new ArgumentException(NurseErrorMessages.DateOfBirthCannotBeInTheFuture);
+                throw new ArgumentException(AdminErrorMessages.DateOfBirthCannotBeInTheFuture);
             }
             if (gender == null)
             {
-                throw new ArgumentException(NurseErrorMessages.GenderCannotBeNull);
+                throw new ArgumentException(AdminErrorMessages.GenderCannotBeNull);
             }
             if (gender.Trim().Length == 0)
             {
-                throw new ArgumentException(NurseErrorMessages.GenderCannotBeEmpty);
+                throw new ArgumentException(AdminErrorMessages.GenderCannotBeEmpty);
             }
             if (gender.Length > UserSettings.GenderMaximumLength)
             {
-                throw new ArgumentException(NurseErrorMessages.GenderIsTooLong);
+                throw new ArgumentException(AdminErrorMessages.GenderIsTooLong);
             }
             if (phoneNumber == null)
             {
-                throw new ArgumentException(NurseErrorMessages.PhoneNumberCannotBeNull);
+                throw new ArgumentException(AdminErrorMessages.PhoneNumberCannotBeNull);
             }
             if (phoneNumber.Trim().Length == 0)
             {
-                throw new ArgumentException(NurseErrorMessages.PhoneNumberCannotBeEmpty);
+                throw new ArgumentException(AdminErrorMessages.PhoneNumberCannotBeEmpty);
             }
             if (!DataValidator.IsValidPhoneNumberFormat(phoneNumber))
             {
-                throw new ArgumentException(NurseErrorMessages.InvalidPhoneNumberFormat);
+                throw new ArgumentException(AdminErrorMessages.InvalidPhoneNumberFormat);
             }
             if (addressOne == null)
             {
-                throw new ArgumentException(NurseErrorMessages.AddressOneCannotBeNull);
+                throw new ArgumentException(AdminErrorMessages.AddressOneCannotBeNull);
             }
             if (addressOne.Trim().Length == 0)
             {
-                throw new ArgumentException(NurseErrorMessages.AddressOneCannotBeEmpty);
+                throw new ArgumentException(AdminErrorMessages.AddressOneCannotBeEmpty);
             }
             if (addressOne.Length > UserSettings.AddressComponentMaximumLength)
             {
-                throw new ArgumentException(NurseErrorMessages.AddressOneIsTooLong);
+                throw new ArgumentException(AdminErrorMessages.AddressOneIsTooLong);
             }
             if (city == null)
             {
-                throw new ArgumentException(NurseErrorMessages.CityCannotBeNull);
+                throw new ArgumentException(AdminErrorMessages.CityCannotBeNull);
             }
             if (city.Trim().Length == 0)
             {
-                throw new ArgumentException(NurseErrorMessages.CityCannotBeEmpty);
+                throw new ArgumentException(AdminErrorMessages.CityCannotBeEmpty);
             }
             if (city.Length > UserSettings.AddressComponentMaximumLength)
             {
-                throw new ArgumentException(NurseErrorMessages.CityIsTooLong);
+                throw new ArgumentException(AdminErrorMessages.CityIsTooLong);
             }
             if (state == null)
             {
-                throw new ArgumentException(NurseErrorMessages.StateCannotBeNull);
+                throw new ArgumentException(AdminErrorMessages.StateCannotBeNull);
             }
             if (state.Trim().Length == 0)
             {
-                throw new ArgumentException(NurseErrorMessages.StateCannotBeEmpty);
+                throw new ArgumentException(AdminErrorMessages.StateCannotBeEmpty);
             }
             if (state.Length > UserSettings.StateMaximumLength)
             {
-                throw new ArgumentException(NurseErrorMessages.StateIsTooLong);
+                throw new ArgumentException(AdminErrorMessages.StateIsTooLong);
             }
             if (zipcode == null)
             {
-                throw new ArgumentException(NurseErrorMessages.ZipcodeCannotBeNull);
+                throw new ArgumentException(AdminErrorMessages.ZipcodeCannotBeNull);
             }
             if (zipcode.Trim().Length == 0)
             {
-                throw new ArgumentException(NurseErrorMessages.ZipcodeCannotBeEmpty);
+                throw new ArgumentException(AdminErrorMessages.ZipcodeCannotBeEmpty);
             }
             if (zipcode.Length < UserSettings.ZipCodeLength)
             {
-                throw new ArgumentException(NurseErrorMessages.ZipcodeMustHaveFiveCharacters);
+                throw new ArgumentException(AdminErrorMessages.ZipcodeMustHaveFiveCharacters);
             }
             if (zipcode.Length > UserSettings.ZipCodeLength)
             {
-                throw new ArgumentException(NurseErrorMessages.ZipcodeMustHaveFiveCharacters);
+                throw new ArgumentException(AdminErrorMessages.ZipcodeMustHaveFiveCharacters);
             }
             if (!DataValidator.IsValidZipCodeFormat(zipcode))
             {
-                throw new ArgumentException(NurseErrorMessages.ZipcodeMustBeAllDigits);
+                throw new ArgumentException(AdminErrorMessages.ZipcodeMustBeAllDigits);
             }
 
-            this.Id = nurseId;
+            this.Id = adminId;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.DateOfBirth = dateOfBirth;

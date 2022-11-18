@@ -107,6 +107,7 @@
     <Compile Include="DAL\Tests\TestsDal.cs" />
     <Compile Include="DAL\Visits\VisitDal.cs" />
     <Compile Include="ErrorMessages\ErrorMessages.cs" />
+    <Compile Include="Model\Accounts\AccountType.cs" />
     <Compile Include="Model\Appointments\Appointment.cs" />
     <Compile Include="Model\Appointments\AppointmentManager.cs" />
     <Compile Include="Model\DataValidator.cs" />
@@ -117,11 +118,13 @@
     <Compile Include="Model\Tests\Test.cs" />
     <Compile Include="Model\Tests\AvailableTest.cs" />
     <Compile Include="Model\Tests\TestManager.cs" />
+    <Compile Include="Model\Users\Admin.cs" />
     <Compile Include="Model\Users\Doctor.cs" />
     <Compile Include="Model\Users\Nurses\NurseManager.cs" />
     <Compile Include="Model\Users\DoctorManager.cs" />
     <Compile Include="Model\Users\Patients\PatientManager.cs" />
     <Compile Include="Model\Users\Patients\Patient.cs" />
+    <Compile Include="Model\Users\UserAccount.cs" />
     <Compile Include="Model\Visits\Visit.cs" />
     <Compile Include="Model\Visits\VisitManager.cs" />
     <Compile Include="Settings\Settings.cs" />
@@ -142,6 +145,12 @@
     </Compile>
     <Compile Include="View\AddTestResults.Designer.cs">
       <DependentUpon>AddTestResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminHome.Designer.cs">
+      <DependentUpon>AdminHome.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Appointments.cs">
       <SubType>Form</SubType>
@@ -249,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AddTestResults.resx">
       <DependentUpon>AddTestResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminHome.resx">
+      <DependentUpon>AdminHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Appointments.resx">
       <DependentUpon>Appointments.cs</DependentUpon>

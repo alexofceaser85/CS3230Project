@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using CS3230Project.Model.Accounts;
 using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Accounts;
 
@@ -29,8 +30,7 @@ namespace CS3230Project.View
 
                 if (isLoginSuccessful)
                 {
-                    Form homeForm = new Home();
-                    SwitchForms.Switch(this, homeForm);
+                    this.goToHomeForm();
                 }
                 else
                 {
@@ -40,6 +40,21 @@ namespace CS3230Project.View
             catch (ArgumentException errorMessage)
             {
                 MessageBox.Show(errorMessage.Message, this.loginErrorHeader);
+            }
+        }
+
+        private void goToHomeForm()
+        {
+
+            if (CurrentUser.User.AccountType == AccountType.NURSE)
+            {
+                Form homeForm = new Home();
+                SwitchForms.Switch(this, homeForm);
+            }
+            else if (CurrentUser.User.AccountType == AccountType.ADMIN)
+            {
+                Form homeForm = new AdminHome();
+                SwitchForms.Switch(this, homeForm);
             }
         }
     }

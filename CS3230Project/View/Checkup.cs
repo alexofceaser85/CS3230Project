@@ -158,8 +158,8 @@ namespace CS3230Project.View
             this.symptomsTextBox.Text = visit.Symptoms;
 
             var nurse = NurseManager.GetNurseByID(visit.NurseID);
-            this.nurseComboBox.Items.Add(nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.NurseId);
-            this.nurseComboBox.SelectedItem = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.NurseId;
+            this.nurseComboBox.Items.Add(nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.Id);
+            this.nurseComboBox.SelectedItem = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.Id;
         }
 
         private void disableFormControls()
@@ -192,7 +192,7 @@ namespace CS3230Project.View
         {
             foreach (var nurse in NurseManager.GetNurses())
             {
-                var nurseInfo = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.NurseId;
+                var nurseInfo = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.Id;
                 this.nurseComboBox.Items.Add(nurseInfo);
             }
         }
