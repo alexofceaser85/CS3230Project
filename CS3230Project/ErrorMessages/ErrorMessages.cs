@@ -926,4 +926,15 @@
         public static string DiagnosisDescriptionCannotBeMoreThan100Chars = 
             "Diagnosis description cannot contain more than 100 characters..";
     }
+
+    /// <summary>
+    /// The error messages for the admin service
+    /// </summary>
+    public static class AdminServiceErrorMessages
+    {
+        /// <summary>
+        /// The error message for an empty admin query to run
+        /// </summary>
+        public static string AdminQueryToRunCannotBeEmpty = "The admin query to run cannot be empty";
+    }
 }
