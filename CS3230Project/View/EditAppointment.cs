@@ -77,7 +77,7 @@ namespace CS3230Project.View
 
         private void SubmitChangesFooter1OnBackButtonEventHandler(object sender, EventArgs e)
         {
-            SwitchForms.SwitchBackToHome(this);
+            SwitchForms.Switch(this, new Appointments(this.patient));
         }
 
         private void validateAll()
@@ -109,6 +109,9 @@ namespace CS3230Project.View
                 var doctorString = this.convertDoctorToDoctorString(doctor);
                 this.appointmentDoctorDropDown.Items.Add(doctorString);
             }
+
+            var index = this.availableDoctors.FindIndex(d => d.DoctorId == this.appointmentToEdit.Doctor.DoctorId);
+            this.appointmentDoctorDropDown.SelectedIndex = index;
         }
 
         private string convertDoctorToDoctorString(Doctor doctor)
