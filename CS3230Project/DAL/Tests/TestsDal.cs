@@ -106,21 +106,40 @@ namespace CS3230Project.DAL.Tests
         /// <summary>
         /// Adds a test
         /// </summary>
-        /// <param name="testToAdd">The test to add</param>
+        /// <param name="testsToAdd">The tests to add</param>
         /// <returns>True if the test was added, false otherwise</returns>
-        public static bool AddTest(NotPerformedTest testToAdd)
+        public static bool AddTests(List<NotPerformedTest> testsToAdd)
         {
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
-            var query =
-                "insert into visittests values (@appointmentId, @testCode, @results, @isAbnormal, @testDateTime)";
-            using var command = new MySqlCommand(query, connection);
-            command.Parameters.Add("@appointmentId", MySqlDbType.Int32).Value = testToAdd.AppointmentId;
-            command.Parameters.Add("@testCode", MySqlDbType.Int32).Value = testToAdd.Code;
-            command.Parameters.Add("@results", MySqlDbType.String).Value = "";
-            command.Parameters.Add("@isAbnormal", MySqlDbType.Int16).Value = false;
-            command.Parameters.Add("@testDateTime", MySqlDbType.DateTime).Value = null;
-            return command.ExecuteNonQuery() > 0;
+            using var command = connection.CreateCommand();
+            var transaction = connection.BeginTransaction();
+            command.Connection = connection;
+            command.Transaction = transaction;
+
+            try
+            {
+                foreach (var testToAdd in testsToAdd)
+                {
+                    var query =
+                        "insert into visittests values (@appointmentId, @testCode, @results, @isAbnormal, @testDateTime); ";
+                    command.CommandText = query;
+                    command.Parameters.Add("@appointmentId", MySqlDbType.Int32).Value = testToAdd.AppointmentId;
+                    command.Parameters.Add("@testCode", MySqlDbType.Int32).Value = testToAdd.Code;
+                    command.Parameters.Add("@results", MySqlDbType.String).Value = "";
+                    command.Parameters.Add("@isAbnormal", MySqlDbType.Int16).Value = false;
+                    command.Parameters.Add("@testDateTime", MySqlDbType.DateTime).Value = null;
+                    command.ExecuteNonQuery();
+                    command.Parameters.Clear();
+                }
+                transaction.Commit();
+                return true;
+            }
+            catch (MySqlException)
+            {
+                transaction.Rollback();
+                return false;
+            }
         }
 
         /// <summary>

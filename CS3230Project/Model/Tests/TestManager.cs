@@ -122,11 +122,7 @@ namespace CS3230Project.Model.Tests
         /// </summary>
         public void SubmitTests()
         {
-            foreach (var test in this.NotSubmittedTests)
-            {
-                TestsDal.AddTest(test);
-            }
-
+            TestsDal.AddTests(this.NotSubmittedTests);
             this.NotSubmittedTests = new List<NotPerformedTest>();
         }
 
