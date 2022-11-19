@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using CS3230Project.View.WindowSwitching;
-using CS3230Project.ViewModel.Accounts;
 
 namespace CS3230Project.View
 {
@@ -31,7 +30,7 @@ namespace CS3230Project.View
 
         private void queryButton_Click(object sender, EventArgs e)
         {
-
+            SwitchForms.Switch(this, new AdminQuery());
         }
     }
 }
