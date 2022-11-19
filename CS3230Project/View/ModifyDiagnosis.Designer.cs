@@ -146,11 +146,11 @@
             // 
             // diagnosisDescriptionLabel
             // 
-            this.diagnosisDescriptionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.diagnosisDescriptionLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.diagnosisDescriptionLabel.AutoSize = true;
-            this.diagnosisDescriptionLabel.Location = new System.Drawing.Point(263, 30);
+            this.diagnosisDescriptionLabel.Location = new System.Drawing.Point(263, 34);
             this.diagnosisDescriptionLabel.Name = "diagnosisDescriptionLabel";
-            this.diagnosisDescriptionLabel.Size = new System.Drawing.Size(142, 20);
+            this.diagnosisDescriptionLabel.Size = new System.Drawing.Size(142, 16);
             this.diagnosisDescriptionLabel.TabIndex = 11;
             this.diagnosisDescriptionLabel.Text = "Diagnosis Description:";
             // 

@@ -42,6 +42,8 @@ namespace CS3230Project.View
             else
             {
                 this.removeDiagnosisButton.Hide();
+                this.isFinalComboBox.SelectedItem = this.isFinalComboBox.Items[0];
+                this.basedOnTestResultsComboBox.SelectedItem = this.basedOnTestResultsComboBox.Items[0];
             }
 
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
