@@ -87,7 +87,9 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 0, 0);
@@ -95,7 +97,8 @@
             this.tableLayoutPanel2.Controls.Add(this.queryTextBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.queryResultsTable, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.EnterQueryErrorMessage, 0, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(25, 79);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(30, 79);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(30, 3, 30, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 5;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -103,7 +106,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(749, 311);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(740, 311);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // tableLayoutPanel6
@@ -120,7 +123,7 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(749, 30);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(740, 30);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // label1
@@ -128,7 +131,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(313, 0);
+            this.label1.Location = new System.Drawing.Point(308, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 30);
             this.label1.TabIndex = 0;
@@ -149,7 +152,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(749, 30);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(740, 30);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // label2
@@ -171,7 +174,8 @@
             this.queryTextBox.Location = new System.Drawing.Point(3, 33);
             this.queryTextBox.Multiline = true;
             this.queryTextBox.Name = "queryTextBox";
-            this.queryTextBox.Size = new System.Drawing.Size(743, 109);
+            this.queryTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.queryTextBox.Size = new System.Drawing.Size(734, 109);
             this.queryTextBox.TabIndex = 3;
             // 
             // queryResultsTable
@@ -180,7 +184,7 @@
             this.queryResultsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.queryResultsTable.Location = new System.Drawing.Point(3, 198);
             this.queryResultsTable.Name = "queryResultsTable";
-            this.queryResultsTable.Size = new System.Drawing.Size(743, 110);
+            this.queryResultsTable.Size = new System.Drawing.Size(734, 110);
             this.queryResultsTable.TabIndex = 4;
             // 
             // EnterQueryErrorMessage
