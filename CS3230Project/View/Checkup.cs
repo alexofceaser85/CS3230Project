@@ -1,6 +1,7 @@
 ﻿using CS3230Project.View.WindowSwitching;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using CS3230Project.Model.Diagnosis;
 using CS3230Project.Model.Tests;
@@ -352,25 +353,32 @@ namespace CS3230Project.View
 
         private void DiagnosisDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (!this.finalDiagnosisExists)
+            try
             {
-                var rowIndex = e.RowIndex;
-                var diagnosisId = (int)this.diagnosisDataGridView.Rows[rowIndex].Cells[0].Value;
-                var diagnoses = DiagnosisManagerViewModel.GetDiagnoses(this.appointmentId);
-                Diagnosis diagnosis = null;
-
-                foreach (var currDiagnosis in diagnoses)
+                if (!this.finalDiagnosisExists)
                 {
-                    if (currDiagnosis.DiagnosisId == diagnosisId)
-                    {
-                        diagnosis = currDiagnosis;
-                    }
-                }
+                    var rowIndex = e.RowIndex;
+                    var diagnosisId = (int)this.diagnosisDataGridView.Rows[rowIndex].Cells[0].Value;
+                    var diagnoses = DiagnosisManagerViewModel.GetDiagnoses(this.appointmentId);
+                    Diagnosis diagnosis = null;
 
-                var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId);
-                modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
-                modifyDiagnosisDialog.ShowDialog();
+                    foreach (var currDiagnosis in diagnoses)
+                    {
+                        if (currDiagnosis.DiagnosisId == diagnosisId)
+                        {
+                            diagnosis = currDiagnosis;
+                        }
+                    }
+
+                    var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId);
+                    modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
+                    modifyDiagnosisDialog.ShowDialog();
+                }
             }
+            catch (Exception)
+            {
+            }
+
         }
 
         private void disableTestControls()
