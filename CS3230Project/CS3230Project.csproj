@@ -152,6 +152,12 @@
     <Compile Include="View\AdminHome.Designer.cs">
       <DependentUpon>AdminHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AdminVisitsSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminVisitsSearch.Designer.cs">
+      <DependentUpon>AdminVisitsSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Appointments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminHome.resx">
       <DependentUpon>AdminHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminVisitsSearch.resx">
+      <DependentUpon>AdminVisitsSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Appointments.resx">
       <DependentUpon>Appointments.cs</DependentUpon>
