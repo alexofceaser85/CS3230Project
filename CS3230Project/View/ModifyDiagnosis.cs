@@ -36,8 +36,7 @@ namespace CS3230Project.View
             if (this.diagnosis != null)
             {
                 this.diagnosisDescriptionTextBox.Text = diagnosis.DiagnosisDescription;
-                this.isFinalCheckBox.Checked = diagnosis.IsFinal;
-                this.basedOnTestResultsCheckBox.Checked = diagnosis.BasedOnTestResults;
+                this.setComboBoxes(diagnosis.IsFinal, diagnosis.BasedOnTestResults);
                 this.removeDiagnosisButton.Show();
             }
             else
@@ -47,6 +46,12 @@ namespace CS3230Project.View
 
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
             this.submitChangesFooter1.SubmitButtonEventHandler += this.SubmitChangesFooter1OnSubmitButtonEventHandler;
+        }
+
+        private void setComboBoxes(bool isFinal, bool basedOnTest)
+        {
+            this.isFinalComboBox.SelectedItem = isFinal ? this.isFinalComboBox.Items[1] : this.isFinalComboBox.Items[0];
+            this.basedOnTestResultsComboBox.SelectedItem = basedOnTest ? this.basedOnTestResultsComboBox.Items[1] : this.basedOnTestResultsComboBox.Items[0];
         }
 
         /// <summary>
@@ -64,7 +69,7 @@ namespace CS3230Project.View
                 {
                     DiagnosisSubmitted =
                         new Diagnosis(this.diagnosis.DiagnosisId, this.appointmentId, this.diagnosisDescriptionTextBox.Text, 
-                            this.isFinalCheckBox.Checked, this.basedOnTestResultsCheckBox.Checked)
+                            (string)this.isFinalComboBox.SelectedItem == "True", (string)this.basedOnTestResultsComboBox.SelectedItem == "True")
                 });
             }
             else
@@ -73,7 +78,7 @@ namespace CS3230Project.View
                 {
                     DiagnosisSubmitted =
                         new Diagnosis(null, this.appointmentId, this.diagnosisDescriptionTextBox.Text,
-                            this.isFinalCheckBox.Checked, this.basedOnTestResultsCheckBox.Checked)
+                            (string)this.isFinalComboBox.SelectedItem == "True", (string)this.basedOnTestResultsComboBox.SelectedItem == "True")
                 });
             }
 
@@ -88,8 +93,8 @@ namespace CS3230Project.View
                         this.diagnosisDescriptionErrorMessage))
                 {
                     var diagnosis = new Diagnosis(null, this.appointmentId,
-                        this.diagnosisDescriptionTextBox.Text, this.isFinalCheckBox.Checked,
-                        this.basedOnTestResultsCheckBox.Checked);
+                        this.diagnosisDescriptionTextBox.Text, (string)this.isFinalComboBox.SelectedItem == "True",
+                        (string)this.basedOnTestResultsComboBox.SelectedItem == "True");
                     DiagnosisManagerViewModel.AddDiagnosis(diagnosis);
                     this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs {DiagnosisSubmitted = diagnosis});
                     this.Close();
@@ -101,8 +106,8 @@ namespace CS3230Project.View
                         this.diagnosisDescriptionErrorMessage))
                 {
                     var diagnosis = new Diagnosis(this.diagnosis.DiagnosisId, this.diagnosis.AppointmentId,
-                        this.diagnosisDescriptionTextBox.Text, this.isFinalCheckBox.Checked,
-                        this.basedOnTestResultsCheckBox.Checked);
+                        this.diagnosisDescriptionTextBox.Text, (string)this.isFinalComboBox.SelectedItem == "True",
+                        (string)this.basedOnTestResultsComboBox.SelectedItem == "True");
                     DiagnosisManagerViewModel.ModifyDiagnosis(diagnosis);
                     this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs { DiagnosisSubmitted = diagnosis });
                     this.Close();
