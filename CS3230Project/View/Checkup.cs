@@ -58,8 +58,8 @@ namespace CS3230Project.View
 
             foreach (var currDiagnosis in this.diagnoses)
             {
-                this.diagnosisDataGridView.Rows.Add(currDiagnosis.DiagnosisId, currDiagnosis.DiagnosisDescription, currDiagnosis.IsFinal,
-                    currDiagnosis.BasedOnTestResults);
+                this.diagnosisDataGridView.Rows.Add(currDiagnosis.DiagnosisId, currDiagnosis.DiagnosisDescription, currDiagnosis.IsFinal.ToString(),
+                    currDiagnosis.BasedOnTestResults.ToString());
 
                 if (currDiagnosis.IsFinal)
                 {
