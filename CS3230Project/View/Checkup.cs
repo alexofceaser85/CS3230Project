@@ -13,6 +13,7 @@ using CS3230Project.Settings;
 using CS3230Project.View.Validation;
 using CS3230Project.ViewModel.Checkups;
 using CS3230Project.ViewModel.Diagnosis;
+using CS3230Project.ViewModel.Nurses;
 using CS3230Project.ViewModel.Tests;
 
 namespace CS3230Project.View
@@ -49,7 +50,7 @@ namespace CS3230Project.View
             this.loadPatientAndDoctorInfo();
             this.testManager = new TestsManagerViewModel(this.appointmentId);
             this.updateTestData();
-            this.checkIfVisitExists(appointmentId);
+            this.loadPageInfoForVisit(appointmentId);
             this.updateDiagnosesData();
         }
 
@@ -121,8 +122,7 @@ namespace CS3230Project.View
             }
         }
 
-        //TODO Rename to be more specific, as it populates and sets event handlers
-        private void checkIfVisitExists(int appointmentId)
+        private void loadPageInfoForVisit(int appointmentId)
         {
             Visit visit = CheckupManagerViewModel.GetVisit(appointmentId);
             if (visit == null)
@@ -157,8 +157,7 @@ namespace CS3230Project.View
 
         private void displayCheckupDetailsForExistingVisit(Visit visit)
         {
-            //TODO Add view model for nurse manager
-            var visitNurse = NurseManager.GetNurseByID(visit.NurseID);
+            var visitNurse = NurseManagerViewModel.GetNurseByID(visit.NurseID);
             this.systolicBloodPressureTextBox.Text = visit.SystolicBloodPressure.ToString();
             this.diastolicBloodPressureTextBox.Text = visit.DiastolicBloodPressure.ToString();
             this.bodyTemperatureTextBox.Text = visit.BodyTemp.ToString();
