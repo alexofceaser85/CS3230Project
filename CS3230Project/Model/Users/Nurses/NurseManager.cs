@@ -12,20 +12,6 @@ namespace CS3230Project.Model.Users.Nurses
     {
 
         /// <summary>
-        /// Gets the nurses.
-        ///
-        /// Precondition: none
-        /// Post-condition: none
-        /// </summary>
-        /// <returns>
-        ///   all of the nurses
-        /// </returns>
-        public static List<Nurse> GetNurses()
-        {
-            return NurseDal.GetNurses();
-        }
-
-        /// <summary>
         /// Gets the nurse by identifier.
         ///
         /// Precondition: ID MORE THAN OR EQUAL TO 0

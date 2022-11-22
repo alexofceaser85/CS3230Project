@@ -135,6 +135,7 @@
     <Compile Include="ViewModel\Checkups\CheckupManagerViewModel.cs" />
     <Compile Include="ViewModel\Diagnosis\DiagnosisManagerViewModel.cs" />
     <Compile Include="ViewModel\Doctors\DoctorsManagerViewModel.cs" />
+    <Compile Include="ViewModel\Nurses\NurseManagerViewModel.cs" />
     <Compile Include="ViewModel\Tests\TestsManagerViewModel.cs" />
     <Compile Include="ViewModel\Users\PatientManagerViewModel.cs" />
     <Compile Include="View\AddPendingTest.cs">

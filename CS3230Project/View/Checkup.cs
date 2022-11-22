@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using CS3230Project.Model.Accounts;
 using CS3230Project.Model.Diagnosis;
 using CS3230Project.Model.Tests;
 using CS3230Project.Model.Users;
@@ -12,6 +13,7 @@ using CS3230Project.Settings;
 using CS3230Project.View.Validation;
 using CS3230Project.ViewModel.Checkups;
 using CS3230Project.ViewModel.Diagnosis;
+using CS3230Project.ViewModel.Nurses;
 using CS3230Project.ViewModel.Tests;
 
 namespace CS3230Project.View
@@ -48,7 +50,7 @@ namespace CS3230Project.View
             this.loadPatientAndDoctorInfo();
             this.testManager = new TestsManagerViewModel(this.appointmentId);
             this.updateTestData();
-            this.checkIfVisitExists(appointmentId);
+            this.loadPageInfoForVisit(appointmentId);
             this.updateDiagnosesData();
         }
 
@@ -120,19 +122,19 @@ namespace CS3230Project.View
             }
         }
 
-        private void checkIfVisitExists(int appointmentId)
+        private void loadPageInfoForVisit(int appointmentId)
         {
             Visit visit = CheckupManagerViewModel.GetVisit(appointmentId);
             if (visit == null)
             {
                 this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesFooter1OnSubmitButtonEventHandlerSubmitNewVisit;
-                this.populateNurseComboBox();
+                this.displayCheckupDetailsForNewVisit();
             }
             else
             {
                 this.submitChangesFooter1.SubmitButtonEventHandler +=
                     this.submitChangesFooter1OnSubmitButtonEventHandlerEditExistingVisit;
-                this.displayCheckupDetails(visit);
+                this.displayCheckupDetailsForExistingVisit(visit);
 
             }
         }
@@ -147,8 +149,15 @@ namespace CS3230Project.View
             this.DoctorPhoneNumberLabel.Text = $"Phone: {doctor.PhoneNumber}";
         }
 
-        private void displayCheckupDetails(Visit visit)
+        private void displayCheckupDetailsForNewVisit()
         {
+            this.NurseInfoTextBox.Text =
+                $"{CurrentUser.User.Id}: {CurrentUser.User.LastName}, {CurrentUser.User.FirstName}";
+        }
+
+        private void displayCheckupDetailsForExistingVisit(Visit visit)
+        {
+            var visitNurse = NurseManagerViewModel.GetNurseByID(visit.NurseID);
             this.systolicBloodPressureTextBox.Text = visit.SystolicBloodPressure.ToString();
             this.diastolicBloodPressureTextBox.Text = visit.DiastolicBloodPressure.ToString();
             this.bodyTemperatureTextBox.Text = visit.BodyTemp.ToString();
@@ -156,10 +165,8 @@ namespace CS3230Project.View
             this.heightTextBox.Text = visit.Height.ToString();
             this.weightTextBox.Text = visit.Weight.ToString();
             this.symptomsTextBox.Text = visit.Symptoms;
-
-            var nurse = NurseManager.GetNurseByID(visit.NurseID);
-            this.nurseComboBox.Items.Add(nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.Id);
-            this.nurseComboBox.SelectedItem = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.Id;
+            this.NurseInfoTextBox.Text =
+                $"{visitNurse.Id}: {visitNurse.LastName}, {visitNurse.FirstName}";
         }
 
         private void disableFormControls()
@@ -171,7 +178,6 @@ namespace CS3230Project.View
             this.heightTextBox.Enabled = false;
             this.weightTextBox.Enabled = false;
             this.symptomsTextBox.Enabled = false;
-            this.nurseComboBox.Enabled = false;
             this.submitChangesFooter1.HideSubmitButton(this.submitChangesFooter1);
         }
 
@@ -184,17 +190,7 @@ namespace CS3230Project.View
             this.heightTextBox.Enabled = true;
             this.weightTextBox.Enabled = true;
             this.symptomsTextBox.Enabled = true;
-            this.nurseComboBox.Enabled = true;
             this.submitChangesFooter1.ShowSubmitButton(this.submitChangesFooter1);
-        }
-
-        private void populateNurseComboBox()
-        {
-            foreach (var nurse in NurseManager.GetNurses())
-            {
-                var nurseInfo = nurse.FirstName + " " + nurse.LastName + " ID: " + nurse.Id;
-                this.nurseComboBox.Items.Add(nurseInfo);
-            }
         }
 
         private void Header1OnLogoutEventHandler(object sender, EventArgs e)
@@ -239,29 +235,13 @@ namespace CS3230Project.View
         private Visit getVisitInfo()
         {
             this.verifyAll();
-            var nurseId = this.getNurseID(this.nurseComboBox.Text);
+            var nurseId = CurrentUser.User.Id;
             Visit visit = new Visit(this.appointmentId, nurseId, Convert.ToDouble(this.bodyTemperatureTextBox.Text),
                 Convert.ToInt16(this.pulseTextBox.Text), Convert.ToDouble(this.heightTextBox.Text),
                 Convert.ToDouble(this.weightTextBox.Text), this.symptomsTextBox.Text,
                 Convert.ToInt16(this.systolicBloodPressureTextBox.Text),
                 Convert.ToInt16(this.diastolicBloodPressureTextBox.Text));
             return visit;
-        }
-
-        private int getNurseID(string nurseInfo)
-        {
-            string[] nurseInfoSplit = nurseInfo.Split(' ');
-
-            if (nurseInfoSplit.Length > 2)
-            {
-                var firstName = nurseInfoSplit[0];
-                var lastName = nurseInfoSplit[1];
-                var ID = nurseInfoSplit[3];
-                return Int32.Parse(ID);
-            }
-
-            return -1;
-
         }
 
         private void verifyAll()
@@ -272,7 +252,6 @@ namespace CS3230Project.View
             CheckupValidation.VerifyPulseInput(this.pulseTextBox, this.pulseErrorMessage);
             CheckupValidation.VerifyHeightInput(this.heightTextBox, this.heightErrorMessage);
             CheckupValidation.VerifyWeightInput(this.weightTextBox, this.weightErrorMessage);
-            CheckupValidation.VerifyNurseInput(this.nurseComboBox, this.nurseErrorMessage);
             CheckupValidation.VerifySymptomsInput(this.symptomsTextBox, this.symptomsErrorMessage);
         }
 
@@ -304,11 +283,6 @@ namespace CS3230Project.View
         private void weightTextBox_TextChanged(object sender, EventArgs e)
         {
             CheckupValidation.VerifyWeightInput(this.weightTextBox, this.weightErrorMessage);
-        }
-
-        private void nurseComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CheckupValidation.VerifyNurseInput(this.nurseComboBox, this.nurseErrorMessage);
         }
 
         private void symptomsTextBox_TextChanged(object sender, EventArgs e)
