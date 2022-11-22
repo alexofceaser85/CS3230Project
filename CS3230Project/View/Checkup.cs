@@ -59,8 +59,8 @@ namespace CS3230Project.View
 
             foreach (var currDiagnosis in this.diagnoses)
             {
-                this.diagnosisDataGridView.Rows.Add(currDiagnosis.DiagnosisId, currDiagnosis.DiagnosisDescription, currDiagnosis.IsFinal.ToString(),
-                    currDiagnosis.BasedOnTestResults.ToString());
+                this.diagnosisDataGridView.Rows.Add(currDiagnosis.DiagnosisId, currDiagnosis.DiagnosisDescription, currDiagnosis.IsFinal ? "Yes" : "No",
+                    currDiagnosis.BasedOnTestResults ? "Yes" : "No");
 
                 if (currDiagnosis.IsFinal)
                 {
@@ -353,30 +353,24 @@ namespace CS3230Project.View
 
         private void DiagnosisDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (!this.finalDiagnosisExists && e.RowIndex >= 0)
             {
-                if (!this.finalDiagnosisExists)
+                var rowIndex = e.RowIndex;
+                var diagnosisId = (int)this.diagnosisDataGridView.Rows[rowIndex].Cells[0].Value;
+                var diagnoses = DiagnosisManagerViewModel.GetDiagnoses(this.appointmentId);
+                Diagnosis diagnosis = null;
+
+                foreach (var currDiagnosis in diagnoses)
                 {
-                    var rowIndex = e.RowIndex;
-                    var diagnosisId = (int)this.diagnosisDataGridView.Rows[rowIndex].Cells[0].Value;
-                    var diagnoses = DiagnosisManagerViewModel.GetDiagnoses(this.appointmentId);
-                    Diagnosis diagnosis = null;
-
-                    foreach (var currDiagnosis in diagnoses)
+                    if (currDiagnosis.DiagnosisId == diagnosisId)
                     {
-                        if (currDiagnosis.DiagnosisId == diagnosisId)
-                        {
-                            diagnosis = currDiagnosis;
-                        }
+                        diagnosis = currDiagnosis;
                     }
-
-                    var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId);
-                    modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
-                    modifyDiagnosisDialog.ShowDialog();
                 }
-            }
-            catch (Exception)
-            {
+
+                var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId);
+                modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
+                modifyDiagnosisDialog.ShowDialog();
             }
 
         }

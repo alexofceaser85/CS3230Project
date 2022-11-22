@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.removeDiagnosisButton = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.basedOnTestResultsComboBox = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
@@ -67,6 +67,15 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // submitChangesFooter1
+            // 
+            this.submitChangesFooter1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.submitChangesFooter1.Location = new System.Drawing.Point(3, 403);
+            this.submitChangesFooter1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.submitChangesFooter1.Name = "submitChangesFooter1";
+            this.submitChangesFooter1.Size = new System.Drawing.Size(794, 45);
+            this.submitChangesFooter1.TabIndex = 9;
             // 
             // tableLayoutPanel2
             // 
@@ -201,8 +210,8 @@
             this.isFinalComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.isFinalComboBox.FormattingEnabled = true;
             this.isFinalComboBox.Items.AddRange(new object[] {
-            "False",
-            "True"});
+            "Yes",
+            "No"});
             this.isFinalComboBox.Location = new System.Drawing.Point(165, 7);
             this.isFinalComboBox.Name = "isFinalComboBox";
             this.isFinalComboBox.Size = new System.Drawing.Size(157, 24);
@@ -239,8 +248,8 @@
             this.basedOnTestResultsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.basedOnTestResultsComboBox.FormattingEnabled = true;
             this.basedOnTestResultsComboBox.Items.AddRange(new object[] {
-            "False",
-            "True"});
+            "Yes",
+            "No"});
             this.basedOnTestResultsComboBox.Location = new System.Drawing.Point(165, 7);
             this.basedOnTestResultsComboBox.Name = "basedOnTestResultsComboBox";
             this.basedOnTestResultsComboBox.Size = new System.Drawing.Size(157, 24);
@@ -260,15 +269,6 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Diagnosis";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // submitChangesFooter1
-            // 
-            this.submitChangesFooter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.submitChangesFooter1.Location = new System.Drawing.Point(3, 403);
-            this.submitChangesFooter1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.submitChangesFooter1.Name = "submitChangesFooter1";
-            this.submitChangesFooter1.Size = new System.Drawing.Size(794, 45);
-            this.submitChangesFooter1.TabIndex = 9;
             // 
             // ModifyDiagnosis
             // 
