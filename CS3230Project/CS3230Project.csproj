@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\Accounts\AccountsDal.cs" />
+    <Compile Include="DAL\AdminVisitsSearchDal.cs" />
     <Compile Include="DAL\Appointments\AppointmentsDAL.cs" />
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\Diagnosis\DiagnosisDal.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Model\Tests\AvailableTest.cs" />
     <Compile Include="Model\Tests\TestManager.cs" />
     <Compile Include="Model\Users\Admin.cs" />
+    <Compile Include="Model\Users\AdminVisitsSearchManager.cs" />
     <Compile Include="Model\Users\Doctor.cs" />
     <Compile Include="Model\Users\Nurses\NurseManager.cs" />
     <Compile Include="Model\Users\DoctorManager.cs" />
@@ -128,6 +130,7 @@
     <Compile Include="Model\Visits\Visit.cs" />
     <Compile Include="Model\Visits\VisitManager.cs" />
     <Compile Include="Settings\Settings.cs" />
+    <Compile Include="ViewModel\AdminVisitsSearch\AdminVisitsSearchViewModel.cs" />
     <Compile Include="ViewModel\Appointments\AppointmentManagerViewModel.cs" />
     <Compile Include="ViewModel\Checkups\CheckupManagerViewModel.cs" />
     <Compile Include="ViewModel\Diagnosis\DiagnosisManagerViewModel.cs" />
