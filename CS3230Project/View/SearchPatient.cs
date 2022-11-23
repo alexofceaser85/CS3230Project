@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using CS3230Project.Model.Users.Patients;
 using CS3230Project.View.WindowSwitching;
@@ -13,6 +14,7 @@ namespace CS3230Project.View
     public partial class SearchPatient : Form
     {
         private readonly string searchErrorHeader = "Unable to Search";
+        private const string TrueStatusValue = "True";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchPatient" /> class.
@@ -67,11 +69,30 @@ namespace CS3230Project.View
                     currPatient.PatientId.ToString(), currPatient.LastName, currPatient.FirstName,
                     currPatient.DateOfBirth.ToString("MM/dd/yyyy"), currPatient.Gender, currPatient.PhoneNumber,
                     currPatient.AddressOne, currPatient.AddressTwo, currPatient.City, currPatient.State,
-                    currPatient.Zipcode, currPatient.Status.ToString()
+                    currPatient.Zipcode, currPatient.IsActive.ToString()
                 };
                 this.PatientDataGridView.Rows.Add(patientDetails);
                 this.PatientDataGridView.CellClick += 
                     this.PatientDataGridView_CellClick;
+                this.PatientDataGridView.CellDoubleClick += PatientDataGridViewOnCellDoubleClick;
+            }
+
+            this.modifyRowBasedOnPatientStatus();
+        }
+
+        private void modifyRowBasedOnPatientStatus()
+        {
+            foreach (DataGridViewRow row in this.PatientDataGridView.Rows)
+            {
+                var statusCell = row.Cells[row.Cells.Count - 2];
+                if (statusCell.Value.ToString().Equals(TrueStatusValue))
+                {
+                    statusCell.Style.BackColor = Color.PaleGreen;
+                }
+                else
+                {
+                    statusCell.Style.BackColor = Color.PaleVioletRed;
+                }
             }
         }
 
@@ -84,23 +105,32 @@ namespace CS3230Project.View
         {
             DataGridView dataGridView = sender as DataGridView;
 
-            if (dataGridView == null || e.RowIndex >= dataGridView.RowCount - 1)
+            if (dataGridView == null || e.RowIndex > dataGridView.RowCount - 1)
             {
                 return;
             }
 
             if (dataGridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 12)
             {
-                SwitchForms.Switch(this, new Appointments(this.createPatient(dataGridView.SelectedCells)));
+                var selectedPatient = this.createPatient(dataGridView.SelectedCells);
+                SwitchForms.Switch(this, new Appointments(selectedPatient));
             }
-            else
+        }
+
+        private void PatientDataGridViewOnCellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+
+            if (dataGridView == null || e.RowIndex >= dataGridView.RowCount - 1)
             {
-                if (dataGridView.CurrentRow.Selected)
-                {
-                    DataGridViewSelectedCellCollection cells = dataGridView.SelectedCells;
-                    Form editForm = new EditPatient(this.createPatient(cells));
-                    SwitchForms.Switch(this, editForm);
-                }
+                return;
+            }
+
+            if (dataGridView.CurrentRow.Selected)
+            {
+                DataGridViewSelectedCellCollection cells = dataGridView.SelectedCells;
+                Form editForm = new EditPatient(this.createPatient(cells));
+                SwitchForms.Switch(this, editForm);
             }
         }
 
@@ -163,7 +193,7 @@ namespace CS3230Project.View
 
             }
             
-            Patient patient = new Patient(Int32.Parse(patientId), firstName, lastName, DateTime.Parse(dateOfBirth), gender, phoneNumber, addressOne, addressTwo, city,
+            Patient patient = new Patient(Int32.Parse(patientId), lastName, firstName, DateTime.Parse(dateOfBirth), gender, phoneNumber, addressOne, addressTwo, city,
                 state, zipcode, bool.Parse(status));
 
             return patient;

@@ -32,7 +32,15 @@ namespace CS3230Project.View
             this.upcomingAppointments = new List<Appointment>();
             this.addUpcomingAppointments();
             this.addPreviousAppointments();
+            this.disableActionsIfPatientIsNotActive();
+        }
 
+        private void disableActionsIfPatientIsNotActive()
+        {
+            if (!this.patient.IsActive)
+            {
+                this.CreateAppointmentButton.Enabled = false;
+            }
         }
 
         private void Footer2OnBackButtonEventHandler(object sender, EventArgs e)
@@ -90,7 +98,7 @@ namespace CS3230Project.View
 
                 if (appointmentID >= 0)
                 {
-                       SwitchForms.Switch(this, new Checkup(appointmentID, this.patient, this.upcomingAppointments[e.RowIndex].Doctor));
+                    SwitchForms.Switch(this, new Checkup(appointmentID, this.patient, this.upcomingAppointments[e.RowIndex].Doctor));
                 }
                 else
                 {
@@ -114,7 +122,7 @@ namespace CS3230Project.View
                     int.Parse((string)previousAppointmentsTable.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value);
                 if (appointmentID >= 0)
                 {
-                       SwitchForms.Switch(this, new Checkup(appointmentID, this.patient, this.previousAppointments[e.RowIndex].Doctor));
+                    SwitchForms.Switch(this, new Checkup(appointmentID, this.patient, this.previousAppointments[e.RowIndex].Doctor));
                 }
                 else
                 {
