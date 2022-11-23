@@ -10,26 +10,6 @@ namespace CS3230Project.DAL.Nurses
     /// </summary>
     public static class NurseDal
     {
-
-        /// <summary>
-        /// Gets the nurses.
-        ///
-        /// Precondition: none
-        /// Post-condition: none
-        /// </summary>
-        /// <returns>
-        ///   A list of all the nurses
-        /// </returns>
-        public static List<Nurse> GetNurses()
-        {
-            using var connection = new MySqlConnection(Connection.ConnectionString);
-            connection.Open();
-            const string query = "select * from nurses";
-            using var command = new MySqlCommand(query, connection);
-
-            return NurseDal.createNurses(command);
-        }
-
         /// <summary>
         /// Gets the nurse by identifier.
         ///
