@@ -119,23 +119,19 @@ namespace CS3230Project.Model.Users.Patients
         ///     Precondition:
         ///     updatedDetails != null AND updatedDetails.Count MORE THAN 0
         /// </summary>
-        /// <param name="updatedDetails">The updated details.</param>
+        /// <param name="modifiedPatient">The updated patient.</param>
         /// <returns>
         ///     True, if the patient was modified
         /// </returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static bool ModifyPatient(Dictionary<string, string> updatedDetails)
+        public static bool ModifyPatient(Patient modifiedPatient)
         {
-            if (updatedDetails == null)
+            if (modifiedPatient == null)
             {
                 throw new ArgumentException(PatientErrorMessages.UpdatedPatientDetailsCannotBeNull);
             }
-            if (updatedDetails.Count == 0)
-            {
-                throw new ArgumentException(PatientErrorMessages.UpdatedPatientDetailsCannotBeEmpty);
-            }
 
-            return PatientsDal.ModifyPatient(updatedDetails);
+            return PatientsDal.ModifyPatient(modifiedPatient);
         }
     }
 }

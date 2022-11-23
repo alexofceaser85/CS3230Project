@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CS3230Project.Model.Diagnosis;
+using CS3230Project.Model.Users.Patients;
 using CS3230Project.View.Validation;
 using CS3230Project.ViewModel.Diagnosis;
 
@@ -13,6 +14,7 @@ namespace CS3230Project.View
     {
         private readonly Diagnosis diagnosis;
         private readonly int appointmentId;
+        private Patient patient;
 
         /// <summary>
         /// The event that a diagnosis was added or modified
@@ -27,11 +29,12 @@ namespace CS3230Project.View
         /// </summary>
         /// <param name="diagnosis">The diagnosis.</param>
         /// <param name="appointmentId">The appointment identifier.</param>
-        public ModifyDiagnosis(Diagnosis diagnosis, int appointmentId)
+        public ModifyDiagnosis(Diagnosis diagnosis, int appointmentId, Patient patient)
         {
             InitializeComponent();
             this.diagnosis = diagnosis;
             this.appointmentId = appointmentId;
+            this.patient = patient;
 
             if (this.diagnosis != null)
             {
@@ -47,6 +50,18 @@ namespace CS3230Project.View
 
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
             this.submitChangesFooter1.SubmitButtonEventHandler += this.SubmitChangesFooter1OnSubmitButtonEventHandler;
+            this.disableFieldsAndActionsIfPatientIsNotActive();
+        }
+
+        private void disableFieldsAndActionsIfPatientIsNotActive()
+        {
+            if (!this.patient.IsActive)
+            {
+                this.diagnosisDescriptionTextBox.Enabled = false;
+                this.isFinalCheckBox.Enabled = false;
+                this.basedOnTestResultsCheckBox.Enabled = false;
+                this.removeDiagnosisButton.Enabled = false;
+            }
         }
 
         /// <summary>
@@ -82,7 +97,7 @@ namespace CS3230Project.View
 
         private void SubmitChangesFooter1OnSubmitButtonEventHandler(object sender, EventArgs e)
         {
-            if (this.diagnosis == null)
+            if (this.diagnosis == null && this.patient.IsActive)
             {
                 if (DiagnosisValidation.VerifyDiagnosisDescription(this.diagnosisDescriptionTextBox,
                         this.diagnosisDescriptionErrorMessage))
@@ -95,7 +110,7 @@ namespace CS3230Project.View
                     this.Close();
                 }
             }
-            else
+            else if (this.diagnosis != null && this.patient.IsActive)
             {
                 if (DiagnosisValidation.VerifyDiagnosisDescription(this.diagnosisDescriptionTextBox,
                         this.diagnosisDescriptionErrorMessage))
@@ -107,6 +122,10 @@ namespace CS3230Project.View
                     this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs { DiagnosisSubmitted = diagnosis });
                     this.Close();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Cannot submit appointment when patient is not active", "Cannot Submit Appointment");
             }
         }
 

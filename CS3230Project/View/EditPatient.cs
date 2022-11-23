@@ -15,8 +15,8 @@ namespace CS3230Project.View
     public partial class EditPatient : Form
     {
         private static string editPatientErrorHeader = "Unable To Edit Patient";
-        private static string editPatientLoadingErrorHeader = "Unable To Edit Patient"; 
-        private readonly Dictionary<string, string> updatedDetails;
+        private static string editPatientLoadingErrorHeader = "Unable To Edit Patient";
+        private Patient patientToEdit;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EditPatient" /> class.
@@ -27,9 +27,9 @@ namespace CS3230Project.View
             try
             {
                 this.InitializeComponent();
-                this.updatedDetails = new Dictionary<string, string>();
-                this.loadPatientData(patient);
-                this.updatedDetails.Add("PatientId", patient.PatientId.ToString());
+                this.patientToEdit = patient;
+                this.loadPatientData();
+                this.disablePatientFieldsOnInactivePatient();
                 this.submitChangesFooter1.SubmitButtonEventHandler += this.submitChangesButton_Click;
                 this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
                 this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
@@ -50,20 +50,36 @@ namespace CS3230Project.View
             SwitchForms.SwitchBackToHome(this);
         }
 
-        private void loadPatientData(Patient patient)
+        private void loadPatientData()
         {
-            this.patientFirstNameTextBox.Text = patient.FirstName;
-            this.patientLastNameTextBox.Text = patient.LastName;
-            this.patientDateOfBirthPicker.Value = patient.DateOfBirth;
-            this.patientGenderComboBox.Text = patient.Gender;
-            this.patientPhoneNumberTextBox.Text = patient.PhoneNumber;
-            this.patientAddressOneTextBox.Text = patient.AddressOne;
-            this.patientAddressTwoTextBox.Text = patient.AddressTwo;
-            this.patientCityTextBox.Text = patient.City;
-            this.patientStateComboBox.Text = patient.State;
-            this.patientZipcodeTextBox.Text = patient.Zipcode;
-            this.patientStatusComboBox.Text = patient.Status.ToString();
+            this.patientFirstNameTextBox.Text = this.patientToEdit.FirstName;
+            this.patientLastNameTextBox.Text = this.patientToEdit.LastName;
+            this.patientDateOfBirthPicker.Value = this.patientToEdit.DateOfBirth;
+            this.patientGenderComboBox.Text = this.patientToEdit.Gender;
+            this.patientPhoneNumberTextBox.Text = this.patientToEdit.PhoneNumber;
+            this.patientAddressOneTextBox.Text = this.patientToEdit.AddressOne;
+            this.patientAddressTwoTextBox.Text = this.patientToEdit.AddressTwo;
+            this.patientCityTextBox.Text = this.patientToEdit.City;
+            this.patientStateComboBox.Text = this.patientToEdit.State;
+            this.patientZipcodeTextBox.Text = this.patientToEdit.Zipcode;
+            this.patientStatusComboBox.Text = this.patientToEdit.IsActive.ToString();
+        }
 
+        private void disablePatientFieldsOnInactivePatient()
+        {
+            if (this.patientToEdit.IsActive == false)
+            {
+                this.patientFirstNameTextBox.Enabled = false;
+                this.patientLastNameTextBox.Enabled = false;
+                this.patientDateOfBirthPicker.Enabled = false;
+                this.patientGenderComboBox.Enabled = false;
+                this.patientPhoneNumberTextBox.Enabled = false;
+                this.patientAddressOneTextBox.Enabled = false;
+                this.patientAddressTwoTextBox.Enabled = false;
+                this.patientCityTextBox.Enabled = false;
+                this.patientStateComboBox.Enabled = false;
+                this.patientZipcodeTextBox.Enabled = false;
+            }
         }
 
         private void submitChangesButton_Click(object sender, EventArgs e)
@@ -73,7 +89,20 @@ namespace CS3230Project.View
                 this.verifyAll();
                 if (this.ValidateModifiedData())
                 {
-                    PatientManagerViewModel.ModifyPatient(this.updatedDetails);
+                    PatientManagerViewModel.ModifyPatient(new Patient(
+                        this.patientToEdit.PatientId, 
+                        this.patientLastNameTextBox.Text,
+                        this.patientFirstNameTextBox.Text, 
+                        this.patientDateOfBirthPicker.Value, 
+                        this.patientGenderComboBox.Text, 
+                        this.patientPhoneNumberTextBox.Text,
+                        this.patientAddressOneTextBox.Text,
+                        this.patientAddressTwoTextBox.Text,
+                        this.patientCityTextBox.Text,
+                        this.patientStateComboBox.Text,
+                        this.patientZipcodeTextBox.Text,
+                        this.patientStatusComboBox.Text.Equals("True")
+                    ));
                     Form searchPatientForm = new SearchPatient();
                     SwitchForms.Switch(this, searchPatientForm);
                 }
@@ -118,27 +147,6 @@ namespace CS3230Project.View
         private void patientDateOfBirthPicker_ValueChanged(object sender, EventArgs e)
         {
             PatientValidation.VerifyDateInputs(this.patientDateOfBirthPicker, this.dateOfBirthErrorMessage);
-
-            if (((DateTimePicker)sender).Name != null && !this.updatedDetails.ContainsKey(((DateTimePicker)sender).Name))
-            {
-                this.updatedDetails.Add(((DateTimePicker)sender).Name, ((DateTimePicker)sender).Value.ToString("yyyy-MM-dd"));
-            }
-            else if (((DateTimePicker)sender).Name != null && this.updatedDetails.ContainsKey(((DateTimePicker)sender).Name))
-            {
-                this.updatedDetails[((DateTimePicker)sender).Name] = ((DateTimePicker)sender).Value.ToString("yyyy-MM-dd");
-            }
-        }
-
-        private void patientDetailTextBox_LeaveFocus(object sender, EventArgs e)
-        {
-            if (((TextBox)sender).Name != null && !this.updatedDetails.ContainsKey(((TextBox)sender).Name))
-            {
-                this.updatedDetails.Add(((TextBox)sender).Name, ((TextBox)sender).Text);
-            }
-            else if (((TextBox)sender).Name != null && this.updatedDetails.ContainsKey(((TextBox)sender).Name))
-            {
-                this.updatedDetails[((TextBox)sender).Name] = ((TextBox)sender).Text;
-            }
         }
 
         private void verifyAll()
@@ -182,29 +190,11 @@ namespace CS3230Project.View
         private void patientGenderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PatientValidation.VerifyGenderInputs(this.patientGenderComboBox, this.genderErrorMessage);
-
-            if (((ComboBox)sender).Name != null && !this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
-            {
-                this.updatedDetails.Add(((ComboBox)sender).Name, ((ComboBox)sender).Text);
-            }
-            else if (((ComboBox)sender).Name != null && this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
-            {
-                this.updatedDetails[((ComboBox)sender).Name] = ((ComboBox)sender).Text;
-            }
         }
 
         private void patientStateComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PatientValidation.VerifyStateInputs(this.patientStateComboBox, this.stateErrorMessage);
-
-            if (((ComboBox)sender).Name != null && !this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
-            {
-                this.updatedDetails.Add(((ComboBox)sender).Name, ((ComboBox)sender).Text);
-            }
-            else if (((ComboBox)sender).Name != null && this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
-            {
-                this.updatedDetails[((ComboBox)sender).Name] = ((ComboBox)sender).Text;
-            }
         }
 
         private void patientZipcodeTextBox_TextChanged(object sender, EventArgs e)
@@ -215,15 +205,6 @@ namespace CS3230Project.View
         private void patientStatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PatientValidation.VerifyStatusInputs(this.patientStatusComboBox, this.statusErrorMessage);
-
-            if (((ComboBox)sender).Name != null && !this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
-            {
-                this.updatedDetails.Add(((ComboBox)sender).Name, ((ComboBox)sender).Text);
-            }
-            else if (((ComboBox)sender).Name != null && this.updatedDetails.ContainsKey(((ComboBox)sender).Name))
-            {
-                this.updatedDetails[((ComboBox)sender).Name] = ((ComboBox)sender).Text;
-            }
         }
     }
 }

@@ -44,6 +44,17 @@ namespace CS3230Project.View
             this.patient = patient;
             this.appointmentDatePicker.Value = this.appointmentToEdit.Date;
             this.populateEditAppointmentValues();
+            this.disableFieldsAndActionsIfPatientIsNotActive();
+        }
+
+        private void disableFieldsAndActionsIfPatientIsNotActive()
+        {
+            if (!this.patient.IsActive)
+            {
+                this.appointmentDatePicker.Enabled = false;
+                this.appointmentDoctorDropDown.Enabled = false;
+                this.reasonTextBox.Enabled = false;
+            }
         }
 
         private void populateEditAppointmentValues()
@@ -63,11 +74,18 @@ namespace CS3230Project.View
         {
             try
             {
-                this.validateAll();
-                var appointmentDate = this.convertAppointmentDateTimeToZero();
-                AppointmentManagerViewModel.ModifyAppointment(this.appointmentToEdit.AppointmentId, appointmentDate,
-                    this.availableDoctors[this.appointmentDoctorDropDown.SelectedIndex].DoctorId, this.reasonTextBox.Text);
-                SwitchForms.Switch(this, new Appointments(this.patient));
+                if (this.patient.IsActive)
+                {
+                    this.validateAll();
+                    var appointmentDate = this.convertAppointmentDateTimeToZero();
+                    AppointmentManagerViewModel.ModifyAppointment(this.appointmentToEdit.AppointmentId, appointmentDate,
+                        this.availableDoctors[this.appointmentDoctorDropDown.SelectedIndex].DoctorId, this.reasonTextBox.Text);
+                    SwitchForms.Switch(this, new Appointments(this.patient));
+                }
+                else
+                {
+                    MessageBox.Show("Cannot submit appointment when patient is not active", "Cannot Submit Appointment");
+                }
             }
             catch (ArgumentException)
             {

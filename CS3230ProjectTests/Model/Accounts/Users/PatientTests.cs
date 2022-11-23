@@ -482,7 +482,7 @@ namespace CS3230ProjectTests.Model.Accounts.Users
             Assert.AreEqual("Georgia", patient.State);
             Assert.AreEqual("11111", patient.Zipcode);
             Assert.AreEqual("777-777-7777", patient.PhoneNumber);
-            Assert.AreEqual(true, patient.Status);
+            Assert.AreEqual(true, patient.IsActive);
         }
     }
 }
