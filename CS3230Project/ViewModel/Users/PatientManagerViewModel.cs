@@ -71,13 +71,13 @@ namespace CS3230Project.ViewModel.Users
         /// Precondition: none
         /// Post-condition: none
         /// </summary>
-        /// <param name="updatedDetails">The updated details.</param>
+        /// <param name="modifiedPatient">The modified patient.</param>
         /// <returns>
         ///   <br />
         /// </returns>
-        public static bool ModifyPatient(Dictionary<string, string> updatedDetails)
+        public static bool ModifyPatient(Patient modifiedPatient)
         {
-            return PatientManager.ModifyPatient(updatedDetails);
+            return PatientManager.ModifyPatient(modifiedPatient);
         }
     }
 }

@@ -65,9 +65,9 @@ namespace CS3230Project.Model.Users.Patients
         public string PhoneNumber { get; }
 
         /// <summary>
-        ///     The status status for the patient
+        ///     The isActive isActive for the patient
         /// </summary>
-        public bool Status { get; }
+        public bool IsActive { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Patient" />
@@ -104,10 +104,10 @@ namespace CS3230Project.Model.Users.Patients
         /// <param name="city">The city.</param>
         /// <param name="state">The state.</param>
         /// <param name="zipcode">The zipcode.</param>
-        /// <param name="status">if set to <c>true</c> [status].</param>
+        /// <param name="isActive">if set to <c>true</c> [isActive].</param>
         /// <exception cref="System.ArgumentException"></exception>
         public Patient(int patientId, string lastName, string firstName, DateTime dateOfBirth, string gender, string phoneNumber,
-            string addressOne, string addressTwo, string city, string state, string zipcode, bool status)
+            string addressOne, string addressTwo, string city, string state, string zipcode, bool isActive)
         {
             if (patientId < 0)
             {
@@ -245,7 +245,7 @@ namespace CS3230Project.Model.Users.Patients
             this.State = state;
             this.Zipcode = zipcode;
             this.PhoneNumber = phoneNumber;
-            this.Status = status;
+            this.IsActive = isActive;
         }
     }
 }

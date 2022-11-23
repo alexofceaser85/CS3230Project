@@ -53,6 +53,23 @@ namespace CS3230Project.View
             this.updateTestData();
             this.loadPageInfoForVisit(appointmentId);
             this.updateDiagnosesData();
+            this.disableActionsIfPatientIsNotActive();
+        }
+
+        private void disableActionsIfPatientIsNotActive()
+        {
+            if (!this.patient.IsActive)
+            {
+                this.systolicBloodPressureTextBox.Enabled = false;
+                this.diastolicBloodPressureTextBox.Enabled = false;
+                this.bodyTemperatureTextBox.Enabled = false;
+                this.pulseTextBox.Enabled = false;
+                this.heightTextBox.Enabled = false;
+                this.weightTextBox.Enabled = false;
+                this.symptomsTextBox.Enabled = false;
+                this.AddTestButton.Enabled = false;
+                this.submitDiagnosisButton.Enabled = false;
+            }
         }
 
         private void updateDiagnosesData()
@@ -208,9 +225,16 @@ namespace CS3230Project.View
         {
             try
             {
-                CheckupManagerViewModel.ModifyVisit(this.getVisitInfo());
-                this.testManager.SubmitTests();
-                SwitchForms.Switch(this, new Appointments(this.patient));
+                if (this.patient.IsActive)
+                {
+                    CheckupManagerViewModel.ModifyVisit(this.getVisitInfo());
+                    this.testManager.SubmitTests();
+                    SwitchForms.Switch(this, new Appointments(this.patient));
+                }
+                else
+                {
+                    MessageBox.Show("Cannot submit visit when patient is not active", "Cannot Submit Visit");
+                }
             }
             catch (Exception)
             {
@@ -222,10 +246,16 @@ namespace CS3230Project.View
         {
             try
             {
-                CheckupManagerViewModel.AddVisit(this.getVisitInfo());
-                this.testManager.SubmitTests();
-                SwitchForms.Switch(this, new Appointments(this.patient));
-
+                if (this.patient.IsActive)
+                {
+                    CheckupManagerViewModel.AddVisit(this.getVisitInfo());
+                    this.testManager.SubmitTests();
+                    SwitchForms.Switch(this, new Appointments(this.patient));
+                }
+                else
+                {
+                    MessageBox.Show("Cannot submit visit when patient is not active", "Cannot Submit Visit");
+                }
             }
             catch (Exception)
             {
@@ -306,7 +336,7 @@ namespace CS3230Project.View
 
         private void PendingTestsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 3 && this.patient.IsActive)
             {
                 this.testManager.RemoveNonSubmittedTest(this.testManager.NotSubmittedTests[e.RowIndex]);
                 this.updateNonSubmittedTests();
@@ -315,12 +345,15 @@ namespace CS3230Project.View
 
         private void NotCompletedTestsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            SwitchForms.Switch(this, new AddTestResults(this.testManager.NotPerformedTests[e.RowIndex], this.appointmentId, this.patient, this.doctor));
+            if (this.patient.IsActive)
+            {
+                SwitchForms.Switch(this, new AddTestResults(this.testManager.NotPerformedTests[e.RowIndex], this.appointmentId, this.patient, this.doctor));
+            }
         }
 
         private void SubmitDiagnosis_Click(object sender, EventArgs e)
         {
-            var modifyDiagnosisDialog = new ModifyDiagnosis(null, this.appointmentId);
+            var modifyDiagnosisDialog = new ModifyDiagnosis(null, this.appointmentId, this.patient);
             modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
             modifyDiagnosisDialog.ShowDialog();
         }
@@ -342,7 +375,7 @@ namespace CS3230Project.View
                     }
                 }
 
-                var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId);
+                var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId, this.patient);
                 modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
                 modifyDiagnosisDialog.ShowDialog();
             }
