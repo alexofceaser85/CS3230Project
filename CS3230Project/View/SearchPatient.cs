@@ -121,7 +121,7 @@ namespace CS3230Project.View
         {
             DataGridView dataGridView = sender as DataGridView;
 
-            if (dataGridView == null || e.RowIndex >= dataGridView.RowCount - 1)
+            if (dataGridView == null || e.RowIndex > dataGridView.RowCount - 1)
             {
                 return;
             }
