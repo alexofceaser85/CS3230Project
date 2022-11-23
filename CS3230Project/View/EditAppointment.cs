@@ -23,6 +23,8 @@ namespace CS3230Project.View
         private readonly Patient patient;
         private readonly Appointment appointmentToEdit;
         private List<Doctor> availableDoctors;
+        private string cannotSubmitAppointmentWhenPatientIsNotActive = "Cannot submit appointment when patient is not active";
+        private string cannotSubmitAppointment = "Cannot Submit Appointment";
 
         /// <summary>
         /// Initializes a new <see cref="EditAppointment"/>
@@ -84,7 +86,7 @@ namespace CS3230Project.View
                 }
                 else
                 {
-                    MessageBox.Show("Cannot submit appointment when patient is not active", "Cannot Submit Appointment");
+                    MessageBox.Show(this.cannotSubmitAppointmentWhenPatientIsNotActive, this.cannotSubmitAppointment);
                 }
             }
             catch (ArgumentException)

@@ -15,6 +15,8 @@ namespace CS3230Project.View
         private readonly Diagnosis diagnosis;
         private readonly int appointmentId;
         private Patient patient;
+        private string cannotSubmitAppointmentWhenPatientIsNotActive = "Cannot submit appointment when patient is not active";
+        private string cannotSubmitAppointment = "Cannot Submit Appointment";
         private const string YesString = "Yes";
 
         /// <summary>
@@ -133,7 +135,7 @@ namespace CS3230Project.View
             }
             else
             {
-                MessageBox.Show("Cannot submit appointment when patient is not active", "Cannot Submit Appointment");
+                MessageBox.Show(this.cannotSubmitAppointmentWhenPatientIsNotActive, this.cannotSubmitAppointment);
             }
         }
 

@@ -32,6 +32,8 @@ namespace CS3230Project.View
         private readonly TestsManagerViewModel testManager;
         private readonly string invalidInputErrorMessage = "Invalid Values for the checkup details";
         private readonly string invalidInputErrorHeader = "Unable to add new checkup";
+        private string cannotSubmitVisitWhenPatientIsNotActive = "Cannot submit visit when patient is not active";
+        private string cannotSubmitVisit = "Cannot Submit Visit";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Checkup" /> class.
@@ -233,7 +235,7 @@ namespace CS3230Project.View
                 }
                 else
                 {
-                    MessageBox.Show("Cannot submit visit when patient is not active", "Cannot Submit Visit");
+                    MessageBox.Show(this.cannotSubmitVisitWhenPatientIsNotActive, this.cannotSubmitVisit);
                 }
             }
             catch (Exception)
@@ -254,7 +256,7 @@ namespace CS3230Project.View
                 }
                 else
                 {
-                    MessageBox.Show("Cannot submit visit when patient is not active", "Cannot Submit Visit");
+                    MessageBox.Show(this.cannotSubmitVisitWhenPatientIsNotActive, this.cannotSubmitVisit);
                 }
             }
             catch (Exception)
