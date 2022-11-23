@@ -285,7 +285,7 @@
             this.tableLayoutPanel65.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel65.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel65.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel65.Size = new System.Drawing.Size(429, 573);
+            this.tableLayoutPanel65.Size = new System.Drawing.Size(570, 706);
             this.tableLayoutPanel65.TabIndex = 0;
             // 
             // tableLayoutPanel5
@@ -303,7 +303,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(415, 111);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(556, 171);
             this.tableLayoutPanel5.TabIndex = 7;
             // 
             // symptomsTextBox
@@ -313,7 +313,7 @@
             this.symptomsTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.symptomsTextBox.Multiline = true;
             this.symptomsTextBox.Name = "symptomsTextBox";
-            this.symptomsTextBox.Size = new System.Drawing.Size(411, 67);
+            this.symptomsTextBox.Size = new System.Drawing.Size(552, 127);
             this.symptomsTextBox.TabIndex = 1;
             this.symptomsTextBox.TextChanged += new System.EventHandler(this.symptomsTextBox_TextChanged);
             // 
@@ -334,7 +334,7 @@
             this.symptomsErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.symptomsErrorMessage.AutoSize = true;
             this.symptomsErrorMessage.Font = new System.Drawing.Font("Segoe UI", 0.25F);
-            this.symptomsErrorMessage.Location = new System.Drawing.Point(3, 99);
+            this.symptomsErrorMessage.Location = new System.Drawing.Point(3, 159);
             this.symptomsErrorMessage.Name = "symptomsErrorMessage";
             this.symptomsErrorMessage.Size = new System.Drawing.Size(0, 3);
             this.symptomsErrorMessage.TabIndex = 2;
@@ -355,7 +355,7 @@
             this.tableLayoutPanel73.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel73.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel73.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel73.Size = new System.Drawing.Size(413, 69);
+            this.tableLayoutPanel73.Size = new System.Drawing.Size(554, 69);
             this.tableLayoutPanel73.TabIndex = 4;
             // 
             // heightErrorMessage
@@ -377,7 +377,7 @@
             this.heightTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.heightTextBox.MaxLength = 12;
             this.heightTextBox.Name = "heightTextBox";
-            this.heightTextBox.Size = new System.Drawing.Size(409, 22);
+            this.heightTextBox.Size = new System.Drawing.Size(550, 22);
             this.heightTextBox.TabIndex = 2;
             this.heightTextBox.TextChanged += new System.EventHandler(this.heightTextBox_TextChanged);
             // 
@@ -411,7 +411,7 @@
             this.tableLayoutPanel74.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel74.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel74.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel74.Size = new System.Drawing.Size(413, 69);
+            this.tableLayoutPanel74.Size = new System.Drawing.Size(554, 69);
             this.tableLayoutPanel74.TabIndex = 3;
             // 
             // pulseErrorMessage
@@ -444,7 +444,7 @@
             this.pulseTextBox.Location = new System.Drawing.Point(2, 27);
             this.pulseTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.pulseTextBox.Name = "pulseTextBox";
-            this.pulseTextBox.Size = new System.Drawing.Size(409, 22);
+            this.pulseTextBox.Size = new System.Drawing.Size(550, 22);
             this.pulseTextBox.TabIndex = 3;
             this.pulseTextBox.TextChanged += new System.EventHandler(this.pulseTextBox_TextChanged);
             // 
@@ -464,7 +464,7 @@
             this.tableLayoutPanel75.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel75.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel75.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel75.Size = new System.Drawing.Size(413, 69);
+            this.tableLayoutPanel75.Size = new System.Drawing.Size(554, 69);
             this.tableLayoutPanel75.TabIndex = 1;
             // 
             // diastolicBloodPressureErrorMessage
@@ -498,7 +498,7 @@
             this.diastolicBloodPressureTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.diastolicBloodPressureTextBox.MaxLength = 25;
             this.diastolicBloodPressureTextBox.Name = "diastolicBloodPressureTextBox";
-            this.diastolicBloodPressureTextBox.Size = new System.Drawing.Size(409, 22);
+            this.diastolicBloodPressureTextBox.Size = new System.Drawing.Size(550, 22);
             this.diastolicBloodPressureTextBox.TabIndex = 1;
             this.diastolicBloodPressureTextBox.TextChanged += new System.EventHandler(this.diastolicBloodPressureTextBox_TextChanged);
             // 
@@ -517,7 +517,7 @@
             this.tableLayoutPanel76.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel76.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel76.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel76.Size = new System.Drawing.Size(413, 76);
+            this.tableLayoutPanel76.Size = new System.Drawing.Size(554, 76);
             this.tableLayoutPanel76.TabIndex = 0;
             // 
             // systolicBloodPressureErrorMessage
@@ -551,7 +551,7 @@
             this.systolicBloodPressureTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.systolicBloodPressureTextBox.MaxLength = 25;
             this.systolicBloodPressureTextBox.Name = "systolicBloodPressureTextBox";
-            this.systolicBloodPressureTextBox.Size = new System.Drawing.Size(409, 22);
+            this.systolicBloodPressureTextBox.Size = new System.Drawing.Size(550, 22);
             this.systolicBloodPressureTextBox.TabIndex = 1;
             this.systolicBloodPressureTextBox.TextChanged += new System.EventHandler(this.systolicBloodPressureTextBox_TextChanged);
             // 
@@ -573,7 +573,7 @@
             this.tableLayoutPanel77.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel77.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel77.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel77.Size = new System.Drawing.Size(413, 69);
+            this.tableLayoutPanel77.Size = new System.Drawing.Size(554, 69);
             this.tableLayoutPanel77.TabIndex = 2;
             // 
             // bodyTempErrorMessage
@@ -606,7 +606,7 @@
             this.bodyTemperatureTextBox.Location = new System.Drawing.Point(2, 27);
             this.bodyTemperatureTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.bodyTemperatureTextBox.Name = "bodyTemperatureTextBox";
-            this.bodyTemperatureTextBox.Size = new System.Drawing.Size(409, 22);
+            this.bodyTemperatureTextBox.Size = new System.Drawing.Size(550, 22);
             this.bodyTemperatureTextBox.TabIndex = 3;
             this.bodyTemperatureTextBox.TextChanged += new System.EventHandler(this.bodyTemperatureTextBox_TextChanged);
             // 
@@ -625,7 +625,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(415, 79);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(556, 79);
             this.tableLayoutPanel6.TabIndex = 5;
             // 
             // weightErrorMessage
@@ -647,7 +647,7 @@
             this.weightTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.weightTextBox.MaxLength = 12;
             this.weightTextBox.Name = "weightTextBox";
-            this.weightTextBox.Size = new System.Drawing.Size(411, 22);
+            this.weightTextBox.Size = new System.Drawing.Size(552, 22);
             this.weightTextBox.TabIndex = 3;
             this.weightTextBox.TextChanged += new System.EventHandler(this.weightTextBox_TextChanged);
             // 
@@ -676,7 +676,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(413, 50);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(554, 50);
             this.tableLayoutPanel4.TabIndex = 8;
             // 
             // label2
@@ -694,7 +694,7 @@
             this.NurseInfoTextBox.Enabled = false;
             this.NurseInfoTextBox.Location = new System.Drawing.Point(3, 23);
             this.NurseInfoTextBox.Name = "NurseInfoTextBox";
-            this.NurseInfoTextBox.Size = new System.Drawing.Size(407, 22);
+            this.NurseInfoTextBox.Size = new System.Drawing.Size(548, 22);
             this.NurseInfoTextBox.TabIndex = 1;
             // 
             // tableLayoutPanel11
