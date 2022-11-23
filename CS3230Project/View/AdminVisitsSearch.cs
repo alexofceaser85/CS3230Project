@@ -23,12 +23,12 @@ namespace CS3230Project.View
             SwitchForms.SwitchToLogin(this);
         }
 
-        private void SubmitChangesFooter1OnBackButtonEventHandler(object sender, EventArgs e)
+        private void FooterOnBackButtonEventHandler(object sender, EventArgs e)
         {
             SwitchForms.SwitchBackToHome(this);
         }
 
-        private void SubmitChangesFooter1OnSubmitButtonEventHandler(object sender, EventArgs e)
+        private void FooterOnBackButton_Click(object sender, EventArgs e)
         {
 
         }
