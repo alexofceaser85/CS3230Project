@@ -27,6 +27,7 @@ namespace CS3230Project.View
         private readonly Patient patient;
         private readonly Doctor doctor;
         private List<Diagnosis> diagnoses;
+        private List<Diagnosis> pendingDiagnoses;
         private bool finalDiagnosisExists;
         private readonly TestsManagerViewModel testManager;
         private readonly string invalidInputErrorMessage = "Invalid Values for the checkup details";
@@ -51,11 +52,13 @@ namespace CS3230Project.View
             this.testManager = new TestsManagerViewModel(this.appointmentId);
             this.updateTestData();
             this.loadPageInfoForVisit(appointmentId);
+            this.pendingDiagnoses = new List<Diagnosis>();
             this.updateDiagnosesData();
         }
 
         private void updateDiagnosesData()
         {
+            this.diagnosisDataGridView.Rows.Clear();
             this.diagnoses = DiagnosisManagerViewModel.GetDiagnoses(this.appointmentId);
 
             foreach (var currDiagnosis in this.diagnoses)
@@ -71,7 +74,13 @@ namespace CS3230Project.View
                     this.disableTestControls();
                 }
             }
-            
+
+            foreach (var currPendingDiagnosis in this.pendingDiagnoses)
+            {
+                this.diagnosisDataGridView.Rows.Add("Pending", currPendingDiagnosis.DiagnosisDescription,
+                    currPendingDiagnosis.IsFinal,
+                    currPendingDiagnosis.BasedOnTestResults);
+            }
         }
 
         private void updateTestData()
@@ -320,8 +329,14 @@ namespace CS3230Project.View
         private void SubmitDiagnosis_Click(object sender, EventArgs e)
         {
             var modifyDiagnosisDialog = new ModifyDiagnosis(null, this.appointmentId);
-            modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
+            modifyDiagnosisDialog.AddDiagnosisSubmittedEvent += this.ModifyDiagnosisDialogOnAddDiagnosisSubmittedEvent;
             modifyDiagnosisDialog.ShowDialog();
+        }
+
+        private void ModifyDiagnosisDialogOnAddDiagnosisSubmittedEvent(object sender, DiagnosisSubmitEventArgs e)
+        {
+            this.pendingDiagnoses.Add(e.DiagnosisSubmitted);
+            this.updateDiagnosesData();
         }
 
         private void DiagnosisDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -342,7 +357,7 @@ namespace CS3230Project.View
                 }
 
                 var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId);
-                modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
+                modifyDiagnosisDialog.ModifyDiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
                 modifyDiagnosisDialog.ShowDialog();
             }
         }

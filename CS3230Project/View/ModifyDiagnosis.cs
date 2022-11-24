@@ -15,9 +15,14 @@ namespace CS3230Project.View
         private readonly int appointmentId;
 
         /// <summary>
-        /// The event that a diagnosis was added or modified
+        /// The event that a diagnosis was modified
         /// </summary>
-        public event EventHandler<DiagnosisSubmitEventArgs> DiagnosisSubmittedEvent;
+        public event EventHandler<DiagnosisSubmitEventArgs> ModifyDiagnosisSubmittedEvent;
+
+        /// <summary>
+        /// The event that a diagnosis was added
+        /// </summary>
+        public event EventHandler<DiagnosisSubmitEventArgs> AddDiagnosisSubmittedEvent;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ModifyDiagnosis" /> class.
@@ -60,7 +65,7 @@ namespace CS3230Project.View
         {
             if (this.diagnosis != null)
             {
-                this.DiagnosisSubmittedEvent?.Invoke(this, new DiagnosisSubmitEventArgs
+                this.ModifyDiagnosisSubmittedEvent?.Invoke(this, new DiagnosisSubmitEventArgs
                 {
                     DiagnosisSubmitted =
                         new Diagnosis(this.diagnosis.DiagnosisId, this.appointmentId, this.diagnosisDescriptionTextBox.Text, 
@@ -69,7 +74,7 @@ namespace CS3230Project.View
             }
             else
             {
-                this.DiagnosisSubmittedEvent?.Invoke(this, new DiagnosisSubmitEventArgs
+                this.AddDiagnosisSubmittedEvent?.Invoke(this, new DiagnosisSubmitEventArgs
                 {
                     DiagnosisSubmitted =
                         new Diagnosis(null, this.appointmentId, this.diagnosisDescriptionTextBox.Text,
@@ -90,7 +95,6 @@ namespace CS3230Project.View
                     var diagnosis = new Diagnosis(null, this.appointmentId,
                         this.diagnosisDescriptionTextBox.Text, this.isFinalCheckBox.Checked,
                         this.basedOnTestResultsCheckBox.Checked);
-                    DiagnosisManagerViewModel.AddDiagnosis(diagnosis);
                     this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs {DiagnosisSubmitted = diagnosis});
                     this.Close();
                 }
