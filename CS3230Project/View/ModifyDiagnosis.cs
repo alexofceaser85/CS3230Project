@@ -13,6 +13,7 @@ namespace CS3230Project.View
     {
         private readonly Diagnosis diagnosis;
         private readonly int appointmentId;
+        private const string YesString = "Yes";
 
         /// <summary>
         /// The event that a diagnosis was added or modified
@@ -36,17 +37,24 @@ namespace CS3230Project.View
             if (this.diagnosis != null)
             {
                 this.diagnosisDescriptionTextBox.Text = diagnosis.DiagnosisDescription;
-                this.isFinalCheckBox.Checked = diagnosis.IsFinal;
-                this.basedOnTestResultsCheckBox.Checked = diagnosis.BasedOnTestResults;
+                this.setComboBoxes(diagnosis.IsFinal, diagnosis.BasedOnTestResults);
                 this.removeDiagnosisButton.Show();
             }
             else
             {
                 this.removeDiagnosisButton.Hide();
+                this.isFinalComboBox.SelectedItem = this.isFinalComboBox.Items[1];
+                this.basedOnTestResultsComboBox.SelectedItem = this.basedOnTestResultsComboBox.Items[1];
             }
 
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
             this.submitChangesFooter1.SubmitButtonEventHandler += this.SubmitChangesFooter1OnSubmitButtonEventHandler;
+        }
+
+        private void setComboBoxes(bool isFinal, bool basedOnTest)
+        {
+            this.isFinalComboBox.SelectedItem = isFinal ? this.isFinalComboBox.Items[0] : this.isFinalComboBox.Items[1];
+            this.basedOnTestResultsComboBox.SelectedItem = basedOnTest ? this.basedOnTestResultsComboBox.Items[0] : this.basedOnTestResultsComboBox.Items[1];
         }
 
         /// <summary>
@@ -64,7 +72,7 @@ namespace CS3230Project.View
                 {
                     DiagnosisSubmitted =
                         new Diagnosis(this.diagnosis.DiagnosisId, this.appointmentId, this.diagnosisDescriptionTextBox.Text, 
-                            this.isFinalCheckBox.Checked, this.basedOnTestResultsCheckBox.Checked)
+                            (string)this.isFinalComboBox.SelectedItem == ModifyDiagnosis.YesString, (string)this.basedOnTestResultsComboBox.SelectedItem == ModifyDiagnosis.YesString)
                 });
             }
             else
@@ -73,7 +81,7 @@ namespace CS3230Project.View
                 {
                     DiagnosisSubmitted =
                         new Diagnosis(null, this.appointmentId, this.diagnosisDescriptionTextBox.Text,
-                            this.isFinalCheckBox.Checked, this.basedOnTestResultsCheckBox.Checked)
+                            (string)this.isFinalComboBox.SelectedItem == ModifyDiagnosis.YesString, (string)this.basedOnTestResultsComboBox.SelectedItem == ModifyDiagnosis.YesString)
                 });
             }
 
@@ -88,8 +96,8 @@ namespace CS3230Project.View
                         this.diagnosisDescriptionErrorMessage))
                 {
                     var diagnosis = new Diagnosis(null, this.appointmentId,
-                        this.diagnosisDescriptionTextBox.Text, this.isFinalCheckBox.Checked,
-                        this.basedOnTestResultsCheckBox.Checked);
+                        this.diagnosisDescriptionTextBox.Text, (string)this.isFinalComboBox.SelectedItem == ModifyDiagnosis.YesString,
+                        (string)this.basedOnTestResultsComboBox.SelectedItem == ModifyDiagnosis.YesString);
                     DiagnosisManagerViewModel.AddDiagnosis(diagnosis);
                     this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs {DiagnosisSubmitted = diagnosis});
                     this.Close();
@@ -101,8 +109,8 @@ namespace CS3230Project.View
                         this.diagnosisDescriptionErrorMessage))
                 {
                     var diagnosis = new Diagnosis(this.diagnosis.DiagnosisId, this.diagnosis.AppointmentId,
-                        this.diagnosisDescriptionTextBox.Text, this.isFinalCheckBox.Checked,
-                        this.basedOnTestResultsCheckBox.Checked);
+                        this.diagnosisDescriptionTextBox.Text, (string)this.isFinalComboBox.SelectedItem == ModifyDiagnosis.YesString,
+                        (string)this.basedOnTestResultsComboBox.SelectedItem == ModifyDiagnosis.YesString);
                     DiagnosisManagerViewModel.ModifyDiagnosis(diagnosis);
                     this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs { DiagnosisSubmitted = diagnosis });
                     this.Close();

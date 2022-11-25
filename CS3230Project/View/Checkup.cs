@@ -1,6 +1,7 @@
 ﻿using CS3230Project.View.WindowSwitching;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using CS3230Project.Model.Accounts;
 using CS3230Project.Model.Diagnosis;
@@ -60,8 +61,8 @@ namespace CS3230Project.View
 
             foreach (var currDiagnosis in this.diagnoses)
             {
-                this.diagnosisDataGridView.Rows.Add(currDiagnosis.DiagnosisId, currDiagnosis.DiagnosisDescription, currDiagnosis.IsFinal,
-                    currDiagnosis.BasedOnTestResults);
+                this.diagnosisDataGridView.Rows.Add(currDiagnosis.DiagnosisId, currDiagnosis.DiagnosisDescription, currDiagnosis.IsFinal ? "Yes" : "No",
+                    currDiagnosis.BasedOnTestResults ? "Yes" : "No");
 
                 if (currDiagnosis.IsFinal)
                 {
@@ -326,7 +327,7 @@ namespace CS3230Project.View
 
         private void DiagnosisDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (!this.finalDiagnosisExists)
+            if (!this.finalDiagnosisExists && e.RowIndex >= 0)
             {
                 var rowIndex = e.RowIndex;
                 var diagnosisId = (int)this.diagnosisDataGridView.Rows[rowIndex].Cells[0].Value;
@@ -345,6 +346,7 @@ namespace CS3230Project.View
                 modifyDiagnosisDialog.DiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
                 modifyDiagnosisDialog.ShowDialog();
             }
+
         }
 
         private void disableTestControls()
