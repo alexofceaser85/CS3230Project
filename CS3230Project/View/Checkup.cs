@@ -90,8 +90,8 @@ namespace CS3230Project.View
             foreach (var currPendingDiagnosis in this.pendingDiagnoses)
             {
                 this.diagnosisDataGridView.Rows.Add("Pending", currPendingDiagnosis.DiagnosisDescription,
-                    currPendingDiagnosis.IsFinal,
-                    currPendingDiagnosis.BasedOnTestResults);
+                    currPendingDiagnosis.IsFinal ? "Yes" : "No",
+                    currPendingDiagnosis.BasedOnTestResults ? "Yes" : "No");
             }
         }
 
