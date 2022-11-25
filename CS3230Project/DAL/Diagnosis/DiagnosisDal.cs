@@ -9,36 +9,54 @@ namespace CS3230Project.DAL.Diagnosis
     public class DiagnosisDal
     {
         /// <summary>
-        /// Adds the diagnosis.
+        /// Adds the diagnosises.
         ///
         /// Precondition: none
         /// Post-condition: the diagnosis provided is added to the database
         /// </summary>
-        /// <param name="diagnosisToAdd">The diagnosis to add.</param>
+        /// <param name="diagnosisesToAdd">The diagnosises to add.</param>
         /// <returns>
         ///   returns true if the diagnosis was added to the database
         ///   returns false if the diagnosis was not added to the database
         /// </returns>
-        public static bool AddDiagnosis(Model.Diagnosis.Diagnosis diagnosisToAdd)
+        public static bool AddDiagnosises(List<Model.Diagnosis.Diagnosis> diagnosisesToAdd)
         {
-            var appointmentId = diagnosisToAdd.AppointmentId;
-            var diagnosisDescription = diagnosisToAdd.DiagnosisDescription;
-            var isFinal = diagnosisToAdd.IsFinal;
-            var basedOnTestResult = diagnosisToAdd.BasedOnTestResults;
-
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
-            var comm = connection.CreateCommand();
-            comm.CommandText = "insert into diagnosis (appointmentId, diagnosisDescription, isFinal, " +
-                               "basedOnTestResults) VALUES (@appointmentId, @diagnosisDescription, " +
-                               "@isFinal, @basedOnTestResults)";
+            using var command = connection.CreateCommand();
+            var transaction = connection.BeginTransaction();
+            command.Connection = connection;
+            command.Transaction = transaction;
 
-            comm.Parameters.Add("@appointmentId", MySqlDbType.Int16).Value = appointmentId;
-            comm.Parameters.Add("@diagnosisDescription", MySqlDbType.String).Value = diagnosisDescription;
-            comm.Parameters.Add("@isFinal", MySqlDbType.Int16).Value = isFinal;
-            comm.Parameters.Add("basedOnTestResults", MySqlDbType.Int16).Value = basedOnTestResult;
+            try
+            {
+                foreach (var diagnosisToAdd in diagnosisesToAdd)
+                {
+                    var appointmentId = diagnosisToAdd.AppointmentId;
+                    var diagnosisDescription = diagnosisToAdd.DiagnosisDescription;
+                    var isFinal = diagnosisToAdd.IsFinal;
+                    var basedOnTestResult = diagnosisToAdd.BasedOnTestResults;
 
-            return comm.ExecuteNonQuery() > 0;
+                    var query = "insert into diagnosis (appointmentId, diagnosisDescription, isFinal, " +
+                                       "basedOnTestResults) VALUES (@appointmentId, @diagnosisDescription, " +
+                                       "@isFinal, @basedOnTestResults)";
+                    command.CommandText = query;
+                    command.Parameters.Add("@appointmentId", MySqlDbType.Int16).Value = appointmentId;
+                    command.Parameters.Add("@diagnosisDescription", MySqlDbType.String).Value = diagnosisDescription;
+                    command.Parameters.Add("@isFinal", MySqlDbType.Int16).Value = isFinal;
+                    command.Parameters.Add("basedOnTestResults", MySqlDbType.Int16).Value = basedOnTestResult;
+                    command.ExecuteNonQuery();
+                    command.Parameters.Clear();
+                }
+
+                transaction.Commit();
+                return true;
+            }
+            catch (MySqlException)
+            {
+                transaction.Rollback();
+                return false;
+            }
         }
 
         /// <summary>

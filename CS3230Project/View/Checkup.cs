@@ -23,6 +23,17 @@ namespace CS3230Project.View
     /// </summary>
     public partial class Checkup : Form
     {
+        private List<Diagnosis> allDiagnoses
+        {
+            get
+            {
+                var allDiagnoses = new List<Diagnosis>();
+                allDiagnoses.AddRange(this.diagnoses);
+                allDiagnoses.AddRange(this.pendingDiagnoses);
+                return allDiagnoses;
+            }
+        }
+
         private readonly int appointmentId;
         private readonly Patient patient;
         private readonly Doctor doctor;
@@ -218,6 +229,7 @@ namespace CS3230Project.View
             {
                 CheckupManagerViewModel.ModifyVisit(this.getVisitInfo());
                 this.testManager.SubmitTests();
+                this.submitDiagnoses();
                 SwitchForms.Switch(this, new Appointments(this.patient));
             }
             catch (Exception)
@@ -232,6 +244,7 @@ namespace CS3230Project.View
             {
                 CheckupManagerViewModel.AddVisit(this.getVisitInfo());
                 this.testManager.SubmitTests();
+                this.submitDiagnoses();
                 SwitchForms.Switch(this, new Appointments(this.patient));
 
             }
@@ -239,6 +252,12 @@ namespace CS3230Project.View
             {
                 MessageBox.Show(this.invalidInputErrorMessage, this.invalidInputErrorHeader);
             }
+        }
+
+        private void submitDiagnoses()
+        {
+            DiagnosisManagerViewModel.AddDiagnosises(this.pendingDiagnoses);
+            this.pendingDiagnoses.Clear();
         }
 
         private Visit getVisitInfo()
@@ -333,6 +352,16 @@ namespace CS3230Project.View
             modifyDiagnosisDialog.ShowDialog();
         }
 
+        private void ModifyDiagnosisDialogOnRemoveDiagnosisSubmittedEvent(object sender, DiagnosisSubmitEventArgs e)
+        {
+            if (e.DiagnosisSubmitted.DiagnosisId == null)
+            {
+                this.pendingDiagnoses.Remove(e.DiagnosisSubmitted);
+            }
+            
+            this.enableControlsAndUpdateData();
+        }
+
         private void ModifyDiagnosisDialogOnAddDiagnosisSubmittedEvent(object sender, DiagnosisSubmitEventArgs e)
         {
             this.pendingDiagnoses.Add(e.DiagnosisSubmitted);
@@ -343,22 +372,36 @@ namespace CS3230Project.View
         {
             if (!this.finalDiagnosisExists)
             {
-                var rowIndex = e.RowIndex;
-                var diagnosisId = (int)this.diagnosisDataGridView.Rows[rowIndex].Cells[0].Value;
-                var diagnoses = DiagnosisManagerViewModel.GetDiagnoses(this.appointmentId);
-                Diagnosis diagnosis = null;
+                var diagnosisToModify = this.allDiagnoses[e.RowIndex];
+                var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosisToModify, this.appointmentId);
+                modifyDiagnosisDialog.RemoveDiagnosisSubmittedEvent += ModifyDiagnosisDialogOnRemoveDiagnosisSubmittedEvent;
 
-                foreach (var currDiagnosis in diagnoses)
+                if (diagnosisToModify?.DiagnosisId != null)
                 {
-                    if (currDiagnosis.DiagnosisId == diagnosisId)
-                    {
-                        diagnosis = currDiagnosis;
-                    }
+                    modifyDiagnosisDialog.ModifyDiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
+                    modifyDiagnosisDialog.ShowDialog();
+                }
+                else
+                {
+                    modifyDiagnosisDialog.ModifyDiagnosisSubmittedEvent += ModifyDiagnosisDialogOnModifyDiagnosisSubmittedEvent;
+                    modifyDiagnosisDialog.ShowDialog();
+                }
+            }
+        }
+
+        private void ModifyDiagnosisDialogOnModifyDiagnosisSubmittedEvent(object sender, DiagnosisSubmitEventArgs e)
+        {
+
+            if (e.DiagnosisSubmitted != null)
+            {
+                int diagnosisIndex = this.pendingDiagnoses.IndexOf(e.DiagnosisToEdit);
+
+                if (diagnosisIndex != -1)
+                {
+                    this.pendingDiagnoses[diagnosisIndex] = e.DiagnosisSubmitted;
                 }
 
-                var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId);
-                modifyDiagnosisDialog.ModifyDiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
-                modifyDiagnosisDialog.ShowDialog();
+                this.enableControlsAndUpdateData();
             }
         }
 
@@ -379,6 +422,11 @@ namespace CS3230Project.View
         }
 
         private void DiagnosisSubmitEvent(object sender, DiagnosisSubmitEventArgs e)
+        {
+            this.enableControlsAndUpdateData();
+        }
+
+        private void enableControlsAndUpdateData()
         {
             this.enableFormControls();
             this.enableTestControls();
