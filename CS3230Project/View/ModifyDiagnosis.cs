@@ -127,7 +127,6 @@ namespace CS3230Project.View
                     var newDiagnosis = new Diagnosis(null, this.appointmentId,
                         this.diagnosisDescriptionTextBox.Text, (string)this.isFinalComboBox.SelectedItem == ModifyDiagnosis.YesString,
                         (string)this.basedOnTestResultsComboBox.SelectedItem == ModifyDiagnosis.YesString);
-                    DiagnosisManagerViewModel.AddDiagnosis(diagnosis);
                     this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs { DiagnosisToEdit = this.diagnosis, DiagnosisSubmitted = newDiagnosis });
                     this.Close();
                 }
