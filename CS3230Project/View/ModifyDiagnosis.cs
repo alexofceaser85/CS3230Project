@@ -20,6 +20,11 @@ namespace CS3230Project.View
         private const string YesString = "Yes";
 
         /// <summary>
+        /// The event that a diagnosis was removed
+        /// </summary>
+        public event EventHandler<DiagnosisSubmitEventArgs> RemoveDiagnosisSubmittedEvent;
+
+        /// <summary>
         /// The event that a diagnosis was modified
         /// </summary>
         public event EventHandler<DiagnosisSubmitEventArgs> ModifyDiagnosisSubmittedEvent;
@@ -92,6 +97,7 @@ namespace CS3230Project.View
             {
                 this.ModifyDiagnosisSubmittedEvent?.Invoke(this, new DiagnosisSubmitEventArgs
                 {
+                    DiagnosisToEdit = this.diagnosis,
                     DiagnosisSubmitted =
                         new Diagnosis(this.diagnosis.DiagnosisId, this.appointmentId, this.diagnosisDescriptionTextBox.Text, 
                             (string)this.isFinalComboBox.SelectedItem == ModifyDiagnosis.YesString, (string)this.basedOnTestResultsComboBox.SelectedItem == ModifyDiagnosis.YesString)
@@ -101,6 +107,7 @@ namespace CS3230Project.View
             {
                 this.AddDiagnosisSubmittedEvent?.Invoke(this, new DiagnosisSubmitEventArgs
                 {
+                    DiagnosisToEdit = this.diagnosis,
                     DiagnosisSubmitted =
                         new Diagnosis(null, this.appointmentId, this.diagnosisDescriptionTextBox.Text,
                             (string)this.isFinalComboBox.SelectedItem == ModifyDiagnosis.YesString, (string)this.basedOnTestResultsComboBox.SelectedItem == ModifyDiagnosis.YesString)
@@ -117,11 +124,11 @@ namespace CS3230Project.View
                 if (DiagnosisValidation.VerifyDiagnosisDescription(this.diagnosisDescriptionTextBox,
                         this.diagnosisDescriptionErrorMessage))
                 {
-                    var diagnosis = new Diagnosis(null, this.appointmentId,
+                    var newDiagnosis = new Diagnosis(null, this.appointmentId,
                         this.diagnosisDescriptionTextBox.Text, (string)this.isFinalComboBox.SelectedItem == ModifyDiagnosis.YesString,
                         (string)this.basedOnTestResultsComboBox.SelectedItem == ModifyDiagnosis.YesString);
                     DiagnosisManagerViewModel.AddDiagnosis(diagnosis);
-                    this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs {DiagnosisSubmitted = diagnosis});
+                    this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs { DiagnosisToEdit = this.diagnosis, DiagnosisSubmitted = newDiagnosis });
                     this.Close();
                 }
             }
@@ -130,11 +137,11 @@ namespace CS3230Project.View
                 if (DiagnosisValidation.VerifyDiagnosisDescription(this.diagnosisDescriptionTextBox,
                         this.diagnosisDescriptionErrorMessage))
                 {
-                    var diagnosis = new Diagnosis(this.diagnosis.DiagnosisId, this.diagnosis.AppointmentId,
+                    var newDiagnosis = new Diagnosis(this.diagnosis.DiagnosisId, this.diagnosis.AppointmentId,
                         this.diagnosisDescriptionTextBox.Text, (string)this.isFinalComboBox.SelectedItem == ModifyDiagnosis.YesString,
                         (string)this.basedOnTestResultsComboBox.SelectedItem == ModifyDiagnosis.YesString);
-                    DiagnosisManagerViewModel.ModifyDiagnosis(diagnosis);
-                    this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs { DiagnosisSubmitted = diagnosis });
+                    DiagnosisManagerViewModel.ModifyDiagnosis(newDiagnosis);
+                    this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs { DiagnosisToEdit = this.diagnosis, DiagnosisSubmitted = newDiagnosis });
                     this.Close();
                 }
             }
@@ -160,7 +167,7 @@ namespace CS3230Project.View
             {
                 DiagnosisManagerViewModel.RemoveDiagnosis((int)this.diagnosis.DiagnosisId);
             }
-            this.OnDiagnosisSubmittedEvent(new DiagnosisSubmitEventArgs { DiagnosisSubmitted = diagnosis });
+            this.RemoveDiagnosisSubmittedEvent?.Invoke(this, new DiagnosisSubmitEventArgs { DiagnosisSubmitted = diagnosis });
             this.Close();
         }
     }
@@ -170,6 +177,10 @@ namespace CS3230Project.View
     /// </summary>
     public class DiagnosisSubmitEventArgs : EventArgs
     {
+        /// <summary>
+        /// The old diagnosis
+        /// </summary>
+        public Diagnosis DiagnosisToEdit { get; set; }
         /// <summary>
         /// The diagnosis submitted
         /// </summary>
