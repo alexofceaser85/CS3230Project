@@ -23,6 +23,8 @@ namespace CS3230Project.View
         private readonly Patient patient;
         private readonly Appointment appointmentToEdit;
         private List<Doctor> availableDoctors;
+        private string cannotSubmitAppointmentWhenPatientIsNotActive = "Cannot submit appointment when patient is not active";
+        private string cannotSubmitAppointment = "Cannot Submit Appointment";
 
         /// <summary>
         /// Initializes a new <see cref="EditAppointment"/>
@@ -44,6 +46,17 @@ namespace CS3230Project.View
             this.patient = patient;
             this.appointmentDatePicker.Value = this.appointmentToEdit.Date;
             this.populateEditAppointmentValues();
+            this.disableFieldsAndActionsIfPatientIsNotActive();
+        }
+
+        private void disableFieldsAndActionsIfPatientIsNotActive()
+        {
+            if (!this.patient.IsActive)
+            {
+                this.appointmentDatePicker.Enabled = false;
+                this.appointmentDoctorDropDown.Enabled = false;
+                this.reasonTextBox.Enabled = false;
+            }
         }
 
         private void populateEditAppointmentValues()
@@ -63,11 +76,18 @@ namespace CS3230Project.View
         {
             try
             {
-                this.validateAll();
-                var appointmentDate = this.convertAppointmentDateTimeToZero();
-                AppointmentManagerViewModel.ModifyAppointment(this.appointmentToEdit.AppointmentId, appointmentDate,
-                    this.availableDoctors[this.appointmentDoctorDropDown.SelectedIndex].DoctorId, this.reasonTextBox.Text);
-                SwitchForms.Switch(this, new Appointments(this.patient));
+                if (this.patient.IsActive)
+                {
+                    this.validateAll();
+                    var appointmentDate = this.convertAppointmentDateTimeToZero();
+                    AppointmentManagerViewModel.ModifyAppointment(this.appointmentToEdit.AppointmentId, appointmentDate,
+                        this.availableDoctors[this.appointmentDoctorDropDown.SelectedIndex].DoctorId, this.reasonTextBox.Text);
+                    SwitchForms.Switch(this, new Appointments(this.patient));
+                }
+                else
+                {
+                    MessageBox.Show(this.cannotSubmitAppointmentWhenPatientIsNotActive, this.cannotSubmitAppointment);
+                }
             }
             catch (ArgumentException)
             {

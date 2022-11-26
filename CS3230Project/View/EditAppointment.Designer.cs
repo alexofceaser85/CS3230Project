@@ -33,6 +33,11 @@
             this.submitChangesFooter1 = new CS3230Project.View.Components.Footers.SubmitChangesFooter();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.PatientPhoneNumberLabel = new System.Windows.Forms.Label();
+            this.PatientDateOfBirthLabel = new System.Windows.Forms.Label();
+            this.PatientNameAndIdLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.appointmentDoctorDropDown = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,11 +47,6 @@
             this.AppointmentDateLabel = new System.Windows.Forms.Label();
             this.AppointmentDoctorErrorMessage = new System.Windows.Forms.Label();
             this.AppointmentReasonErrorMessage = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.PatientPhoneNumberLabel = new System.Windows.Forms.Label();
-            this.PatientDateOfBirthLabel = new System.Windows.Forms.Label();
-            this.PatientNameAndIdLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -150,6 +150,70 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(275, 313);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.PatientPhoneNumberLabel, 0, 3);
+            this.tableLayoutPanel4.Controls.Add(this.PatientDateOfBirthLabel, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.PatientNameAndIdLabel, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 4;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.71429F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.28571F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(269, 80);
+            this.tableLayoutPanel4.TabIndex = 13;
+            // 
+            // PatientPhoneNumberLabel
+            // 
+            this.PatientPhoneNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.PatientPhoneNumberLabel.AutoSize = true;
+            this.PatientPhoneNumberLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.PatientPhoneNumberLabel.Location = new System.Drawing.Point(3, 62);
+            this.PatientPhoneNumberLabel.Name = "PatientPhoneNumberLabel";
+            this.PatientPhoneNumberLabel.Size = new System.Drawing.Size(263, 13);
+            this.PatientPhoneNumberLabel.TabIndex = 4;
+            this.PatientPhoneNumberLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // PatientDateOfBirthLabel
+            // 
+            this.PatientDateOfBirthLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.PatientDateOfBirthLabel.AutoSize = true;
+            this.PatientDateOfBirthLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.PatientDateOfBirthLabel.Location = new System.Drawing.Point(3, 40);
+            this.PatientDateOfBirthLabel.Name = "PatientDateOfBirthLabel";
+            this.PatientDateOfBirthLabel.Size = new System.Drawing.Size(263, 13);
+            this.PatientDateOfBirthLabel.TabIndex = 3;
+            this.PatientDateOfBirthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // PatientNameAndIdLabel
+            // 
+            this.PatientNameAndIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.PatientNameAndIdLabel.AutoSize = true;
+            this.PatientNameAndIdLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.PatientNameAndIdLabel.Location = new System.Drawing.Point(3, 19);
+            this.PatientNameAndIdLabel.Name = "PatientNameAndIdLabel";
+            this.PatientNameAndIdLabel.Size = new System.Drawing.Size(263, 13);
+            this.PatientNameAndIdLabel.TabIndex = 2;
+            this.PatientNameAndIdLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(3, 1);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(263, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Edit Appointment for Patient";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -244,70 +308,6 @@
             this.AppointmentReasonErrorMessage.Name = "AppointmentReasonErrorMessage";
             this.AppointmentReasonErrorMessage.Size = new System.Drawing.Size(0, 2);
             this.AppointmentReasonErrorMessage.TabIndex = 11;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.PatientPhoneNumberLabel, 0, 3);
-            this.tableLayoutPanel4.Controls.Add(this.PatientDateOfBirthLabel, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.PatientNameAndIdLabel, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 4;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.71429F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.28571F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(269, 80);
-            this.tableLayoutPanel4.TabIndex = 13;
-            // 
-            // PatientPhoneNumberLabel
-            // 
-            this.PatientPhoneNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.PatientPhoneNumberLabel.AutoSize = true;
-            this.PatientPhoneNumberLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.PatientPhoneNumberLabel.Location = new System.Drawing.Point(3, 62);
-            this.PatientPhoneNumberLabel.Name = "PatientPhoneNumberLabel";
-            this.PatientPhoneNumberLabel.Size = new System.Drawing.Size(263, 13);
-            this.PatientPhoneNumberLabel.TabIndex = 4;
-            this.PatientPhoneNumberLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // PatientDateOfBirthLabel
-            // 
-            this.PatientDateOfBirthLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.PatientDateOfBirthLabel.AutoSize = true;
-            this.PatientDateOfBirthLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.PatientDateOfBirthLabel.Location = new System.Drawing.Point(3, 40);
-            this.PatientDateOfBirthLabel.Name = "PatientDateOfBirthLabel";
-            this.PatientDateOfBirthLabel.Size = new System.Drawing.Size(263, 13);
-            this.PatientDateOfBirthLabel.TabIndex = 3;
-            this.PatientDateOfBirthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // PatientNameAndIdLabel
-            // 
-            this.PatientNameAndIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.PatientNameAndIdLabel.AutoSize = true;
-            this.PatientNameAndIdLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.PatientNameAndIdLabel.Location = new System.Drawing.Point(3, 19);
-            this.PatientNameAndIdLabel.Name = "PatientNameAndIdLabel";
-            this.PatientNameAndIdLabel.Size = new System.Drawing.Size(263, 13);
-            this.PatientNameAndIdLabel.TabIndex = 2;
-            this.PatientNameAndIdLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(3, 1);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(263, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Edit Appointment for Patient";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EditAppointment
             // 

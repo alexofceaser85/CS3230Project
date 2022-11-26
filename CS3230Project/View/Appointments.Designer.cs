@@ -48,7 +48,7 @@
             this.UpcomingAppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Actions = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CreateAppointmentButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previousAppointmentsTable)).BeginInit();
@@ -103,7 +103,7 @@
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.upcomingAppointmentsTable, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.CreateAppointmentButton, 0, 2);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 83);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 5;
@@ -256,19 +256,19 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Upcoming Appointments";
             // 
-            // button1
+            // CreateAppointmentButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.button1.BackColor = System.Drawing.Color.LightSlateGray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(319, 133);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 44);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Create Appointment";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CreateAppointmentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.CreateAppointmentButton.BackColor = System.Drawing.Color.LightSlateGray;
+            this.CreateAppointmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreateAppointmentButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CreateAppointmentButton.Location = new System.Drawing.Point(319, 133);
+            this.CreateAppointmentButton.Name = "CreateAppointmentButton";
+            this.CreateAppointmentButton.Size = new System.Drawing.Size(159, 44);
+            this.CreateAppointmentButton.TabIndex = 0;
+            this.CreateAppointmentButton.Text = "Create Appointment";
+            this.CreateAppointmentButton.UseVisualStyleBackColor = false;
+            this.CreateAppointmentButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // Appointments
             // 
@@ -293,7 +293,7 @@
         private Components.Headers.Header header1;
         private Components.Footers.Footer footer2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CreateAppointmentButton;
         private System.Windows.Forms.DataGridView upcomingAppointmentsTable;
         private System.Windows.Forms.DataGridView previousAppointmentsTable;
         private System.Windows.Forms.Label label2;

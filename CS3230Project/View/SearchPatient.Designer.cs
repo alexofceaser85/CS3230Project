@@ -95,6 +95,8 @@ namespace CS3230Project.View
             // 
             // PatientDataGridView
             // 
+            this.PatientDataGridView.AllowUserToAddRows = false;
+            this.PatientDataGridView.AllowUserToDeleteRows = false;
             this.PatientDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.PatientDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.PatientDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -201,7 +203,7 @@ namespace CS3230Project.View
             // Status
             // 
             this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Status.HeaderText = "Status";
+            this.Status.HeaderText = "IsActive";
             this.Status.MinimumWidth = 6;
             this.Status.Name = "Status";
             // 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CS3230Project.Model.Users.Patients;
 using MySql.Data.MySqlClient;
 
@@ -33,7 +34,7 @@ namespace CS3230Project.DAL.Patients
             var city = patientToAdd.City;
             var state = patientToAdd.State;
             var zipcode = patientToAdd.Zipcode;
-            var status = patientToAdd.Status;
+            var status = patientToAdd.IsActive;
 
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
@@ -266,101 +267,38 @@ namespace CS3230Project.DAL.Patients
         /// <returns>
         ///     True, if the patient was modified
         /// </returns>
-        public static bool ModifyPatient(Dictionary<string, string> updatedDetails)
+        public static bool ModifyPatient(Patient modifiedPatient)
         {
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
-            var comm = connection.CreateCommand();
-            var commandText = "update patients set ";
-            var numberOfDetailsChanged = 0;
-            var patientId = "";
+            const string query = "update patients " +
+                                 "SET lastName = @patientLastName, " +
+                                 "  firstName = @patientFirstName, " +
+                                 "  dateOfBirth = @patientDateOfBirth, " +
+                                 "  gender = @patientGender, " +
+                                 "  phone = @patientPhone, " +
+                                 "  addressOne = @patientAddressOne, " +
+                                 "  addressTwo = @patientAddressTwo, " +
+                                 "  city = @patientCity, " +
+                                 "  state = @patientState, " +
+                                 "  zipcode = @patientZipCode, " +
+                                 "  status = @patientStatus " +
+                                 "where patientID = @patientId";
+            var command = new MySqlCommand(query, connection);
 
-            foreach (var currDetail in updatedDetails)
-            {
-                if (numberOfDetailsChanged > 0 && !commandText[commandText.Length - 2].Equals(',') && !currDetail.Key.Equals("PatientId"))
-                {
-                    commandText += ", ";
-                }
-
-                switch (currDetail.Key)
-                {
-                    case "patientLastNameTextBox":
-                        commandText += "lastName = @lastName";
-                        comm.Parameters.Add("@lastName", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
-                        break;
-
-                    case "patientFirstNameTextBox":
-                        commandText += "firstName = @firstName";
-                        comm.Parameters.Add("@firstName", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
-                        break;
-
-                    case "patientDateOfBirthPicker":
-                        commandText += "dateOfBirth = @dateOfBirth";
-                        comm.Parameters.Add("@dateOfBirth", MySqlDbType.Date).Value = DateTime.Parse(currDetail.Value);
-                        numberOfDetailsChanged++;
-                        break;
-
-                    case "patientGenderComboBox":
-                        commandText += "gender = @gender";
-                        comm.Parameters.Add("@gender", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
-                        break;
-
-                    case "patientPhoneNumberTextBox":
-                        commandText += "phone = @phone";
-                        comm.Parameters.Add("@phone", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
-                        break;
-
-                    case "patientAddressOneTextBox":
-                        commandText += "addressOne = @addressOne";
-                        comm.Parameters.Add("@addressOne", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
-                        break;
-
-                    case "patientAddressTwoTextBox":
-                        commandText += "addressTwo = @addressTwo";
-                        comm.Parameters.Add("@addressTwo", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
-                        break;
-
-                    case "patientCityTextBox":
-                        commandText += "city = @city";
-                        comm.Parameters.Add("@city", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
-                        break;
-
-                    case "patientStateComboBox":
-                        commandText += "state = @state";
-                        comm.Parameters.Add("@state", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
-                        break;
-
-                    case "patientZipcodeTextBox":
-                        commandText += "zipcode = @zipcode";
-                        comm.Parameters.Add("@zipcode", MySqlDbType.String).Value = currDetail.Value;
-                        numberOfDetailsChanged++;
-                        break;
-
-                    case "patientStatusComboBox":
-                        commandText += "status = @status";
-                        comm.Parameters.Add("@status", MySqlDbType.Int16).Value =
-                            currDetail.Value.Equals("True") ? 1 : 0;
-                        numberOfDetailsChanged++;
-                        break;
-                    case "PatientId":
-                        patientId = currDetail.Value;
-                        break;
-                }
-            }
-
-            commandText += " where patientID = @patientID";
-            comm.Parameters.Add("@patientID", MySqlDbType.Int32).Value = patientId;
-            comm.CommandText = commandText;
-
-            return comm.ExecuteNonQuery() > 0;
+            command.Parameters.Add("@patientId", MySqlDbType.Int32).Value = modifiedPatient.PatientId;
+            command.Parameters.Add("@patientLastName", MySqlDbType.String).Value = modifiedPatient.LastName;
+            command.Parameters.Add("@patientFirstName", MySqlDbType.String).Value = modifiedPatient.FirstName;
+            command.Parameters.Add("@patientDateOfBirth", MySqlDbType.Date).Value = modifiedPatient.DateOfBirth;
+            command.Parameters.Add("@patientGender", MySqlDbType.String).Value = modifiedPatient.Gender;
+            command.Parameters.Add("@patientPhone", MySqlDbType.String).Value = modifiedPatient.PhoneNumber;
+            command.Parameters.Add("@patientAddressOne", MySqlDbType.String).Value = modifiedPatient.AddressOne;
+            command.Parameters.Add("@patientAddressTwo", MySqlDbType.String).Value = modifiedPatient.AddressTwo;
+            command.Parameters.Add("@patientCity", MySqlDbType.String).Value = modifiedPatient.City;
+            command.Parameters.Add("@patientState", MySqlDbType.String).Value = modifiedPatient.State;
+            command.Parameters.Add("@patientZipCode", MySqlDbType.String).Value = modifiedPatient.Zipcode;
+            command.Parameters.Add("@patientStatus", MySqlDbType.Int32).Value = modifiedPatient.IsActive.Equals(true) ? 1 : 0;
+            return command.ExecuteNonQuery() > 0;
         }
     }
 }
