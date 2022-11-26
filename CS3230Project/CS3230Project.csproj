@@ -99,6 +99,7 @@
   <ItemGroup>
     <Compile Include="DAL\Accounts\AccountsDal.cs" />
     <Compile Include="DAL\AdminVisitsSearchDal.cs" />
+    <Compile Include="DAL\Admins\AdminsDAL.cs" />
     <Compile Include="DAL\Appointments\AppointmentsDAL.cs" />
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\Diagnosis\DiagnosisDal.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="DAL\Visits\VisitDal.cs" />
     <Compile Include="ErrorMessages\ErrorMessages.cs" />
     <Compile Include="Model\Accounts\AccountType.cs" />
+    <Compile Include="Model\Admins\AdminService.cs" />
     <Compile Include="Model\Appointments\Appointment.cs" />
     <Compile Include="Model\Appointments\AppointmentManager.cs" />
     <Compile Include="Model\DataValidator.cs" />
@@ -133,10 +135,12 @@
     <Compile Include="Model\Visits\VisitManager.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="ViewModel\AdminVisitsSearch\AdminVisitsSearchViewModel.cs" />
+    <Compile Include="ViewModel\Admins\AdminServiceViewModel.cs" />
     <Compile Include="ViewModel\Appointments\AppointmentManagerViewModel.cs" />
     <Compile Include="ViewModel\Checkups\CheckupManagerViewModel.cs" />
     <Compile Include="ViewModel\Diagnosis\DiagnosisManagerViewModel.cs" />
     <Compile Include="ViewModel\Doctors\DoctorsManagerViewModel.cs" />
+    <Compile Include="ViewModel\Nurses\NurseManagerViewModel.cs" />
     <Compile Include="ViewModel\Tests\TestsManagerViewModel.cs" />
     <Compile Include="ViewModel\Users\PatientManagerViewModel.cs" />
     <Compile Include="View\AddPendingTest.cs">
@@ -162,6 +166,11 @@
     </Compile>
     <Compile Include="View\AdminVisitsSearch.Designer.cs">
       <DependentUpon>AdminVisitsSearch.cs</DependentUpon>
+    <Compile Include="View\AdminQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminQuery.Designer.cs">
+      <DependentUpon>AdminQuery.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Appointments.cs">
       <SubType>Form</SubType>
@@ -248,6 +257,7 @@
     <Compile Include="View\SearchPatient.Designer.cs">
       <DependentUpon>SearchPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Validation\AdminQueryValidation.cs" />
     <Compile Include="View\Validation\CheckupValidation.cs" />
     <Compile Include="View\Validation\AppointmentValidation.cs" />
     <Compile Include="View\Validation\DiagnosisValidation.cs" />
@@ -275,6 +285,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminVisitsSearch.resx">
       <DependentUpon>AdminVisitsSearch.cs</DependentUpon>
+    <EmbeddedResource Include="View\AdminQuery.resx">
+      <DependentUpon>AdminQuery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Appointments.resx">
       <DependentUpon>Appointments.cs</DependentUpon>

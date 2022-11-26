@@ -953,4 +953,15 @@
         /// </summary>
         public static string TestResultsCannotBeNull = "The test results cannot be null";
     }
+
+    /// <summary>
+    /// The error messages for the admin service
+    /// </summary>
+    public static class AdminServiceErrorMessages
+    {
+        /// <summary>
+        /// The error message for an empty admin query to run
+        /// </summary>
+        public static string AdminQueryToRunCannotBeEmpty = "The admin query to run cannot be empty";
+    }
 }
