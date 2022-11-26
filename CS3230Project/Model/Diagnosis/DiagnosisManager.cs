@@ -17,20 +17,20 @@ namespace CS3230Project.Model.Diagnosis
         /// Precondition: diagnosisToAdd != null
         /// Post-condition: the diagnosis is added to the database
         /// </summary>
-        /// <param name="diagnosisToAdd">The diagnosis to add.</param>
+        /// <param name="diagnosesToAdd">The diagnoses to add.</param>
         /// <returns>
         ///   True if the diagnosis was added to the database
         ///   False if the diagnosis was not added to the database
         /// </returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static bool AddDiagnosis(Diagnosis diagnosisToAdd)
+        public static bool AddDiagnoses(List<Diagnosis> diagnosesToAdd)
         {
-            if (diagnosisToAdd == null)
+            if (diagnosesToAdd == null)
             {
                 throw new ArgumentException(DiagnosisErrorMessages.DiagnosisToAddCannotBeNull);
             }
 
-            return DiagnosisDal.AddDiagnosis(diagnosisToAdd);
+            return DiagnosisDal.AddDiagnoses(diagnosesToAdd);
         }
 
         /// <summary>

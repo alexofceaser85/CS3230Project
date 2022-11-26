@@ -10,19 +10,19 @@ namespace CS3230Project.ViewModel.Diagnosis
     {
 
         /// <summary>
-        /// Adds the diagnosis.
+        /// Adds diagnoses.
         ///
         /// Precondition: none
-        /// Post-condition: the diagnosis provided is added to the database 
+        /// Post-condition: the diagnoses provided is added to the database 
         /// </summary>
-        /// <param name="diagnosisToAdd">The diagnosis to add.</param>
+        /// <param name="diagnosesToAdd">The diagnoses to add.</param>
         /// <returns>
-        ///   True, if the diagnosis was added to the database
-        ///   False, if the diagnosis was not added to the database
+        ///   True, if the diagnoses were added to the database
+        ///   False, if the diagnoses were not added to the database
         /// </returns>
-        public static bool AddDiagnosis(Model.Diagnosis.Diagnosis diagnosisToAdd)
+        public static bool AddDiagnoses(List<Model.Diagnosis.Diagnosis> diagnosesToAdd)
         {
-            return DiagnosisManager.AddDiagnosis(diagnosisToAdd);
+            return DiagnosisManager.AddDiagnoses(diagnosesToAdd);
         }
 
         /// <summary>
