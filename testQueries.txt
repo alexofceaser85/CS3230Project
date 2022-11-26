@@ -1,0 +1,64 @@
+First Query:
+
+select 
+	patients.patientID, 
+	patients.lastName as patientLastName, 
+	patients.firstName as patientFirstName, 
+	appointments.appointmentId, 
+	appointmentDateTime,
+	reason as appointmentReason, 
+	visit.nurseId, 
+	nurses.firstName as nurseFirstName, 
+	nurses.lastName as nurseLastName, 
+	bodyTemp, 
+	pulse, 
+	height, 
+	weight, 
+	symptoms, 
+	systolicBloodPressure, 
+	diastolicBloodPressure, 
+	doctors.doctorId as doctorId, 
+	doctors.firstName as doctorFirstName, 
+	doctors.lastName as doctorLastName, 
+	tests.name as testName, 
+	results as testResults,
+                isAbnormal as isTestResultsAbnormal, 
+	diagnosisDescription
+from 
+	patients,
+	appointments,
+	visit,doctors,
+	visittests,
+	diagnosis,
+	tests,
+	nurses
+where patients.firstName='Kenneth' 
+and patients.lastName='Mitchell'
+and appointments.patientID=patients.patientID 
+and appointments.appointmentId=visit.appointmentId 
+and doctors.doctorId=appointments.doctorId
+and visittests.appointmentId=appointments.appointmentId
+and diagnosis.appointmentId=appointments.appointmentId
+and tests.testcode=visittests.testCode
+and nurses.nurseId=visit.nurseId
+
+
+Second Query:
+
+select
+	patients.patientID as patientID, 
+	patients.lastName as patientLastName, 
+	patients.firstName as patientFirstName,
+	DATE( testDateTime) as testDate, 
+	COUNT(DATE( testDateTime)) as numberOfTests 
+from 
+	patients, 
+	appointments, 
+	visittests 
+where appointments.patientID=patients.patientID 
+and visittests.appointmentId=appointments.appointmentId 
+and testDateTime is not null 
+and DATE(testDateTime)='2022-11-19' 
+group by patientID, testDate
+having numberOfTests > 1
+order by patientID, testDate

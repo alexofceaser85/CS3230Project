@@ -9,7 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS3230ProjectTests", "CS323
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28705548-DBDB-4169-9AB9-8BD4D8CD22B1}"
 	ProjectSection(SolutionItems) = preProject
+		CS3230DataBaseSchema.PNG = CS3230DataBaseSchema.PNG
 		readme.txt = readme.txt
+		sqlToCreateAndPopulateDatabase.sql = sqlToCreateAndPopulateDatabase.sql
+		testQueries.txt = testQueries.txt
 	EndProjectSection
 EndProject
 Global
