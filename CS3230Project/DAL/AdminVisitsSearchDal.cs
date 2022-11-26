@@ -32,7 +32,8 @@ namespace CS3230Project.DAL
                                  "from appointments, patients, doctors, visit, nurses " +
                                  "where appointments.patientId = patients.patientId and appointments.doctorId = doctors.doctorId and " +
                                  "appointments.appointmentId = visit.appointmentId and visit.nurseId = nurses.nurseId and " +
-                                 "appointmentDateTime >= @startDate and appointmentDateTime <= @endDate";
+                                 "appointmentDateTime >= @startDate and appointmentDateTime <= @endDate " +
+                                 "order by appointmentDateTime, patients.lastName";
             using var command = new MySqlCommand(query, connection);
             List<AdminSearchVisit> visits = new List<AdminSearchVisit>();
 

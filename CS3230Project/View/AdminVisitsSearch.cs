@@ -52,9 +52,13 @@ namespace CS3230Project.View
 
         private void visitsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var appointmentId = (int)this.visitsDataGridView.Rows[e.RowIndex].Cells[1].Value;
-            this.loadTests(appointmentId);
-            this.loadDiagnoses(appointmentId);
+            if (e.RowIndex >= 0)
+            {
+                var appointmentId = (int)this.visitsDataGridView.Rows[e.RowIndex].Cells[1].Value;
+                this.loadTests(appointmentId);
+                this.loadDiagnoses(appointmentId);
+            }
+            
         }
 
         private void loadTests(int appointmentId)
