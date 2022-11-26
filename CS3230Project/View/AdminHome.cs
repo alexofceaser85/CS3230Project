@@ -26,7 +26,7 @@ namespace CS3230Project.View
 
         private void searchVisitsButton_Click(object sender, EventArgs e)
         {
-
+            SwitchForms.Switch(this, new AdminVisitsSearch());
         }
 
         private void queryButton_Click(object sender, EventArgs e)

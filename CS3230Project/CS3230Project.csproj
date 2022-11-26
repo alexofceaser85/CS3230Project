@@ -114,6 +114,7 @@
     <Compile Include="Model\DataValidator.cs" />
     <Compile Include="Model\Diagnosis\Diagnosis.cs" />
     <Compile Include="Model\Diagnosis\DiagnosisManager.cs" />
+    <Compile Include="Model\Tests\AdminSearchTest.cs" />
     <Compile Include="Model\Tests\PerformedTest.cs" />
     <Compile Include="Model\Tests\NotPerformedTest.cs" />
     <Compile Include="Model\Tests\Test.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="Model\Users\Patients\PatientManager.cs" />
     <Compile Include="Model\Users\Patients\Patient.cs" />
     <Compile Include="Model\Users\UserAccount.cs" />
+    <Compile Include="Model\Visits\AdminSearchVisit.cs" />
     <Compile Include="Model\Visits\Visit.cs" />
     <Compile Include="Model\Visits\VisitManager.cs" />
     <Compile Include="Settings\Settings.cs" />
