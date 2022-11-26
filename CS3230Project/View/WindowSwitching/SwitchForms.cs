@@ -19,6 +19,16 @@ namespace CS3230Project.View.WindowSwitching
         }
 
         /// <summary>
+        /// Switches to the admin home form
+        /// </summary>
+        /// <param name="currentForm">The form to switch from</param>
+        public static void SwitchBackToAdminHome(Form currentForm)
+        {
+            Form formToSwitchTo = new AdminHome();
+            Switch(currentForm, formToSwitchTo);
+        }
+
+        /// <summary>
         /// Switches to the login form
         /// </summary>
         /// <param name="currentForm">The form to switch from</param>

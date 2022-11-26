@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\Accounts\AccountsDal.cs" />
+    <Compile Include="DAL\AdminVisitsSearchDal.cs" />
     <Compile Include="DAL\Admins\AdminsDAL.cs" />
     <Compile Include="DAL\Appointments\AppointmentsDAL.cs" />
     <Compile Include="DAL\Connection.cs" />
@@ -115,21 +116,25 @@
     <Compile Include="Model\DataValidator.cs" />
     <Compile Include="Model\Diagnosis\Diagnosis.cs" />
     <Compile Include="Model\Diagnosis\DiagnosisManager.cs" />
+    <Compile Include="Model\Tests\AdminSearchTest.cs" />
     <Compile Include="Model\Tests\PerformedTest.cs" />
     <Compile Include="Model\Tests\NotPerformedTest.cs" />
     <Compile Include="Model\Tests\Test.cs" />
     <Compile Include="Model\Tests\AvailableTest.cs" />
     <Compile Include="Model\Tests\TestManager.cs" />
     <Compile Include="Model\Users\Admin.cs" />
+    <Compile Include="Model\Users\AdminVisitsSearchManager.cs" />
     <Compile Include="Model\Users\Doctor.cs" />
     <Compile Include="Model\Users\Nurses\NurseManager.cs" />
     <Compile Include="Model\Users\DoctorManager.cs" />
     <Compile Include="Model\Users\Patients\PatientManager.cs" />
     <Compile Include="Model\Users\Patients\Patient.cs" />
     <Compile Include="Model\Users\UserAccount.cs" />
+    <Compile Include="Model\Visits\AdminSearchVisit.cs" />
     <Compile Include="Model\Visits\Visit.cs" />
     <Compile Include="Model\Visits\VisitManager.cs" />
     <Compile Include="Settings\Settings.cs" />
+    <Compile Include="ViewModel\AdminVisitsSearch\AdminVisitsSearchViewModel.cs" />
     <Compile Include="ViewModel\Admins\AdminServiceViewModel.cs" />
     <Compile Include="ViewModel\Appointments\AppointmentManagerViewModel.cs" />
     <Compile Include="ViewModel\Checkups\CheckupManagerViewModel.cs" />
@@ -156,6 +161,12 @@
     <Compile Include="View\AdminHome.Designer.cs">
       <DependentUpon>AdminHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AdminVisitsSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminVisitsSearch.Designer.cs">
+      <DependentUpon>AdminVisitsSearch.cs</DependentUpon>
+	</Compile>
     <Compile Include="View\AdminQuery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,6 +284,9 @@
     <EmbeddedResource Include="View\AdminHome.resx">
       <DependentUpon>AdminHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminVisitsSearch.resx">
+      <DependentUpon>AdminVisitsSearch.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="View\AdminQuery.resx">
       <DependentUpon>AdminQuery.cs</DependentUpon>
     </EmbeddedResource>

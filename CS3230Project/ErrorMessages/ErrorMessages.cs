@@ -928,6 +928,33 @@
     }
 
     /// <summary>
+    ///   The error messages for the admin search tests
+    /// </summary>
+    public class AdminSearchTestErrorMessages
+    {
+        /// <summary>
+        /// The test's name cannot be null
+        /// </summary>
+        public static string TestNameCannotBeNull = "The test name cannot be null";
+        /// <summary>
+        /// The test's name cannot be empty
+        /// </summary>
+        public static string TestNameCannotBeEmpty = "The test name cannot be empty";
+        /// <summary>
+        /// The date performed cannot be empty
+        /// </summary>
+        public static string DatePerformedCannotBeEmpty = "The date performed cannot be empty";
+        /// <summary>
+        /// The date performed cannot be null
+        /// </summary>
+        public static string DatePerformedCannotBeNull = "The date performed cannot be null";
+        /// <summary>
+        /// The error message saying the test results cannot be null
+        /// </summary>
+        public static string TestResultsCannotBeNull = "The test results cannot be null";
+    }
+
+    /// <summary>
     /// The error messages for the admin service
     /// </summary>
     public static class AdminServiceErrorMessages

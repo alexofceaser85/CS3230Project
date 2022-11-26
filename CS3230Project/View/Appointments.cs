@@ -28,11 +28,17 @@ namespace CS3230Project.View
             this.InitializeComponent();
             this.patient = patient;
             this.footer2.BackButtonEventHandler += this.Footer2OnBackButtonEventHandler;
+            this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
             this.previousAppointments = new List<Appointment>();
             this.upcomingAppointments = new List<Appointment>();
             this.addUpcomingAppointments();
             this.addPreviousAppointments();
 
+        }
+
+        private void Header1OnLogoutEventHandler(object sender, EventArgs e)
+        {
+            SwitchForms.SwitchToLogin(this);
         }
 
         private void Footer2OnBackButtonEventHandler(object sender, EventArgs e)

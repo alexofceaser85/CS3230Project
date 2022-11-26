@@ -88,9 +88,7 @@ namespace CS3230Project.DAL.Diagnosis
         {
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
-
-            const string query = "select diagnosisId, diagnosisDescription, isFinal, basedOnTestResults " +
-                                 "from diagnosis where appointmentId = @appointmentId";
+            var query = "call uspGetDiagnoses(@appointmentId)";
             using var command = new MySqlCommand(query, connection);
             List<Model.Diagnosis.Diagnosis> diagnoses = new List<Model.Diagnosis.Diagnosis>();
 
