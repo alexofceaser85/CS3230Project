@@ -35,16 +35,6 @@ namespace CS3230Project.View
         public event EventHandler<DiagnosisSubmitEventArgs> AddDiagnosisSubmittedEvent;
 
         /// <summary>
-        /// The event that a diagnosis was modified
-        /// </summary>
-        public event EventHandler<DiagnosisSubmitEventArgs> ModifyDiagnosisSubmittedEvent;
-
-        /// <summary>
-        /// The event that a diagnosis was added
-        /// </summary>
-        public event EventHandler<DiagnosisSubmitEventArgs> AddDiagnosisSubmittedEvent;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="ModifyDiagnosis" /> class.
         ///
         /// Precondition: none

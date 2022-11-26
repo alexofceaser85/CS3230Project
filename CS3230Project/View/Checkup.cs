@@ -289,13 +289,7 @@ namespace CS3230Project.View
 
         private void submitDiagnoses()
         {
-            DiagnosisManagerViewModel.AddDiagnosises(this.pendingDiagnoses);
-            this.pendingDiagnoses.Clear();
-        }
-
-        private void submitDiagnoses()
-        {
-            DiagnosisManagerViewModel.AddDiagnosises(this.pendingDiagnoses);
+            DiagnosisManagerViewModel.AddDiagnoses(this.pendingDiagnoses);
             this.pendingDiagnoses.Clear();
         }
 
@@ -415,7 +409,7 @@ namespace CS3230Project.View
             if (!this.finalDiagnosisExists && e.RowIndex >= 0)
             {
                 var diagnosisToModify = this.allDiagnoses[e.RowIndex];
-                var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosisToModify, this.appointmentId);
+                var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosisToModify, this.appointmentId, this.patient);
                 modifyDiagnosisDialog.RemoveDiagnosisSubmittedEvent += ModifyDiagnosisDialogOnRemoveDiagnosisSubmittedEvent;
 
                 if (diagnosisToModify?.DiagnosisId != null)
@@ -443,9 +437,6 @@ namespace CS3230Project.View
                     this.pendingDiagnoses[diagnosisIndex] = e.DiagnosisSubmitted;
                 }
 
-                var modifyDiagnosisDialog = new ModifyDiagnosis(diagnosis, this.appointmentId, this.patient);
-                modifyDiagnosisDialog.ModifyDiagnosisSubmittedEvent += this.DiagnosisSubmitEvent;
-                modifyDiagnosisDialog.ShowDialog();
                 this.enableControlsAndUpdateData();
             }
 

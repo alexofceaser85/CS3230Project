@@ -9,17 +9,17 @@ namespace CS3230Project.DAL.Diagnosis
     public class DiagnosisDal
     {
         /// <summary>
-        /// Adds the diagnosises.
+        /// Adds the diagnoses.
         ///
         /// Precondition: none
         /// Post-condition: the diagnosis provided is added to the database
         /// </summary>
-        /// <param name="diagnosisesToAdd">The diagnosises to add.</param>
+        /// <param name="diagnosesToAdd">The diagnoses to add.</param>
         /// <returns>
         ///   returns true if the diagnosis was added to the database
         ///   returns false if the diagnosis was not added to the database
         /// </returns>
-        public static bool AddDiagnosises(List<Model.Diagnosis.Diagnosis> diagnosisesToAdd)
+        public static bool AddDiagnoses(List<Model.Diagnosis.Diagnosis> diagnosesToAdd)
         {
             using var connection = new MySqlConnection(Connection.ConnectionString);
             connection.Open();
@@ -30,7 +30,7 @@ namespace CS3230Project.DAL.Diagnosis
 
             try
             {
-                foreach (var diagnosisToAdd in diagnosisesToAdd)
+                foreach (var diagnosisToAdd in diagnosesToAdd)
                 {
                     var appointmentId = diagnosisToAdd.AppointmentId;
                     var diagnosisDescription = diagnosisToAdd.DiagnosisDescription;
