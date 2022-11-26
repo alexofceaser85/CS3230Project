@@ -293,6 +293,12 @@ namespace CS3230Project.View
             this.pendingDiagnoses.Clear();
         }
 
+        private void submitDiagnoses()
+        {
+            DiagnosisManagerViewModel.AddDiagnosises(this.pendingDiagnoses);
+            this.pendingDiagnoses.Clear();
+        }
+
         private Visit getVisitInfo()
         {
             this.verifyAll();
