@@ -8,6 +8,7 @@ namespace CS3230ProjectTests.Model.Accounts.Users
     [TestClass]
     public class NurseTests
     {
+        /*
         [TestMethod]
         public void ShouldNotAllowIdOneBelowZero()
         {
@@ -128,5 +129,6 @@ namespace CS3230ProjectTests.Model.Accounts.Users
             Assert.AreEqual("TestLast", nurse.LastName);
             Assert.AreEqual("FirstLast", nurse.UserName);
         }
+        */
     }
 }

@@ -166,6 +166,7 @@
     </Compile>
     <Compile Include="View\AdminVisitsSearch.Designer.cs">
       <DependentUpon>AdminVisitsSearch.cs</DependentUpon>
+	</Compile>
     <Compile Include="View\AdminQuery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +286,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminVisitsSearch.resx">
       <DependentUpon>AdminVisitsSearch.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="View\AdminQuery.resx">
       <DependentUpon>AdminQuery.cs</DependentUpon>
     </EmbeddedResource>
