@@ -39,6 +39,7 @@ namespace CS3230Project.View
             this.PatientPhoneNumberLabel.Text = $"Phone: {patient.PhoneNumber}";
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
             this.submitChangesFooter1.SubmitButtonEventHandler += this.SubmitChangesFooter1OnSubmitButtonEventHandler;
+            this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
             this.availableDoctors = new List<Doctor>();
             this.appointmentDatePicker.Format = DateTimePickerFormat.Custom;
             this.appointmentDatePicker.CustomFormat = AppointmentSettings.DateTimeFormat;
@@ -47,6 +48,11 @@ namespace CS3230Project.View
             this.appointmentDatePicker.Value = this.appointmentToEdit.Date;
             this.populateEditAppointmentValues();
             this.disableFieldsAndActionsIfPatientIsNotActive();
+        }
+
+        private void Header1OnLogoutEventHandler(object sender, EventArgs e)
+        {
+            SwitchForms.SwitchToLogin(this);
         }
 
         private void disableFieldsAndActionsIfPatientIsNotActive()

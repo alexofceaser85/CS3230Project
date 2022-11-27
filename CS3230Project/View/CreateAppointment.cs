@@ -5,6 +5,7 @@ using CS3230Project.Model.Users;
 using CS3230Project.Model.Users.Patients;
 using CS3230Project.Settings;
 using CS3230Project.View.Validation;
+using CS3230Project.View.WindowSwitching;
 using CS3230Project.ViewModel.Appointments;
 using CS3230Project.ViewModel.Doctors;
 
@@ -32,15 +33,21 @@ namespace CS3230Project.View
             this.PatientPhoneNumberLabel.Text = $"Phone: {patient.PhoneNumber}";
             this.submitChangesFooter1.SubmitButtonEventHandler += this.SubmitChangesFooter1OnSubmitButtonEventHandler;
             this.submitChangesFooter1.BackButtonEventHandler += this.SubmitChangesFooter1OnBackButtonEventHandler;
+            this.header1.LogoutEventHandler += this.Header1OnLogoutEventHandler;
             this.appointmentDatePicker.Format = DateTimePickerFormat.Custom;
             this.appointmentDatePicker.CustomFormat = AppointmentSettings.DateTimeFormat;
             this.patient = patient;
             this.populateDoctorsDropDown();
         }
 
+        private void Header1OnLogoutEventHandler(object sender, EventArgs e)
+        {
+            SwitchForms.SwitchToLogin(this);
+        }
+
         private void SubmitChangesFooter1OnBackButtonEventHandler(object sender, EventArgs e)
         {
-            WindowSwitching.SwitchForms.Switch(this, new Appointments(this.patient));
+            SwitchForms.Switch(this, new Appointments(this.patient));
         }
 
         private void SubmitChangesFooter1OnSubmitButtonEventHandler(object sender, EventArgs e)
@@ -51,7 +58,7 @@ namespace CS3230Project.View
                 var appointmentDate = this.convertAppointmentDateTimeToZero();
                 AppointmentManagerViewModel.AddAppointment(this.patient.PatientId, appointmentDate,
                     this.availableDoctors[this.appointmentDoctorDropDown.SelectedIndex].DoctorId, this.reasonTextBox.Text);
-                WindowSwitching.SwitchForms.Switch(this, new Appointments(this.patient));
+                SwitchForms.Switch(this, new Appointments(this.patient));
             }
             catch (ArgumentException)
             {
